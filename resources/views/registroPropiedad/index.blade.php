@@ -1,4 +1,5 @@
-@include('layouts.app')
+@extends('layouts.app')
+@section('content')
 <form action="" method="post">
     @csrf
     <div class="form-group">
@@ -33,4 +34,8 @@
         <label for="Ubicacion">Ubicación</label>
         <input type="text" name="Ubicacion" class="form-control">
     </div>
+    <div class="form-group">
+        <input type="button" value="Registrar Propiedad">
+    </div>
 </form>
+@endsection
