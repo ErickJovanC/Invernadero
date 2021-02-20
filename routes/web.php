@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegistroPropiedadController;
+use App\Http\Controllers\RegistroPersonalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +24,5 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('registroPropiedad', RegistroPropiedadController::class);
+Route::resource('registroPersonal', RegistroPersonalController::class);
+Route::view('/main', '/main/index')->name('main');
