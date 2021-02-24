@@ -24,7 +24,7 @@
         <input type="file" name="Foto" class="form-control">
     </div>
     <div class="form-group">
-        <input type="button" value="Registrar Propiedad">
+        <input type="submit" value="Registrar Propiedad">
     </div>
 </form>
 <a href="{{ route('main') }}" class="btn btn-success">Menú</a>

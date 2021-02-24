@@ -10004,3 +10004,18 @@ h3 {
     border-color: #dee2e6;
   }
 }
+html {
+  font-size: 62.5%;
+  /* Reset para REMS - 62.5% = 10px de 16px */
+}
+
+body, .form-control, .btn {
+  font-size: 2rem;
+}
+
+/* input{
+    font-size:1.4rem !important;
+} */
+/* .form-control, .btn{
+    font-size: 1.4rem;
+} */

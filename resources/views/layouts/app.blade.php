@@ -78,11 +78,11 @@
         <!-- Contenido -->
         <div class="container">
             <div class="row">
-                <div class="col-8">
-                    <main class="py-4">
+                {{-- <div class="col"> --}}
+                    <main class="py-4 col-12">
                         @yield('content')
                     </main>
-                </div>
+                {{-- </div> --}}
             </div>
         </div>
         
