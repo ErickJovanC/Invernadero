@@ -28,3 +28,5 @@ Route::resource('registroPersonal', RegistroPersonalController::class);
 
 Route::view('/main', '/main/index')->name('main');
 Route::view('/preparacionSuelo/', '/preparacionSuelo/index')->name('suelo');    
+Route::view('/calidadPlanta/', '/calidadPlanta/index')->name('calidad');    
+Route::view('/controlPreventivo/', 'controlPreventivo/index')->name('prevencion');    
