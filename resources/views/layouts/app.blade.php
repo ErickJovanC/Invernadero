@@ -77,13 +77,9 @@
 
         <!-- Contenido -->
         <div class="container">
-            <div class="row">
-                {{-- <div class="col"> --}}
-                    <main class="py-4 col-12">
-                        @yield('content')
-                    </main>
-                {{-- </div> --}}
-            </div>
+            <main class="py-4 col-12">
+                @yield('content')
+            </main>
         </div>
         
     </div>

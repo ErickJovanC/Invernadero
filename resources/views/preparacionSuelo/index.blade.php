@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <a href="{{ route('main') }}" class="btn btn-success">Menú</a>
+<h1 class="titulo mb-5 col-12 text-center">Preparación de Suelo</h1>
 <form action="" method="post" class="mt-4">
     @csrf
     <div class="row">

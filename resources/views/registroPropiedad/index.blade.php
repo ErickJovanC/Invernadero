@@ -1,9 +1,10 @@
 @extends('layouts.app')
 @section('content')
 <a href="{{ route('main') }}" class="btn btn-success">Menú</a>
-<form action="" method="post">
+<div class="row mt-4">
+    <h1 class="titulo mb-5 col-12 text-center">Registro de propiedad</h1>
+    <form action="" method="post" class="col-12">
     @csrf
-    <div class="row mt-4">
         <div class="form-group col-6">
             <label for="NombrePropiedad">Nombre propiedad</label>
             <input type="text" name="NombrePropiedad" class="form-control">
@@ -67,7 +68,7 @@
         <div class="form-group">
             <input type="submit" value="Registrar Propiedad">
         </div>
-    </div>
-</form>
+    </form>
+</div>
 <a href="{{ route('main') }}" class="btn btn-success">Menú</a>
 @endsection
