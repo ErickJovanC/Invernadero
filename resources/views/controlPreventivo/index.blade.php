@@ -30,7 +30,7 @@
             <div class="form-group col-sm-12 col-md-6 mb-5">
                 <div class="alert alert-danger">Hacer lista selectiva</div>
                 <label for="PlagaControlar">Plaga o Enfermadad a Controlar</label>
-                <input type="text" name="ResistenciaPlagas" class="form-control">
+                <input type="text" name="PlagaControlar" class="form-control">
             </div>
 
             <div class="form-group col-sm-12 col-md-6 mb-5">

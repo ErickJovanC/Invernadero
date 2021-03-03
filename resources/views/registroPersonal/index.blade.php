@@ -3,7 +3,6 @@
 <a href="{{ route('main') }}" class="btn btn-success">Menú</a>
 <div class="row">
     <h1 class="titulo mb-5 col-12 text-center">Registro Personal</h1>
-
     <form action="" method="post" enctype="multipart/form-data" class="col-12">
         @csrf
         <div class="row">

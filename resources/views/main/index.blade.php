@@ -5,4 +5,5 @@
     <a href="preparacionSuelo/" class="btn btn-success">Preparación del suelo</a>
     <a href="calidadPlanta/" class="btn btn-success">Calidad Planta</a>
     <a href="controlPreventivo/" class="btn btn-success">Control Preventivo</a>
+    <a href="registroSiembra/" class="btn btn-success">Registro Siembra</a>
 @endsection
