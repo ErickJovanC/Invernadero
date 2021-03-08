@@ -75,8 +75,10 @@
                 </select>
             </div>
 
+        </div>
+        <div class="row justify-content-end">
             <div class="form-group">
-                <input type="submit" value="Registrar Control Preventivo" class="btn btn-primary">
+                <input type="submit" value="Registrar Control Preventivo" class="btn btn-primary px-5">
             </div>
         </div>
     </form>

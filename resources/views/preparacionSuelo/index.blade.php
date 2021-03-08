@@ -41,7 +41,7 @@
             </div>
 
         </div>
-        <div class="row pb-5">
+        <div class="row">
             <div class="form-group col-sm-12 col-md-6 mb-5">
                 <label for="FechaInicio">Fecha Inicial</label>
                 <input type="date" name="FechaInicio" class="form-control" value="04-07-21">
@@ -74,9 +74,9 @@
                 <input type="text" name="Responsable" class="form-control">
             </div>
         </div>
-        <div class="row mb-5">
-            <div class="form-group col">
-                <input type="submit" value="Registrar Preparacion de Suelo" class="btn btn-primary">
+        <div class="row justify-content-end">
+            <div class="form-group">
+                <input type="submit" value="Registrar Preparacion de Suelo" class="btn btn-primary px-5">
             </div>
         </div>
     </form>

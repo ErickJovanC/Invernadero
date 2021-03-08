@@ -5,7 +5,7 @@
     <h1 class="titulo mb-5 col-12 text-center">Registro de propiedad</h1>
     <form action="" method="post" class="col-12">
     @csrf
-        <div class="row">
+        <div class="row mb-4">
             <div class="form-group col-sm-12 col-md-6 mb-5">
                 <label for="NombrePropiedad">Nombre propiedad</label>
                 <input type="text" name="NombrePropiedad" class="form-control">
@@ -66,8 +66,10 @@
                 <label for="Ubicacion">Ubicación</label>
                 <input type="text" name="Ubicacion" class="form-control">
             </div>
+        </div>
+        <div class="row justify-content-end">
             <div class="form-group">
-                <input type="submit" value="Registrar Propiedad">
+                <input type="submit" value="Registrar Propiedad" class="btn btn-primary px-5">
             </div>
         </div>
     </form>

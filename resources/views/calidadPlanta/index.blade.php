@@ -66,9 +66,9 @@
                 <input type="text" name="Certificado" class="form-control">
             </div>
         </div>
-        <div class="row mb-5">
-            <div class="form-group col">
-                <input type="submit" value="Registrar Calidad de la Planta" class="btn btn-primary">
+        <div class="row mb-5 justify-content-end">
+            <div class="form-group">
+                <input type="submit" value="Registrar Calidad de la Planta" class="btn btn-primary px-5">
             </div>
         </div>
     </form>

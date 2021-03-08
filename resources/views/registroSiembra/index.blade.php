@@ -4,7 +4,7 @@
 <div class="row">
     <h1 class="titulo mb-5 col-12 text-center">Registro de siembra</h1>
     <form action="" method="post">
-        <div class="row">
+        <div class="row mb-4">
             
             <div class="form-group col-sm-12 col-md-6 mb-5">
                 <label for="Lote">Lote</label>
@@ -53,9 +53,9 @@
 
         </div>
 
-        <div class="row text-left">
+        <div class="row justify-content-end">
             <div class="form-group">
-                <input type="submit" value="Registrar siembra" class="btn btn-primary">
+                <input type="submit" value="Registrar siembra" class="btn btn-primary px-5">
             </div>
         </div>
 

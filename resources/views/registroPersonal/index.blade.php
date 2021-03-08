@@ -26,8 +26,11 @@
                 <label for="Foto">Foto</label>
                 <input type="file" name="Foto" class="form-control">
             </div>
+            <div class="w-100"></div>
+        </div>
+        <div class="row justify-content-end">
             <div class="form-group">
-                <input type="submit" value="Registrar Propiedad">
+                <input type="submit" value="Registrar Datos" class="btn btn-primary px-5">
             </div>
         </div>
     </form>
