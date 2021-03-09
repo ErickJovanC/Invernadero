@@ -31,3 +31,4 @@ Route::view('/preparacionSuelo/', '/preparacionSuelo/index')->name('suelo');
 Route::view('/calidadPlanta/', '/calidadPlanta/index')->name('calidad');    
 Route::view('/controlPreventivo/', 'controlPreventivo/index')->name('prevencion');    
 Route::view('/registroSiembra/', 'registroSiembra/index')->name('siembra');
+Route::view('/aplicacionFertilizante/', 'aplicacionFertilizante/index')->name('fertilizante');

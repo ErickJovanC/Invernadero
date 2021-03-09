@@ -10011,11 +10011,6 @@ html {
 
 body, .form-control, .btn {
   font-size: 2rem;
+  color: #a284e0;
+  background-color: #170440;
 }
-
-/* input{
-    font-size:1.4rem !important;
-} */
-/* .form-control, .btn{
-    font-size: 1.4rem;
-} */
