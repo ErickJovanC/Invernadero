@@ -8,4 +8,5 @@
     <a href="registroSiembra/" class="btn btn-success">Registro Siembra</a>
     <a href="aplicacionFertilizante/" class="btn btn-success">Aplicación de Fertilizante</a>
     <a href="calibracionEquipo/" class="btn btn-success">Calibración de equipo de aplicación</a>
+    <a href="aplicacionFertilizanteOrganico/" class="btn btn-success">Aplicación de Fertilizante Organico</a>
     @endsection
