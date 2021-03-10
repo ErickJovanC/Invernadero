@@ -6,10 +6,12 @@
     <form action="" method="post" enctype="multipart/form-data" class="col-12">
         @csrf
         <div class="row">
+            
             <div class="form-group col-sm-12 col-md-6 mb-5">
                 <label for="Nombre">Nombre</label>
                 <input type="text" name="Nombre" class="form-control">
             </div>
+
             <div class="form-group col-sm-12 col-md-6 mb-5">
                 <label for="Apellidos">Apellidos</label>
                 <input type="text" name="Apellidos" class="form-control">

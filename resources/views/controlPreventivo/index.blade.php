@@ -64,7 +64,8 @@
                 <label for="Temperatura">Temperatura (°C)</label>
                 <input type="number" name="Temperatura" class="form-control">
             </div>
-
+            
+            {{-- Responsable --}}
             <div class="form-group col-sm-12 col-md-6 mb-5">
                 <label for="Responsable">Responsable</label>
                 <div class="alert alert-warning">Esto vendra de los empleados registrados</div>
@@ -73,7 +74,7 @@
                     <option value="Juan">Juan</option>
                     <option value="Oscar">Oscar</option>
                 </select>
-            </div>
+            </div> {{-- Fin Responsable --}}
 
         </div>
         <div class="row justify-content-end">
