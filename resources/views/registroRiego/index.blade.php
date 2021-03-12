@@ -5,6 +5,7 @@
     <h1 class="col-12 text-center mb-5">Registro de Riego</h1>
     <form action="" method="post" class="col-12">
         <div class="row">
+            
             {{-- Propiedad --}}
             <div class="form-group col-sm-12 col-md-6 mb-5">
                 <label for="Propiedad">Propiedad</label>
