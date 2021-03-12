@@ -34,3 +34,4 @@ Route::view('/registroSiembra/', 'registroSiembra/index')->name('siembra');
 Route::view('/aplicacionFertilizante/', 'aplicacionFertilizante/index')->name('fertilizante');
 Route::view('/calibracionEquipo/', 'calibracionEquipo/index')->name('calibracion');
 Route::view('/aplicacionFertilizanteOrganico/', 'aplicacionFertilizanteOrganico/index')->name('fertilizanteOrganico');
+Route::view('/registroRiego/', 'registroRiego/index')->name('RegistroRiego');

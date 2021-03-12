@@ -18,6 +18,7 @@
                 </select>
             </div>{{-- Fin Lote --}}
 
+            {{-- Fecha --}}
             <div class="form-group col-sm-12 col-md-6 mb-5">
                 <label for="FechaAplicacion">Fecha de aplicación</label>
                 <input type="date" 
@@ -26,7 +27,7 @@
                     value="2021-07-04"
                     min="2021-03-01"
                 />
-            </div>
+            </div>{{-- Fin Fecha --}}
 
             <div class="form-group col-sm-12 col-md-6 mb-5">
                 <label for="TipoSubproducto">Tipo desubproducto o abono orgánico</label>
@@ -81,6 +82,7 @@
                 <input type="text" name="Superficie" class="form-control">
             </div>
 
+            {{-- Tipo de riego --}}
             <div class="form-group col-sm-12 col-md-6 mb-5">
                 <label for="MetodoAplicacion">Metodo de Aplicación</label>
                 <select name="MetodoAplicacion" id="MetodoAplicacion" class="form-control">
@@ -88,7 +90,7 @@
                     <option value="Goteo">Goteo</option>
                     <option value="Riego">Riego</option>
                 </select>
-            </div>
+            </div>{{-- Fin tipo de riego --}}
 
             {{-- Responsable --}}
             <div class="form-group col-sm-12 col-md-6 mb-5">
@@ -110,5 +112,5 @@
         </div>
     </form>
 </div>
-<a href="{{ route('main') }}" class="btn btn-success">Menú</a>
+<a href="{{ route('main') }}" class="btn btn-success">Menú</a>¡
 @endsection

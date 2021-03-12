@@ -9,4 +9,5 @@
     <a href="aplicacionFertilizante/" class="btn btn-success">Aplicación de Fertilizante</a>
     <a href="calibracionEquipo/" class="btn btn-success">Calibración de equipo de aplicación</a>
     <a href="aplicacionFertilizanteOrganico/" class="btn btn-success">Aplicación de Fertilizante Organico</a>
+    <a href="registroRiego/" class="btn btn-success">Registro Riego</a>
     @endsection
