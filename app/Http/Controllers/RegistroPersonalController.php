@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\RegistroPersonal;
 use Illuminate\Http\Request;
+use App\Models\RegistroPersonal;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class RegistroPersonalController extends Controller
 {
@@ -35,14 +37,30 @@ class RegistroPersonalController extends Controller
      */
     public function store(Request $request)
     {
+        //  Validación de datos
         $data = request()->validate([
             'Nombre' => 'required | min:3',
             'ApellidoPaterno' => 'required | min:4',
             'ApellidoMaterno' => 'required | min:4',
             'Telefono' => 'required | min:10',
-            'Direccion' => 'required | min 5'
-            
+            'Direccion' => 'required | min:5'
         ]);
+
+        // Subida de la imagen
+        // $rutaImagen = $request['Foto']->store('propietarios', 'public');
+
+        // Insersión de datos
+        DB::table('registro_personals')->insert([
+            'nombre' => $data['Nombre'],
+            'apellido_p' => $data['ApellidoPaterno'],
+            'apellido_m' => $data['ApellidoMaterno'],
+            'telefono' => $data['Telefono'],
+            'direccion' => $data['Direccion'],
+            //'foto' => $data['Foto'],
+            'user_id' => Auth::user()->id,
+        ]);
+
+        return redirect('/main');
     }
 
     /**
