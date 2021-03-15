@@ -15,6 +15,18 @@ class CreateRegistroPersonalsTable extends Migration
     {
         Schema::create('registro_personals', function (Blueprint $table) {
             $table->id();
+            
+            $table->string('nombre', 30);
+            $table->string('apellido_m', 30);
+            $table->string('apellido_p', 30);
+            $table->integer('telefono');
+            $table->string('direccion', 50);
+            $table->string('foto', 60)->nullable();
+            $table->foreignId('user_id')->
+                references('id')->
+                on('users')->
+                comment('Usuario del propietario');
+
             $table->timestamps();
         });
     }
