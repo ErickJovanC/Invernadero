@@ -11,4 +11,4 @@
     <a href="aplicacionFertilizanteOrganico/" class="btn btn-success">Aplicación de Fertilizante Organico</a>
     <a href="registroRiego/" class="btn btn-success">Registro Riego</a>
     <a href="limpiezaCanales/" class="btn btn-success">Limpieza de Canales</a>
-    @endsection
+@endsection

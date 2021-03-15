@@ -35,7 +35,14 @@ class RegistroPersonalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = request()->validate([
+            'Nombre' => 'required | min:3',
+            'ApellidoPaterno' => 'required | min:4',
+            'ApellidoMaterno' => 'required | min:4',
+            'Telefono' => 'required | min:10',
+            'Direccion' => 'required | min 5'
+            
+        ]);
     }
 
     /**
