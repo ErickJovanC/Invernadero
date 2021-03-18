@@ -2,21 +2,32 @@
 @section('content')
 <a href="{{ route('main') }}" class="btn btn-success">Menú</a>
 <div class="row mt-4">
-    <h1 class="titulo mb-5 col-12 text-center">Registro de propiedad</h1>
+    <h1 class="titulo mb-5 col-12 text-center">Registro de Huerta</h1>
     <form action="" method="post" class="col-12">
     @csrf
         <div class="row mb-4">
             <div class="form-group col-sm-12 col-md-6 mb-5">
-                <label for="NombrePropiedad">Nombre propiedad</label>
-                <input type="text" name="NombrePropiedad" class="form-control">
+                <label for="nombreHuerta">Nombre de la Huerta</label>
+                <input type="text" 
+                    name="nombreHuerta" 
+                    id="nombreHuerta"
+                    class="form-control"
+                    >
             </div>
             <div class="form-group col-sm-12 col-md-6 mb-5">
-                <label for="CodigoRegistro">Código de registro</label>
-                <input type="text" name="CodigoRegistro" class="form-control">
+                <label for="codigoRegistro">Código de registro</label>
+                <input type="text" 
+                    name="codigoRegistro" 
+                    id="codigoRegistro" 
+                    class="form-control">
             </div>
             <div class="form-group col-sm-12 col-md-6 mb-5">
-                <label for="Estado">Estado</label>
-                <input type="text" name="Estado" class="form-control">
+                <label for="estado">Estado</label>
+                <input type="text" 
+                    name="estado"
+                    id="estado" 
+                    class="form-control"
+                >
             </div>
             <div class="form-group col-sm-12 col-md-6 mb-5">
                 <label for="Municipio">Municipio</label>
@@ -30,7 +41,8 @@
                 <label for="Calle">Calle y Número</label>
                 <input type="text" name="Calle" class="form-control">
             </div>
-            <div class="form-group  col-sm-12 col-md-6 mb-5">
+
+            {{-- <div class="form-group  col-sm-12 col-md-6 mb-5">
                 <label for="Cultivo1">Cultivo1</label>
                 <input type="text" name="Cultivo1" class="form-control">
             </div>
@@ -61,7 +73,8 @@
             <div class="form-group col-sm-12 col-md-6 mb-5">
                 <label for="Extension4">Extensión 4 (m2)</label>
                 <input type="text" name="Extension4" class="form-control">
-            </div>
+            </div> --}}
+
             <div class="form-group col-12">
                 <label for="Ubicacion">Ubicación</label>
                 <input type="text" name="Ubicacion" class="form-control">
