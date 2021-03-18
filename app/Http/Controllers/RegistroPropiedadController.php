@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\RegistroPropiedad;
+use App\Models\Estados;
+use App\Models\Municipios;
 use Illuminate\Http\Request;
+use App\Models\RegistroPropiedad;
+use Illuminate\Support\Facades\Auth;
 
 class RegistroPropiedadController extends Controller
 {
@@ -14,7 +17,8 @@ class RegistroPropiedadController extends Controller
      */
     public function index()
     {
-        return view('registroPropiedad.index');
+        echo "Estoy en index";
+        //
     }
 
     /**
@@ -24,7 +28,11 @@ class RegistroPropiedadController extends Controller
      */
     public function create()
     {
-        //
+        //echo "Estoy en Create";
+        $estados = Estados::all(['id', 'estado']);
+        $municipios = Municipios::all(['id', 'municipio']);
+        //dd($estados);
+        return view('registroPropiedad.index')->with('estados', $estados)->with('municipios', $municipios);
     }
 
     /**
@@ -43,6 +51,10 @@ class RegistroPropiedadController extends Controller
             'colonia' => 'required | Min:5',
             'calle' => 'required | Min:6',
             ]);
+
+            //Auth::user();
+
+            return redirect ('/main');
     }
 
     /**

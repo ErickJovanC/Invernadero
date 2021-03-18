@@ -24,8 +24,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('registroPropiedad', RegistroPropiedadController::class);
 Route::resource('registroPersonal', RegistroPersonalController::class);
+Route::resource('registroPropiedad', RegistroPropiedadController::class);
 
 Route::view('/main', '/main/index')->name('main');
 Route::view('/preparacionSuelo/', '/preparacionSuelo/index')->name('suelo');    
