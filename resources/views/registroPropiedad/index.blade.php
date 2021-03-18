@@ -11,35 +11,77 @@
                 <input type="text" 
                     name="nombreHuerta" 
                     id="nombreHuerta"
-                    class="form-control"
-                    >
+                    class="form-control @error('nombreHuerta') is-invalid @enderror"
+                    value="{{ old('nombreHuerta') }}"
+                >
+                @error('nombreHuerta')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
             </div>
+
             <div class="form-group col-sm-12 col-md-6 mb-5">
-                <label for="codigoRegistro">Código de registro</label>
+                <label for="codigoRegistro">Código de registro (Senasica)</label>
                 <input type="text" 
                     name="codigoRegistro" 
                     id="codigoRegistro" 
-                    class="form-control">
+                    class="form-control"
+                >
             </div>
+
             <div class="form-group col-sm-12 col-md-6 mb-5">
                 <label for="estado">Estado</label>
                 <input type="text" 
                     name="estado"
                     id="estado" 
-                    class="form-control"
+                    class="form-control @error('estado') is-invalid @enderror"
+                    value="{{ old('estado') }}"
                 >
+                @error('estado')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
             </div>
+
             <div class="form-group col-sm-12 col-md-6 mb-5">
-                <label for="Municipio">Municipio</label>
-                <input type="text" name="Municipio" class="form-control">
+                <label for="municipio">Municipio</label>
+                <input type="text" name="municipio" id="municipio" 
+                    class="form-control @error('municipio') is-invalid @enderror" 
+                    value="{{ old('municipio') }}"
+                >
+                @error('municipio')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
             </div>
+
             <div class="form-group col-sm-12 col-md-6 mb-5">
-                <label for="Colonia">Colonia</label>
-                <input type="text" name="Colonia" class="form-control">
+                <label for="colonia">Colonia</label>
+                <input type="text" name="colonia" id="colonia" 
+                    class="form-control @error('colonia') is-invalid @enderror"
+                    value="{{ old('colonia') }}"
+                >
+                @error('colonia')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
             </div>
+
             <div class="form-group col-sm-12 col-md-6 mb-5">
-                <label for="Calle">Calle y Número</label>
-                <input type="text" name="Calle" class="form-control">
+                <label for="calle">Calle y Número</label>
+                <input type="text" name="calle" id="calle" 
+                    class="form-control @error('calle') is-invalid @enderror"
+                    value="{{ old('calle') }}"
+                >
+                @error('calle')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
             </div>
 
             {{-- <div class="form-group  col-sm-12 col-md-6 mb-5">
