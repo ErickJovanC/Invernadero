@@ -3,7 +3,7 @@
 <a href="{{ route('main') }}" class="btn btn-success">Menú</a>
 <div class="row mt-4">
     <h1 class="titulo mb-5 col-12 text-center">Registro de Huerta</h1>
-    <form action="" method="post" class="col-12">
+    <form action="{{ route('registroPropiedad.store') }}" method="post" class="col-12">
     @csrf
         <div class="row mb-4">
             <div class="form-group col-sm-12 col-md-6 mb-5">
@@ -32,12 +32,15 @@
 
             <div class="form-group col-sm-12 col-md-6 mb-5">
                 <label for="estado">Estado</label>
-                <input type="text" 
-                    name="estado"
+                <select name="estado"
                     id="estado" 
                     class="form-control @error('estado') is-invalid @enderror"
-                    value="{{ old('estado') }}"
                 >
+                    <option value="" hidden>Seleccione el estado</option>
+                    @foreach($estados as $estado)
+                        <option value="{{ $estado->id }}">{{ $estado->estado }}</option>
+                    @endforeach
+                </select>
                 @error('estado')
                     <span class="invalid-feedback d-block" role="alert">
                         <strong>{{$message}}</strong>
@@ -47,10 +50,14 @@
 
             <div class="form-group col-sm-12 col-md-6 mb-5">
                 <label for="municipio">Municipio</label>
-                <input type="text" name="municipio" id="municipio" 
-                    class="form-control @error('municipio') is-invalid @enderror" 
-                    value="{{ old('municipio') }}"
+                <select name="municipio" id="municipio" 
+                    class="form-control @error('municipio') is-invalid @enderror"
                 >
+                    <option value="" hidden>Seleccione el municipio</option>
+                    @foreach($municipios as $municipio)
+                        <option value="{{ $municipio->id }}">{{ $municipio->municipio }}</option>
+                    @endforeach
+                </select>
                 @error('municipio')
                     <span class="invalid-feedback d-block" role="alert">
                         <strong>{{$message}}</strong>
