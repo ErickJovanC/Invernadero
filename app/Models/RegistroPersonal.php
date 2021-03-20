@@ -8,4 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class RegistroPersonal extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'nombre',
+        'apellido_p',
+        'apellido_m',
+        'telefono',
+        'direccion',
+        'foto',
+        'user'
+    ];
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

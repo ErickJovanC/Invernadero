@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Auth;
 
 class RegistroPersonalController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -39,23 +43,36 @@ class RegistroPersonalController extends Controller
     {
         //  Validación de datos
         $data = request()->validate([
-            'Nombre' => 'required | min:3',
-            'ApellidoPaterno' => 'required | min:4',
-            'ApellidoMaterno' => 'required | min:4',
-            'Telefono' => 'required | min:10',
-            'Direccion' => 'required | min:5'
+            'nombre' => 'required | min:3',
+            'apellidoPaterno' => 'required | min:4',
+            'apellidoMaterno' => 'required | min:4',
+            'telefono' => 'required | min:10',
+            'direccion' => 'required | min:5'
         ]);
+
+        //dd($data);
 
         // Subida de la imagen
         // $rutaImagen = $request['Foto']->store('propietarios', 'public');
 
-        // Insersión de datos
-        DB::table('registro_personals')->insert([
-            'nombre' => $data['Nombre'],
-            'apellido_p' => $data['ApellidoPaterno'],
-            'apellido_m' => $data['ApellidoMaterno'],
-            'telefono' => $data['Telefono'],
-            'direccion' => $data['Direccion'],
+        // Insersión de datos sin modelo
+        // DB::table('registro_personals')->insert([
+        //     'nombre' => $data['Nombre'],
+        //     'apellido_p' => $data['ApellidoPaterno'],
+        //     'apellido_m' => $data['ApellidoMaterno'],
+        //     'telefono' => $data['Telefono'],
+        //     'direccion' => $data['Direccion'],
+        //     //'foto' => $data['Foto'],
+        //     'user_id' => Auth::user()->id,
+        // ]);
+
+        // Insersión a la BD con modelo
+        auth()->user()->datosPersonales()->create([
+            'nombre' => $data['nombre'],
+            'apellido_p' => $data['apellidoPaterno'],
+            'apellido_m' => $data['apellidoMaterno'],
+            'telefono' => $data['telefono'],
+            'direccion' => $data['direccion'],
             //'foto' => $data['Foto'],
             'user_id' => Auth::user()->id,
         ]);

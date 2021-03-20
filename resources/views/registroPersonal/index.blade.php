@@ -8,12 +8,12 @@
         <div class="row">
             
             <div class="form-group col-sm-12 col-md-6">
-                <label for="Nombre">Nombre</label>
-                <input type="text" name="Nombre" 
-                    class="form-control @error('Nombre') is-invalid @enderror"
-                    value="{{ old('Nombre') }}"
+                <label for="nombre">Nombre</label>
+                <input type="text" name="nombre" id="nombre" 
+                    class="form-control @error('nombre') is-invalid @enderror"
+                    value="{{ old('nombre') }}"
                 >
-                @error('Nombre')
+                @error('nombre')
                     <span class="invalid-feedback d-block" role="alert">
                         <strong>{{$message}}</strong>
                     </span>
@@ -21,12 +21,12 @@
             </div>
 
             <div class="form-group col-sm-12 col-md-6">
-                <label for="ApellidoPaterno">Apellido Paterno</label>
-                <input type="text" name="ApellidoPaterno" id="ApellidoPaterno" 
-                    class="form-control @error('ApellidoPaterno') is-invalid @enderror"
-                    value="{{ old('ApellidoPaterno') }}"
+                <label for="apellidoPaterno">Apellido Paterno</label>
+                <input type="text" name="apellidoPaterno" id="apellidoPaterno" 
+                    class="form-control @error('apellidoPaterno') is-invalid @enderror"
+                    value="{{ old('apellidoPaterno') }}"
                 >
-                @error('ApellidoPaterno')
+                @error('apellidoPaterno')
                     <span class="invalid-feedback d-block" role="alert">
                         <strong>{{$message}}</strong>
                     </span>
@@ -35,12 +35,12 @@
             
 
             <div class="form-group col-sm-12 col-md-6 mb-5">
-                <label for="ApellidoMaterno">Apellido Materno</label>
-                <input type="text" name="ApellidoMaterno" id="ApellidoMaterno" 
-                    class="form-control @error('ApellidoMaterno') is-invalid @enderror"
-                    value="{{ old('ApellidoMaterno') }}"
+                <label for="apellidoMaterno">Apellido Materno</label>
+                <input type="text" name="apellidoMaterno" id="apellidoMaterno" 
+                    class="form-control @error('apellidoMaterno') is-invalid @enderror"
+                    value="{{ old('apellidoMaterno') }}"
                 >
-                @error('ApellidoMaterno')
+                @error('apellidoMaterno')
                     <span class="invalid-feedback d-block" role="alert">
                         <strong>{{$message}}</strong>
                     </span>
@@ -48,12 +48,12 @@
             </div>
 
             <div class="form-group col-sm-12 col-md-6 mb-5">
-                <label for="Telefono">Teléfono</label>
-                <input type="number" name="Telefono" 
-                    class="form-control @error('Telefono') is-invalid @enderror"
-                    value="{{ old('Telefono') }}"
+                <label for="telefono">Teléfono</label>
+                <input type="number" name="telefono" 
+                    class="form-control @error('telefono') is-invalid @enderror"
+                    value="{{ old('telefono') }}"
                 >
-                @error('Telefono')
+                @error('telefono')
                     <span class="invalid-feedback d-block" role="alert">
                         <strong>{{$message}}</strong>
                     </span>
@@ -61,12 +61,12 @@
             </div>
 
             <div class="form-group col-sm-12 col-md-6 mb-5">
-                <label for="Direccion">Dirección</label>
-                <input type="text" name="Direccion"     
-                    class="form-control @error('Direccion') is-invalid @enderror"
-                    value="{{ old('Direccion') }}"
+                <label for="direccion">Dirección</label>
+                <input type="text" name="direccion"     
+                    class="form-control @error('direccion') is-invalid @enderror"
+                    value="{{ old('direccion') }}"
                 >
-                @error('Direccion')
+                @error('direccion')
                     <span class="invalid-feedback d-block" role="alert">
                         <strong>{{$message}}</strong>
                     </span>

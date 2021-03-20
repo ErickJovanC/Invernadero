@@ -44,4 +44,8 @@ class User extends Authenticatable
     public function huertas(){
         return $this->hasMany(RegistroPropiedad::class);
     }
+
+    public function datosPersonales(){
+        return $this->hasOne(RegistroPersonal::class);
+    }
 }
