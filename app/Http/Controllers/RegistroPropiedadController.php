@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Auth;
 
 class RegistroPropiedadController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +21,6 @@ class RegistroPropiedadController extends Controller
      */
     public function index()
     {
-        echo "Estoy en index";
         //
     }
 
@@ -28,10 +31,11 @@ class RegistroPropiedadController extends Controller
      */
     public function create()
     {
-        //echo "Estoy en Create";
+        // Se obtienen los valores de la BD
         $estados = Estados::all(['id', 'estado']);
         $municipios = Municipios::all(['id', 'municipio']);
-        //dd($estados);
+
+        //Se envian los valores obtenidos a la vista
         return view('registroPropiedad.index')->with('estados', $estados)->with('municipios', $municipios);
     }
 
@@ -44,17 +48,26 @@ class RegistroPropiedadController extends Controller
     public function store(Request $request)
     {
         // Validación de datos
+       
         $data = request()->validate([
             'nombreHuerta' => 'required | min:3',
             'estado' => 'required',
             'municipio' => 'required',
             'colonia' => 'required | Min:5',
             'calle' => 'required | Min:6',
-            ]);
+        ]);
+        //dd($data);
 
-            //Auth::user();
+        // Insersión a la BD
+        auth()->user()->huertas()->create([
+            'nombreHuerta' => $data['nombreHuerta'],
+            'estado_id' => $data['estado'],
+            'municipio_id' => $data['municipio'],
+            'colonia' => $data['colonia'],
+            'calle' => $data['calle'],
+        ]);
 
-            return redirect ('/main');
+        return redirect('/main');
     }
 
     /**

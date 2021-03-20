@@ -17,16 +17,20 @@ class CreateRegistroPropiedadsTable extends Migration
             $table->id();
 
             $table->string('nombreHuerta', 30);
-            $table->string('codigoRegistro', 30);
+            $table->string('codigoRegistro', 30)->nullable();
             $table->foreignId('estado_id')->
                 references('id')->
-                on('users');
+                on('estados');
             $table->foreignId('municipio_id')->
                 references('id')->
-                on('users');
+                on('municipios');
             $table->string('colonia', 30);
             $table->string('calle', 30);
-            $table->string('ubicacion', 30);
+            $table->string('ubicacion', 30)->nullable();
+            $table->foreignId('user_id')-> 
+                references('id')-> 
+                on('users')-> 
+                comment('Usuario que crea la receta');
 
             $table->timestamps();
         });
