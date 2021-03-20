@@ -91,39 +91,6 @@
                 @enderror
             </div>
 
-            {{-- <div class="form-group  col-sm-12 col-md-6 mb-5">
-                <label for="Cultivo1">Cultivo1</label>
-                <input type="text" name="Cultivo1" class="form-control">
-            </div>
-            <div class="form-group col-sm-12 col-md-6 mb-5">
-                <label for="Extension">Extensión (m2)</label>
-                <input type="text" name="Extension" class="form-control">
-            </div>
-            <div class="form-group col-sm-12 col-md-6 mb-5">
-                <label for="Cultivo2">Cultivo2</label>
-                <input type="text" name="Cultivo2" class="form-control">
-            </div>
-            <div class="form-group col-sm-12 col-md-6 mb-5">
-                <label for="Extension2">Extensión 2 (m2)</label>
-                <input type="text" name="Extension2" class="form-control">
-            </div>
-            <div class="form-group col-sm-12 col-md-6 mb-5">
-                <label for="Cultivo3">Cultivo3</label>
-                <input type="text" name="Cultivo3" class="form-control">
-            </div>
-            <div class="form-group col-sm-12 col-md-6 mb-5">
-                <label for="Extension3">Extensión 3 (m2)</label>
-                <input type="text" name="Extension3" class="form-control">
-            </div>
-            <div class="form-group col-sm-12 col-md-6 mb-5">
-                <label for="Cultivo4">Cultivo4</label>
-                <input type="text" name="Cultivo4" class="form-control">
-            </div>
-            <div class="form-group col-sm-12 col-md-6 mb-5">
-                <label for="Extension4">Extensión 4 (m2)</label>
-                <input type="text" name="Extension4" class="form-control">
-            </div> --}}
-
             <div class="form-group col-12">
                 <label for="Ubicacion">Ubicación</label>
                 <input type="text" name="Ubicacion" class="form-control">
