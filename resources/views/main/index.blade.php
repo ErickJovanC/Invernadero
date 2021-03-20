@@ -10,6 +10,11 @@
         Registrar Huerta
     </a>
 
+    <a href="{{ route('seccion.create') }}" 
+        class="btn btn-success">
+        Registrar Sección
+    </a>
+
     <a href="preparacionSuelo/" class="btn btn-success">Preparación del suelo</a>
     <a href="calidadPlanta/" class="btn btn-success">Calidad Planta</a>
     <a href="controlPreventivo/" class="btn btn-success">Control Preventivo</a>

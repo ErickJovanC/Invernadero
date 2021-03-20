@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegistroPersonalController;
 use App\Http\Controllers\RegistroPropiedadController;
+use App\Http\Controllers\SeccionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,8 +27,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('registroPersonal', RegistroPersonalController::class);
 Route::resource('registroPropiedad', RegistroPropiedadController::class);
+Route::resource('seccion', SeccionController::class);
 
 Route::view('/main', '/main/index')->name('main');
+    
 Route::view('/preparacionSuelo/', '/preparacionSuelo/index')->name('suelo');    
 Route::view('/calidadPlanta/', '/calidadPlanta/index')->name('calidad');    
 Route::view('/controlPreventivo/', 'controlPreventivo/index')->name('prevencion');    
