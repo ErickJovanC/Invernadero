@@ -15,6 +15,11 @@
         Registrar Sección
     </a>
 
+    <a href="{{ route('empleado.create') }}" 
+        class="btn btn-success">
+        Registrar Empleado
+    </a>
+
     <a href="preparacionSuelo/" class="btn btn-success">Preparación del suelo</a>
     <a href="calidadPlanta/" class="btn btn-success">Calidad Planta</a>
     <a href="controlPreventivo/" class="btn btn-success">Control Preventivo</a>

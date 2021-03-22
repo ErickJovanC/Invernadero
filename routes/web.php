@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EmpleadoController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegistroPersonalController;
@@ -28,6 +29,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('registroPersonal', RegistroPersonalController::class);
 Route::resource('registroPropiedad', RegistroPropiedadController::class);
 Route::resource('seccion', SeccionController::class);
+Route::resource('empleado', EmpleadoController::class);
 
 Route::view('/main', '/main/index')->name('main')->middleware('auth');
     

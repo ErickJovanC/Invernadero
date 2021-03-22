@@ -52,5 +52,9 @@ class User extends Authenticatable
     public function secciones(){
         return $this->hasMany(Seccion::class);
     }
+    
+    public function empleados(){
+        return $this->hasMany(Empleado::class);
+    }
 
 }
