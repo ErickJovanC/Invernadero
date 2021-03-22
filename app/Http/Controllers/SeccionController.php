@@ -49,14 +49,15 @@ class SeccionController extends Controller
             'propiedad' => 'required',
             'nombreSeccion' => 'required'
         ]);
+
+        Auth::user()->secciones()->create([
+            'nombreSeccion' => $data['nombreSeccion'],
+            'propiedad_id' => $data['propiedad'],
+        ]);
+
+        return redirect('/main');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Seccion  $seccion
-     * @return \Illuminate\Http\Response
-     */
     public function show(Seccion $seccion)
     {
         //

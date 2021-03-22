@@ -40,12 +40,17 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+    public function datosPersonales(){
+        return $this->hasOne(RegistroPersonal::class);
+    }
 
     public function huertas(){
         return $this->hasMany(RegistroPropiedad::class);
     }
-
-    public function datosPersonales(){
-        return $this->hasOne(RegistroPersonal::class);
+    
+    public function secciones(){
+        return $this->hasMany(Seccion::class);
     }
+
 }

@@ -29,7 +29,7 @@ Route::resource('registroPersonal', RegistroPersonalController::class);
 Route::resource('registroPropiedad', RegistroPropiedadController::class);
 Route::resource('seccion', SeccionController::class);
 
-Route::view('/main', '/main/index')->name('main');
+Route::view('/main', '/main/index')->name('main')->middleware('auth');
     
 Route::view('/preparacionSuelo/', '/preparacionSuelo/index')->name('suelo');    
 Route::view('/calidadPlanta/', '/calidadPlanta/index')->name('calidad');    
