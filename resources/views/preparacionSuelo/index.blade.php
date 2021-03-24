@@ -150,7 +150,7 @@
             {{-- Metodo --}}
             <div class="form-group col-sm-12 col-md-6 mb-5">
                 <label for="metodoUtilizado">Metodo o Equipo Utilizado</label>
-                <select name="metodoUtilizado" id="metodoUtilizado" class="form-control">
+                <select name="metodoUtilizado" id="metodoUtilizado" class="form-control @error('metodoUtilizado') is-invalid @enderror">
                     <option value="" hidden>Seleecione una opción</option>
                     <option value="Yunta" 
                         {{ old('metodoUtilizado') == 'Yunta' ? 'selected' : '' }}>
@@ -169,6 +169,11 @@
                         Otro
                     </option>
                 </select>
+                @error('metodoUtilizado')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
             </div>{{-- Fin Metodo --}}
             
             {{-- Empleados --}}
