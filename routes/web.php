@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\EmpleadoController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SeccionController;
+use App\Http\Controllers\EmpleadoController;
+use App\Http\Controllers\PreparacionSueloController;
 use App\Http\Controllers\RegistroPersonalController;
 use App\Http\Controllers\RegistroPropiedadController;
-use App\Http\Controllers\SeccionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,10 +31,10 @@ Route::resource('registroPersonal', RegistroPersonalController::class);
 Route::resource('registroPropiedad', RegistroPropiedadController::class);
 Route::resource('seccion', SeccionController::class);
 Route::resource('empleado', EmpleadoController::class);
+Route::resource('preparacionSuelo', PreparacionSueloController::class);
 
 Route::view('/main', '/main/index')->name('main')->middleware('auth');
-    
-Route::view('/preparacionSuelo/', '/preparacionSuelo/index')->name('suelo');    
+     
 Route::view('/calidadPlanta/', '/calidadPlanta/index')->name('calidad');    
 Route::view('/controlPreventivo/', 'controlPreventivo/index')->name('prevencion');    
 Route::view('/registroSiembra/', 'registroSiembra/index')->name('siembra');
