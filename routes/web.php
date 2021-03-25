@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SeccionController;
 use App\Http\Controllers\EmpleadoController;
+use App\Http\Controllers\HistorialController;
 use App\Http\Controllers\PreparacionSueloController;
 use App\Http\Controllers\RegistroPersonalController;
 use App\Http\Controllers\RegistroPropiedadController;
@@ -32,6 +33,7 @@ Route::resource('registroPropiedad', RegistroPropiedadController::class);
 Route::resource('seccion', SeccionController::class);
 Route::resource('empleado', EmpleadoController::class);
 Route::resource('preparacionSuelo', PreparacionSueloController::class);
+Route::resource('historial', HistorialController::class);
 
 Route::view('/main', '/main/index')->name('main')->middleware('auth');
      
@@ -43,3 +45,4 @@ Route::view('/calibracionEquipo/', 'calibracionEquipo/index')->name('calibracion
 Route::view('/aplicacionFertilizanteOrganico/', 'aplicacionFertilizanteOrganico/index')->name('fertilizanteOrganico');
 Route::view('/registroRiego/', 'registroRiego/index')->name('registroRiego');
 Route::view('/limpiezaCanales/', 'limpiezaCanales/index')->name('limpiezaCanales');
+// Route::view('/historial/', 'srhigo/historialActividades')->name('historial');

@@ -22,4 +22,16 @@ class PreparacionSuelo extends Model
         'empleado_id',
         'user_id',
     ];
+    
+    public function Empleado(){
+        return $this->belongsTo(Empleado::class);
+    }
+
+    public function huerta(){
+        return $this->belongsTo(RegistroPropiedad::class);
+    }
+
+    public function seccion(){
+        return $this->belongsTo(Seccion::class);
+    }
 }
