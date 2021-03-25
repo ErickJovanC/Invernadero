@@ -26,12 +26,15 @@ class CreatePreparacionSuelosTable extends Migration
             $table->date('fechaInicio');
             $table->date('fechaFin');
             $table->float('horasMaquinaria');
-            $table->float('costoMaquinaria');
+            $table->float('costoHora');
             $table->float('costoOperacion');
             $table->string('metodoUtilizado', 8);
             $table->foreignId('empleado_id')
                 ->references('id')
                 ->on('empleados');
+            $table->foreignId('user_id')
+                ->references('id')
+                ->on('users');
 
             $table->timestamps();
         });

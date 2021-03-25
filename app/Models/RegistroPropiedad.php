@@ -26,4 +26,5 @@ class RegistroPropiedad extends Model
     public function municipios(){
         return $this->belongsTo(Municipios::class);
     }
+
 }
