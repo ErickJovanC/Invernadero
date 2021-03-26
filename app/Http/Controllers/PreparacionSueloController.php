@@ -32,7 +32,7 @@ class PreparacionSueloController extends Controller
         $secciones = Auth::user()->secciones;
         $empleados = Auth::user()->empleados;
         $fechaActual = date('Y-m-d');
-        return view('PreparacionSuelo.index')
+        return view('preparacionSuelo.index')
             ->with('huertas', $huertas)
             ->with('secciones', $secciones)
             ->with('empleados', $empleados)
@@ -58,9 +58,9 @@ class PreparacionSueloController extends Controller
             'costoHora' => 'required',
             'metodoUtilizado' => 'required',
             'empleado' => 'required',
-            ]);
+        ]);
 
-            $costoOperacion = $data['horasMaquinaria'] * $data['costoHora'];
+        $costoOperacion = $data['horasMaquinaria'] * $data['costoHora'];
 
         auth()->user()->suelos()->create([
             'huerta_id' => $data['propiedad'],
@@ -75,7 +75,7 @@ class PreparacionSueloController extends Controller
             'empleado_id' => $data['empleado'],
         ]);
 
-        return redirect( route('main'));
+        return redirect(route('main'));
     }
 
     /**
@@ -123,7 +123,8 @@ class PreparacionSueloController extends Controller
         //
     }
 
-    public function seleccionarHuerta(Request $request){
+    public function seleccionarHuerta(Request $request)
+    {
         //
     }
 }
