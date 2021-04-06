@@ -38,8 +38,15 @@
                 6- Calidad de la Planta
             </a>
         </div>
+
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 p-2">
+            <a href="{{ route('controlPreventivo.create') }}"
+                class="btn btn-success">
+                7- Control preventivo de plagas
+            </a>
+        </div>
     
-        {{-- <a href="controlPreventivo/" class="btn btn-success">Control Preventivo</a>
+        {{-- 
         <a href="registroSiembra/" class="btn btn-success">Registro Siembra</a>
         <a href="aplicacionFertilizante/" class="btn btn-success">Aplicación de Fertilizante</a>
         <a href="calibracionEquipo/" class="btn btn-success">Calibración de equipo de aplicación</a>

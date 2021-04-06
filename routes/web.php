@@ -8,6 +8,7 @@ use App\Http\Controllers\HistorialController;
 use App\Http\Controllers\CalidadPlantaController;
 use App\Http\Controllers\PreparacionSueloController;
 use App\Http\Controllers\RegistroPersonalController;
+use App\Http\Controllers\ControlPreventivoController;
 use App\Http\Controllers\RegistroPropiedadController;
 
 /*
@@ -36,10 +37,10 @@ Route::resource('empleado', EmpleadoController::class);
 Route::resource('preparacionSuelo', PreparacionSueloController::class);
 Route::resource('historial', HistorialController::class);
 Route::resource('calidadPlanta', CalidadPlantaController::class);
+Route::resource('controlPreventivo', ControlPreventivoController::class);
 
 Route::view('/main', '/main/index')->name('main')->middleware('auth');
 
-Route::view('/controlPreventivo/', 'controlPreventivo/index')->name('prevencion');    
 Route::view('/registroSiembra/', 'registroSiembra/index')->name('siembra');
 Route::view('/aplicacionFertilizante/', 'aplicacionFertilizante/index')->name('fertilizante');
 Route::view('/calibracionEquipo/', 'calibracionEquipo/index')->name('calibracion');
