@@ -45,6 +45,13 @@
                 7- Control preventivo de plagas
             </a>
         </div>
+
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 p-2">
+            <a href="{{ route('registroSiembra.create') }}"
+                class="btn btn-success">
+                8- Registro de siembra
+            </a>
+        </div>
     
         {{-- 
         <a href="registroSiembra/" class="btn btn-success">Registro Siembra</a>
