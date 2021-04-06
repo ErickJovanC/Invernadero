@@ -61,4 +61,7 @@ class User extends Authenticatable
         return $this->hasMany(PreparacionSuelo::class);
     }
 
+    public function planta(){
+        return $this->hasMany(CalidadPlanta::class);
+    }
 }

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SeccionController;
 use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\HistorialController;
+use App\Http\Controllers\CalidadPlantaController;
 use App\Http\Controllers\PreparacionSueloController;
 use App\Http\Controllers\RegistroPersonalController;
 use App\Http\Controllers\RegistroPropiedadController;
@@ -34,10 +35,10 @@ Route::resource('seccion', SeccionController::class);
 Route::resource('empleado', EmpleadoController::class);
 Route::resource('preparacionSuelo', PreparacionSueloController::class);
 Route::resource('historial', HistorialController::class);
+Route::resource('calidadPlanta', CalidadPlantaController::class);
 
 Route::view('/main', '/main/index')->name('main')->middleware('auth');
-     
-Route::view('/calidadPlanta/', '/calidadPlanta/index')->name('calidad');    
+
 Route::view('/controlPreventivo/', 'controlPreventivo/index')->name('prevencion');    
 Route::view('/registroSiembra/', 'registroSiembra/index')->name('siembra');
 Route::view('/aplicacionFertilizante/', 'aplicacionFertilizante/index')->name('fertilizante');
