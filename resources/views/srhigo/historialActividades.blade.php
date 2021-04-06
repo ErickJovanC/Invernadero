@@ -27,8 +27,79 @@
                     $actividad->empleado->apellidoEmpleado .' ('.
                     $actividad->empleado->sobrenombreEmpleado .')'}}
                 </td>
-                <td><a href="#">Ver detalle</a></td>
+                <td><a href="#" data-toggle="modal" data-target="#detalle{{ $actividad->id }}">Ver detalle</a></td>
             </tr>
+            
+            <!-- Modal -->
+            <div class="modal fade" id="detalle{{ $actividad->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Detalles</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            Fecha de registro:
+                            <b>{{ $actividad->updated_at }}</b>
+                        </div>
+                        <div>
+                            Huerta:
+                            <b>{{ $actividad->huerta->nombreHuerta }}</b>
+                        </div>
+                        <div>
+                            Sección: 
+                            <b>{{ $actividad->seccion->nombreSeccion }}</b>
+                        </div>
+                        <div>
+                            Labor Realziada:
+                            <b>{{ $actividad->labor }}</b>
+                        </div>
+                        <div>
+                            Fecha de Inicio:
+                            <b>{{ $actividad->fechaInicio }}</b>
+                        </div>
+                        <div>
+                            Fecha de culminación:
+                            <b>{{ $actividad->fechaFin }}</b>
+                        </div>
+                        <div>
+                            Horas de Maquinaria:
+                            <b>{{ $actividad->horasMaquinaria }}</b>
+                        </div>
+                        <div>
+                            Costo por hora:
+                            <b>{{ $actividad->costoHora }}</b>
+                        </div>
+                        <div>
+                            Costo de Operación
+                            <b>${{ $actividad->costoOperacion }}</b>
+                        </div>
+                        <div>
+                            Metodo o herramienta usada:
+                            <b>{{ $actividad->metodoUtilizado }}</b>
+                        </div>
+                        <div>
+                            Responsable:
+                            <b>
+                                {{
+                                    $actividad->Empleado->nombreEmpleado .' '.
+                                    $actividad->Empleado->apellidoEmpleado .' ('.
+                                    $actividad->Empleado->sobrenombreEmpleado .')'
+                                }}
+                            </b>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+
             @endforeach
         </tbody>
     </table>
