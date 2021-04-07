@@ -2,7 +2,7 @@
 @section('content')
 <a href="{{ route('main') }}" class="btn btn-success">Menú</a>
 <div class="row">
-    <form action="" method="post">
+    <form action="{{ route('controlPreventivo.store') }}" method="post">
         @csrf
         <div class="row">
             <h1 class="titulo mb-5 col-12 text-center">Control Preventivo de Plagas Enfermades</h1>
@@ -12,20 +12,25 @@
                 <span class="font-weight-bold">Juan Pérez</span>
             </div> --}}
 
+            {{-- Lote de plantas --}}
             <div class="form-group col-sm-12 col-md-6 mb-5">
                 <label for="lotePlanta">No. de Lote de la Planta a tratar</label>
-                <select name="lotePlanta" id="lotePlanta" class="form-control">
+                <select name="lotePlanta" id="lotePlanta" class="form-control @error('lotePlanta') is-invalid @enderror">
                     <option value="" hidden>Seleccione el Lote de la planta</option>
                     @foreach ($lotes as $lote)
                         <option 
                             value="{{ $lote->id }}"
-                            {{ old('lote') == $lote->id ? 'selected' : '' }}
-                        />
+                            {{ old('lotePlanta') == $lote->id ? 'selected' : '' }} >
                         {{ $lote->lote }}
                         </option>
                     @endforeach
                 </select>
-            </div>
+                @error('lotePlanta')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
+            </div>{{-- Fin Lote de plantas --}}
 
             {{-- <div class="form-group col-sm-12 col-md-6 mb-5">
                 <label for="OrigenPlanta">Empresa o persona de donde viene la planta</label>
@@ -39,30 +44,49 @@
                 <input type="text" 
                     name="plagaControlar" 
                     id="plagaControlar" 
-                    class="form-control"
                     value="{{ old('plagaControlar') }}"
+                    class="form-control 
+                        @error('plagaControlar') is-invalid @enderror"
                 />
+                @error('plagaControlar')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
             </div>
 
+            {{-- Fecha --}}
             <div class="form-group col-sm-12 col-md-6 mb-5">
                 <label for="fechaAccion">Fecha de Acción</label>
                 <input type="date" 
                     name="fechaAccion" 
                     id="fechaAccion"
-                    class="form-control" 
                     max="{{ $fechaActual }}"
                     value="{{ old('fechaAccion') }}"
+                    class="form-control 
+                        @error('fechaAccion') is-invalid @enderror"
                 />
-            </div>
+                @error('fechaAccion')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
+            </div>{{-- Fin Fecha --}}
 
             <div class="form-group col-sm-12 col-md-6 mb-5">
                 <label for="cantidadPlantas">Cantidad de Plantas tratadas</label>
                 <input type="number" 
                     name="cantidadPlantas" 
                     id="cantidadPlantas"
-                    vvalue="{{ old('cantidadPlantas') }}"
-                    class="form-control"
+                    value="{{ old('cantidadPlantas') }}"
+                    class="form-control 
+                        @error('cantidadPlantas') is-invalid @enderror"
                 />
+                @error('cantidadPlantas')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
             </div>
 
             {{-- Es posible que sea innecesario, lo ideal es que se registre un lote por cada variedad de planta aunque lleguen juntos
@@ -73,8 +97,19 @@
             </div> --}}
 
             <div class="form-group col-sm-12 col-md-6 mb-5">
-                <label for="AccionPreventiva">Acciones de control preventivo</label>
-                <input type="text" name="AccionPreventiva" class="form-control">
+                <label for="accionPreventiva">Acciones de control preventivo</label>
+                <input type="text" 
+                    name="accionPreventiva" 
+                    id="accionPreventiva" 
+                    value="{{ old('accionPreventiva') }}"
+                    class="form-control 
+                        @error('accionPreventiva') is-invalid @enderror"
+                />
+                @error('accionPreventiva')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
             </div>
 
             {{-- <div class="form-group col-sm-12 col-md-6 mb-5">
@@ -89,13 +124,13 @@
             
             {{-- Responsable --}}
             <div class="form-group col-sm-12 col-md-6 mb-5">
-                <label for="Responsable">Responsable</label>
-                <select name="Responsable" id="Responsable" class="form-control">
+                <label for="responsable">Responsable</label>
+                <select name="responsable" id="responsable" class="form-control @error('responsable') is-invalid @enderror">
                     <option value="" hidden>Seleccione el empleado</option>
                     @foreach ($empleados as $empleado)
                         <option 
                             value="{{ $empleado->id }}" 
-                            {{ old('seccion') == $empleado->id ? 'selected' : '' }}
+                            {{ old('responsable') == $empleado->id ? 'selected' : '' }}
                         >
                             {{ $empleado->nombreEmpleado ." ".
                                 $empleado->apellidoEmpleado ." (".
@@ -103,6 +138,11 @@
                         </option>
                     @endforeach
                 </select>
+                @error('responsable')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
             </div> {{-- Fin Responsable --}}
 
         </div>

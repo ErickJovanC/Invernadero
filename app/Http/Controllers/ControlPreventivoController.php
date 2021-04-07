@@ -46,7 +46,14 @@ class ControlPreventivoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = request()->validate([
+            'lotePlanta' => 'required',
+            'plagaControlar' => 'required',
+            'fechaAccion' => 'required',
+            'cantidadPlantas' => 'required',
+            'accionPreventiva' => 'required',
+            'responsable' => 'required',
+        ]);
     }
 
     /**
