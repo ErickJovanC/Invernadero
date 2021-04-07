@@ -11,15 +11,12 @@ use App\Http\Controllers\PreparacionSueloController;
 use App\Http\Controllers\RegistroPersonalController;
 use App\Http\Controllers\ControlPreventivoController;
 use App\Http\Controllers\RegistroPropiedadController;
+use App\Http\Controllers\AplicacionFertilizanteController;
 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
 |
 */
 
@@ -40,10 +37,10 @@ Route::resource('historial', HistorialController::class);
 Route::resource('calidadPlanta', CalidadPlantaController::class);
 Route::resource('controlPreventivo', ControlPreventivoController::class);
 Route::resource('registroSiembra', RegistroSiembraController::class);
+Route::resource('aplicacionFertilizante', AplicacionFertilizanteController::class);
 
 Route::view('/main', '/main/index')->name('main')->middleware('auth');
 
-Route::view('/aplicacionFertilizante/', 'aplicacionFertilizante/index')->name('fertilizante');
 Route::view('/calibracionEquipo/', 'calibracionEquipo/index')->name('calibracion');
 Route::view('/aplicacionFertilizanteOrganico/', 'aplicacionFertilizanteOrganico/index')->name('fertilizanteOrganico');
 Route::view('/registroRiego/', 'registroRiego/index')->name('registroRiego');

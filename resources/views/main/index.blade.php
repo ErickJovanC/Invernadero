@@ -52,10 +52,15 @@
                 8- Registro de siembra
             </a>
         </div>
+
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 p-2">
+            <a href="{{ route('aplicacionFertilizante.create') }}"
+                class="btn btn-success">
+                9- Aplicación de Fertilizante
+            </a>
+        </div>
     
         {{-- 
-        <a href="registroSiembra/" class="btn btn-success">Registro Siembra</a>
-        <a href="aplicacionFertilizante/" class="btn btn-success">Aplicación de Fertilizante</a>
         <a href="calibracionEquipo/" class="btn btn-success">Calibración de equipo de aplicación</a>
         <a href="aplicacionFertilizanteOrganico/" class="btn btn-success">Aplicación de Fertilizante Organico</a>
         <a href="registroRiego/" class="btn btn-success">Registro Riego</a>
