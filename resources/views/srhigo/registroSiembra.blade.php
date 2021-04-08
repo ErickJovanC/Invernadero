@@ -115,7 +115,7 @@
                     @foreach ($empleados as $empleado)
                         <option 
                             value="{{ $empleado->id }}" 
-                            {{ old('seccion') == $empleado->id ? 'selected' : '' }}
+                            {{ old('responsable') == $empleado->id ? 'selected' : '' }}
                         >
                             {{ $empleado->nombreEmpleado ." ".
                                 $empleado->apellidoEmpleado ." (".

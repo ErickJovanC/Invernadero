@@ -60,8 +60,14 @@
             </a>
         </div>
     
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 p-2">
+            <a href="{{ route('calibracionEquipo.create') }}"
+                class="btn btn-success">
+                10- Calibración de Equipo de Aplicación
+            </a>
+        </div>
+
         {{-- 
-        <a href="calibracionEquipo/" class="btn btn-success">Calibración de equipo de aplicación</a>
         <a href="aplicacionFertilizanteOrganico/" class="btn btn-success">Aplicación de Fertilizante Organico</a>
         <a href="registroRiego/" class="btn btn-success">Registro Riego</a>
         <a href="limpiezaCanales/" class="btn btn-success">Limpieza de Canales</a> --}}
