@@ -6,6 +6,7 @@ use App\Http\Controllers\SeccionController;
 use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\HistorialController;
 use App\Http\Controllers\CalidadPlantaController;
+use App\Http\Controllers\RegistroRiegoController;
 use App\Http\Controllers\RegistroSiembraController;
 use App\Http\Controllers\PreparacionSueloController;
 use App\Http\Controllers\RegistroPersonalController;
@@ -42,9 +43,9 @@ Route::resource('registroSiembra', RegistroSiembraController::class);
 Route::resource('aplicacionFertilizante', AplicacionFertilizanteController::class);
 Route::resource('calibracionEquipo', CalibracionEquipoController::class);
 Route::resource('aplicacionFertilizanteOrganico', AplicacionFertilizanteOrganicoController::class);
+Route::resource('registroRiego', RegistroRiegoController::class);
 
 Route::view('/main', '/main/index')->name('main')->middleware('auth');
 
-Route::view('/registroRiego/', 'registroRiego/index')->name('registroRiego');
 Route::view('/limpiezaCanales/', 'limpiezaCanales/index')->name('limpiezaCanales');
 // Route::view('/historial/', 'srhigo/historialActividades')->name('historial');
