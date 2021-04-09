@@ -89,6 +89,7 @@
                 </div> 
             </div> {{-- Fin Distanciamiento de siembra --}}
 
+            {{-- Metodo de Riego --}}
             <div class="form-group col-sm-12 col-md-6 mb-5">
                 <label for="riego">Tipo de riego</label>
                 <select name="riego" id="riego" class="form-control @error('riego') is-invalid @enderror">
@@ -97,15 +98,15 @@
                         {{ old('lote') == 'riegoPesado' ? 'selected' : '' }}>
                         Riego Pesado (Inundación)
                     </option>
-                    <option value="riegoLigero">Riego Ligero</option>
-                    <option value="gravedad">Gravedad (Manual)</option>
+                    <option value="riegoLigero" {{ old('lote') == 'riegoLigero' ? 'selected' : '' }}>Riego Ligero</option>
+                    <option value="gravedad" {{ old('lote') == 'gravedad' ? 'selected' : '' }}>Gravedad (Manual)</option>
                 </select>
                 @error('riego')
                     <span class="invalid-feedback d-block" role="alert">
                         <strong>{{$message}}</strong>
                     </span>
                 @enderror
-            </div>
+            </div>{{-- Fin Metodo Riego --}}
 
             {{-- Responsable --}}
             <div class="form-group col-sm-12 col-md-6 mb-5">
