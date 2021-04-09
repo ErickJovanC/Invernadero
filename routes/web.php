@@ -13,6 +13,7 @@ use App\Http\Controllers\CalibracionEquipoController;
 use App\Http\Controllers\ControlPreventivoController;
 use App\Http\Controllers\RegistroPropiedadController;
 use App\Http\Controllers\AplicacionFertilizanteController;
+use App\Http\Controllers\AplicacionFertilizanteOrganicoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,10 +41,10 @@ Route::resource('controlPreventivo', ControlPreventivoController::class);
 Route::resource('registroSiembra', RegistroSiembraController::class);
 Route::resource('aplicacionFertilizante', AplicacionFertilizanteController::class);
 Route::resource('calibracionEquipo', CalibracionEquipoController::class);
+Route::resource('aplicacionFertilizanteOrganico', AplicacionFertilizanteOrganicoController::class);
 
 Route::view('/main', '/main/index')->name('main')->middleware('auth');
 
-Route::view('/aplicacionFertilizanteOrganico/', 'aplicacionFertilizanteOrganico/index')->name('fertilizanteOrganico');
 Route::view('/registroRiego/', 'registroRiego/index')->name('registroRiego');
 Route::view('/limpiezaCanales/', 'limpiezaCanales/index')->name('limpiezaCanales');
 // Route::view('/historial/', 'srhigo/historialActividades')->name('historial');

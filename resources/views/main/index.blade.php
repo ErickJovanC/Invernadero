@@ -67,6 +67,13 @@
             </a>
         </div>
 
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 p-2">
+            <a href="{{ route('aplicacionFertilizanteOrganico.create') }}"
+                class="btn btn-success">
+                11- Aplicación de Fertilizante Organico
+            </a>
+        </div>
+
         {{-- 
         <a href="aplicacionFertilizanteOrganico/" class="btn btn-success">Aplicación de Fertilizante Organico</a>
         <a href="registroRiego/" class="btn btn-success">Registro Riego</a>
