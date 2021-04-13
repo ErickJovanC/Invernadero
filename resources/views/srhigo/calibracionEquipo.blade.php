@@ -41,7 +41,7 @@
                 @enderror
             </div>{{-- Fin Equipo a calibrar--}}
             
-            <div class="col-12 is-invalid h2 text-center">Producto aplicado con el equipo: </div>
+            <div class="col-12 h2 text-center">Producto aplicado con el equipo: </div>
             <div class="col-12 mb-5 text-center">
                 <div class="form-check form-check-inline">
                     <input 
@@ -52,7 +52,7 @@
                         {{ old('productoAplicado') == 'Fertilizante' ? 'checked' :  '' }}
                         class="form-check-input @error('productoAplicado') is-invalid @enderror" 
                     />
-                    <label class="form-check-label" for="productoAplicado1">Fertilizante</label>
+                    <label class="form-check-label" for="Fertilizante">Fertilizante</label>
                 </div>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input @error('productoAplicado') is-invalid @enderror" type="radio" name="productoAplicado" id="Insecticida" value="Insecticida" {{ old('productoAplicado') == 'Insecticida' ? 'checked' :  '' }}>
@@ -153,28 +153,7 @@
                 <span class="h1">0.0</span>
             </div>
 
-            {{-- Responsable --}}
-            <div class="form-group col-sm-12 col-md-6 mb-5">
-                <label for="responsable">Responsable</label>
-                <select name="responsable" id="responsable" class="form-control @error('responsable') is-invalid @enderror">
-                    <option value="" hidden>Seleccione el empleado</option>
-                    @foreach ($empleados as $empleado)
-                        <option 
-                            value="{{ $empleado->id }}" 
-                            {{ old('responsable') == $empleado->id ? 'selected' : '' }}
-                        >
-                            {{ $empleado->nombreEmpleado ." ".
-                                $empleado->apellidoEmpleado ." (".
-                                $empleado->sobrenombreEmpleado .")"}}
-                        </option>
-                    @endforeach
-                </select>
-                @error('responsable')
-                    <span class="invalid-feedback d-block" role="alert">
-                        <strong>{{$message}}</strong>
-                    </span>
-                @enderror
-            </div> {{-- Fin Responsable --}}
+            @include('srhigo.campos.responsable')
 
         </div> {{-- Fin row --}}
         
