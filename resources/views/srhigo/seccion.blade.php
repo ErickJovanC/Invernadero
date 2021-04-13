@@ -5,9 +5,9 @@
     <h1 class="titulo mb-5 col-12 text-center">Registro de Secciones</h1>
     <form action="{{ route('seccion.store') }}" method="post" class="col-12">
     @csrf
-        <div class="row">
+        <div class="row align-items-end">
             {{-- Propiedad --}}
-            <div class="form-group col-sm-12 col-md-6 mb-5">
+            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
                 <label for="propiedad">Huerta</label>
                 <select name="propiedad" id="propiedad" 
                     class="form-control @error('propiedad') is-invalid @enderror"
@@ -29,7 +29,7 @@
                 @enderror
             </div>{{-- Fin Propiedad --}}
 
-            <div class="form-group col-sm-12 col-md-6 mb-5">
+            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
                 <label for="nombreSeccion">Nombre o número de Sección</label>
                 <input type="text" 
                     name="nombreSeccion" id="nombreSeccion" 
@@ -37,6 +37,25 @@
                     value="{{ old('nombreSeccion') }}"
                 />
                 @error('nombreSeccion')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{$message}}</strong>
+                        </span>
+                @enderror
+            </div>
+
+            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
+                <label for="cantidadPlantas">
+                    ¿Cuantas plantas tiene en esta sección?
+                    <br>
+                    (Si aun no ha plantado coloque 0)
+                </label>
+                <input type="number" 
+                    name="cantidadPlantas" id="cantidadPlantas" 
+                    min="0"
+                    value="{{ old('cantidadPlantas') }}"
+                    class="form-control @error('cantidadPlantas') is-invalid @enderror" 
+                />
+                @error('cantidadPlantas')
                         <span class="invalid-feedback d-block" role="alert">
                             <strong>{{$message}}</strong>
                         </span>

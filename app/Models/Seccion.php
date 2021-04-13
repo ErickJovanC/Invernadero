@@ -11,7 +11,8 @@ class Seccion extends Model
 
     protected $fillable = [
         'nombreSeccion',
+        'cantidadPlantas',
         'propiedad_id',
-        'user_id'
+        'user_id',
     ];
 }

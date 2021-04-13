@@ -47,12 +47,14 @@ class SeccionController extends Controller
     {
         $data = request()->validate([
             'propiedad' => 'required',
-            'nombreSeccion' => 'required'
+            'nombreSeccion' => 'required',
+            'cantidadPlantas' => 'required'
         ]);
 
         Auth::user()->secciones()->create([
             'nombreSeccion' => $data['nombreSeccion'],
             'propiedad_id' => $data['propiedad'],
+            'cantidadPlantas' => $data['cantidadPlantas'],
         ]);
 
         return redirect('/main');

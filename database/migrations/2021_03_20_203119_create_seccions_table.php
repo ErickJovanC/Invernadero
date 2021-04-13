@@ -17,6 +17,7 @@ class CreateSeccionsTable extends Migration
             $table->id();
             
             $table->string('nombreSeccion', 30);
+            $table->integer('cantidadPlantas');
             $table->foreignId('propiedad_id')->
                 references('id')->
                 on('registro_propiedads');
