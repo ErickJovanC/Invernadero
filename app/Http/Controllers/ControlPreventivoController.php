@@ -52,6 +52,7 @@ class ControlPreventivoController extends Controller
             'fechaAccion' => 'required',
             'cantidadPlantas' => 'required',
             'accionPreventiva' => 'required',
+            'costo' => 'required',
             'responsable' => 'required',
         ]);
     }

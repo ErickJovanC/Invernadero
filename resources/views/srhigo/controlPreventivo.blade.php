@@ -112,38 +112,24 @@
                 @enderror
             </div>
 
-            {{-- <div class="form-group col-sm-12 col-md-6 mb-5">
-                <label for="TiempoInmersion">Tiempo de Inmersión (minutos)</label>
-                <input type="number" name="TiempoInmersion" class="form-control">
-            </div> --}}
-
-            {{-- <div class="form-group col-sm-12 col-md-6 mb-5">
-                <label for="Temperatura">Temperatura (°C)</label>
-                <input type="number" name="Temperatura" class="form-control">
-            </div> --}}
-            
-            {{-- Responsable --}}
-            <div class="form-group col-sm-12 col-md-6 mb-5">
-                <label for="responsable">Responsable</label>
-                <select name="responsable" id="responsable" class="form-control @error('responsable') is-invalid @enderror">
-                    <option value="" hidden>Seleccione el empleado</option>
-                    @foreach ($empleados as $empleado)
-                        <option 
-                            value="{{ $empleado->id }}" 
-                            {{ old('responsable') == $empleado->id ? 'selected' : '' }}
-                        >
-                            {{ $empleado->nombreEmpleado ." ".
-                                $empleado->apellidoEmpleado ." (".
-                                $empleado->sobrenombreEmpleado .")"}}
-                        </option>
-                    @endforeach
-                </select>
-                @error('responsable')
+            <div class="form-group col-sm-3 col-md-2 mb-5">
+                <label for="costo">Costo total</label>
+                <input type="number" 
+                    min="0"
+                    name="costo" 
+                    id="costo" 
+                    value="{{ old('costo') }}"
+                    class="form-control 
+                        @error('costo') is-invalid @enderror"
+                />
+                @error('costo')
                     <span class="invalid-feedback d-block" role="alert">
                         <strong>{{$message}}</strong>
                     </span>
                 @enderror
-            </div> {{-- Fin Responsable --}}
+            </div>
+            
+            @include('srhigo.campos.responsable')
 
         </div>
         <div class="row justify-content-end">
