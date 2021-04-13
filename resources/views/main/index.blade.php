@@ -81,9 +81,13 @@
             </a>
         </div>
 
-        {{-- 
-        
-        <a href="limpiezaCanales/" class="btn btn-success">Limpieza de Canales</a> --}}
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 p-2">
+            <a href="{{ route('limpiezaCanales.create') }}"
+                class="btn btn-success">
+                13- Limpieza de canales
+            </a>
+        </div>
+
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 p-2">
             <a href="{{ route('historial.index') }}"
                 class="btn btn-success">
