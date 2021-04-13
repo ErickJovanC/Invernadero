@@ -122,43 +122,9 @@
 
             <div class="w-100"></div>
 
-            <div class="form-group col-sm-12 col-md-6 mb-5">
-                <label for="metodoAplicacion">Metodo de Aplicación</label>
-                <select name="metodoAplicacion" id="metodoAplicacion" class="form-control @error('metodoAplicacion') is-invalid @enderror">
-                    <option value="" hidden>Seleccione un metodo</option>
-                    <option value="Aspersion" {{ old('metodoAplicacion') == 'Aspersion' ? 'selected' : '' }}>Aspersión</option>
-                    <option value="Goteo" {{ old('metodoAplicacion') == 'Goteo' ? 'selected' : '' }}>Goteo</option>
-                    <option value="Riego" {{ old('metodoAplicacion') == 'Riego' ? 'selected' : '' }}>Riego</option>
-                </select>
-                @error('metodoAplicacion')
-                    <span class="invalid-feedback d-block" role="alert">
-                        <strong>{{$message}}</strong>
-                    </span>
-                @enderror
-            </div>
+            @include('srhigo.campos.metodoAplicacion')
 
-            {{-- Responsable --}}
-            <div class="form-group col-sm-12 col-md-6 mb-5">
-                <label for="responsable">Responsable</label>
-                <select name="responsable" id="responsable" class="form-control @error('responsable') is-invalid @enderror">
-                    <option value="" hidden>Seleccione el empleado</option>
-                    @foreach ($empleados as $empleado)
-                        <option 
-                            value="{{ $empleado->id }}" 
-                            {{ old('seccion') == $empleado->id ? 'selected' : '' }}
-                        >
-                            {{ $empleado->nombreEmpleado ." ".
-                                $empleado->apellidoEmpleado ." (".
-                                $empleado->sobrenombreEmpleado .")"}}
-                        </option>
-                    @endforeach
-                </select>
-                @error('responsable')
-                    <span class="invalid-feedback d-block" role="alert">
-                        <strong>{{$message}}</strong>
-                    </span>
-                @enderror
-            </div> {{-- Fin Responsable --}}
+            @include('srhigo.campos.responsable')
 
         </div> {{-- Fin Row --}}
 
