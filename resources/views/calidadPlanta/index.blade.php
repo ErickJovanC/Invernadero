@@ -77,22 +77,28 @@
                 @enderror
             </div>
 
-            <div class="form-group col-sm-12 col-md-6 mb-5">
-                <label for="variedadPlanta">Variedad de la planta</label>
-                {{-- <div class="alert alert-danger">La varidad es posible que sea mejor una lista selectiva</div> --}}
-                <input type="text" 
-                    name="variedadPlanta" 
-                    id="variedadPlanta" 
-                    class="form-control 
-                        @error('variedadPlanta') is-invalid @enderror"
-                    value="{{ old('variedadPlanta') }}"
-                />
-                @error('variedadPlanta')
-                    <span class="invalid-feedback d-block" role="alert">
-                        <strong>{{$message}}</strong>
-                    </span>
-                @enderror
+            
+            <div class="col-12 col-sm-12 col-md-6 mb-5 text-center">
+                <div class="text-center">Variedad de la Planta</div>
+                <div class="form-check form-check-inline">
+                    <input type="radio"
+                    name="variedadPlanta"
+                    id="blackMission"
+                    class="form-check-input
+                    @error('variedadPlanta') is-invalid @enderror"
+                    value="Black Mission"
+                    checked
+                    />
+                    <label class="form-check-label" for="blackMission">Black Mission</label>
+                    @error('variedadPlanta')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{$message}}</strong>
+                        </span>
+                    @enderror
+                </div>
             </div>
+
+
             
             {{-- <div class="form-group col-sm-12 col-md-6 mb-5">
                 <label for="Yemas">Yemas efectivas %</label>
