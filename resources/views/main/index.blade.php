@@ -42,7 +42,7 @@
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 p-2">
             <a href="{{ route('controlPreventivo.create') }}"
                 class="btn btn-success">
-                7- Control preventivo de plagas
+                7- Control preventivo de plagas en la planta
             </a>
         </div>
 

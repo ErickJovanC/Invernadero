@@ -44,14 +44,14 @@ class LimpiezaCanalesController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $data = request()->validate([
             'huerta' => 'required',
             'fechaLimpieza' => 'required',
             'nombreCanal' => 'required',
             'longitudCanal' => 'required',
-            'reparacion' => 'required',
-            'corteVegetal' => 'required',
-            'desasolve' => 'required',
+            'revestimiento' => 'required',
+            'accion' => 'required',
             'responsable' => 'required',
         ]);
 

@@ -78,41 +78,82 @@
                 @enderror
             </div> {{-- Fin Longitud Canal --}}
 
+            {{-- Revestimiento --}}
+            <div class="form-group col-sm-12 col-md-6 mb-5">
+                <label for="revestimiento">revestimiento</label>
+                <select name="revestimiento" id="revestimiento" class="form-control @error('revestimiento') is-invalid @enderror">
+                    <option value="" hidden>Seleccione el tipo de revestimiento</option>
+                    <option 
+                        value="Tierra"
+                        {{ old('revestimiento') == 'Tierra' ? 'selected' : '' }}
+                    />
+                        Tierra
+                    </option>
+                    <option 
+                        value="Cemento"
+                        {{ old('revestimiento') == 'Cemento' ? 'selected' : '' }}
+                    />
+                        Cemento
+                    </option>
+                    <option 
+                        value="Tubo"
+                        {{ old('revestimiento') == 'Tubo' ? 'selected' : '' }}
+                    />
+                        Tubo
+                    </option>
+                </select>
+                @error('revestimiento')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
+            </div>{{-- Fin Revestimiento --}}
+
             <div class="w-100"></div>
 
+            {{-- Acciones Realizadas --}}
             <div class="col-12 text-center">
-                <span class="h1">Acción</span>
-            </div>
-
-            <div class="form-group col-sm-12 col-md-4 mb-5">
-                <label for="reparacion">Reparación</label>
-                <input type="text" name="reparacion" id="reparacion" value="{{ old('reparacion') }}" class="form-control @error('reparacion') is-invalid @enderror">
-                @error('reparacion')
+                <div class="@error('revestimiento') is-invalid @enderror">Acciones Realizadas</div>
+                
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input @error('accion') is-invalid @enderror" 
+                        type="checkbox" value="Reparación" name="accion[]" id="reparacion"
+                        @if( in_array('Reparación', old('accion', [])) )
+                            checked
+                        @endif
+                    />
+                    <label class="form-check-label" for="reparacion">
+                        Reparación
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input @error('accion') is-invalid @enderror" 
+                        type="checkbox" value="Corte de Maleza" name="accion[]" id="corteMaleza"
+                        @if( in_array('Corte de Maleza', old('accion', [])) )
+                            checked
+                        @endif
+                    />
+                    <label class="form-check-label" for="corteMaleza">
+                        Corte de Maleza
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input @error('accion') is-invalid @enderror" 
+                        type="checkbox" value="Desazolve" name="accion[]" id="desazolve"
+                        @if( in_array('Desazolve', old('accion', [])) )
+                            checked
+                        @endif
+                    />
+                    <label class="form-check-label" for="desazolve">
+                        Desazolve
+                    </label>
+                </div>
+                @error('accion')
                     <span class="invalid-feedback d-block" role="alert">
-                        <strong>{{$message}}</strong>
+                        <strong>Seleccione al menos una acción</strong>
                     </span>
                 @enderror
-            </div>
-
-            <div class="form-group col-sm-12 col-md-4 mb-5">
-                <label for="corteVegetal">Corte de cobertura vegetal</label>
-                <input type="text" name="corteVegetal" id="corteVegetal" value="{{ old('corteVegetal') }}" class="form-control @error('corteVegetal') is-invalid @enderror">
-                @error('corteVegetal')
-                    <span class="invalid-feedback d-block" role="alert">
-                        <strong>{{$message}}</strong>
-                    </span>
-                @enderror
-            </div>
-
-            <div class="form-group col-sm-12 col-md-4 mb-5">
-                <label for="desasolve">Desasolve</label>
-                <input type="text" name="desasolve" id="desasolve" value="{{ old('desasolve') }}" class="form-control @error('desasolve') is-invalid @enderror">
-                @error('desasolve')
-                    <span class="invalid-feedback d-block" role="alert">
-                        <strong>{{$message}}</strong>
-                    </span>
-                @enderror
-            </div>
+            </div> {{-- Fin Acciones Realizadas --}}
 
             <div class="w-100"></div>
 
