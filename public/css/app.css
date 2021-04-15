@@ -10009,6 +10009,6 @@ html {
   /* Reset para REMS - 62.5% = 10px de 16px */
 }
 
-body, .form-control, .btn, .navbar-brand {
+body, .form-control, .btn, .navbar-brand, .dropdown-item {
   font-size: 1.9rem;
 }
