@@ -15,4 +15,8 @@ class Seccion extends Model
         'propiedad_id',
         'user_id',
     ];
+    
+    public function propiedad(){
+        return $this->belongsTo(RegistroPropiedad::class);
+    }
 }

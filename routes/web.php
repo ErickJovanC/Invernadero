@@ -15,6 +15,7 @@ use App\Http\Controllers\CalibracionEquipoController;
 use App\Http\Controllers\ControlPreventivoController;
 use App\Http\Controllers\RegistroPropiedadController;
 use App\Http\Controllers\AplicacionFertilizanteController;
+use App\Http\Controllers\ControlPreventivoPlagaController;
 use App\Http\Controllers\AplicacionFertilizanteOrganicoController;
 
 /*
@@ -46,6 +47,7 @@ Route::resource('calibracionEquipo', CalibracionEquipoController::class);
 Route::resource('aplicacionFertilizanteOrganico', AplicacionFertilizanteOrganicoController::class);
 Route::resource('registroRiego', RegistroRiegoController::class);
 Route::resource('limpiezaCanales', LimpiezaCanalesController::class);
+Route::resource('plagas', ControlPreventivoPlagaController::class);
 
 Route::view('/main', '/main/index')->name('main')->middleware('auth');
 

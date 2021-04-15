@@ -87,6 +87,13 @@
                 13- Limpieza de canales
             </a>
         </div>
+        
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 p-2">
+            <a href="{{ route('plagas.create') }}"
+                class="btn btn-success">
+                14 - Control Preventivo de Plagas en plantas y arboles
+            </a>
+        </div>
 
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 p-2">
             <a href="{{ route('historial.index') }}"
@@ -94,5 +101,6 @@
                 Historial de Actividades
             </a>
         </div>
+
     </div>
 @endsection
