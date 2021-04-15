@@ -96,6 +96,13 @@
         </div>
 
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 p-2">
+            <a href="{{ route('identificacionPlagas.create') }}"
+                class="btn btn-success">
+                15 - Identificacion de Plagas
+            </a>
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 p-2">
             <a href="{{ route('historial.index') }}"
                 class="btn btn-success">
                 Historial de Actividades
