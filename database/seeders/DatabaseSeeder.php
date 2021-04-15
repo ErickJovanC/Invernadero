@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
         $this-> call(EstadosSeeder::class);
         $this-> call(MunicipiosSeeder::class);
         $this-> call(UsuariosSeeder::class);
+        $this-> call(PlagasSeeder::class);
         // \App\Models\User::factory(10)->create();
     }
 }
