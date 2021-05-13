@@ -53,8 +53,6 @@ class RegistroPropiedadController extends Controller
             'nombreHuerta' => 'required | min:3',
             'estado' => 'required',
             'municipio' => 'required',
-            'colonia' => 'required | Min:5',
-            'calle' => 'required | Min:6',
         ]);
         //dd($data);
 
@@ -63,8 +61,6 @@ class RegistroPropiedadController extends Controller
             'nombreHuerta' => $data['nombreHuerta'],
             'estado_id' => $data['estado'],
             'municipio_id' => $data['municipio'],
-            'colonia' => $data['colonia'],
-            'calle' => $data['calle'],
         ]);
 
         return redirect('/main');

@@ -65,7 +65,7 @@
                 @enderror
             </div>
 
-            <div class="form-group col-sm-12 col-md-6 mb-5">
+            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
                 <label for="colonia">Colonia</label>
                 <input type="text" name="colonia" id="colonia" 
                     class="form-control @error('colonia') is-invalid @enderror"
@@ -78,13 +78,26 @@
                 @enderror
             </div>
 
-            <div class="form-group col-sm-12 col-md-6 mb-5">
+            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
                 <label for="calle">Calle y Número</label>
                 <input type="text" name="calle" id="calle" 
                     class="form-control @error('calle') is-invalid @enderror"
                     value="{{ old('calle') }}"
                 >
                 @error('calle')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
+            </div>
+
+            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
+                <label for="comunidad">Comunidad, Predio y/o Campo</label>
+                <input type="text" name="comunidad" id="comunidad" 
+                    class="form-control @error('comunidad') is-invalid @enderror"
+                    value="{{ old('comunidad') }}"
+                >
+                @error('comunidad')
                     <span class="invalid-feedback d-block" role="alert">
                         <strong>{{$message}}</strong>
                     </span>
