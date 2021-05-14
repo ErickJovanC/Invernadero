@@ -1,5 +1,5 @@
 {{-- Fecha --}}
-<div class="form-group col-sm-12 col-md-6 mb-5">
+<div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
     <label for="fecha">Fecha de Aplicación</label>
     <input type="date" 
         name="fecha" 

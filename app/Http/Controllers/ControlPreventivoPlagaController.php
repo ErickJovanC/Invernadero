@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Plaga;
+use App\Models\Empleado;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\ControlPreventivoPlaga;
-use App\Models\Empleado;
 
 class ControlPreventivoPlagaController extends Controller
 {
@@ -29,12 +30,14 @@ class ControlPreventivoPlagaController extends Controller
         $fechaActual = date('Y-m-d');
         $secciones = Auth::user()->secciones;
         $empleados = Auth::user()->empleados;
+        $plagas = Plaga::all();
         // dd($secciones->all());
         return view('srhigo.controlPreventivoPlagas')->
             with([
                 'secciones' => $secciones, 
                 'fechaActual' => $fechaActual,
-                'empleados' => $empleados
+                'empleados' => $empleados,
+                'plagas' => $plagas,
             ]);
     }
 

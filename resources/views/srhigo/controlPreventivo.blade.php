@@ -38,22 +38,7 @@
                 <input type="text" name="OrigenPlanta" class="form-control">
             </div> --}}
 
-            <div class="form-group col-sm-12 col-md-6 mb-5">
-                <div class="alert alert-danger">Hacer lista selectiva</div>
-                <label for="plagaControlar">Plaga o Enfermadad a Controlar</label>
-                <input type="text" 
-                    name="plagaControlar" 
-                    id="plagaControlar" 
-                    value="{{ old('plagaControlar') }}"
-                    class="form-control 
-                        @error('plagaControlar') is-invalid @enderror"
-                />
-                @error('plagaControlar')
-                    <span class="invalid-feedback d-block" role="alert">
-                        <strong>{{$message}}</strong>
-                    </span>
-                @enderror
-            </div>
+            @include('srhigo.campos.plagas')
 
             {{-- Fecha --}}
             <div class="form-group col-sm-12 col-md-6 mb-5">

@@ -33,12 +33,6 @@ class PlagasSeeder extends Seeder
         ]);
 
         DB::table('plagas')->insert([
-            'nombrePlaga' => 'Anastrepa',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
-        ]);
-
-        DB::table('plagas')->insert([
             'nombrePlaga' => 'Anastrepa Ludem',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),

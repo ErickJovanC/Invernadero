@@ -64,4 +64,5 @@ class User extends Authenticatable
     public function planta(){
         return $this->hasMany(CalidadPlanta::class);
     }
+
 }

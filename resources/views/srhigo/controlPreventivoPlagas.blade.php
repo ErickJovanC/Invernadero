@@ -2,7 +2,7 @@
 @section('content')
 <a href="{{ route('main') }}" class="btn btn-success">Menú</a>
 <div class="row">
-    <h1 class="col-12 text-center mb-5">Limpieza y Mantenimiento de Canales de Riego</h1>
+    <h1 class="col-12 text-center mb-5">Control Preventivo de Plagas en Plantas y Arboles</h1>
     <form action="{{ route('plagas.store') }}" method="post" class="col-12">
         @csrf
         <div class="row">
@@ -11,89 +11,21 @@
             {{-- Plagas a prevenir --}}
             <div class="col-12 text-center mb-5">
                 <div class="@error('revestimiento') is-invalid @enderror">Plagas a Prevenir</div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input @error('plagas') is-invalid @enderror" 
-                        type="checkbox" value="Araña Roja" name="plagas[]" id="Araña Roja"
-                        @if( in_array('Araña Roja', old('plagas', [])) )
-                            checked
-                        @endif
-                    />
-                    <label class="form-check-label" for="Araña Roja">
-                        Araña Roja
-                    </label>
-                </div>
 
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input @error('plagas') is-invalid @enderror" 
-                        type="checkbox" value="Hongo" name="plagas[]" id="Hongo"
-                        @if( in_array('Hongo', old('plagas', [])) )
-                            checked
-                        @endif
-                    />
-                    <label class="form-check-label" for="Hongo">
-                        Hongo
-                    </label>
-                </div>
 
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input @error('plagas') is-invalid @enderror" 
-                        type="checkbox" value="Mosca Negra" name="plagas[]" id="Mosca Negra"
-                        @if( in_array('Mosca Negra', old('plagas', [])) )
-                            checked
-                        @endif
-                    />
-                    <label class="form-check-label" for="Mosca Negra">
-                        Mosca Negra
-                    </label>
-                </div>
-
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input @error('plagas') is-invalid @enderror" 
-                        type="checkbox" value="Anastrepa" name="plagas[]" id="Anastrepa"
-                        @if( in_array('Anastrepa', old('plagas', [])) )
-                            checked
-                        @endif
-                    />
-                    <label class="form-check-label" for="Anastrepa">
-                        Anastrepa
-                    </label>
-                </div>
-
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input @error('plagas') is-invalid @enderror" 
-                        type="checkbox" value="Anastrepa Ludems" name="plagas[]" id="Anastrepa Ludems"
-                        @if( in_array('Anastrepa Ludems', old('plagas', [])) )
-                            checked
-                        @endif
-                    />
-                    <label class="form-check-label" for="Anastrepa Ludems">
-                        Anastrepa Ludems
-                    </label>
-                </div>
-
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input @error('plagas') is-invalid @enderror" 
-                        type="checkbox" value="Nematodos" name="plagas[]" id="Nematodos"
-                        @if( in_array('Nematodos', old('plagas', [])) )
-                            checked
-                        @endif
-                    />
-                    <label class="form-check-label" for="Nematodos">
-                        Nematodos
-                    </label>
-                </div>
-
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input @error('plagas') is-invalid @enderror" 
-                        type="checkbox" value="Gallina Ciega" name="plagas[]" id="Gallina Ciega"
-                        @if( in_array('Gallina Ciega', old('plagas', [])) )
-                            checked
-                        @endif
-                    />
-                    <label class="form-check-label" for="Gallina Ciega">
-                        Gallina Ciega
-                    </label>
-                </div>
+                @foreach($plagas as $plaga)
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input @error('plagas') is-invalid @enderror" 
+                            type="checkbox" value="{{ $plaga->nombrePlaga }}" name="plagas[]" id="{{ $plaga->nombrePlaga }}"
+                            @if( in_array('{{ $plaga->nombrePlaga }}', old('plagas', [])) )
+                                checked
+                            @endif
+                        />
+                        <label class="form-check-label" for="Araña Roja">
+                            {{ $plaga->nombrePlaga }}
+                        </label>
+                    </div>
+                @endforeach
 
                 @error('plagas')
                     <span class="invalid-feedback d-block" role="alert">

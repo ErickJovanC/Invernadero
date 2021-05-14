@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Plaga;
 use App\Models\Empleado;
 use Illuminate\Http\Request;
 use App\Models\CalidadPlanta;
@@ -29,12 +30,14 @@ class ControlPreventivoController extends Controller
     {
         $fechaActual = date('Y-m-d');
         $lotes = CalidadPlanta::all(['id', 'lote']);
-        $empleados = Empleado::all(['id', 'nombreEmpleado', 'apellidoEmpleado', 'sobrenombreEmpleado']);
+        $plagas = Plaga::all();
+        $empleados = Auth::user()->empleados;
         return view('srhigo.controlPreventivo')->
             with([
                 'lotes' => $lotes, 
                 'fechaActual' => $fechaActual,
-                'empleados' => $empleados
+                'empleados' => $empleados,
+                'plagas' => $plagas
             ]);
     }
 

@@ -9,34 +9,71 @@
             @include('srhigo.campos.fecha')
 
             {{-- Tiempo de Aplicación  --}}
-            <div class="form-group col-12 col-sm-6 col-md-3 mb-5">
-                <label for="tiempoAplicacion">Tiempo Aplicacion (Horas:Minutos)</label>
-                <input type="text"
-                name="tiempoAplicacion" 
-                id="tiempoAplicacion"
-                value="{{ old('tiempoAplicacion')}}"
-                class="form-control @error('tiempoAplicacion') is-invalid @enderror">
-                @error('tiempoAplicacion')
-                    <span class="invalid-feedback d-block" role="alert">
-                        <strong>{{$message}}</strong>
-                    </span>
-                @enderror
+            <div class="form-group col-12 col-sm-6 col-md-4 mb-5 text-center">
+                <span>Tiempo de aplicación</span>
+                <div class="row">
+                    <div class="col-6">
+                        <label for="horas">Horas</label>
+                        <input type="number"
+                        name="horas"
+                        id="horas"
+                        min="0"
+                        value="{3{ old('horas')}}"
+                        class="form-control @error('horas') is-invalid @enderror">
+                        @error('horas')
+                            <span class="invalid-feedback d-block" role="alert">
+                                <strong>{{$message}}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="col-6">
+                        <label for="minutos">Minutos</label>
+                        <input type="number"
+                        name="minutos"
+                        id="minutos"
+                        min="0"
+                        value="{{ old('minutos')}}"
+                        class="form-control @error('minutos') is-invalid @enderror">
+                        @error('minutos')
+                            <span class="invalid-feedback d-block" role="alert">
+                                <strong>{{$message}}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
             </div>{{-- Fin  Tiempo de Aplicación --}}
 
-            {{-- Tipo de Plaguicida  --}}
-            <div class="form-group col-12 col-sm-6 col-md-3 mb-5">
+            {{-- Tipo de Plaguicida --}}
+            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
                 <label for="tipoPlaguicida">Tipo de Plaguicida</label>
-                <input type="text" 
-                name="tipoPlaguicida" 
-                id="tipoPlaguicida"
-                value="{{ old('tipoPlaguicida')}}"
-                class="form-control @error('tipoPlaguicida') is-invalid @enderror">
+                <select name="tipoPlaguicida" id="tipoPlaguicida" class="form-control @error('tipoPlaguicida') is-invalid @enderror">
+                    <option value="" hidden>Tipo de Plaguicida</option>
+                    <option 
+                        value="Herbicida"
+                        {{ old('tipoPlaguicida') == 'Herbicida' ? 'selected' : '' }}
+                    />
+                        Herbicida
+                    </option>
+                    <option 
+                        value="Fungicida"
+                        {{ old('tipoPlaguicida') == 'Fungicida' ? 'selected' : '' }}
+                    />
+                        Fungicida
+                    </option>
+                    <option 
+                        value="Pesticida"
+                        {{ old('tipoPlaguicida') == 'Pesticida' ? 'selected' : '' }}
+                    />
+                        Pesticida
+                    </option>
+                </select>
                 @error('tipoPlaguicida')
                     <span class="invalid-feedback d-block" role="alert">
                         <strong>{{$message}}</strong>
                     </span>
                 @enderror
-            </div>{{-- Fin  Tipo de Plaguicida --}}
+            </div>{{-- Fin Tipo de Plaguicida --}}
+
 
             <div class="col-12 h2 text-center">Plaguicida Aplicado</div>
 
@@ -70,20 +107,43 @@
                 @enderror
             </div>{{-- Fin  Ingrediente Activo --}}
 
-            {{-- Color de la Banda  --}}
-            <div class="form-group col-12 col-sm-6 col-md-4 mb-5">
+            {{-- Color de la Banda --}}
+            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
                 <label for="colorBanda">Color de la Banda</label>
-                <input type="text" 
-                name="colorBanda" 
-                id="colorBanda"
-                value="{{ old('colorBanda')}}"
-                class="form-control @error('colorBanda') is-invalid @enderror">
+                <select name="colorBanda" id="colorBanda" class="form-control @error('colorBanda') is-invalid @enderror">
+                    <option value="" hidden>Color de la banda</option>
+                    <option 
+                        value="Verde"
+                        {{ old('colorBanda') == 'Verde' ? 'selected' : '' }}
+                    />
+                        Verde
+                    </option>
+                    <option 
+                        value="Azul"
+                        {{ old('colorBanda') == 'Azul' ? 'selected' : '' }}
+                    />
+                        Azul
+                    </option>
+                    <option 
+                        value="Amarillo"
+                        {{ old('colorBanda') == 'Amarillo' ? 'selected' : '' }}
+                    />
+                        Amarillo
+                    </option>
+                    <option 
+                        value="Rojo"
+                        {{ old('colorBanda') == 'Rojo' ? 'selected' : '' }}
+                    />
+                        Rojo
+                    </option>
+                </select>
                 @error('colorBanda')
                     <span class="invalid-feedback d-block" role="alert">
                         <strong>{{$message}}</strong>
                     </span>
                 @enderror
-            </div>{{-- Fin  Color de la Banda --}}
+            </div>{{-- Fin Color de la Banda --}}
+
 
             {{-- Dosis Aplicada  --}}
             <div class="form-group col-12 col-sm-6 col-md-4 mb-5">
