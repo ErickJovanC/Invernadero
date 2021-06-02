@@ -26,7 +26,14 @@ class CalidadPlantaController extends Controller
     public function create()
     {
         $fechaActual = date('Y-m-d');
-        return view('calidadPlanta.index')->with('fechaActual', $fechaActual);
+        $fechaCorte = date('Y-m-d', strtotime($fechaActual."- 3 week"));
+        $empleados = Auth::user()->empleados;
+        return view('calidadPlanta.index')->
+            with([
+                'fechaActual' => $fechaActual,
+                'fechaCorte' => $fechaCorte,
+                'empleados' => $empleados,
+        ]);
     }
 
     /**
@@ -44,6 +51,8 @@ class CalidadPlantaController extends Controller
             'origenPlanta' => 'required',
             'cantidadPlantas' => 'required',
             'variedadPlanta' => 'required',
+            'lote' => 'required',
+            'responsable' => 'required',
         ]);
             // dd($request);
         // Insersión
@@ -57,8 +66,10 @@ class CalidadPlantaController extends Controller
             'resistenciaPlagas' => $request['resistenciaPlagas'],
             'toleranciaPlagas' => $request['toleranciaPlagas'],
             'certificado' => $request['certificado'],
+            'empleado_id' => $request['responsable'],
         ]);
-
+        
+        $mensaje = "Lote de Plantas registrado";
         return redirect(route('main'));
     }
 

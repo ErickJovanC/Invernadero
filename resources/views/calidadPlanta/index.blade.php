@@ -7,18 +7,13 @@
         <div class="row">
             <h1 class="titulo mb-5 col-12 text-center">Calidad de la Planta</h1>
 
-            {{-- <div class="form-group col-sm-12">
-                <label for="NombrePropietario">Nombre del Propietario: </label>
-                <span class="font-weight-bold">Juan Pérez</span>
-            </div> --}}
-
             <div class="form-group col-sm-12 col-md-6 mb-5">
-                <label for="fechaCorte">Fecha de corte de la planta</label>
+                <label for="fechaCorte">Fecha de corte de la planta (esqueje)</label>
                 <input type="date" 
                     name="fechaCorte" id="fechaCorte" 
                     class="form-control 
                         @error('fechaCorte') is-invalid @enderror" 
-                    max="{{ $fechaActual }}"
+                    max="{{ $fechaCorte }}"
                     value="{{ old('fechaCorte') }}"
                 />
                 @error('fechaCorte')
@@ -46,7 +41,7 @@
             </div>
             
             <div class="form-group col-sm-12 col-md-6 mb-5">
-                <label for="origenPlanta">Empresa o persona de donde viene la planta</label>
+                <label for="origenPlanta">Empresa o persona de donde proviene la planta</label>
                 <input type="text" 
                     name="origenPlanta" 
                     id="origenPlanta" 
@@ -98,17 +93,17 @@
                 </div>
             </div>
 
-
-            
-            {{-- <div class="form-group col-sm-12 col-md-6 mb-5">
-                <label for="Yemas">Yemas efectivas %</label>
-                <input type="number" name="Yemas" class="form-control col-11">
-                <span class="col-1">%</span>
-            </div> --}}
-
             <div class="form-group col-sm-12 col-md-6 mb-5">
-                <label for="lote">No. de Lote</label>
-                <input type="text" name="lote" id="lote" class="form-control" value="{{ old('lote') }}">
+                <label for="lote">No. de Lote asignado</label>
+                <input type="text" name="lote" id="lote" 
+                    class="form-control @error('lote') is-invalid @enderror" 
+                    value="{{ old('lote') }}"
+                />
+                @error('lote')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
             </div>
 
             <div class="form-group col-sm-12 col-md-6 mb-5">
@@ -125,6 +120,9 @@
                 <label for="certificado">No. de Certificado de la planta</label>
                 <input type="text" name="certificado" id="certificado" class="form-control" value="{{ old('certificado') }}">
             </div>
+
+            @include('srhigo.campos.responsable');
+
         </div>
         <div class="row mb-5 justify-content-end">
             <div class="form-group">
