@@ -61,6 +61,7 @@ class CalidadPlantaController extends Controller
             'fechaRecepcion' => $data['fechaRecepcion'],
             'origenPlanta' => $data['origenPlanta'],
             'cantidadPlantas' => $data['cantidadPlantas'],
+            'porPlantar' => $data['cantidadPlantas'],
             'variedadPlanta' => $data['variedadPlanta'],
             'lote' => $request['lote'],
             'resistenciaPlagas' => $request['resistenciaPlagas'],

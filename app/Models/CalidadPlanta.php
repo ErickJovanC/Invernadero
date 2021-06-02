@@ -14,11 +14,18 @@ class calidadPlanta extends Model
         'fechaRecepcion',
         'origenPlanta',
         'cantidadPlantas',
+        'Plantadas',
+        'porPlantar',
         'variedadPlanta',
         'lote',
         'resistenciaPlagas',
         'toleranciaPlagas',
         'certificado',
+        'empleado_id',
         'user_id'
     ];
+
+    public function Empleado(){
+        return $this->belongsTo(Empleado::class);
+    }
 }

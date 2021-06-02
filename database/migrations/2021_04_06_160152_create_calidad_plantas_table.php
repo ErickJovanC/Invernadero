@@ -20,11 +20,16 @@ class CreateCalidadPlantasTable extends Migration
             $table->date('fechaRecepcion');
             $table->string('origenPlanta');
             $table->smallInteger('cantidadPlantas');
+            $table->smallInteger('plantadas')->default(0);
+            $table->smallInteger('porPlantar');
             $table->string('variedadPlanta');
             $table->string('lote');
-            $table->string('resistenciaPlagas');
-            $table->string('toleranciaPlagas');
-            $table->string('certificado');
+            $table->string('resistenciaPlagas')->nullable();
+            $table->string('toleranciaPlagas')->nullable();
+            $table->string('certificado')->nullable();
+            $table->foreignId('empleado_id')
+                ->references('id')
+                ->on('empleados');
             $table->foreignId('user_id')
                 ->references('id')
                 ->on('users');
