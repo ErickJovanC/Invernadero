@@ -29,7 +29,7 @@ class ControlPreventivoController extends Controller
     public function create()
     {
         $fechaActual = date('Y-m-d');
-        $lotes = CalidadPlanta::all(['id', 'lote']);
+        $lotes = CalidadPlanta::all(['id', 'lote', 'cantidadPlantas']);
         $plagas = Plaga::all();
         $empleados = Auth::user()->empleados;
         return view('srhigo.controlPreventivo')->
@@ -59,16 +59,15 @@ class ControlPreventivoController extends Controller
             'responsable' => 'required',
         ]);
 
-        // $plagas  = implode(', ', $request['plagas']);
+        // dd($request->all());
 
         auth()->user()->controlPreventivoPlanta()->create([
             'lote_id' => $data['lotePlanta'],
             'plagasPrevenir' => implode(', ', $request->plagas),
-            // 'plagasPrevenir' => $plagas,
             'fechaAccion' => $data['fechaAccion'],
             'cantidadPlantas' => $data['cantidadPlantas'],
-            'accionPreventiva' => $data['accionPreventiva'],
-            'costo' => $data['costo'],
+            'accionPreventiva' => implode(', ', $request->plagas),
+            'costo' => $request['costo'],
             'responsable_id' => $data['responsable'],
         ]);
 

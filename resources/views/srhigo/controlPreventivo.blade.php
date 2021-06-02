@@ -16,7 +16,7 @@
                         <option 
                             value="{{ $lote->id }}"
                             {{ old('lotePlanta') == $lote->id ? 'selected' : '' }} >
-                        {{ $lote->lote }}
+                        {{ $lote->lote ." Plantas: ". $lote->cantidadPlantas }}
                         </option>
                     @endforeach
                 </select>
@@ -26,8 +26,6 @@
                     </span>
                 @enderror
             </div>{{-- Fin Lote de plantas --}}
-
-            {{-- Este campo podria ser inncesario ya que el número de lote indica este dato. --}}
 
             {{-- @include('srhigo.campos.plagas') --}}
             {{-- Plagas a prevenir --}}
@@ -42,7 +40,7 @@
                             value="{{ $plaga->nombrePlaga }}" 
                             id="{{ $plaga->nombrePlaga }}"
                             name="plagas[]" 
-                            @if( in_array('{{ $plaga->nombrePlaga }}', old('plagas', [])) )
+                            @if( in_array($plaga->nombrePlaga, old('plagas', [])) )
                                 checked
                             @endif
                         />
@@ -77,12 +75,13 @@
                 @enderror
             </div>{{-- Fin Fecha --}}
 
-            <div class="form-group col-sm-12 col-md-6 mb-5">
+            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
                 <label for="cantidadPlantas">Cantidad de Plantas tratadas</label>
                 <input type="number" 
                     name="cantidadPlantas" 
                     id="cantidadPlantas"
                     value="{{ old('cantidadPlantas') }}"
+                    {{-- max="{{ $lotes->cantidadPlantas }}" --}}
                     class="form-control 
                         @error('cantidadPlantas') is-invalid @enderror"
                 />
@@ -93,22 +92,26 @@
                 @enderror
             </div>
 
-            {{-- <div class="form-group col-sm-3 col-md-2 mb-5">
+            <div class="form-group col-sm-3 col-md-2 mb-5">
                 <label for="costo">Costo total</label>
                 <input type="number" 
                     min="0"
                     name="costo" 
                     id="costo" 
-                    value="{{ old('costo') }}"
+                    @if(old('costo') != 0)
+                        value="{{ old('costo') }}"
+                    @else
+                        value="0"
+                    @endif
                     class="form-control 
                         @error('costo') is-invalid @enderror"
                 />
                 @error('costo')
                     <span class="invalid-feedback d-block" role="alert">
-                        <strong>{{$message}}</strong>
+                        <strong>{{ "El campo costo es obligatorio, si no hubo ningun gasto dejelo en 0"}}</strong>
                     </span>
                 @enderror
-            </div> --}}
+            </div>
 
             {{-- Acción Preventiva --}}
             {{-- <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
