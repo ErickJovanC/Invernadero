@@ -51,13 +51,29 @@ class ControlPreventivoController extends Controller
     {
         $data = request()->validate([
             'lotePlanta' => 'required',
-            'plagaControlar' => 'required',
+            'plagas' => 'required',
             'fechaAccion' => 'required',
             'cantidadPlantas' => 'required',
             'accionPreventiva' => 'required',
             'costo' => 'required',
             'responsable' => 'required',
         ]);
+
+        // $plagas  = implode(', ', $request['plagas']);
+
+        auth()->user()->controlPreventivoPlanta()->create([
+            'lote_id' => $data['lotePlanta'],
+            'plagasPrevenir' => implode(', ', $request->plagas),
+            // 'plagasPrevenir' => $plagas,
+            'fechaAccion' => $data['fechaAccion'],
+            'cantidadPlantas' => $data['cantidadPlantas'],
+            'accionPreventiva' => $data['accionPreventiva'],
+            'costo' => $data['costo'],
+            'responsable_id' => $data['responsable'],
+        ]);
+
+        // return redirect(route('controlPreventivo.create'));
+        return redirect(route('home'));
     }
 
     /**
