@@ -13,51 +13,7 @@
         </div> --}}
         <div class="row">
             
-            {{-- Propiedad --}}
-            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
-                <label for="propiedad">Huerta</label>
-                <select name="propiedad" id="propiedad" 
-                    class="form-control @error('propiedad') is-invalid @enderror"
-                >
-                    <option value="" hidden>Seleccione la huerta</option>
-                    @foreach ($huertas as $huerta)
-                        <option 
-                            value="{{ $huerta->id }}" 
-                            {{ old('propiedad') == $huerta->id ? 'selected' : '' }}
-                        >
-                            {{ $huerta->nombreHuerta }}
-                        </option>
-                    @endforeach
-                </select>
-                @error('propiedad')
-                    <span class="invalid-feedback d-block" role="alert">
-                        <strong>{{$message}}</strong>
-                    </span>
-                @enderror
-            </div>{{-- Fin Propiedad --}}
-
-            {{-- Sección --}}
-            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
-                <label for="seccion">Sección</label>
-                <select name="seccion" id="seccion" 
-                    class="form-control @error('seccion') is-invalid @enderror"
-                >
-                    <option value="" hidden>Seleccione la sección</option>
-                    @foreach ($secciones as $seccion)
-                        <option 
-                            value="{{ $seccion->id }}" 
-                            {{ old('seccion') == $seccion->id ? 'selected' : '' }}
-                        >
-                            {{ $seccion->nombreSeccion }}
-                        </option>
-                    @endforeach
-                </select>
-                @error('seccion')
-                    <span class="invalid-feedback d-block" role="alert">
-                        <strong>{{$message}}</strong>
-                    </span>
-                @enderror
-            </div>{{-- Fin Sección --}}
+            @include('srhigo.campos.huertaSeccion')
 
             {{-- Labor --}}
             <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">

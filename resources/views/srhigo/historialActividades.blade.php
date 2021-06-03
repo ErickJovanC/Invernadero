@@ -193,10 +193,9 @@
         <thead>
             <tr>
                 <th scope="col">Fecha de inicio</th>
-                <th scope="col">Huerta</th>
-                <th scope="col">Sección</th>
-                {{-- <th scope="col">Actividad</th> --}}
+                <th scope="col">Huerta y Sección</th>
                 <th scope="col">Labor realizada</th>
+                <th scope="col">Costo de operción</th>
                 <th scope="col">Ver Detalle</th>
             </tr>
         </thead>
@@ -204,8 +203,9 @@
             @foreach ($preparacionSuelo as $preparacion)
             <tr>
                 <td>{{ $preparacion->fechaInicio }}</td>
-                <td>{{ $preparacion->huerta->nombreHuerta }}</td>
-                <td>{{ $preparacion->seccion->nombreSeccion }}</td>
+                <td>{{ $preparacion->seccion->propiedad->nombreHuerta ." - ". 
+                        $preparacion->seccion->nombreSeccion }}</td>
+                <td>{{ $preparacion->costoOperacion }}</td>
                 <td>{{ $preparacion->labor }}
                 </td>
                 <td><a href="#" data-toggle="modal" data-target="#preparacion{{ $preparacion->id }}">Ver detalle</a></td>

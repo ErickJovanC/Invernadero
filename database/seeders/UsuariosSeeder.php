@@ -22,5 +22,13 @@ class UsuariosSeeder extends Seeder
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
         ]);
+
+        DB::table('users')->insert([
+            'name' => 'Jazmin',
+            'email' => 'jazmin@mail.com',
+            'password' => Hash::make('palmz22A'),
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s'),
+        ]);
     }
 }

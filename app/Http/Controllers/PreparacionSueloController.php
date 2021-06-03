@@ -47,29 +47,36 @@ class PreparacionSueloController extends Controller
      */
     public function store(Request $request)
     {
-        $fechaActual = date('Y-m-d');
+        // $fechaActual = date('Y-m-d');
+        
         $data = request()->validate([
-            'propiedad' => 'required',
-            'seccion' => 'required',
+            'huertaSeccion' => 'required',
             'labor' => 'required',
             'fechaInicio' => 'required',
             'fechaFin' => 'required',
-            'horasMaquinaria' => 'required',
-            'costoHora' => 'required',
             'metodoUtilizado' => 'required',
             'empleado' => 'required',
         ]);
-
-        $costoOperacion = $data['horasMaquinaria'] * $data['costoHora'];
+        
+        $horasMaquinaria = $request['horasMaquinaria'] == null ?  0 : $request['horasMaquinaria'];
+        $costoHora = $request['costoHora'] == null ?  0 : $request['costoHora'];
+        $costoOperacion = $horasMaquinaria * $costoHora;
+        $seccion = (int)$data['huertaSeccion'];
+        
+        $huertas = Seccion::where("id", $seccion)->get();
+        
+        foreach ($huertas as $huerta){
+            $huerta_id = $huerta->propiedad_id;
+        }
 
         auth()->user()->suelos()->create([
-            'huerta_id' => $data['propiedad'],
-            'seccion_id' => $data['seccion'],
+            'huerta_id' => $huerta_id,
+            'seccion_id' => $seccion,
             'labor' => $data['labor'],
             'fechaInicio' => $data['fechaInicio'],
             'fechaFin' => $data['fechaFin'],
-            'horasMaquinaria' => $data['horasMaquinaria'],
-            'costoHora' => $data['costoHora'],
+            'horasMaquinaria' => $horasMaquinaria,
+            'costoHora' => $costoHora,
             'costoOperacion' => $costoOperacion,
             'metodoUtilizado' => $data['metodoUtilizado'],
             'empleado_id' => $data['empleado'],
