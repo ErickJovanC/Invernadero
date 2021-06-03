@@ -192,31 +192,27 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th scope="col">Fecha y Hora</th>
+                <th scope="col">Fecha de inicio</th>
                 <th scope="col">Huerta</th>
                 <th scope="col">Sección</th>
                 {{-- <th scope="col">Actividad</th> --}}
-                <th scope="col">Responsable</th>
+                <th scope="col">Labor realizada</th>
                 <th scope="col">Ver Detalle</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($preparacionSuelo as $actividad)
+            @foreach ($preparacionSuelo as $preparacion)
             <tr>
-                <td>{{ $actividad['updated_at'] }}</td>
-                <td>{{ $actividad->huerta->nombreHuerta }}</td>
-                <td>{{ $actividad->seccion->nombreSeccion }}</td>
-                {{-- <td>Preparación de suelo</td> --}}
-                <td>{{ 
-                    $actividad->empleado->nombreEmpleado .' '.
-                    $actividad->empleado->apellidoEmpleado .' ('.
-                    $actividad->empleado->sobrenombreEmpleado .')'}}
+                <td>{{ $preparacion->fechaInicio }}</td>
+                <td>{{ $preparacion->huerta->nombreHuerta }}</td>
+                <td>{{ $preparacion->seccion->nombreSeccion }}</td>
+                <td>{{ $preparacion->labor }}
                 </td>
-                <td><a href="#" data-toggle="modal" data-target="#preparacion{{ $actividad->id }}">Ver detalle</a></td>
+                <td><a href="#" data-toggle="modal" data-target="#preparacion{{ $preparacion->id }}">Ver detalle</a></td>
             </tr>
             
             <!-- Modal -->
-            <div class="modal fade" id="preparacion{{ $actividad->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="preparacion{{ $preparacion->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -228,51 +224,51 @@
                     <div class="modal-body">
                         <div>
                             Fecha de registro:
-                            <b>{{ $actividad->updated_at }}</b>
+                            <b>{{ $preparacion->updated_at }}</b>
                         </div>
                         <div>
                             Huerta:
-                            <b>{{ $actividad->huerta->nombreHuerta }}</b>
+                            <b>{{ $preparacion->huerta->nombreHuerta }}</b>
                         </div>
                         <div>
                             Sección: 
-                            <b>{{ $actividad->seccion->nombreSeccion }}</b>
+                            <b>{{ $preparacion->seccion->nombreSeccion }}</b>
                         </div>
                         <div>
                             Labor Realziada:
-                            <b>{{ $actividad->labor }}</b>
+                            <b>{{ $preparacion->labor }}</b>
                         </div>
                         <div>
                             Fecha de Inicio:
-                            <b>{{ $actividad->fechaInicio }}</b>
+                            <b>{{ $preparacion->fechaInicio }}</b>
                         </div>
                         <div>
                             Fecha de culminación:
-                            <b>{{ $actividad->fechaFin }}</b>
+                            <b>{{ $preparacion->fechaFin }}</b>
                         </div>
                         <div>
                             Horas de Maquinaria:
-                            <b>{{ $actividad->horasMaquinaria }}</b>
+                            <b>{{ $preparacion->horasMaquinaria }}</b>
                         </div>
                         <div>
                             Costo por hora:
-                            <b>{{ $actividad->costoHora }}</b>
+                            <b>{{ $preparacion->costoHora }}</b>
                         </div>
                         <div>
                             Costo de Operación
-                            <b>${{ $actividad->costoOperacion }}</b>
+                            <b>${{ $preparacion->costoOperacion }}</b>
                         </div>
                         <div>
                             Metodo o herramienta usada:
-                            <b>{{ $actividad->metodoUtilizado }}</b>
+                            <b>{{ $preparacion->metodoUtilizado }}</b>
                         </div>
                         <div>
                             Responsable:
                             <b>
                                 {{
-                                    $actividad->Empleado->nombreEmpleado .' '.
-                                    $actividad->Empleado->apellidoEmpleado .' ('.
-                                    $actividad->Empleado->sobrenombreEmpleado .')'
+                                    $preparacion->Empleado->nombreEmpleado .' '.
+                                    $preparacion->Empleado->apellidoEmpleado .' ('.
+                                    $preparacion->Empleado->sobrenombreEmpleado .')'
                                 }}
                             </b>
                         </div>
