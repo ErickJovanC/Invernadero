@@ -42,7 +42,7 @@ class User extends Authenticatable
     ];
     
     public function datosPersonales(){
-        return $this->hasOne(RegistroPersonal::class);
+        return $this->hasOne(RegistroPersonal::class); // Usado para el registro de los datos personales
     }
 
     public function huertas(){
@@ -54,7 +54,7 @@ class User extends Authenticatable
     }
     
     public function empleados(){
-        return $this->hasMany(Empleado::class);
+        return $this->hasMany(Empleado::class); 
     }
     
     public function suelos(){
@@ -63,6 +63,10 @@ class User extends Authenticatable
 
     public function planta(){
         return $this->hasMany(CalidadPlanta::class);
+    }
+
+    public function controlPreventivoPlanta(){
+        return $this->hasMany(ControlPreventivo::class);
     }
 
 }

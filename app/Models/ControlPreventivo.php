@@ -16,10 +16,11 @@ class ControlPreventivo extends Model
         'cantidadPlantas',
         'accionPreventiva',
         'costo',
-        'responsable_id',
+        'empleado_id',
+        'user_id',
     ];
 
-    public function Empleado(){
+    public function empleado(){
         return $this->belongsTo(Empleado::class);
     }
 

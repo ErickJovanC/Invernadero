@@ -25,7 +25,7 @@ class CreateControlPreventivosTable extends Migration
             $table->integer('cantidadPlantas')->unsigned();
             $table->string('accionPreventiva', 300);
             $table->integer('costo')->default(0)->unsigned();
-            $table->foreignId('responsable_id')-> 
+            $table->foreignId('empleado_id')-> 
                 references('id')-> 
                 on('empleados')-> 
                 comment('Empleado responsable');

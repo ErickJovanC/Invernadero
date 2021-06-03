@@ -66,9 +66,9 @@ class ControlPreventivoController extends Controller
             'plagasPrevenir' => implode(', ', $request->plagas),
             'fechaAccion' => $data['fechaAccion'],
             'cantidadPlantas' => $data['cantidadPlantas'],
-            'accionPreventiva' => implode(', ', $request->plagas),
+            'accionPreventiva' => implode(', ', $request->accionPreventiva),
             'costo' => $request['costo'],
-            'responsable_id' => $data['responsable'],
+            'empleado_id' => $data['responsable'],
         ]);
 
         // return redirect(route('controlPreventivo.create'));

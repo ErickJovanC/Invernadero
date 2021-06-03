@@ -13,7 +13,7 @@
                 <th scope="col">Cantidad</th>
                 <th scope="col">Variedad</th>
                 {{-- <th scope="col">Actividad</th> --}}
-                <th scope="col">Responsable</th>
+                <th scope="col">Lote Asiganado</th>
                 <th scope="col">Ver Detalle</th>
             </tr>
         </thead>
@@ -23,10 +23,8 @@
                 <td>{{ $recepcion->fechaRecepcion }}</td>
                 <td>{{ $recepcion->cantidadPlantas }}</td>
                 <td>{{ $recepcion->variedadPlanta }}</td>
-                <td>{{ 
-                    $recepcion->empleado->nombreEmpleado .' '.
-                    $recepcion->empleado->apellidoEmpleado .' ('.
-                    $recepcion->empleado->sobrenombreEmpleado .')'}}
+                <td>{{
+                    $recepcion->lote}}
                 </td>
                 <td><a href="#" data-toggle="modal" data-target="#recepcion{{ $recepcion->id }}">Ver detalle</a></td>
             </tr>
@@ -122,18 +120,18 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($controlPreventivo as $control)
+            @foreach ($controlPreventivoPlanta as $control)
             <tr>
                 <td>{{ $control->fechaAccion }}</td>
                 <td>{{ $control->lote->lote }}</td>
                 <td>{{ $control->cantidadPlantas }}</td>
                 <td>{{ $control->accionPreventiva }}</td>
                 </td>
-                <td><a href="#" data-toggle="modal" data-target="#preparacion{{ $control->id }}">Ver detalle</a></td>
+                <td><a href="#" data-toggle="modal" data-target="#control{{ $control->id }}">Ver detalle</a></td>
             </tr>
             
             <!-- Modal -->
-            {{-- <div class="modal fade" id="preparacion{{ $control->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="control{{ $control->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -144,52 +142,36 @@
                     </div>
                     <div class="modal-body">
                         <div>
-                            Fecha de registro:
-                            <b>{{ $control->updated_at }}</b>
+                            Fecha:
+                            <b>{{ $control->fechaAccion }}</b>
                         </div>
                         <div>
-                            Huerta:
-                            <b>{{ $control->huerta->nombreHuerta }}</b>
+                            Lote:
+                            <b>{{ $control->lote->lote }}</b>
                         </div>
                         <div>
-                            Sección: 
-                            <b>{{ $control->seccion->nombreSeccion }}</b>
+                            Plagas a prevenir: 
+                            <b>{{ $control->plagasPrevenir }}</b>
                         </div>
                         <div>
-                            Labor Realziada:
-                            <b>{{ $control->labor }}</b>
+                            Acción Preventiva:
+                            <b>{{ $control->accionPreventiva }}</b>
                         </div>
                         <div>
-                            Fecha de Inicio:
-                            <b>{{ $control->fechaInicio }}</b>
+                            Cantidad de plantas tratadas:
+                            <b>{{ $control->cantidadPlantas }}</b>
                         </div>
                         <div>
-                            Fecha de culminación:
-                            <b>{{ $control->fechaFin }}</b>
-                        </div>
-                        <div>
-                            Horas de Maquinaria:
-                            <b>{{ $control->horasMaquinaria }}</b>
-                        </div>
-                        <div>
-                            Costo por hora:
-                            <b>{{ $control->costoHora }}</b>
-                        </div>
-                        <div>
-                            Costo de Operación
-                            <b>${{ $control->costoOperacion }}</b>
-                        </div>
-                        <div>
-                            Metodo o herramienta usada:
-                            <b>{{ $control->metodoUtilizado }}</b>
+                            Costo:
+                            <b>{{ $control->costo }}</b>
                         </div>
                         <div>
                             Responsable:
                             <b>
                                 {{
-                                    $control->Empleado->nombreEmpleado .' '.
-                                    $control->Empleado->apellidoEmpleado .' ('.
-                                    $control->Empleado->sobrenombreEmpleado .')'
+                                    $control->empleado->nombreEmpleado .' '.
+                                    $control->empleado->apellidoEmpleado .' ('.
+                                    $control->empleado->sobrenombreEmpleado .')'
                                 }}
                             </b>
                         </div>
@@ -199,7 +181,7 @@
                     </div>
                 </div>
                 </div>
-            </div> --}}
+            </div>
             @endforeach
         </tbody>
     </table>
