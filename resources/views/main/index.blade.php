@@ -1,6 +1,12 @@
 @extends('layouts.app')
 @section('content')
     <div class="row">
+        <div class="col-12">
+            @isset($mesanje){
+                {{ $mensaje }}
+            }
+            @endisset
+        </div>
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 p-2">
             <a href="{{ route('registroPersonal.index') }}"
                 class="btn btn-success">
@@ -25,24 +31,25 @@
                 4- Registrar Empleado
             </a>
         </div>
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 p-2">
-            <a href="{{ route('preparacionSuelo.create') }}"
-                class="btn btn-success">
-                5- Pepración de suelo
-            </a>
-        </div>
 
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 p-2">
             <a href="{{ route('calidadPlanta.create') }}"
                 class="btn btn-success">
-                6- Calidad de la Planta
+                5- Recepción de Plantas
             </a>
         </div>
 
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 p-2">
             <a href="{{ route('controlPreventivo.create') }}"
                 class="btn btn-success">
-                7- Control preventivo de plagas en la planta
+                6- Control preventivo de plagas en la planta (Previo a plantar)
+            </a>
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 p-2">
+            <a href="{{ route('preparacionSuelo.create') }}"
+                class="btn btn-success">
+                7- Pepración de suelo
             </a>
         </div>
 
@@ -106,6 +113,13 @@
             <a href="{{ route('aplicacionPlaguicida.create') }}"
                 class="btn btn-success">
                 16 - Aplicación de Plaguicida
+            </a>
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 p-2">
+            <a href="{{ route('capacitacionPersonal.create') }}"
+                class="btn btn-success">
+                17 - Capacitación del Personal
             </a>
         </div>
 

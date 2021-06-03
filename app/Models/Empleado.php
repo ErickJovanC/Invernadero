@@ -16,9 +16,4 @@ class Empleado extends Model
         'user_id'
 
     ];
-
-    // Verificar la relación
-    public function datosPersonales(){
-        return $this->hasOne(user::class);
-    }
 }

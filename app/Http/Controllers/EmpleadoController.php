@@ -25,7 +25,11 @@ class EmpleadoController extends Controller
      */
     public function create()
     {
-        return view('srhigo.empleados');
+        $empleados = Auth::user()->empleados;
+        return view('srhigo.empleados')->
+        with([
+                'empleados' => $empleados,
+            ]);
     }
 
     /**
@@ -40,17 +44,20 @@ class EmpleadoController extends Controller
         $data = request()->validate([
             'nombreEmpleado' => 'required | min:3',
             'apellidoEmpleado' => 'required | min:3',
-            'sobrenombreEmpleado' => 'required | min:3',
         ]);
 
         //Envio a la BD
         Auth::user()->empleados()->create([
             'nombreEmpleado' => $data['nombreEmpleado'],
             'apellidoEmpleado' => $data['apellidoEmpleado'],
-            'sobrenombreEmpleado' => $data['sobrenombreEmpleado'],
+            'sobrenombreEmpleado' => $request['sobrenombreEmpleado'],
         ]);
-
-        return redirect('/main');
+        
+        $empleados = Auth::user()->empleados;
+        return view('srhigo.empleados')->
+        with([
+                'empleados' => $empleados,
+            ]);
     }
 
     /**

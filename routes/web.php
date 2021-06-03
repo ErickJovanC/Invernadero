@@ -15,6 +15,7 @@ use App\Http\Controllers\CalibracionEquipoController;
 use App\Http\Controllers\ControlPreventivoController;
 use App\Http\Controllers\RegistroPropiedadController;
 use App\Http\Controllers\AplicacionPlaguicidaController;
+use App\Http\Controllers\CapacitacionPersonalController;
 use App\Http\Controllers\IdentificacionPlagasController;
 use App\Http\Controllers\AplicacionFertilizanteController;
 use App\Http\Controllers\ControlPreventivoPlagaController;
@@ -52,7 +53,8 @@ Route::resource('limpiezaCanales', LimpiezaCanalesController::class);
 Route::resource('plagas', ControlPreventivoPlagaController::class);
 Route::resource('identificacionPlagas', IdentificacionPlagasController::class);
 Route::resource('aplicacionPlaguicida', AplicacionPlaguicidaController::class);
+Route::resource('capacitacionPersonal', CapacitacionPersonalController::class);
 
-Route::view('/main', '/main/index')->name('main')->middleware('auth');
+Route::view('main', '/main/index')->name('main')->middleware('auth');
 
 // Route::view('/historial/', 'srhigo/historialActividades')->name('historial');
