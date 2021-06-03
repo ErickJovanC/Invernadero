@@ -34,9 +34,15 @@ class RegistroPropiedadController extends Controller
         // Se obtienen los valores de la BD
         $estados = Estados::all(['id', 'estado']);
         $municipios = Municipios::all(['id', 'municipio']);
+        $huertas = Auth::user()->huertas;
 
         //Se envian los valores obtenidos a la vista
-        return view('registroPropiedad.index')->with('estados', $estados)->with('municipios', $municipios);
+        return view('registroPropiedad.index')->
+            with([
+                'estados' => $estados,
+                'municipios' => $municipios,
+                'huertas' => $huertas,
+            ]);
     }
 
     /**
@@ -59,11 +65,24 @@ class RegistroPropiedadController extends Controller
         // Insersión a la BD
         auth()->user()->huertas()->create([
             'nombreHuerta' => $data['nombreHuerta'],
+            'codigoRegistro' => $request['codigoRegistro'],
             'estado_id' => $data['estado'],
             'municipio_id' => $data['municipio'],
+            'colonia' => $request['colonia'],
+            'calle' => $request['calle'],
+            'comunidad' => $request['comunidad'],
+            'ubicacion' => $request['ubicacion'],
         ]);
 
-        return redirect('/main');
+        $estados = Estados::all(['id', 'estado']);
+        $municipios = Municipios::all(['id', 'municipio']);
+        $huertas = Auth::user()->huertas;
+        return view('registroPropiedad.index')->
+            with([
+                'estados' => $estados,
+                'municipios' => $municipios,
+                'huertas' => $huertas,
+            ]);
     }
 
     /**

@@ -105,9 +105,10 @@
             </div>
 
             <div class="form-group col-12">
-                <label for="Ubicacion">Ubicación</label>
-                <input type="text" name="Ubicacion" class="form-control">
+                <label for="ubicacion">Ubicación</label>
+                <input type="text" name="ubicacion" class="form-control">
             </div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d967288.4768919495!2d-99.6242015024996!3d18.73250458004401!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85cddfae25f6fe47%3A0x975f8225a169dd0f!2sMorelos!5e0!3m2!1ses-419!2smx!4v1621463833508!5m2!1ses-419!2smx" height="400" style="border:0;" allowfullscreen="" loading="lazy" class="col-12"></iframe>
         </div>
         <div class="row justify-content-end">
             <div class="form-group">
@@ -116,5 +117,59 @@
         </div>
     </form>
 </div>
+
+{{-- Tabla de Huertas --}}
+<div class="row justify-content-center">
+    <div class="col-12 justify-content-center">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Código</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Municipio</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($huertas as $huerta)
+                <tr>
+                    <th scope="row">{{ $huerta->id }}</th>
+                    <td>{{ $huerta->nombreHuerta }}</td>
+                    <td>{{ $huerta->estado->estado }}</td>
+                    <td>{{ $huerta->municipio->municipio }}</td>
+                    <td><button class="btn btn-danger" data-toggle="modal" data-target="#huerta{{ $huerta->id }}">Eliminar</button>
+                        {{-- Modal --}}
+                        <div class="modal fade" id="huerta{{ $huerta->id }}" tabindex="-1" role="dialog" aria-labelledby="Titulo" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="Titulo">¿Borrar Registro?</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                <div class="modal-body">
+                                    {{ $huerta->nombreHuerta }}
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                    <button type="button" class="btn btn-danger">Eliminar Registro</button>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- Fin modal --}}
+                    </td>
+                </tr>
+
+                
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+</div>
+{{-- fin Tabla de Huertas --}}
+
 <a href="{{ route('main') }}" class="btn btn-success">Menú</a>
 @endsection

@@ -10,22 +10,71 @@
 
             {{-- Plagas a prevenir --}}
             <div class="col-12 text-center mb-5">
-                <div class="@error('revestimiento') is-invalid @enderror">Plagas a Prevenir</div>
+                <div class="@error('plagas') is-invalid @enderror">Plagas a Prevenir</div>
 
 
                 @foreach($plagas as $plaga)
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input @error('plagas') is-invalid @enderror" 
-                            type="checkbox" value="{{ $plaga->nombrePlaga }}" name="plagas[]" id="{{ $plaga->nombrePlaga }}"
+                        <input class="form-check-input 
+                            @error('plagas') is-invalid @enderror" 
+                            type="checkbox" 
+                            value="{{ $plaga->nombrePlaga }}" 
+                            id="{{ $plaga->nombrePlaga }}"
+                            name="plagas[]" 
                             @if( in_array('{{ $plaga->nombrePlaga }}', old('plagas', [])) )
                                 checked
                             @endif
                         />
-                        <label class="form-check-label" for="Araña Roja">
+                        <label class="form-check-label" for="{{ $plaga->nombrePlaga }}">
                             {{ $plaga->nombrePlaga }}
                         </label>
                     </div>
                 @endforeach
+
+
+                {{-- <div class="form-check form-check-inline">
+                    <input class="form-check-input 
+                        @error('plagas') is-invalid @enderror" 
+                        type="checkbox" 
+                        value="Anastrepa Ludems" 
+                        id="Anastrepa Ludems"
+                        name="plagas[]" 
+                        @if( in_array('Anastrepa Ludems', old('plagas', [])) )
+                            checked
+                        @endif
+                    />
+                    <label class="form-check-label" for="Anastrepa Ludems">
+                        Anastrepa Ludems
+                    </label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input 
+                        @error('plagas') is-invalid @enderror" 
+                        type="checkbox" 
+                        value="Nematodos" 
+                        id="Nematodos"
+                        name="plagas[]" 
+                        @if( in_array('Nematodos', old('plagas', [])) )
+                            checked
+                        @endif
+                    />
+                    <label class="form-check-label" for="Nematodos">
+                        Nematodos
+                    </label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input @error('plagas') is-invalid @enderror" 
+                        type="checkbox" value="Gallina Ciega" name="plagas[]" id="Gallina Ciega"
+                        @if( in_array('Gallina Ciega', old('plagas', [])) )
+                            checked
+                        @endif
+                    />
+                    <label class="form-check-label" for="Gallina Ciega">
+                        Gallina Ciega
+                    </label>
+                </div> --}}
 
                 @error('plagas')
                     <span class="invalid-feedback d-block" role="alert">
@@ -64,4 +113,8 @@
     </form>
 </div>
 <a href="{{ route('main') }}" class="btn btn-success">Menú</a>
+@php
+    //var_dump($plagas);
+@endphp
+
 @endsection

@@ -16,14 +16,16 @@ class RegistroPropiedad extends Model
         'municipio_id',
         'colonia',
         'calle',
+        'comunidad',
+        'ubicacion',
         'user_id'
     ];
 
-    public function estados(){
+    public function estado(){
         return $this->belongsTo(Estados::class);
     }
     
-    public function municipios(){
+    public function municipio(){
         return $this->belongsTo(Municipios::class);
     }
 

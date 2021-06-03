@@ -24,9 +24,10 @@ class CreateRegistroPropiedadsTable extends Migration
             $table->foreignId('municipio_id')->
                 references('id')->
                 on('municipios');
-            $table->string('colonia', 30);
-            $table->string('calle', 30);
-            $table->string('ubicacion', 30)->nullable();
+            $table->string('colonia', 30)->nullable();
+            $table->string('calle', 30)->nullable();
+            $table->string('comunidad', 30)->nullable();
+            $table->string('ubicacion', 50)->nullable();
             $table->foreignId('user_id')-> 
                 references('id')-> 
                 on('users')-> 

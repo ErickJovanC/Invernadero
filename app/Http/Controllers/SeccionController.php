@@ -32,9 +32,13 @@ class SeccionController extends Controller
     {
         // Se obtienen los valores de la BD filtrados por usuario
         $huertas = Auth::user()->huertas;
-
+        $secciones = Auth::user()->secciones;
         //Se envian los valores obtenidos a la vista
-        return view('srhigo.seccion')->with('huertas', $huertas);
+        return view('srhigo.seccion')->
+            with([
+                'huertas' => $huertas,
+                'secciones' => $secciones,
+                ]);
     }
 
     /**
@@ -57,7 +61,13 @@ class SeccionController extends Controller
             'cantidadPlantas' => $data['cantidadPlantas'],
         ]);
 
-        return redirect('/main');
+        $huertas = Auth::user()->huertas;
+        $secciones = Auth::user()->secciones;
+        return view('srhigo.seccion')->
+        with([
+            'huertas' => $huertas,
+            'secciones' => $secciones,
+            ]);
     }
 
     public function show(Seccion $seccion)

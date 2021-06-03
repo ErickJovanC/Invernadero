@@ -49,6 +49,7 @@ class ControlPreventivoPlagaController extends Controller
      */
     public function store(Request $request)
     {
+        // dd(request());
         $data = request()->validate([
             'huertaSeccion' => 'required',
             'plagas' => 'required',

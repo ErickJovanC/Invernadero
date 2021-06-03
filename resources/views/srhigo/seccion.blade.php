@@ -71,5 +71,54 @@
         </div> {{-- Fin Botón del formulario --}}
     </form>
 </div>
+
+<div class="row">
+    <div class="col">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Huerta</th>
+                    <th scope="col">Nombre Sección</th>
+                    <th scope="col">Plantas</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($secciones as $seccion)
+                <tr>
+                    <th scope="row">{{ $seccion->propiedad->nombreHuerta }}</th>
+                    <td>{{ $seccion->nombreSeccion }}</td>
+                    <td>{{ $seccion->cantidadPlantas }}</td>
+                    <td><button class="btn btn-danger" data-toggle="modal" data-target="#seccion{{ $seccion->id }}">Eliminar</button>
+                        {{-- Modal --}}
+                        <div class="modal fade" id="seccion{{ $seccion->id }}" tabindex="-1" role="dialog" aria-labelledby="Titulo" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="Titulo">¿Borrar Registro?</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                <div class="modal-body">
+                                    {{ $seccion->propiedad->nombreHuerta ." - ". $seccion->nombreSeccion }}
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                    <button type="button" class="btn btn-danger">Eliminar Registro</button>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- Fin modal --}}
+                    </td>
+                </tr>
+
+                
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+</div>
 <a href="{{ route('main') }}" class="btn btn-success">Menú</a>
 @endsection

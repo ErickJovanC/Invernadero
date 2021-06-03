@@ -55,17 +55,6 @@ class RegistroPersonalController extends Controller
         // Subida de la imagen
         // $rutaImagen = $request['Foto']->store('propietarios', 'public');
 
-        // Insersión de datos sin modelo
-        // DB::table('registro_personals')->insert([
-        //     'nombre' => $data['Nombre'],
-        //     'apellido_p' => $data['ApellidoPaterno'],
-        //     'apellido_m' => $data['ApellidoMaterno'],
-        //     'telefono' => $data['Telefono'],
-        //     'direccion' => $data['Direccion'],
-        //     //'foto' => $data['Foto'],
-        //     'user_id' => Auth::user()->id,
-        // ]);
-
         // Insersión a la BD con modelo
         auth()->user()->datosPersonales()->create([
             'nombre' => $data['nombre'],
