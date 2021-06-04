@@ -15,6 +15,20 @@ class CreateAplicacionFertilizantesTable extends Migration
     {
         Schema::create('aplicacion_fertilizantes', function (Blueprint $table) {
             $table->id();
+
+            $table->date('fechaAplicacion');
+            $table->foreignId('id_fertilizante')->
+                references('id')->
+                on('fertilizantes');
+            $table->integer('kilosHectarea');
+            $table->string('metodoAplicacion', 11);
+            $table->foreignId('empleado_id')->
+                references('id')->
+                on('empleados');
+            $table->foreignId('user_id')->
+                references('id')->
+                on('users');
+
             $table->timestamps();
         });
     }

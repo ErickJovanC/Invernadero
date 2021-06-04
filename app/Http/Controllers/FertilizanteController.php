@@ -59,7 +59,7 @@ class FertilizanteController extends Controller
             'micronutrientes' => $data['micronutrientes'],
         ]);
 
-        return view('srhigo.main.index');
+        return redirect(route('main'));
     }
 
     /**

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Empleado;
 use Illuminate\Http\Request;
 use App\Models\CalidadPlanta;
+use Illuminate\Support\Facades\Auth;
 use App\Models\AplicacionFertilizante;
 
 class AplicacionFertilizanteController extends Controller
@@ -28,12 +29,14 @@ class AplicacionFertilizanteController extends Controller
     {
         $fechaActual = date('Y-m-d');
         $lotes = CalidadPlanta::all(['id', 'lote']);
-        $empleados = Empleado::all(['id', 'nombreEmpleado', 'apellidoEmpleado', 'sobrenombreEmpleado']);
+        $empleados = Auth::user()->empleados;
+        $fertilizantes = Auth::user()->registroFertilizante;
         return view('srhigo.aplicacionFertilizante')->
         with([
             'lotes' => $lotes, 
             'fechaActual' => $fechaActual,
-            'empleados' => $empleados
+            'empleados' => $empleados,
+            'fertilizantes' => $fertilizantes,
         ]);
     }
 
@@ -52,6 +55,16 @@ class AplicacionFertilizanteController extends Controller
             'metodoAplicacion' => 'required',
             'responsable' => 'required',
         ]);
+
+        Auth::user()->aplicacionFertilizante()->create([
+            'fechaAplicacion' => $data['fechaAplicacion'],
+            'id_fertilizante' => $data['nombreFertilizante'],
+            'kilosHectarea' => $data['kilosHectarea'],
+            'metodoAplicacion' => $data['metodoAplicacion'],
+            'empleado_id' => $data['responsable'],
+        ]);
+
+        return redirect(route('main'));
     }
 
     /**
