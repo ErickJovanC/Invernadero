@@ -284,7 +284,94 @@
     </table>
     {{-- Fin Preparación del suelo --}}
 
-
+    {{-- Registro de Siembra --}}
+    <h2 class="h1 mt-5">Registro de Siembra</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Fecha</th>
+                <th scope="col">Huerta y Sección</th>
+                <th scope="col">Lote sembrado</th>
+                <th scope="col">Cantidad de Plantas</th>
+                <th scope="col">Ver Detalle</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($registroSiembra as $siembra)
+            <tr>
+                <td>{{ $siembra->fecha }}</td>
+                <td>{{ $siembra->seccion->propiedad->nombreHuerta ." - ". 
+                        $siembra->seccion->nombreSeccion }}</td>
+                <td>{{ $siembra->lote->lote }}</td>
+                <td>{{ $siembra->cantidadPlantas }}
+                </td>
+                <td><a href="#" data-toggle="modal" data-target="#siembra{{ $siembra->id }}">Ver detalle</a></td>
+            </tr>
+            
+            <!-- Modal -->
+            <div class="modal fade" id="siembra{{ $siembra->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Detalles</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            Fecha de siembra:
+                            <b>{{ $siembra->fecha }}</b>
+                        </div>
+                        <div>
+                            Huerta:
+                            <b>{{ $siembra->huerta->nombreHuerta }}</b>
+                        </div>
+                        <div>
+                            Sección: 
+                            <b>{{ $siembra->seccion->nombreSeccion }}</b>
+                        </div>
+                        <div>
+                            Lote sembrado:
+                            <b>{{ $siembra->lote->lote }}</b>
+                        </div>
+                        <div>
+                            Cantidad de Plantas:
+                            <b>{{ $siembra->cantidadPlantas }}</b>
+                        </div>
+                        <div>
+                            Distancia entre Plantas:
+                            <b>{{ $siembra->distanciaPlanta }}</b>
+                        </div>
+                        <div>
+                            Distancia entre Vesanas:
+                            <b>{{ $siembra->distanciaVesana }}</b>
+                        </div>
+                        <div>
+                            Tipo de Riego:
+                            <b>{{ $siembra->riego }}</b>
+                        </div>
+                        <div>
+                            Responsable:
+                            <b>
+                                {{
+                                    $siembra->Empleado->nombreEmpleado .' '.
+                                    $siembra->Empleado->apellidoEmpleado .' ('.
+                                    $siembra->Empleado->sobrenombreEmpleado .')'
+                                }}
+                            </b>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+            @endforeach
+        </tbody>
+    </table>
+    {{-- Fin Registro de Siembra --}}
 </div>
 <a href="{{ route('main') }}" class="btn btn-success">Menú</a>
 @endsection

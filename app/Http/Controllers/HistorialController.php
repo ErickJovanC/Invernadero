@@ -19,12 +19,14 @@ class HistorialController extends Controller
         $preparacionSuelo = Auth::user()->suelos;
         $calidadPlanta = Auth::user()->planta;
         $controlPreventivoPlanta = Auth::user()->controlPreventivoPlanta;
-        // dd($calidadPlanta->empleado);
+        $registroSiembra = Auth::user()->registroSiembra;
+        
         return view('srhigo.historialActividades')->
             with([
                 'preparacionSuelo' => $preparacionSuelo,
                 'calidadPlanta' => $calidadPlanta,
                 'controlPreventivoPlanta' => $controlPreventivoPlanta,
+                'registroSiembra' => $registroSiembra,
             ]);
     }
 
