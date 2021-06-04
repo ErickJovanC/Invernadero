@@ -47,13 +47,31 @@ class AplicacionFertilizanteOrganicoController extends Controller
     public function store(Request $request)
     {
         $data = request()->validate([
-            'seccion' => 'required',
-            'fechaAplicacion' => 'required',
+            'fecha' => 'required',
+            'huertaSeccion' => 'required',
             'cantidadAplicada' => 'required',
             'superficie' => 'required',
             'tipoFertilizante' => 'required',
             'responsable' => 'required',
         ]);
+
+        $seccion = (int)$data['huertaSeccion'];
+        $huertas = Seccion::where("id", $seccion)->get();
+        foreach ($huertas as $huerta){
+            $huerta_id = $huerta->propiedad_id;
+        }
+
+        Auth::user()->fertilizanteOrganico()->create([
+            'fecha' => $data['fecha'],
+            'huerta_id' => $huerta_id,
+            'seccion_id' => $seccion,
+            'cantidadAplicada' => $data['cantidadAplicada'],
+            'superficie' => $data['superficie'],
+            'tipoFertilizante' => $data['tipoFertilizante'],
+            'empleado_id' => $data['responsable'],
+        ]);
+
+        return redirect(route('main'));
     }
 
     /**

@@ -7,47 +7,11 @@
         @csrf
         <div class="row">
 
-            {{-- Seccion --}}
-            <div class="form-group col-sm-12 col-md-6 mb-5">
-                <label for="seccion">Seccion a Fertilizar</label>
-                <select name="seccion" id="seccion" class="form-control @error('seccion') is-invalid @enderror">
-                    <option value="" hidden>Seleccione la seccion a fertilizar</option>
-                    @foreach ($secciones as $seccion)
-                        <option 
-                            value="{{ $seccion->id }}"
-                            {{ old('seccion') == $seccion->id ? 'selected' : '' }}
-                        />
-                        {{ $seccion->nombreSeccion }}
-                        </option>
-                    @endforeach
-                </select>
-                @error('seccion')
-                    <span class="invalid-feedback d-block" role="alert">
-                        <strong>{{$message}}</strong>
-                    </span>
-                @enderror
-            </div>{{-- Fin Seccion --}}
-
-            {{-- Fecha --}}
-            <div class="form-group col-sm-12 col-md-6 mb-5">
-                <label for="fechaAplicacion">Fecha de Aplicación</label>
-                <input type="date" 
-                    name="fechaAplicacion" 
-                    id="fechaAplicacion"
-                    max="{{ $fechaActual }}"
-                    value="{{ old('fechaAplicacion') }}"
-                    class="form-control 
-                        @error('fechaAplicacion') is-invalid @enderror" 
-                />
-                @error('fechaAplicacion')
-                    <span class="invalid-feedback d-block" role="alert">
-                        <strong>{{$message}}</strong>
-                    </span>
-                @enderror
-            </div>{{-- Fin Fecha --}}
+            @include('srhigo.campos.fecha')
+            @include('srhigo.campos.huertaSeccion')
 
             {{-- Cantidad Aplicada --}}
-            <div class="form-group col-sm-12 col-md-6 mb-5">
+            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
                 <label for="cantidadAplicada">Cantidad Aplicada KG</label>
                 <input type="number" 
                     name="cantidadAplicada" 
@@ -63,7 +27,7 @@
             </div> {{-- Fin Cantidad Aplicada --}}
 
             {{-- Superficie --}}
-            <div class="form-group col-sm-12 col-md-6 mb-5">
+            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
                 <label for="superficie">Superficie</label>
                 <input type="text" 
                     name="superficie" 
@@ -79,7 +43,7 @@
             </div> {{-- Fin Superficie --}}
 
             {{-- Tipo de fertilizante --}}
-            <div class="form-group col-sm-12 col-md-6 mb-5">
+            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
                 <label for="tipoFertilizante">Tipo de fertilizante</label>
                 <select name="tipoFertilizante" id="tipoFertilizante" class="form-control @error('tipoFertilizante') is-invalid @enderror">
                     <option value="" hidden>Seleccione el tipo de abono</option>
@@ -99,6 +63,9 @@
                     <option value="Vegetal" 
                         {{ old('tipoFertilizante') == 'Vegetal' ? 'selected' : '' }}>
                         Vegetal</option>
+                    <option value="OrganicoQuimico" 
+                        {{ old('tipoFertilizante') == 'OrganicoQuimico' ? 'selected' : '' }}>
+                        Organico Quimico</option>
                 </select>
                 @error('tipoFertilizante')
                     <span class="invalid-feedback d-block" role="alert">

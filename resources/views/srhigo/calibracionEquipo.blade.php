@@ -73,11 +73,22 @@
                 @enderror
             </div>
 
-            <div class="form-group col-12 col-sm-6 col-md-3 mb-5">
-                <span>No de Repetición</span>
-                <br>
-                <span class="h1 alert-danger">#1 Analizar el procedimiento</span>
-            </div>
+            {{-- Repetición --}}
+            <div class="form-group col-sm-12 col-md-6 col-lg-3 mb-5">
+                <label for="repeticion">Número de repeticiones</label>
+                <input type="number" 
+                    name="repeticion" 
+                    id="repeticion"
+                    value="{{ old('repeticion') }}"
+                    class="form-control 
+                        @error('repeticion') is-invalid @enderror" 
+                />
+                @error('repeticion')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
+            </div>{{-- Fin Repetición --}}
 
             <div class="form-group col-12 col-sm-6 col-md-3 mb-5">
                 <label for="volumenPesoInicial">Volumen o Peso Inicial (Kilogramos o Litros)</label>

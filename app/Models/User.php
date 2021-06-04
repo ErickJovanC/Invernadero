@@ -80,4 +80,8 @@ class User extends Authenticatable
     public function aplicacionFertilizante(){
         return $this->hasMany(AplicacionFertilizante::class);
     }
+
+    public function fertilizanteOrganico(){
+        return $this->hasMany(AplicacionFertilizanteOrganico::class);
+    }
 }
