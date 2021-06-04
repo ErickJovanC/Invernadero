@@ -453,6 +453,87 @@
         </tbody>
     </table>
     {{-- Fin Aplicación de Fertilizante --}}
+
+    {{-- Aplicación de Fertilizante Organico --}}
+    <h2 class="h1 mt-5">Aplicación de fertilizante Organico</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Fecha</th>
+                <th scope="col">Huerta y Sección</th>
+                <th scope="col">Tipo de Fertilizante</th>
+                <th scope="col">Cantidad Aplicada</th>
+                <th scope="col">Ver Detalle</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($fertilizanteOrganico as $organico)
+            <tr>
+                <td>{{ $organico->fecha }}</td>
+                <td>{{ $organico->huerta->nombreHuerta ." - ". 
+                        $organico->seccion->nombreSeccion }}</td>
+                <td>{{ $organico->tipoFertilizante }}
+                <td>{{ $organico->cantidadAplicada ." KG"}}</td>
+                </td>
+                <td><a href="#" data-toggle="modal" data-target="#organico{{ $organico->id }}">Ver detalle</a></td>
+            </tr>
+            
+            <!-- Modal -->
+            <div class="modal fade" id="organico{{ $organico->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Detalles</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            Fecha de apicación:
+                            <b>{{ $organico->fecha }}</b>
+                        </div>
+                        <div>
+                            Huerta:
+                            <b>{{ $organico->huerta->nombreHuerta }}</b>
+                        </div>
+                        <div>
+                            Sección: 
+                            <b>{{ $organico->seccion->nombreSeccion }}</b>
+                        </div>
+                        <div>
+                            Tipo de Fertilizante:
+                            <b>{{ $organico->tipoFertilizante }}</b>
+                        </div>
+                        <div>
+                            Cantidad Aplicada:
+                            <b>{{ $organico->cantidadAplicada ." KG" }}</b>
+                        </div>
+                        <div>
+                            Superficie:
+                            <b>{{ $organico->superficie }}</b>
+                        </div>
+                        <div>
+                            Responsable:
+                            <b>
+                                {{
+                                    $organico->Empleado->nombreEmpleado .' '.
+                                    $organico->Empleado->apellidoEmpleado .' ('.
+                                    $organico->Empleado->sobrenombreEmpleado .')'
+                                }}
+                            </b>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+            @endforeach
+        </tbody>
+    </table>
+    {{-- Fin Aplicación de Fertilizante Organico --}}
 </div>
 <a href="{{ route('main') }}" class="btn btn-success">Menú</a>
 @endsection
