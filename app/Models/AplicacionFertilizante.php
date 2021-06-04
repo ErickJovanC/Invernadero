@@ -13,10 +13,26 @@ class AplicacionFertilizante extends Model
         'fechaAplicacion',
         'huerta_id',
         'seccion_id',
-        'id_fertilizante',
+        'fertilizante_id',
         'kilosHectarea',
         'metodoAplicacion',
         'empleado_id',
         'user_id',
     ];
+
+    public function seccion(){
+        return $this->belongsTo(Seccion::class);
+    }
+
+    public function huerta(){
+        return $this->belongsTo(RegistroPropiedad::class);
+    }
+
+    public function fertilizante(){
+        return $this->belongsTo(Fertilizante::class);
+    }
+
+    public function Empleado(){
+        return $this->belongsTo(Empleado::class);
+    }
 }

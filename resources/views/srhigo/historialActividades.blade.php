@@ -388,11 +388,11 @@
         <tbody>
             @foreach ($aplicacionFertilizante as $fertilizante)
             <tr>
-                <td>{{ $fertilizante->fecha }}</td>
-                <td>{{ $fertilizante->seccion->propiedad->nombreHuerta ." - ". 
+                <td>{{ $fertilizante->fechaAplicacion }}</td>
+                <td>{{ $fertilizante->huerta->nombreHuerta ." - ". 
                         $fertilizante->seccion->nombreSeccion }}</td>
-                <td>{{ $fertilizante->lote->lote }}</td>
-                <td>{{ $fertilizante->cantidadPlantas }}
+                <td>{{ $fertilizante->fertilizante->nombreFertilizante }}</td>
+                <td>{{ $fertilizante->kilosHectarea }}
                 </td>
                 <td><a href="#" data-toggle="modal" data-target="#fertilizante{{ $fertilizante->id }}">Ver detalle</a></td>
             </tr>
@@ -409,8 +409,8 @@
                     </div>
                     <div class="modal-body">
                         <div>
-                            Fecha de fertilizante:
-                            <b>{{ $fertilizante->fecha }}</b>
+                            Fecha de apicación:
+                            <b>{{ $fertilizante->fechaAplicacion }}</b>
                         </div>
                         <div>
                             Huerta:
@@ -421,24 +421,16 @@
                             <b>{{ $fertilizante->seccion->nombreSeccion }}</b>
                         </div>
                         <div>
-                            Lote sembrado:
-                            <b>{{ $fertilizante->lote->lote }}</b>
+                            Fertilizante:
+                            <b>{{ $fertilizante->fertilizante->nombreFertilizante }}</b>
                         </div>
                         <div>
-                            Cantidad de Plantas:
-                            <b>{{ $fertilizante->cantidadPlantas }}</b>
+                            Kilos por hectarea:
+                            <b>{{ $fertilizante->kilosHectarea }}</b>
                         </div>
                         <div>
-                            Distancia entre Plantas:
-                            <b>{{ $fertilizante->distanciaPlanta }}</b>
-                        </div>
-                        <div>
-                            Distancia entre Vesanas:
-                            <b>{{ $fertilizante->distanciaVesana }}</b>
-                        </div>
-                        <div>
-                            Tipo de Riego:
-                            <b>{{ $fertilizante->riego }}</b>
+                            Metodo de Aplicación:
+                            <b>{{ $fertilizante->metodoAplicacion }}</b>
                         </div>
                         <div>
                             Responsable:

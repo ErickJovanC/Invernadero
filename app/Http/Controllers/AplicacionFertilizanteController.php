@@ -71,7 +71,7 @@ class AplicacionFertilizanteController extends Controller
             'fechaAplicacion' => $data['fechaAplicacion'],
             'huerta_id' => $huerta_id,
             'seccion_id' => $seccion,
-            'id_fertilizante' => $data['nombreFertilizante'],
+            'fertilizante_id' => $data['nombreFertilizante'],
             'kilosHectarea' => $data['kilosHectarea'],
             'metodoAplicacion' => $data['metodoAplicacion'],
             'empleado_id' => $data['responsable'],

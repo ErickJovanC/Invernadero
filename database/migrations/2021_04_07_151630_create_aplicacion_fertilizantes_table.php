@@ -23,7 +23,7 @@ class CreateAplicacionFertilizantesTable extends Migration
             $table->foreignId('seccion_id')->
                 references('id')->
                 on('seccions');
-            $table->foreignId('id_fertilizante')->
+            $table->foreignId('fertilizante_id')->
                 references('id')->
                 on('fertilizantes');
             $table->integer('kilosHectarea');
