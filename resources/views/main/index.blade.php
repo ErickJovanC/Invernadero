@@ -61,6 +61,13 @@
         </div>
 
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 p-2">
+            <a href="{{ route('fertilizante.create') }}"
+                class="btn btn-success">
+                8.5- Agregar Fertilizante
+            </a>
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 p-2">
             <a href="{{ route('aplicacionFertilizante.create') }}"
                 class="btn btn-success">
                 9- Aplicación de Fertilizante
