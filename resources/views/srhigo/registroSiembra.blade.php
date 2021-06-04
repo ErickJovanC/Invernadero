@@ -6,18 +6,19 @@
     <form action="{{ route('registroSiembra.store') }}" method="post">
     @csrf
         <div class="row mb-4">
+
+            @include('srhigo.campos.huertaSeccion')
             
             {{-- Lote de plantas --}}
-            <div class="form-group col-sm-12 col-md-6 mb-5">
+            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
                 <label for="lotePlanta">No. de Lote de la Planta a tratar</label>
                 <select name="lotePlanta" id="lotePlanta" class="form-control @error('lotePlanta') is-invalid @enderror">
                     <option value="" hidden>Seleccione el Lote de la planta</option>
                     @foreach ($lotes as $lote)
                         <option 
                             value="{{ $lote->id }}"
-                            {{ old('lote') == $lote->id ? 'selected' : '' }}
-                        />
-                        {{ $lote->lote }}
+                            {{ old('lotePlanta') == $lote->id ? 'selected' : '' }} >
+                        {{ $lote->lote ." Plantas: ". $lote->cantidadPlantas }}
                         </option>
                     @endforeach
                 </select>
@@ -28,16 +29,27 @@
                 @enderror
             </div>{{-- Fin Lote de plantas --}}
 
-            {{-- Esto se encuentra dentro del lote
-                <div class="form-group col-sm-12 col-md-6 mb-5">
-                <label for="Varidad">Variedad</label>
-                <div class="alert alert-danger">Hacer lista selectiva</div>
-                <input type="text" name="Variedad" id="Variedad" class="form-control">
-            </div> --}}
+            {{-- Cantidad de plantas a sembrar --}}
+            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
+                <label for="cantidadPlantasSembradas">Plantas sembradas</label>
+                <input type="number" 
+                    name="cantidadPlantasSembradas" 
+                    id="cantidadPlantasSembradas"
+                    max="{{ $fechaActual }}"
+                    value="{{ old('cantidadPlantasSembradas') }}"
+                    class="form-control 
+                        @error('cantidadPlantasSembradas') is-invalid @enderror" 
+                />
+                @error('cantidadPlantasSembradas')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
+            </div>{{-- Fin Cantidad de plantas a sembrar --}}
 
             {{-- Fecha --}}
-            <div class="form-group col-sm-12 col-md-6 mb-5">
-                <label for="fechaSiembra">Fecha de Acción</label>
+            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
+                <label for="fechaSiembra">Fecha de la siembra</label>
                 <input type="date" 
                     name="fechaSiembra" 
                     id="fechaSiembra"
@@ -90,7 +102,7 @@
             </div> {{-- Fin Distanciamiento de siembra --}}
 
             {{-- Metodo de Riego --}}
-            <div class="form-group col-sm-12 col-md-6 mb-5">
+            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
                 <label for="riego">Tipo de riego</label>
                 <select name="riego" id="riego" class="form-control @error('riego') is-invalid @enderror">
                     <option value="" hidden>Seleccione el tipo de rigo</option>
@@ -108,28 +120,7 @@
                 @enderror
             </div>{{-- Fin Metodo Riego --}}
 
-            {{-- Responsable --}}
-            <div class="form-group col-sm-12 col-md-6 mb-5">
-                <label for="responsable">Responsable</label>
-                <select name="responsable" id="responsable" class="form-control @error('responsable') is-invalid @enderror">
-                    <option value="" hidden>Seleccione el empleado</option>
-                    @foreach ($empleados as $empleado)
-                        <option 
-                            value="{{ $empleado->id }}" 
-                            {{ old('responsable') == $empleado->id ? 'selected' : '' }}
-                        >
-                            {{ $empleado->nombreEmpleado ." ".
-                                $empleado->apellidoEmpleado ." (".
-                                $empleado->sobrenombreEmpleado .")"}}
-                        </option>
-                    @endforeach
-                </select>
-                @error('responsable')
-                    <span class="invalid-feedback d-block" role="alert">
-                        <strong>{{$message}}</strong>
-                    </span>
-                @enderror
-            </div> {{-- Fin Responsable --}}
+            @include('srhigo.campos.responsable')
 
         </div>
 

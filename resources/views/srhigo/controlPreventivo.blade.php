@@ -114,43 +114,6 @@
             </div>
 
             {{-- Acción Preventiva --}}
-            {{-- <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
-                <label for="accionPreventiva">Acción Preventiva</label>
-                <select name="accionPreventiva" id="accionPreventiva" class="form-control @error('accionPreventiva') is-invalid @enderror">
-                    <option value="" hidden>¿Que acción se realizo?</option>
-                    <option 
-                        value="Fumigación" 
-                        {{ old('accionPreventiva') == "Fumigación" ? 'selected' : '' }}
-                    >
-                        Fumigación
-                    </option>
-                    <option 
-                        value="Lavado de Planta" 
-                        {{ old('accionPreventiva') == "Lavado de Planta" ? 'selected' : '' }}
-                    >
-                        Lavado de Planta
-                    </option>
-                    <option 
-                        value="Cambio de sustrato" 
-                        {{ old('accionPreventiva') == "Cambio de sustrato" ? 'selected' : '' }}
-                    >
-                        Cambio de sustrato
-                    </option>
-                    <option 
-                        value="Otro" 
-                        {{ old('accionPreventiva') == "Otro" ? 'selected' : '' }}
-                    >
-                        Otro
-                    </option>
-                </select>
-                @error('accionPreventiva')
-                    <span class="invalid-feedback d-block" role="alert">
-                        <strong>{{$message}}</strong>
-                    </span>
-                @enderror
-            </div> Acción Preventiva --}}
-
-            {{-- Acción Preventiva --}}
             <div class="col-12 text-center mb-5">
                 <div class="@error('accionPreventiva') is-invalid @enderror">Acción Preventiva</div>
 

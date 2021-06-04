@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Empleado;
-use Illuminate\Http\Request;
 use App\Models\CalidadPlanta;
+use App\Models\Seccion;
+use Illuminate\Http\Request;
 use App\Models\RegistroSiembra;
+use Illuminate\Support\Facades\Auth;
 
 class RegistroSiembraController extends Controller
 {
@@ -27,18 +28,16 @@ class RegistroSiembraController extends Controller
     public function create()
     {
         $fechaActual = date('Y-m-d');
-        $lotes = CalidadPlanta::all(['id', 'lote']);
-        $empleados = Empleado::all([
-            'id', 
-            'nombreEmpleado', 
-            'apellidoEmpleado', 
-            'sobrenombreEmpleado']);
+        $secciones = Auth::user()->secciones;
+        $lotes = Auth::user()->planta;
+        $empleados = Auth::user()->empleados;
 
         return view('srhigo.registroSiembra')
             ->with([
                 'fechaActual' => $fechaActual,
                 'lotes' => $lotes,
                 'empleados' => $empleados,
+                'secciones' => $secciones,
             ]);
     }
 
@@ -51,21 +50,52 @@ class RegistroSiembraController extends Controller
     public function store(Request $request)
     {
         $data = request()->validate([
+            'huertaSeccion' => 'required',
             'lotePlanta' => 'required',
+            'cantidadPlantasSembradas' => 'required',
             'fechaSiembra' => 'required',
             'distanciaPlanta' => 'required',
             'distanciaVesana' => 'required',
             'riego' => 'required',
             'responsable' => 'required',
         ]);
+
+        $seccion = (int)$data['huertaSeccion'];
+        $huertas = Seccion::where("id", $seccion)->get();
+        foreach ($huertas as $huerta){
+            $huerta_id = $huerta->propiedad_id;
+        }
+        $lote = $data['lotePlanta'];
+        $plantasSembradas = $data['cantidadPlantasSembradas'];
+
+        Auth::user()->registroSiembra()->create([
+            'huerta_id' => $huerta_id, 
+            'seccion_id' => $seccion,
+            'lote_id' => $lote,
+            'cantidadPlantas' => $plantasSembradas,
+            'fecha' => $data['fechaSiembra'],
+            'distanciaPlanta' => $data['distanciaPlanta'],
+            'distanciaVesana' => $data['distanciaVesana'],
+            'riego' => $data['riego'],
+            'empleado_id' => $data['responsable'],
+        ]);
+
+        $lotes = CalidadPlanta::where("id", $lote)->get();
+        foreach ($lotes as $plantasLotes){
+            $plantasLote = $plantasLotes->cantidadPlantas;
+        }
+        $plantasRestantes = $plantasLote - $plantasSembradas;
+
+        CalidadPlanta::where("id", $lote)->update([
+            'cantidadPlantas' => $plantasRestantes,
+        ]);
+        
+        return redirect(route('main'));
+
+
+        // return Route::put('calidadPlanta');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\RegistroSiembra  $registroSiembra
-     * @return \Illuminate\Http\Response
-     */
     public function show(RegistroSiembra $registroSiembra)
     {
         //

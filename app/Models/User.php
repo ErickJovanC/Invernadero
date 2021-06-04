@@ -69,4 +69,7 @@ class User extends Authenticatable
         return $this->hasMany(ControlPreventivo::class);
     }
 
+    public function registroSiembra(){
+        return $this->hasMany(RegistroSiembra::class);
+    }
 }

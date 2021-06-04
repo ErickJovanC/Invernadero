@@ -60,7 +60,6 @@ class RegistroPropiedadController extends Controller
             'estado' => 'required',
             'municipio' => 'required',
         ]);
-        //dd($data);
 
         // Insersión a la BD
         auth()->user()->huertas()->create([

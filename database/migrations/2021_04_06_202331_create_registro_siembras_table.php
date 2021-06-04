@@ -15,6 +15,28 @@ class CreateRegistroSiembrasTable extends Migration
     {
         Schema::create('registro_siembras', function (Blueprint $table) {
             $table->id();
+
+            $table->foreignId('huerta_id')
+                ->references('id')
+                ->on('registro_propiedads');
+            $table->foreignId('seccion_id')
+                ->references('id')
+                ->on('seccions');
+            $table->foreignId('lote_id')
+                ->references('id')
+                ->on('calidad_plantas');
+            $table->float('cantidadPlantas',);
+            $table->date('fecha',);
+            $table->float('distanciaPlanta',);
+            $table->float('distanciaVesana',);
+            $table->string('riego', 28);
+            $table->foreignId('empleado_id')
+            ->references('id')
+            ->on('empleados');
+            $table->foreignId('user_id')
+            ->references('id')
+            ->on('users');
+
             $table->timestamps();
         });
     }
