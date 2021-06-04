@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Seccion;
 use App\Models\Empleado;
 use Illuminate\Http\Request;
 use App\Models\CalidadPlanta;
@@ -28,15 +29,17 @@ class AplicacionFertilizanteController extends Controller
     public function create()
     {
         $fechaActual = date('Y-m-d');
+        $secciones = Auth::User()->secciones;
         $lotes = CalidadPlanta::all(['id', 'lote']);
-        $empleados = Auth::user()->empleados;
-        $fertilizantes = Auth::user()->registroFertilizante;
+        $empleados = Auth::User()->empleados;
+        $fertilizantes = Auth::User()->registroFertilizante;
         return view('srhigo.aplicacionFertilizante')->
         with([
             'lotes' => $lotes, 
             'fechaActual' => $fechaActual,
             'empleados' => $empleados,
             'fertilizantes' => $fertilizantes,
+            'secciones' => $secciones,
         ]);
     }
 
@@ -50,14 +53,24 @@ class AplicacionFertilizanteController extends Controller
     {
         $data = request()->validate([
             'fechaAplicacion' => 'required',
+            'huertaSeccion' => 'required',
             'nombreFertilizante' => 'required',
             'kilosHectarea' => 'required',
             'metodoAplicacion' => 'required',
             'responsable' => 'required',
         ]);
 
+        $seccion = (int)$data['huertaSeccion'];
+        $huertas = Seccion::where("id", $seccion)->get();
+        
+        foreach ($huertas as $huerta){
+            $huerta_id = $huerta->propiedad_id;
+        }
+
         Auth::user()->aplicacionFertilizante()->create([
             'fechaAplicacion' => $data['fechaAplicacion'],
+            'huerta_id' => $huerta_id,
+            'seccion_id' => $seccion,
             'id_fertilizante' => $data['nombreFertilizante'],
             'kilosHectarea' => $data['kilosHectarea'],
             'metodoAplicacion' => $data['metodoAplicacion'],

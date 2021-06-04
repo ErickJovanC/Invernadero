@@ -372,6 +372,95 @@
         </tbody>
     </table>
     {{-- Fin Registro de Siembra --}}
+
+    {{-- Aplicación de Fertilizante --}}
+    <h2 class="h1 mt-5">Aplicación de fertilizantes</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Fecha</th>
+                <th scope="col">Huerta y Sección</th>
+                <th scope="col">Fertilizante</th>
+                <th scope="col">Kilos por hectarea</th>
+                <th scope="col">Ver Detalle</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($aplicacionFertilizante as $fertilizante)
+            <tr>
+                <td>{{ $fertilizante->fecha }}</td>
+                <td>{{ $fertilizante->seccion->propiedad->nombreHuerta ." - ". 
+                        $fertilizante->seccion->nombreSeccion }}</td>
+                <td>{{ $fertilizante->lote->lote }}</td>
+                <td>{{ $fertilizante->cantidadPlantas }}
+                </td>
+                <td><a href="#" data-toggle="modal" data-target="#fertilizante{{ $fertilizante->id }}">Ver detalle</a></td>
+            </tr>
+            
+            <!-- Modal -->
+            <div class="modal fade" id="fertilizante{{ $fertilizante->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Detalles</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            Fecha de fertilizante:
+                            <b>{{ $fertilizante->fecha }}</b>
+                        </div>
+                        <div>
+                            Huerta:
+                            <b>{{ $fertilizante->huerta->nombreHuerta }}</b>
+                        </div>
+                        <div>
+                            Sección: 
+                            <b>{{ $fertilizante->seccion->nombreSeccion }}</b>
+                        </div>
+                        <div>
+                            Lote sembrado:
+                            <b>{{ $fertilizante->lote->lote }}</b>
+                        </div>
+                        <div>
+                            Cantidad de Plantas:
+                            <b>{{ $fertilizante->cantidadPlantas }}</b>
+                        </div>
+                        <div>
+                            Distancia entre Plantas:
+                            <b>{{ $fertilizante->distanciaPlanta }}</b>
+                        </div>
+                        <div>
+                            Distancia entre Vesanas:
+                            <b>{{ $fertilizante->distanciaVesana }}</b>
+                        </div>
+                        <div>
+                            Tipo de Riego:
+                            <b>{{ $fertilizante->riego }}</b>
+                        </div>
+                        <div>
+                            Responsable:
+                            <b>
+                                {{
+                                    $fertilizante->Empleado->nombreEmpleado .' '.
+                                    $fertilizante->Empleado->apellidoEmpleado .' ('.
+                                    $fertilizante->Empleado->sobrenombreEmpleado .')'
+                                }}
+                            </b>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+            @endforeach
+        </tbody>
+    </table>
+    {{-- Fin Aplicación de Fertilizante --}}
 </div>
 <a href="{{ route('main') }}" class="btn btn-success">Menú</a>
 @endsection

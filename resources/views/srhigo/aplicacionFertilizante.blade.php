@@ -25,6 +25,10 @@
                 @enderror
             </div>{{-- Fin Fecha --}}
 
+            @include('srhigo.campos.huertaSeccion')
+
+            <div class="w-100"></div>
+
             {{-- Fertilizantes --}}
             <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
                 <label for="nombreFertilizante">Fertilizante Aplicado</label>
@@ -46,9 +50,12 @@
                 @enderror
             </div> {{-- Fin Fertilizantes --}}
 
+            {{-- Botón Agregar Fertilizante --}}
             <div class="col-sm-12 col-md-6 col-lg-4">
                 <a href="{{ route('fertilizante.create') }}" class="btn btn-info w-100">Agregar Otro Fertilizante</a>
-            </div>
+            </div> {{-- Fin Botón Agregar Fertilizante --}}
+
+            <div class="w-100"></div>
 
             <div class="form-group col-6 col-md-4 col-lg-3 mb-5">
                 <label for="kilosHectarea">Kilos por hectarea</label>

@@ -17,6 +17,12 @@ class CreateAplicacionFertilizantesTable extends Migration
             $table->id();
 
             $table->date('fechaAplicacion');
+            $table->foreignId('huerta_id')->
+                references('id')->
+                on('registro_propiedads');
+            $table->foreignId('seccion_id')->
+                references('id')->
+                on('seccions');
             $table->foreignId('id_fertilizante')->
                 references('id')->
                 on('fertilizantes');

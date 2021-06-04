@@ -11,6 +11,8 @@ class AplicacionFertilizante extends Model
 
     protected $fillable = [
         'fechaAplicacion',
+        'huerta_id',
+        'seccion_id',
         'id_fertilizante',
         'kilosHectarea',
         'metodoAplicacion',
