@@ -15,6 +15,18 @@ class CreateRegistroRiegosTable extends Migration
     {
         Schema::create('registro_riegos', function (Blueprint $table) {
             $table->id();
+
+            $table->foreignId('huerta_id')->references('id')->on('registro_propiedads');
+            $table->foreignId('seccion_id')->references('id')->on('seccions');
+            $table->string('metodoRiego', 28);
+            $table->date('fecha');
+            $table->time('horaInicio');
+            $table->time('horaFin');
+            $table->smallInteger('litrosHora');
+            $table->smallInteger('consumoEnergia');
+            $table->foreignId('empleado_id')->references('id')->on('empleados');
+            $table->foreignId('user_id')->references('id')->on('users');
+
             $table->timestamps();
         });
     }

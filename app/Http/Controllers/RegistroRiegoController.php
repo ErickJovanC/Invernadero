@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Seccion;
 use App\Models\Empleado;
 use Illuminate\Http\Request;
 use App\Models\RegistroRiego;
@@ -47,16 +48,36 @@ class RegistroRiegoController extends Controller
     public function store(Request $request)
     {
         $data = request()->validate([
-            'seccion' => 'required',
+            'huertaSeccion' => 'required',
             'metodoRiego' => 'required',
             'fuenteAgua' => 'required',
-            'fechaRiego' => 'required',
+            'fecha' => 'required',
             'horaInicio' => 'required',
             'horaFin' => 'required',
-            'tambosAgua' => 'required',
+            'litrosHora' => 'required',
             'consumoEnergia' => 'required',
             'responsable' => 'required',
             ]);
+
+            $seccion = (int)$data['huertaSeccion'];
+            $huertas = Seccion::where("id", $seccion)->get();
+            foreach ($huertas as $huerta){
+                $huerta_id = $huerta->propiedad_id;
+            }
+
+            Auth::user()->riego()->create([
+                'huerta_id' => $huerta_id,
+                'seccion_id' => $seccion,
+                'metodoRiego' => $data['metodoRiego'],
+                'fecha' => $data['fecha'],
+                'horaInicio' => $data['horaInicio'],
+                'horaFin' => $data['horaFin'],
+                'litrosHora' => $data['litrosHora'],
+                'consumoEnergia' => $data['consumoEnergia'],
+                'empleado_id' => $data['responsable'],
+            ]);
+
+            return redirect(route('main'));
     }
 
     /**

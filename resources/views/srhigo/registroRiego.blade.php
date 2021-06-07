@@ -7,29 +7,10 @@
     @csrf    
         <div class="row">
             
-            {{-- Seccion --}}
-            <div class="form-group col-sm-12 col-md-6 mb-5">
-                <label for="seccion">Seccion a Regar</label>
-                <select name="seccion" id="seccion" class="form-control @error('seccion') is-invalid @enderror">
-                    <option value="" hidden>Seleccione la seccion a Regar</option>
-                    @foreach ($secciones as $seccion)
-                        <option 
-                            value="{{ $seccion->id }}"
-                            {{ old('seccion') == $seccion->id ? 'selected' : '' }}
-                        />
-                        {{ $seccion->nombreSeccion }}
-                        </option>
-                    @endforeach
-                </select>
-                @error('seccion')
-                    <span class="invalid-feedback d-block" role="alert">
-                        <strong>{{$message}}</strong>
-                    </span>
-                @enderror
-            </div>{{-- Fin Seccion --}}
+            @include('srhigo.campos.huertaSeccion')
 
             {{-- Metodo de Riego --}}
-            <div class="form-group col-sm-12 col-md-6 mb-5">
+            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
                 <label for="metodoRiego">Tipo de riego</label>
                 <select name="metodoRiego" id="metodoRiego" class="form-control @error('metodoRiego') is-invalid @enderror">
                     <option value="" hidden>Seleccione el tipo de rigo</option>
@@ -48,7 +29,7 @@
             </div>{{-- Fin Metodo Riego --}}
 
             {{-- Fuente de Agua --}}
-            <div class="form-group col-sm-12 col-md-6 mb-5">
+            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
                 <label for="fuenteAgua">Fuente de Agua</label>
                 <select name="fuenteAgua" id="fuenteAgua" class="form-control @error('fuenteAgua') is-invalid @enderror">
                     <option value="" hidden>Seleccione el origen del agua</option>
@@ -72,23 +53,7 @@
                 @enderror
             </div>{{-- Fin Fuente de agua --}}
 
-            {{-- Fecha --}}
-            <div class="form-group col-sm-12 col-md-6 mb-5">
-                <label for="fechaRiego">Fecha de Acción</label>
-                <input type="date" 
-                    name="fechaRiego" 
-                    id="fechaRiego"
-                    max="{{ $fechaActual }}"
-                    value="{{ old('fechaRiego') }}"
-                    class="form-control 
-                        @error('fechaRiego') is-invalid @enderror" 
-                />
-                @error('fechaRiego')
-                    <span class="invalid-feedback d-block" role="alert">
-                        <strong>{{$message}}</strong>
-                    </span>
-                @enderror
-            </div>{{-- Fin Fecha --}}
+            @include('srhigo.campos.fecha')
 
             {{-- Hora Inicio--}}
             <div class="form-group col-sm-12 col-md-4 col-lg-3 mb-5">
@@ -120,17 +85,18 @@
                 @enderror
             </div>{{-- Fin Hora Fin--}}
 
-            {{-- TODO Completar esto JS solo visual, el controlador calculara el tiempo total--}}
-            <div class="form-group col-12 col-md-4 col-lg-3">
+            {{-- TODO Completar esto JS solo visual, el controlador calculara el tiempo total
+            Por alguna razon no funciona bien el bluetooth, tengo sospecha de que sepodria tratarde la zona, que ahy alguna seal que lo obstruye, talvez la antena de los taxis, pero no estoy seguro.--}}
+            {{-- <div class="form-group col-12 col-md-4 col-lg-3">
                 <label for="HoraTotal">
                     Tiempo total: 
                 </label>
                 <span class="h1">
                     00:00 hrs
                 </span>
-            </div>
+            </div> --}}
             
-            {{-- Tambos de agua --}}
+            {{-- Listro de agua por hora --}}
             <div class="form-group col-sm-6 col-md-3 mb-5">
                 <label for="litrosHora">Litros por hora</label>
                 <input type="number" 
@@ -144,10 +110,10 @@
                         <strong>{{$message}}</strong>
                     </span>
                 @enderror
-            </div> {{-- Fin Tambos de agua --}}
+            </div> {{-- Fin Listro de agua por hora --}}
 
             {{-- Consumo Energia --}}
-            <div class="form-group col-sm-12 col-md-6 mb-5">
+            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
                 <label for="consumoEnergia">Consumo de energía o combustible usado $</label>
                 <input type="number" 
                     name="consumoEnergia" id="consumoEnergia"
