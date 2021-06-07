@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use DateTime;
 
 use App\Models\Seccion;
 use App\Models\Empleado;
@@ -65,6 +66,12 @@ class RegistroRiegoController extends Controller
                 $huerta_id = $huerta->propiedad_id;
             }
 
+            $horaInicio = new DateTime ($request['horaInicio']);
+            $horaFin = new DateTime ($request['horaFin']);
+            $horas = $horaInicio->diff($horaFin);
+            $horas = $horas->format('%h:%i');
+            // dd($horas);
+
             Auth::user()->riego()->create([
                 'huerta_id' => $huerta_id,
                 'seccion_id' => $seccion,
@@ -72,6 +79,7 @@ class RegistroRiegoController extends Controller
                 'fecha' => $data['fecha'],
                 'horaInicio' => $data['horaInicio'],
                 'horaFin' => $data['horaFin'],
+                'horas' => $horas,
                 'litrosHora' => $data['litrosHora'],
                 'consumoEnergia' => $data['consumoEnergia'],
                 'empleado_id' => $data['responsable'],

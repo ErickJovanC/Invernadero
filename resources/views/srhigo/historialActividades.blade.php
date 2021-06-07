@@ -467,7 +467,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($fertilizanteOrganico as $organico)
+            @foreach ($registroRiego as $organico)
             <tr>
                 <td>{{ $organico->fecha }}</td>
                 <td>{{ $organico->huerta->nombreHuerta ." - ". 
@@ -534,6 +534,99 @@
         </tbody>
     </table>
     {{-- Fin Aplicación de Fertilizante Organico --}}
+
+    {{-- Registro de Riego --}}
+    <h2 class="h1 mt-5">Registro de Riego</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Fecha</th>
+                <th scope="col">Huerta y Sección</th>
+                <th scope="col">Metodo de Reigo</th>
+                <th scope="col">Horas de riego</th>
+                <th scope="col">Ver Detalle</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($registroRiego as $riego)
+            <tr>
+                <td>{{ $riego->fecha }}</td>
+                <td>{{ $riego->huerta->nombreHuerta ." - ". 
+                        $riego->seccion->nombreSeccion }}</td>
+                <td>{{ $riego->metodoRiego }}
+                <td>{{ $riego->horas }}</td>
+                </td>
+                <td><a href="#" data-toggle="modal" data-target="#riego{{ $riego->id }}">Ver detalle</a></td>
+            </tr>
+            
+            <!-- Modal -->
+            <div class="modal fade" id="riego{{ $riego->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Detalles</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            Fecha:
+                            <b>{{ $riego->fecha }}</b>
+                        </div>
+                        <div>
+                            Huerta:
+                            <b>{{ $riego->huerta->nombreHuerta }}</b>
+                        </div>
+                        <div>
+                            Sección: 
+                            <b>{{ $riego->seccion->nombreSeccion }}</b>
+                        </div>
+                        <div>
+                            Metodo de Riego:
+                            <b>{{ $riego->metodoRiego }}</b>
+                        </div>
+                        <div>
+                            Hora de Inicio:
+                            <b>{{ $riego->horaInicio }}</b>
+                        </div>
+                        <div>
+                            Hora Fin:
+                            <b>{{ $riego->horaFin }}</b>
+                        </div>
+                        <div>
+                            Horas totales:
+                            <b>{{ $riego->horas }}</b>
+                        </div>
+                        <div>
+                            Litros por Hora:
+                            <b>{{ $riego->litrosHora }}</b>
+                        </div>
+                        <div>
+                            Consumo de Energia:
+                            <b>{{ $riego->consumoEnergia }}</b>
+                        </div>
+                        <div>
+                            Responsable:
+                            <b>
+                                {{
+                                    $riego->Empleado->nombreEmpleado .' '.
+                                    $riego->Empleado->apellidoEmpleado .' ('.
+                                    $riego->Empleado->sobrenombreEmpleado .')'
+                                }}
+                            </b>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+            @endforeach
+        </tbody>
+    </table>
+    {{-- Fin Registro de Riego --}}
 </div>
 <a href="{{ route('main') }}" class="btn btn-success">Menú</a>
 @endsection

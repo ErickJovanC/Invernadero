@@ -22,6 +22,7 @@ class HistorialController extends Controller
         $registroSiembra = Auth::user()->registroSiembra;
         $aplicacionFertilizante = Auth::user()->aplicacionFertilizante;
         $fertilizanteOrganico = Auth::user()->fertilizanteOrganico;
+        $registroRiego = Auth::user()->riego;
         
         return view('srhigo.historialActividades')->
             with([
@@ -31,6 +32,7 @@ class HistorialController extends Controller
                 'registroSiembra' => $registroSiembra,
                 'aplicacionFertilizante' => $aplicacionFertilizante,
                 'fertilizanteOrganico' => $fertilizanteOrganico,
+                'registroRiego' => $registroRiego,
             ]);
     }
 
