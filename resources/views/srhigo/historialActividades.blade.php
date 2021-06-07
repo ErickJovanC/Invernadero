@@ -467,7 +467,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($registroRiego as $organico)
+            @foreach ($fertilizanteOrganico as $organico)
             <tr>
                 <td>{{ $organico->fecha }}</td>
                 <td>{{ $organico->huerta->nombreHuerta ." - ". 
@@ -627,6 +627,90 @@
         </tbody>
     </table>
     {{-- Fin Registro de Riego --}}
+
+    {{-- Limpieza de Canales --}}
+    <h2 class="h1 mt-5">Limpieza de Canales</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Fecha</th>
+                <th scope="col">Huerta</th>
+                <th scope="col">Canal</th>
+                <th scope="col">Longitud</th>
+                <th scope="col">Ver Detalle</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($limpiezaCanales as $canal)
+            <tr>
+                <td>{{ $canal->fecha }}</td>
+                <td>{{ $canal->huerta->nombreHuerta }}</td>
+                <td>{{ $canal->nombreCanal }}
+                <td>{{ $canal->longitud }}</td>
+                </td>
+                <td><a href="#" data-toggle="modal" data-target="#canal{{ $canal->id }}">Ver detalle</a></td>
+            </tr>
+            
+            <!-- Modal -->
+            <div class="modal fade" id="canal{{ $canal->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Detalles</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            Fecha:
+                            <b>{{ $canal->fecha }}</b>
+                        </div>
+                        <div>
+                            Huerta:
+                            <b>{{ $canal->huerta->nombreHuerta }}</b>
+                        </div>
+                        <div>
+                            Canal: 
+                            <b>{{ $canal->nombreCanal }}</b>
+                        </div>
+                        <div>
+                            Longitud:
+                            <b>{{ $canal->longitud }}</b>
+                        </div>
+                        <div>
+                            Revestimiento:
+                            <b>{{ $canal->revestimiento }}</b>
+                        </div>
+                        <div>
+                            Acciones Realizadas:
+                            <b>{{ $canal->accionesRealizadas }}</b>
+                        </div>
+                        <div>
+                            Observaciones:
+                            <b>{{ $canal->observaciones }}</b>
+                        </div>
+                        <div>
+                            Responsable:
+                            <b>
+                                {{
+                                    $canal->Empleado->nombreEmpleado .' '.
+                                    $canal->Empleado->apellidoEmpleado .' ('.
+                                    $canal->Empleado->sobrenombreEmpleado .')'
+                                }}
+                            </b>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+            @endforeach
+        </tbody>
+    </table>
+    {{-- Fin Limpieza de Canales --}}
 </div>
 <a href="{{ route('main') }}" class="btn btn-success">Menú</a>
 @endsection

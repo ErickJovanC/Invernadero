@@ -19,5 +19,13 @@ class LimpiezaCanales extends Model
     'observaciones',
     'empleado_id',
     'user_id',
-];
+    ];
+
+    public function huerta(){
+        return $this->belongsTo(RegistroPropiedad::class);
+    }
+
+    public function Empleado(){
+        return $this->belongsTo(Empleado::class);
+    }
 }
