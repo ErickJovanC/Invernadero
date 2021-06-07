@@ -8,7 +8,7 @@
         <div class="row">
             
             {{-- Huerta --}}
-            <div class="form-group col-sm-12 col-md-6 mb-5">
+            <div class="form-group col-sm-12 col-md-6  col-lg-4 mb-5">
                 <label for="huerta">Huerta</label>
                 <select name="huerta" id="huerta" class="form-control @error('huerta') is-invalid @enderror">
                     <option value="" hidden>Seleccione la huerta</option>
@@ -28,26 +28,10 @@
                 @enderror
             </div>{{-- Fin Huerta --}}
 
-            {{-- Fecha --}}
-            <div class="form-group col-sm-12 col-md-6 mb-5">
-                <label for="fechaLimpieza">Fecha de Aplicación</label>
-                <input type="date" 
-                    name="fechaLimpieza" 
-                    id="fechaLimpieza"
-                    max="{{ $fechaActual }}"
-                    value="{{ old('fechaLimpieza') }}"
-                    class="form-control 
-                        @error('fechaLimpieza') is-invalid @enderror" 
-                />
-                @error('fechaLimpieza')
-                    <span class="invalid-feedback d-block" role="alert">
-                        <strong>{{$message}}</strong>
-                    </span>
-                @enderror
-            </div>{{-- Fin Fecha --}}
+            @include('srhigo.campos.fecha')
 
             {{-- Nombre canal --}}
-            <div class="form-group col-sm-12 col-md-6 mb-5">
+            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
                 <label for="nombreCanal">Nombre o número del canal a limpiar</label>
                 <input type="text" 
                     name="nombreCanal" 
@@ -63,7 +47,7 @@
             </div> {{-- Fin Nombre canal --}}
 
             {{-- Longitud Canal --}}
-            <div class="form-group col-sm-12 col-md-6 mb-5">
+            <div class="form-group col-sm-12 col-md-6  col-lg-4 mb-5">
                 <label for="longitudCanal">Longitud de canal limpiado o reparado (metros)</label>
                 <input type="number" 
                     name="longitudCanal" 
@@ -79,8 +63,8 @@
             </div> {{-- Fin Longitud Canal --}}
 
             {{-- Revestimiento --}}
-            <div class="form-group col-sm-12 col-md-6 mb-5">
-                <label for="revestimiento">revestimiento</label>
+            <div class="form-group col-sm-12 col-md-6  col-lg-4 mb-5">
+                <label for="revestimiento">Revestimiento</label>
                 <select name="revestimiento" id="revestimiento" class="form-control @error('revestimiento') is-invalid @enderror">
                     <option value="" hidden>Seleccione el tipo de revestimiento</option>
                     <option 

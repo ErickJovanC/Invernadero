@@ -88,4 +88,8 @@ class User extends Authenticatable
     public function riego(){
         return $this->hasMany(RegistroRiego::class);
     }
+
+    public function limpiezaCanales(){
+        return $this->hasMany(LimpiezaCanales::class);
+    }
 }

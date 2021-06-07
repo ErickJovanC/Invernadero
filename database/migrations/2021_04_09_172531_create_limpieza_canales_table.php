@@ -15,6 +15,17 @@ class CreateLimpiezaCanalesTable extends Migration
     {
         Schema::create('limpieza_canales', function (Blueprint $table) {
             $table->id();
+
+            $table->foreignId('huerta_id')->references('id')->on('registro_propiedads');
+            $table->date('fecha');
+            $table->string('nombreCanal', 30);
+            $table->smallInteger('longitud');
+            $table->string('revestimiento', 8);
+            $table->string('accionesRealizadas', 50);
+            $table->text('observaciones')->nullable();
+            $table->foreignId('empleado_id')->references('id')->on('empleados');
+            $table->foreignId('user_id')->references('id')->on('users');
+
             $table->timestamps();
         });
     }

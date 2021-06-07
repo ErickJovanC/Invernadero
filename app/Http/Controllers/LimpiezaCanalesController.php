@@ -47,7 +47,7 @@ class LimpiezaCanalesController extends Controller
         // dd($request->all());
         $data = request()->validate([
             'huerta' => 'required',
-            'fechaLimpieza' => 'required',
+            'fecha' => 'required',
             'nombreCanal' => 'required',
             'longitudCanal' => 'required',
             'revestimiento' => 'required',
@@ -55,6 +55,18 @@ class LimpiezaCanalesController extends Controller
             'responsable' => 'required',
         ]);
 
+        Auth::user()->limpiezaCanales()->create([
+            'huerta_id' => $request['huerta'],
+            'fecha' => $request['fecha'],
+            'nombreCanal' => $request['nombreCanal'],
+            'longitud' => $request['longitudCanal'],
+            'revestimiento' => $request['revestimiento'],
+            'accionesRealizadas' => implode(', ', $request->accion),
+            'observaciones' => $request['observaciones'],
+            'empleado_id' => $request['responsable'],
+        ]);
+
+        return redirect(route('main'));
     }
 
     /**
