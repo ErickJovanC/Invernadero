@@ -15,6 +15,15 @@ class CreateControlPreventivoPlagasTable extends Migration
     {
         Schema::create('control_preventivo_plagas', function (Blueprint $table) {
             $table->id();
+
+            $table->date('fecha');
+            $table->foreignId('huerta_id')->references('id')->on('registro_propiedads');
+            $table->foreignId('seccion_id')->references('id')->on('seccions');
+            $table->string('plagas');
+            $table->string('acciones');
+            $table->foreignId('empleado_id')->references('id')->on('empleados');
+            $table->foreignId('user_id')->references('id')->on('users');
+
             $table->timestamps();
         });
     }

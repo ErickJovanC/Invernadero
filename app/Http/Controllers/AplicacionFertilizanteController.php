@@ -62,7 +62,6 @@ class AplicacionFertilizanteController extends Controller
 
         $seccion = (int)$data['huertaSeccion'];
         $huertas = Seccion::where("id", $seccion)->get();
-        
         foreach ($huertas as $huerta){
             $huerta_id = $huerta->propiedad_id;
         }

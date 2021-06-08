@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Plaga;
+use App\Models\Seccion;
 use App\Models\Empleado;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -57,6 +58,24 @@ class ControlPreventivoPlagaController extends Controller
             'accionPreventiva' => 'required',
             'responsable' => 'required',
         ]);
+
+        $seccion = (int)$data['huertaSeccion'];
+        $huertas = Seccion::where("id", $seccion)->get();
+        foreach ($huertas as $huerta){
+            $huerta_id = $huerta->propiedad_id;
+        }
+
+        Auth::user()->controlPreventivoArbol()->create([
+            'fecha' => $data['fecha'],
+            'huerta_id' => $huerta_id,
+            'seccion_id'=> $seccion,
+            'plagas' => implode(', ', $request->plagas),
+            'acciones' => implode(', ', $request->accionPreventiva),
+            'acciones',
+            'empleado_id' => $data['responsable'],
+        ]);
+
+        return redirect(route('main'));
     }
 
     /**

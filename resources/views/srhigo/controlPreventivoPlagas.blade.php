@@ -6,6 +6,8 @@
     <form action="{{ route('plagas.store') }}" method="post" class="col-12">
         @csrf
         <div class="row">
+
+            @include('srhigo.campos.fecha')
             @include('srhigo.campos.huertaSeccion')
 
             {{-- Plagas a prevenir --}}
@@ -37,23 +39,80 @@
                 @enderror
             </div>{{-- Fin Plagas a prevenir --}}
 
-            @include('srhigo.campos.fecha')
-
             {{-- Acción Preventiva --}}
-            <div class="form-group col-sm-12 col-md-6 mb-5">
-                <label for="accionPreventiva">Acción Preventiva</label>
-                <input type="text" 
-                    name="accionPreventiva" 
-                    id="accionPreventiva" 
-                    value="{{ old('accionPreventiva') }}"
-                    class="form-control @error('accionPreventiva') is-invalid @enderror"
-                />
+            <div class="col-12 text-center mb-5">
+                <div class="@error('accionPreventiva') is-invalid @enderror">Acción Preventiva</div>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input 
+                            @error('accionPreventiva') is-invalid @enderror" 
+                            type="checkbox" 
+                            value="Fumigación" 
+                            id="fumigacion"
+                            name="accionPreventiva[]" 
+                            @if( in_array('Fumigación', old('accionPreventiva', [])) )
+                                checked
+                            @endif
+                        />
+                        <label class="form-check-label" for="fumigacion">
+                            Fumigación
+                        </label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input 
+                            @error('accionPreventiva') is-invalid @enderror" 
+                            type="checkbox" 
+                            value="Lavado de Planta" 
+                            id="lavado"
+                            name="accionPreventiva[]" 
+                            @if( in_array('Lavado de Planta', old('accionPreventiva', [])) )
+                                checked
+                            @endif
+                        />
+                        <label class="form-check-label" for="lavado">
+                            Lavado de Planta
+                        </label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input 
+                            @error('accionPreventiva') is-invalid @enderror" 
+                            type="checkbox" 
+                            value="Cambio de sustrato" 
+                            id="sustrato"
+                            name="accionPreventiva[]" 
+                            @if( in_array('Cambio de sustrato', old('accionPreventiva', [])) )
+                                checked
+                            @endif
+                        />
+                        <label class="form-check-label" for="sustrato">
+                            Cambio de sustrato
+                        </label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input 
+                            @error('accionPreventiva') is-invalid @enderror" 
+                            type="checkbox" 
+                            value="Otro" 
+                            id="Otro"
+                            name="accionPreventiva[]" 
+                            @if( in_array('Otro', old('accionPreventiva', [])) )
+                                checked
+                            @endif
+                        />
+                        <label class="form-check-label" for="Otro">
+                            Otro
+                        </label>
+                    </div>
+
                 @error('accionPreventiva')
                     <span class="invalid-feedback d-block" role="alert">
-                        <strong>{{$message}}</strong>
+                        <strong>Seleccione al menos una acción realizada</strong>
                     </span>
                 @enderror
-            </div> {{-- Acción Preventiva --}}
+            </div>{{-- Fin Acción Preventiva --}}
 
             @include('srhigo.campos.responsable')
 

@@ -27,7 +27,6 @@
                 @enderror
             </div>{{-- Fin Lote de plantas --}}
 
-            {{-- @include('srhigo.campos.plagas') --}}
             {{-- Plagas a prevenir --}}
             <div class="col-12 text-center form-group mb-5">
                 <div class="@error('plagas') is-invalid @enderror">Plagas a Prevenir</div>

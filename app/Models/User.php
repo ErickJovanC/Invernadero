@@ -92,4 +92,8 @@ class User extends Authenticatable
     public function limpiezaCanales(){
         return $this->hasMany(LimpiezaCanales::class);
     }
+
+    public function controlPreventivoArbol(){
+        return $this->hasMany(ControlPreventivoPlaga::class);
+    }
 }
