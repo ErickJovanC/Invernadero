@@ -6,11 +6,11 @@
     <form action="{{ route('identificacionPlagas.store') }}" method="post" class="col-12">
     @csrf
         <div class="row align-items-end">
-            @include('srhigo.campos.huertaSeccion')
             @include('srhigo.campos.fecha')
+            @include('srhigo.campos.huertaSeccion')
 
             {{-- Variedad --}}
-            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
+            {{-- <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
                 <label for="variedad">Variedad</label>
                 <input type="text" 
                     name="variedad" id="variedad" 
@@ -22,7 +22,8 @@
                             <strong>{{$message}}</strong>
                         </span>
                 @enderror
-            </div> {{-- Fin Variedad --}}
+            </div>  --}}
+            {{-- Fin Variedad --}}
 
             {{-- Periodo de Monitoreo --}}
             <div class="col-12 col-md-6 mb-5 ">
@@ -60,7 +61,7 @@
                         {{ old('periodoMonitoreo') == 'Crecimiento' ? 'checked' :  '' }}
                         class="form-check-input @error('periodoMonitoreo') is-invalid @enderror" 
                     />
-                    <label class="form-check-label" for="crecimiento">Crecimiento (De 4 a 8 Meses despues de la siembra)</label>
+                    <label class="form-check-label" for="crecimiento">Crecimiento </label>
                 </div>
 
                 <div class="form-check form-check-inline">
@@ -105,7 +106,7 @@
 
             {{-- Unudad de Muestreo --}}
             <div class="form-group col-12 col-sm-6 col-md-3 mb-5">
-                <label for="unidadMuestreo">Unudad de muestreo</label>
+                <label for="unidadMuestreo">Unidad de muestreo</label>
                 <input type="text" 
                 name="unidadMuestreo" 
                 id="unidadMuestreo"
@@ -118,21 +119,6 @@
                 @enderror
             </div>{{-- Fin  Unudad de Muestreo--}}
             
-            {{-- Daño por Plaga  --}}
-            <div class="form-group col-12 col-sm-6 col-md-3 mb-5">
-                <label for="danioPlaga">Daño provocado por la plaga</label>
-                <input type="text" 
-                name="danioPlaga" 
-                id="danioPlaga"
-                value="{{ old('danioPlaga')}}"
-                class="form-control @error('danioPlaga') is-invalid @enderror">
-                @error('danioPlaga')
-                    <span class="invalid-feedback d-block" role="alert">
-                        <strong>{{$message}}</strong>
-                    </span>
-                @enderror
-            </div>{{-- Fin  Daño por Plaga --}}
-
             {{-- Cantidad Encontrada  --}}
             <div class="form-group col-12 col-sm-6 col-md-4 mb-5">
                 <label for="cantidadEncontrada">Cantidad Encontrada en la Unidad de muestreo</label>
@@ -147,10 +133,26 @@
                         <strong>{{$message}}</strong>
                     </span>
                 @enderror
-            </div>{{-- Fin  Cantidad Encontrada --}}
+            </div>
+            {{-- Fin  Cantidad Encontrada --}}
+
+            {{-- Daño por Plaga  --}}
+            <div class="form-group col-md-6 col-lg-4 mb-5">
+                <label for="danioPlaga">Daño provocado por la plaga</label>
+                <input type="text" 
+                name="danioPlaga" 
+                id="danioPlaga"
+                value="{{ old('danioPlaga')}}"
+                class="form-control @error('danioPlaga') is-invalid @enderror">
+                @error('danioPlaga')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
+            </div>{{-- Fin  Daño por Plaga --}}
 
             {{-- Total  --}}
-            <div class="form-group col-12 col-sm-6 col-md-3 mb-5">
+            {{-- <div class="form-group col-12 col-sm-6 col-md-3 mb-5">
                 <label for="total">Total</label>
                 <input type="number" 
                 min="1"
@@ -163,10 +165,11 @@
                         <strong>{{$message}}</strong>
                     </span>
                 @enderror
-            </div>{{-- Fin  Total --}}
+            </div> --}}
+            {{-- Fin  Total --}}
 
             {{-- Promedio  --}}
-            <div class="form-group col-12 col-sm-6 col-md-3 mb-5">
+            {{-- <div class="form-group col-12 col-sm-6 col-md-3 mb-5">
                 <label for="promedio">promedio</label>
                 <input type="number" 
                 min="1"
@@ -179,7 +182,8 @@
                         <strong>{{$message}}</strong>
                     </span>
                 @enderror
-            </div>{{-- Fin  Promedio --}}
+            </div> --}}
+            {{-- Fin  Promedio --}}
 
             @include('srhigo.campos.responsable')
 

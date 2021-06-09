@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Plaga;
+use App\Models\Seccion;
 use Illuminate\Http\Request;
 use App\Models\IdentificacionPlagas;
 use Illuminate\Support\Facades\Auth;
@@ -49,16 +50,34 @@ class IdentificacionPlagasController extends Controller
     public function store(Request $request)
     {
         $data = request()->validate([
-            'huertaSeccion' => 'required',
             'fecha' => 'required',
-            'variedad' => 'required',
+            'huertaSeccion' => 'required',
             'periodoMonitoreo' => 'required',
             'plaga' => 'required',
             'unidadMuestreo' => 'required',
-            'danioPlaga' => 'required',
             'cantidadEncontrada' => 'required',
             'responsable' => 'required',
         ]);
+
+        $seccion = (int)$data['huertaSeccion'];
+        $huertas = Seccion::where("id", $seccion)->get();
+        foreach ($huertas as $huerta){
+            $huerta_id = $huerta->propiedad_id;
+        }
+
+        Auth::user()->identificacionPlagas()->create([
+            'fecha' => $data['fecha'],
+            'huerta_id' => $huerta_id,
+            'seccion_id' => $seccion,
+            'periodoMonitoreo' => $data['periodoMonitoreo'],
+            'plaga' => $data['plaga'],
+            'unidadMuestreo' => $data['unidadMuestreo'],
+            'cantidadEncontrada' => $data['cantidadEncontrada'],
+            'danioPlaga' => $request['danioPlaga'],
+            'empleado_id' => $data['responsable'],
+        ]);
+
+        return redirect(route('main'));
     }
 
     /**

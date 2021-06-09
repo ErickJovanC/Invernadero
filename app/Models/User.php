@@ -96,4 +96,8 @@ class User extends Authenticatable
     public function controlPreventivoArbol(){
         return $this->hasMany(ControlPreventivoPlaga::class);
     }
+
+    public function identificacionPlagas(){
+        return $this->hasMany(IdentificacionPlagas::class);
+    }
 }
