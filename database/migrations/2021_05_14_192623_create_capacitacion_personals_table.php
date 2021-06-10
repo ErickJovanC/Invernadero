@@ -15,6 +15,16 @@ class CreateCapacitacionPersonalsTable extends Migration
     {
         Schema::create('capacitacion_personals', function (Blueprint $table) {
             $table->id();
+
+            $table->foreignId('huerta_id')->references('id')->on('registro_propiedads');
+            $table->date('fecha');
+            $table->string('nombreCurso');
+            $table->string('capacitador');
+            $table->string('empresa');
+            $table->string('tiempo');
+            $table->string('empleados');
+            $table->foreignId('user_id')->references('id')->on('users');
+
             $table->timestamps();
         });
     }

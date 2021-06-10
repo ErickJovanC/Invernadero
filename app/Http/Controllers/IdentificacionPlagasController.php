@@ -59,13 +59,15 @@ class IdentificacionPlagasController extends Controller
             'foto' => 'mimes:jpeg, png, jpg',
             'responsable' => 'required',
         ]);
-
+        
+        // Obtención de la huerta y sección
         $seccion = (int)$data['huertaSeccion'];
         $huertas = Seccion::where("id", $seccion)->get();
         foreach ($huertas as $huerta){
             $huerta_id = $huerta->propiedad_id;
         }
 
+        // Subida de la fotografía
         if($request->hasFile('foto')){
             $data['foto'] = $request->file('foto')->store('plagas', 'public');
         }

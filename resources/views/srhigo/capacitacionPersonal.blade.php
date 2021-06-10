@@ -7,7 +7,6 @@
         @csrf
         <div class="row">
             @include('srhigo.campos.huertaSeccion')
-
             @include('srhigo.campos.fecha')
 
             {{-- Nombre del Curso --}}
@@ -60,8 +59,8 @@
 
             {{-- Tiempo de Capacitación --}}
             <div class="form-group col-sm-12 col-md-6 mb-5">
-                <label for="tiempoCapacitacion">Tiempo de Capacitación (Horas)</label>
-                <input type="number"
+                <label for="tiempoCapacitacion">Tiempo de Capacitación (Horas:Minutos)</label>
+                <input type="text"
                     min="0"
                     name="tiempoCapacitacion" 
                     id="tiempoCapacitacion" 
@@ -80,13 +79,13 @@
 
                 @foreach($trabajadores as $trabajador)
                     <div class="form-check">
-                        <input class="form-check-input 
+                        <input class=" 
                             @error('trabajadores') is-invalid @enderror" 
                             type="checkbox" 
-                            value="{{ $trabajador->id }}" 
+                            value="{{ $trabajador->nombreEmpleado ." ". $trabajador->apellidoEmpleado }}" 
                             id="{{ $trabajador->nombreEmpleado }}"
                             name="trabajadores[]" 
-                            @if( in_array('{{ $trabajador->nombreEmpleado }}', old('trabajadores', [])) )
+                            @if( in_array( $trabajador->id, old('trabajadores', [])) )
                                 checked
                             @endif
                         />

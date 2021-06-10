@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Seccion;
 use Illuminate\Http\Request;
 use App\Models\CapacitacionPersonal;
 use Illuminate\Support\Facades\Auth;
@@ -52,6 +53,25 @@ class CapacitacionPersonalController extends Controller
             'tiempoCapacitacion' => 'required',
             'trabajadores' => 'required',
         ]);
+
+        // Obtención de la huerta y sección
+        $seccion = (int)$data['huertaSeccion'];
+        $huertas = Seccion::where("id", $seccion)->get();
+        foreach ($huertas as $huerta){
+            $huerta_id = $huerta->propiedad_id;
+        }
+
+        Auth::user()->capacitacion()->create([
+            'huerta_id' => $huerta_id,
+            'fecha' => $data['fecha'],
+            'nombreCurso' => $data['nombreCurso'],
+            'capacitador' => $data['nombreCapacitador'],
+            'empresa' => $request['empresaCapacitadora'],
+            'tiempo' => $data['tiempoCapacitacion'],
+            'empleados' => implode(', ', $data['trabajadores']),
+        ]);
+
+        return redirect(route('main'));
     }
 
     /**

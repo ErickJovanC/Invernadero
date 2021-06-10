@@ -54,7 +54,7 @@ class User extends Authenticatable
     }
     
     public function empleados(){
-        return $this->hasMany(Empleado::class); 
+        return $this->hasMany(Empleado::class)->orderBy('nombreEmpleado'); 
     }
     
     public function suelos(){
@@ -103,5 +103,9 @@ class User extends Authenticatable
 
     public function aplicacionPlaguicida(){
         return $this->hasMany(AplicacionPlaguicida::class);
+    }
+
+    public function capacitacion(){
+        return $this->hasMany(CapacitacionPersonal::class);
     }
 }

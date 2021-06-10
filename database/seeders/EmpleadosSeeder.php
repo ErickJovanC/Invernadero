@@ -22,5 +22,23 @@ class EmpleadosSeeder extends Seeder
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
         ]);
+
+        DB::table('Empleados')->insert([
+            'nombreEmpleado' => 'Bruno',
+            'apellidoEmpleado' => 'Wayne',
+            'sobrenombreEmpleado' => 'Batman',
+            'user_id' => '1',
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s'),
+        ]);
+
+        DB::table('Empleados')->insert([
+            'nombreEmpleado' => 'Clarck',
+            'apellidoEmpleado' => 'Ken',
+            'sobrenombreEmpleado' => 'Superman',
+            'user_id' => '1',
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s'),
+        ]);
     }
 }
