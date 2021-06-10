@@ -156,6 +156,11 @@
             <div class="form-group col-sm-12 col-md-6 mb-5">
                 <label for="foto">Foto</label>
                 <input type="file" name="foto" class="form-control">
+                @error('foto')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
             </div> {{-- Fin Fotografía --}}
 
             @include('srhigo.campos.responsable')

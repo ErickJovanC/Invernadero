@@ -56,6 +56,7 @@ class IdentificacionPlagasController extends Controller
             'plaga' => 'required',
             'unidadMuestreo' => 'required',
             'cantidadEncontrada' => 'required',
+            'foto' => 'mimes:jpeg, png, jpg',
             'responsable' => 'required',
         ]);
 
@@ -68,6 +69,11 @@ class IdentificacionPlagasController extends Controller
         if($request->hasFile('foto')){
             $data['foto'] = $request->file('foto')->store('plagas', 'public');
         }
+        else{
+            $data['foto'] = null;
+        }
+
+        // dd($request->foto, $data['foto']);
 
         Auth::user()->identificacionPlagas()->create([
             'fecha' => $data['fecha'],
