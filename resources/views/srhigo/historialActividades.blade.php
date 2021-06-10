@@ -777,7 +777,12 @@
                         </div>
                         <div>
                             Foto:
-                            <img src="{{ asset('storage').'/'. $plaga->foto }}" alt="Foto" width="300">
+                            {{-- @dump($plaga->foto) --}}
+                            @if($plaga->foto != null)
+                                <a href="{{ asset('storage').'/'. $plaga->foto }}" target="_blank"><img src="{{ asset('storage').'/'. $plaga->foto }}" alt="Foto" width="300"></a>
+                            @else
+                                (Sin foto)
+                            @endif
                         </div>
                         <div>
                             Responsable:
