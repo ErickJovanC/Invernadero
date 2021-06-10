@@ -20,10 +20,11 @@ class CreateIdentificacionPlagasTable extends Migration
             $table->foreignId('huerta_id')->references('id')->on('registro_propiedads');
             $table->foreignId('seccion_id')->references('id')->on('seccions');
             $table->string('periodoMonitoreo');
-            $table->string('plaga');
+            $table->foreignId('plaga_id')->references('id')->on('plagas');
             $table->string('unidadMuestreo');
             $table->string('cantidadEncontrada');
-            $table->string('danioPlaga');
+            $table->string('danioPlaga')->nullable();
+            $table->string('foto')->nullable();
             $table->foreignId('empleado_id')->references('id')->on('empleados');
             $table->foreignId('user_id')->references('id')->on('users');
 

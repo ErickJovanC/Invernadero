@@ -65,15 +65,20 @@ class IdentificacionPlagasController extends Controller
             $huerta_id = $huerta->propiedad_id;
         }
 
+        if($request->hasFile('foto')){
+            $data['foto'] = $request->file('foto')->store('plagas', 'public');
+        }
+
         Auth::user()->identificacionPlagas()->create([
             'fecha' => $data['fecha'],
             'huerta_id' => $huerta_id,
             'seccion_id' => $seccion,
             'periodoMonitoreo' => $data['periodoMonitoreo'],
-            'plaga' => $data['plaga'],
+            'plaga_id' => $data['plaga'],
             'unidadMuestreo' => $data['unidadMuestreo'],
             'cantidadEncontrada' => $data['cantidadEncontrada'],
             'danioPlaga' => $request['danioPlaga'],
+            'foto' => $data['foto'],
             'empleado_id' => $data['responsable'],
         ]);
 

@@ -14,11 +14,28 @@ class IdentificacionPlagas extends Model
         'huerta_id',
         'seccion_id',
         'periodoMonitoreo',
-        'plaga',
+        'plaga_id',
         'unidadMuestreo',
         'cantidadEncontrada',
         'danioPlaga',
+        'foto',
         'empleado_id',
         'user_id',
     ];
+
+    public function huerta(){
+        return $this->belongsTo(RegistroPropiedad::class);
+    }
+
+    public function seccion(){
+        return $this->belongsTo(Seccion::class);
+    }
+
+    public function Empleado(){
+        return $this->belongsTo(Empleado::class);
+    }
+
+    public function plaga(){
+        return $this->belongsTo(Plaga::class);
+    }
 }

@@ -13,7 +13,7 @@
                 <th scope="col">Cantidad</th>
                 <th scope="col">Variedad</th>
                 {{-- <th scope="col">Actividad</th> --}}
-                <th scope="col">Lote Asiganado</th>
+                <th scope="col">Lote Asignado</th>
                 <th scope="col">Ver Detalle</th>
             </tr>
         </thead>
@@ -711,6 +711,95 @@
         </tbody>
     </table>
     {{-- Fin Limpieza de Canales --}}
+
+    {{-- Identificación de Plagas --}}
+    <h2 class="h1 mt-5">Identificación de Plagas</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Fecha</th>
+                <th scope="col">Huerta y Sección</th>
+                <th scope="col">Periodo de Monitoreo</th>
+                <th scope="col">Plaga detectada</th>
+                <th scope="col">Ver Detalle</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($identificacionPlagas as $plaga)
+            <tr>
+                <td>{{ $plaga->fecha }}</td>
+                <td>{{ $plaga->huerta->nombreHuerta 
+                    ." - ". $plaga->seccion->nombreSeccion }}</td>
+                <td>{{ $plaga->periodoMonitoreo }}
+                <td>{{ $plaga->plaga->nombrePlaga }}</td>
+                </td>
+                <td><a href="#" data-toggle="modal" data-target="#plaga{{ $plaga->id }}">Ver detalle</a></td>
+            </tr>
+            
+            <!-- Modal -->
+            <div class="modal fade" id="plaga{{ $plaga->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Detalles</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            Fecha:
+                            <b>{{ $plaga->fecha }}</b>
+                        </div>
+                        <div>
+                            Huerta y Sección:
+                            <b>{{ $plaga->huerta->nombreHuerta ." - ". $plaga->seccion->nombreSeccion }}</b>
+                        </div>
+                        <div>
+                            Periodo de Monitoreo 
+                            <b>{{ $plaga->periodoMonitoreo }}</b>
+                        </div>
+                        <div>
+                            Plaga:
+                            <b>{{ $plaga->plaga->nombrePlaga }}</b>
+                        </div>
+                        <div>
+                            Unidad de Muestreo:
+                            <b>{{ $plaga->unidadMuestreo }}</b>
+                        </div>
+                        <div>
+                            Cantidad Encontrada:
+                            <b>{{ $plaga->cantidadEncontrada }}</b>
+                        </div>
+                        <div>
+                            Daño Provocado:
+                            <b>{{ $plaga->danioPlaga }}</b>
+                        </div>
+                        <div>
+                            Foto:
+                            <img src="{{ asset('storage').'/'. $plaga->foto }}" alt="Foto" width="300">
+                        </div>
+                        <div>
+                            Responsable:
+                            <b>
+                                {{
+                                    $plaga->Empleado->nombreEmpleado .' '.
+                                    $plaga->Empleado->apellidoEmpleado .' ('.
+                                    $plaga->Empleado->sobrenombreEmpleado .')'
+                                }}
+                            </b>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+            @endforeach
+        </tbody>
+    </table>
+    {{-- Fin Identificación de Plagas --}}
 </div>
 <a href="{{ route('main') }}" class="btn btn-success">Menú</a>
 @endsection
