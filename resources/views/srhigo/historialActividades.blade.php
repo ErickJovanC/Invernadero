@@ -805,6 +805,95 @@
         </tbody>
     </table>
     {{-- Fin Identificación de Plagas --}}
+
+    {{-- Aplicación de Plaguicida --}}
+    <h2 class="h1 mt-5">Aplicación de Plaguicida</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Fecha</th>
+                <th scope="col">Huerta y Sección</th>
+                <th scope="col">Tipo de Plaguicida</th>
+                <th scope="col">Ingrediente Activo</th>
+                <th scope="col">Ver Detalle</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($aplicacionPlaguicida as $plaguicida)
+            <tr>
+                <td>{{ $plaguicida->fecha }}</td>
+                <td>{{ $plaguicida->huerta->nombreHuerta 
+                    ." - ". $plaguicida->seccion->nombreSeccion }}</td>
+                <td>{{ $plaguicida->tipoPlaguicida }}
+                <td>{{ $plaguicida->ingredienteActivo }}</td>
+                </td>
+                <td><a href="#" data-toggle="modal" data-target="#plaguicida{{ $plaguicida->id }}">Ver detalle</a></td>
+            </tr>
+            
+            <!-- Modal -->
+            <div class="modal fade" id="plaguicida{{ $plaguicida->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Detalles</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            Fecha:
+                            <b>{{ $plaguicida->fecha }}</b>
+                        </div>
+                        <div>
+                            Huerta y Sección:
+                            <b>{{ $plaguicida->huerta->nombreHuerta ." - ". $plaguicida->seccion->nombreSeccion }}</b>
+                        </div>
+                        <div>
+                            Tipo de Plaguicida: 
+                            <b>{{ $plaguicida->tipoPlaguicida }}</b>
+                        </div>
+                        <div>
+                            Nombre Comercial:
+                            <b>{{ $plaguicida->nombreComercial }}</b>
+                        </div>
+                        <div>
+                            Ingrediente Activo:
+                            <b>{{ $plaguicida->ingredienteActivo }}</b>
+                        </div>
+                        <div>
+                            Color de la Banda:
+                            <b>{{ $plaguicida->colorBanda }}</b>
+                        </div>
+                        <div>
+                            Dosis Aplicada:
+                            <b>{{ $plaguicida->dosisAplicada }}</b>
+                        </div>
+                        <div>
+                            Tiempo:
+                            <b>{{ $plaguicida->horas .":". $plaguicida->minutos.":00" }}</b>
+                        </div>
+                        <div>
+                            Responsable:
+                            <b>
+                                {{
+                                    $plaguicida->Empleado->nombreEmpleado .' '.
+                                    $plaguicida->Empleado->apellidoEmpleado .' ('.
+                                    $plaguicida->Empleado->sobrenombreEmpleado .')'
+                                }}
+                            </b>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+            @endforeach
+        </tbody>
+    </table>
+    {{-- Fin Aplicación de Plaguicida --}}
 </div>
 <a href="{{ route('main') }}" class="btn btn-success">Menú</a>
 @endsection
