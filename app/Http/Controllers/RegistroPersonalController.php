@@ -47,13 +47,14 @@ class RegistroPersonalController extends Controller
             'apellidoPaterno' => 'required | min:4',
             'apellidoMaterno' => 'required | min:4',
             'telefono' => 'required | min:10',
-            'direccion' => 'required | min:5'
+            'direccion' => 'required | min:5',
+            'foto' => 'mimes:jpeg, png, jpg',
         ]);
 
-        //dd($data);
-
-        // Subida de la imagen
-        // $rutaImagen = $request['Foto']->store('propietarios', 'public');
+        // Subida de la foto
+        if($request->hasFile('foto')){
+            $data['foto'] = $request->file('foto')->store('perfil', 'public');
+        }
 
         // Insersión a la BD con modelo
         auth()->user()->datosPersonales()->create([
@@ -62,8 +63,7 @@ class RegistroPersonalController extends Controller
             'apellido_m' => $data['apellidoMaterno'],
             'telefono' => $data['telefono'],
             'direccion' => $data['direccion'],
-            //'foto' => $data['Foto'],
-            'user_id' => Auth::user()->id,
+            'foto' => $data['foto'],
         ]);
 
         return redirect('/main');

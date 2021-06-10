@@ -21,7 +21,7 @@ class CreateRegistroPersonalsTable extends Migration
             $table->string('apellido_m', 30);
             $table->bigInteger('telefono');
             $table->string('direccion', 50);
-            $table->string('foto', 60)->nullable();
+            $table->string('foto')->nullable();
             $table->foreignId('user_id')->
                 references('id')->
                 on('users')->

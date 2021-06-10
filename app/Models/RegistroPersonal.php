@@ -16,7 +16,7 @@ class RegistroPersonal extends Model
         'telefono',
         'direccion',
         'foto',
-        'user'
+        'user_id'
     ];
 
     public function user(){

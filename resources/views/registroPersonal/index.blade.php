@@ -74,8 +74,13 @@
             </div>
 
             <div class="form-group col-sm-12 col-md-6 mb-5">
-                <label for="Foto">Foto</label>
-                <input type="file" name="Foto" class="form-control">
+                <label for="foto">Foto (Recomendado)</label>
+                <input type="file" name="foto" id="foto" class="form-control ">
+                @error('foto')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
             </div>
             <div class="w-100"></div>
         </div>
