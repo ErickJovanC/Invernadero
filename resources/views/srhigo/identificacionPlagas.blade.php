@@ -3,7 +3,7 @@
 <a href="{{ route('main') }}" class="btn btn-success">Menú</a>
 <div class="row">
     <h1 class="titulo mb-5 col-12 text-center">Identificacion de Plagas</h1>
-    <form action="{{ route('identificacionPlagas.store') }}" method="post" class="col-12">
+    <form action="{{ route('identificacionPlagas.store') }}" method="post" class="col-12" enctype="multipart/form-data">
     @csrf
         <div class="row align-items-end">
             @include('srhigo.campos.fecha')
@@ -26,59 +26,60 @@
             {{-- Fin Variedad --}}
 
             {{-- Periodo de Monitoreo --}}
-            <div class="col-12 col-md-6 mb-5 ">
-                <div class="h2 text-center">Periodo de Monitoreo</div>
-                <div class="form-check form-check-inline">
+            <div class="col-12 col-md-6 mb-5 form-group">
+                <div class="h2 text-center  ">Periodo de Monitoreo</div>
+                <div class="form-check">
                     <input 
-                        type="radio" 
-                        name="periodoMonitoreo" 
-                        id="preparacionSuelo" 
-                        value="Preparación del Suelo"
-                        {{ old('periodoMonitoreo') == 'Preparación del Suelo' ? 'checked' :  '' }}
-                        class="form-check-input @error('periodoMonitoreo') is-invalid @enderror" 
+                    type="radio" 
+                    name="periodoMonitoreo" 
+                    id="preparacionSuelo" 
+                    value="Preparación del Suelo"
+                    {{ old('periodoMonitoreo') == 'Preparación del Suelo' ? 'checked' :  '' }}
+                    class="@error('periodoMonitoreo') is-invalid @enderror" 
                     />
                     <label class="form-check-label" for="preparacionSuelo">Preparación del suelo para siembra</label>
                 </div>
 
-                <div class="form-check form-check-inline">
+                <div class="form-check">
                     <input 
                         type="radio" 
                         name="periodoMonitoreo" 
                         id="brotacion" 
                         value="Brotación"
                         {{ old('periodoMonitoreo') == 'Brotación' ? 'checked' :  '' }}
-                        class="form-check-input @error('periodoMonitoreo') is-invalid @enderror" 
+                        class="@error('periodoMonitoreo') is-invalid @enderror" 
                     />
                     <label class="form-check-label" for="brotacion">Brotación (Hasta un mes despues de la siembra)</label>
                 </div>
 
-                <div class="form-check form-check-inline">
+                <div class="form-check">
                     <input 
                         type="radio" 
                         name="periodoMonitoreo" 
                         id="crecimiento" 
                         value="Crecimiento"
                         {{ old('periodoMonitoreo') == 'Crecimiento' ? 'checked' :  '' }}
-                        class="form-check-input @error('periodoMonitoreo') is-invalid @enderror" 
+                        class="@error('periodoMonitoreo') is-invalid @enderror" 
                     />
                     <label class="form-check-label" for="crecimiento">Crecimiento </label>
                 </div>
 
-                <div class="form-check form-check-inline">
-                    <input 
-                        type="radio" 
-                        name="periodoMonitoreo" 
-                        id="Cosecha" 
+                
+                <div class="form-check">
+                    <input
+                        type="radio"
+                        name="periodoMonitoreo"
+                        id="Cosecha"
                         value="Cosecha"
                         {{ old('periodoMonitoreo') == 'Cosecha' ? 'checked' :  '' }}
-                        class="form-check-input @error('periodoMonitoreo') is-invalid @enderror" 
+                        class="@error('periodoMonitoreo') is-invalid @enderror"
                     />
-                    <label class="form-check-label" for="Cosecha">Cosecha</label>
+                    <label class="form-check-label " for="Cosecha">Cosecha</label>
                 </div>
 
                 @error('periodoMonitoreo')
                     <span class="invalid-feedback d-block" role="alert">
-                        <strong>{{$message}}</strong>
+                        <strong>Seleccione el periodo cuando fue detectada la plaga</strong>
                     </span>
                 @enderror
             </div> {{-- Fin Periodo de Monitoreo --}}
@@ -137,7 +138,7 @@
             {{-- Fin  Cantidad Encontrada --}}
 
             {{-- Daño por Plaga  --}}
-            <div class="form-group col-md-6 col-lg-4 mb-5">
+            <div class="form-group col-12 mb-5">
                 <label for="danioPlaga">Daño provocado por la plaga</label>
                 <input type="text" 
                 name="danioPlaga" 
@@ -151,39 +152,11 @@
                 @enderror
             </div>{{-- Fin  Daño por Plaga --}}
 
-            {{-- Total  --}}
-            {{-- <div class="form-group col-12 col-sm-6 col-md-3 mb-5">
-                <label for="total">Total</label>
-                <input type="number" 
-                min="1"
-                name="total" 
-                id="total"
-                value="{{ old('total')}}"
-                class="form-control @error('total') is-invalid @enderror">
-                @error('total')
-                    <span class="invalid-feedback d-block" role="alert">
-                        <strong>{{$message}}</strong>
-                    </span>
-                @enderror
-            </div> --}}
-            {{-- Fin  Total --}}
-
-            {{-- Promedio  --}}
-            {{-- <div class="form-group col-12 col-sm-6 col-md-3 mb-5">
-                <label for="promedio">promedio</label>
-                <input type="number" 
-                min="1"
-                name="promedio" 
-                id="promedio"
-                value="{{ old('promedio')}}"
-                class="form-control @error('promedio') is-invalid @enderror">
-                @error('promedio')
-                    <span class="invalid-feedback d-block" role="alert">
-                        <strong>{{$message}}</strong>
-                    </span>
-                @enderror
-            </div> --}}
-            {{-- Fin  Promedio --}}
+            {{-- Fotografía --}}
+            <div class="form-group col-sm-12 col-md-6 mb-5">
+                <label for="foto">Foto</label>
+                <input type="file" name="foto" class="form-control">
+            </div> {{-- Fin Fotografía --}}
 
             @include('srhigo.campos.responsable')
 
