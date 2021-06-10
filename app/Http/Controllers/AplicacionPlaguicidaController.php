@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Seccion;
 use Illuminate\Http\Request;
 use App\Models\aplicacionPlaguicida;
 use Illuminate\Support\Facades\Auth;
@@ -49,7 +50,9 @@ class AplicacionPlaguicidaController extends Controller
     {
         $data = request()->validate([
             'fecha' => 'required',
-            'tiempoAplicacion' => 'required',
+            'huertaSeccion' => 'required',
+            'horas' => 'required',
+            'minutos' => 'required',
             'tipoPlaguicida' => 'required',
             'nombreComercial' => 'required',
             'ingredienteActivo' => 'required',
@@ -57,6 +60,28 @@ class AplicacionPlaguicidaController extends Controller
             'dosisAplicada' => 'required',
             'responsable' => 'required',
         ]);
+
+        $seccion = (int)$data['huertaSeccion'];
+        $huertas = Seccion::where("id", $seccion)->get();
+        foreach ($huertas as $huerta){
+            $huerta_id = $huerta->propiedad_id;
+        }
+
+        Auth::user()->aplicacionPlaguicida()->create([
+            'fecha' => $data['fecha'],
+            'huerta_id' => $huerta_id,
+            'seccion_id' => $seccion,
+            'horas' => $data['horas'],
+            'minutos' => $data['minutos'],
+            'tipoPlaguicida' => $data['tipoPlaguicida'],
+            'nombreComercial' => $data['nombreComercial'],
+            'ingredienteActivo' => $data['ingredienteActivo'],
+            'colorBanda' => $data['colorBanda'],
+            'dosisAplicada' => $data['dosisAplicada'],
+            'empleado_id' => $data['responsable'],
+        ]);
+
+        return redirect(route('main'));
     }
 
     /**

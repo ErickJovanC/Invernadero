@@ -100,4 +100,8 @@ class User extends Authenticatable
     public function identificacionPlagas(){
         return $this->hasMany(IdentificacionPlagas::class);
     }
+
+    public function aplicacionPlaguicida(){
+        return $this->hasMany(AplicacionPlaguicida::class);
+    }
 }

@@ -7,6 +7,7 @@
     @csrf
         <div class="row align-items-end">
             @include('srhigo.campos.fecha')
+            @include('srhigo.campos.huertaSeccion')
 
             {{-- Tiempo de Aplicación  --}}
             <div class="form-group col-12 col-sm-6 col-md-4 mb-5 text-center">
