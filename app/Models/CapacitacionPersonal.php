@@ -19,4 +19,8 @@ class CapacitacionPersonal extends Model
         'empleados',
         'user_id',
     ];
+
+    public function huerta(){
+        return $this->belongsTo(RegistroPropiedad::class);
+    }
 }

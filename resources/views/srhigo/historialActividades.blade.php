@@ -894,6 +894,80 @@
         </tbody>
     </table>
     {{-- Fin Aplicación de Plaguicida --}}
+
+    {{-- Capacitaciones de Personal --}}
+    <h2 class="h1 mt-5">Capacitaciones de Personal</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Fecha</th>
+                <th scope="col">huerta</th>
+                <th scope="col">Curso</th>
+                <th scope="col">Capacitador</th>
+                <th scope="col">Ver Detalle</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($capacitacionPersonal as $capacitacion)
+            <tr>
+                <td>{{ $capacitacion->fecha }}</td>
+                <td>{{ $capacitacion->huerta->nombreHuerta }}</td>
+                <td>{{ $capacitacion->nombreCurso }}
+                <td>{{ $capacitacion->capacitador }}</td>
+                </td>
+                <td><a href="#" data-toggle="modal" data-target="#capacitacion{{ $capacitacion->id }}">Ver detalle</a></td>
+            </tr>
+            
+            <!-- Modal -->
+            <div class="modal fade" id="capacitacion{{ $capacitacion->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Detalles</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            Fecha:
+                            <b>{{ $capacitacion->fecha }}</b>
+                        </div>
+                        <div>
+                            Huerta:
+                            <b>{{ $capacitacion->huerta->nombreHuerta }}</b>
+                        </div>
+                        <div>
+                            Curso: 
+                            <b>{{ $capacitacion->nombreCurso }}</b>
+                        </div>
+                        <div>
+                            Capacitador:
+                            <b>{{ $capacitacion->capacitador }}</b>
+                        </div>
+                        <div>
+                            Empresa capaciitadora:
+                            <b>{{ $capacitacion->empresa }}</b>
+                        </div>
+                        <div>
+                            Duración del curso:
+                            <b>{{ $capacitacion->tiempo }}</b>
+                        </div>
+                        <div>
+                            Asistes:
+                            <b>{{ $capacitacion->empleados }}</b>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+            @endforeach
+        </tbody>
+    </table>
+    {{-- Fin Capacitaciones de Personal --}}
 </div>
 <a href="{{ route('main') }}" class="btn btn-success">Menú</a>
 @endsection
