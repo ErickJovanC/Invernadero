@@ -108,4 +108,8 @@ class User extends Authenticatable
     public function capacitacion(){
         return $this->hasMany(CapacitacionPersonal::class);
     }
+
+    public function calibracionEquipo(){
+        return $this->hasMany(CalibracionEquipo::class);
+    }
 }

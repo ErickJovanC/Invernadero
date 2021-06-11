@@ -15,6 +15,24 @@ class CreateCalibracionEquiposTable extends Migration
     {
         Schema::create('calibracion_equipos', function (Blueprint $table) {
             $table->id();
+
+            $table->date('fecha');
+            $table->foreignId('huerta_id')->references('id')->on('registro_propiedads');
+            $table->foreignId('seccion_id')->references('id')->on('seccions');
+            $table->string('equipo');
+            $table->string('producto');
+            $table->smallInteger('repeticiones');
+            $table->smallInteger('recipiente');
+            $table->smallInteger('pesoInicial');
+            $table->smallInteger('pesoFinal');
+            $table->smallInteger('gastoEquipo');
+            $table->smallInteger('longitud');
+            $table->smallInteger('ancho');
+            $table->smallInteger('area');
+            $table->smallInteger('gastoManzana');
+            $table->foreignId('empleado_id')->references('id')->on('empleados');
+            $table->foreignId('user_id')->references('id')->on('users');
+
             $table->timestamps();
         });
     }

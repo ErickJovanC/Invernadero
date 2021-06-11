@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Empleado;
+use App\Models\Seccion;
 use Illuminate\Http\Request;
 use App\Models\CalidadPlanta;
 use App\Models\CalibracionEquipo;
+use Illuminate\Support\Facades\Auth;
 
 class CalibracionEquipoController extends Controller
 {
@@ -28,12 +29,14 @@ class CalibracionEquipoController extends Controller
     {
         $fechaActual = date('Y-m-d');
         $lotes = CalidadPlanta::all(['id', 'lote']);
-        $empleados = Empleado::all(['id', 'nombreEmpleado', 'apellidoEmpleado', 'sobrenombreEmpleado']);
+        $empleados = Auth::user()->empleados;
+        $secciones = Auth::User()->secciones;
         return view('srhigo.calibracionEquipo')->
             with([
                 'lotes' => $lotes, 
                 'fechaActual' => $fechaActual,
-                'empleados' => $empleados
+                'empleados' => $empleados,
+                'secciones' => $secciones,
             ]);
     }
 
@@ -46,15 +49,49 @@ class CalibracionEquipoController extends Controller
     public function store(Request $request)
     {
         $data = request()->validate([
-            'fechaSiembra' => 'required',
+            'fecha' => 'required',
+            'huertaSeccion' => 'required',
             'equipo' => 'required',
             'productoAplicado' => 'required',
+            'repeticion' => 'required',
+            'recipiente' => 'required',
             'volumenPesoInicial' => 'required',
             'volumenPesoFinal' => 'required',
-            'LongitudRecorrida' => 'required',
-            'AnchoCubierto' => 'required',
+            'longitudRecorrida' => 'required',
+            'anchoCubierto' => 'required',
             'responsable' => 'required',
         ]);
+
+        // Obtenención de la huerta y la sección
+        $seccion = (int)$data['huertaSeccion'];
+        $huertas = Seccion::where("id", $seccion)->get();
+        foreach ($huertas as $huerta){
+            $huerta_id = $huerta->propiedad_id;
+        }
+
+        $gastoEquipo = $data['repeticion'] * $data['recipiente'] + ($data['volumenPesoInicial'] - $data['volumenPesoFinal']);
+        $area = $data['longitudRecorrida'] * $data['anchoCubierto'];
+        $gastoManzana = 7000 * $gastoEquipo / $area;
+
+        Auth::user()->calibracionEquipo()->create([
+            'fecha' => $data['fecha'],
+            'huerta_id' => $huerta_id,
+            'seccion_id' => $seccion,
+            'equipo' => $data['equipo'],
+            'producto' => $data['productoAplicado'],
+            'repeticiones' => $data['repeticion'],
+            'recipiente' => $data['recipiente'],
+            'pesoInicial' => $data['volumenPesoInicial'],
+            'pesoFinal' => $data['volumenPesoFinal'],
+            'gastoEquipo' => $gastoEquipo,
+            'longitud' => $data['longitudRecorrida'],
+            'ancho' => $data['anchoCubierto'],
+            'area' => $area,
+            'gastoManzana' => $gastoManzana,
+            'empleado_id' => $data['responsable'],
+        ]);
+
+        return redirect(route('main'));
     }
 
     /**

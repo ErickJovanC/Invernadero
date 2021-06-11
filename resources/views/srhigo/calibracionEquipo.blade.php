@@ -7,26 +7,11 @@
         @csrf
         <div class="row">
 
-            {{-- Fecha --}}
-            <div class="form-group col-sm-12 col-md-6 mb-5">
-                <label for="fechaSiembra">Fecha de Acción</label>
-                <input type="date" 
-                    name="fechaSiembra" 
-                    id="fechaSiembra"
-                    max="{{ $fechaActual }}"
-                    value="{{ old('fechaSiembra') }}"
-                    class="form-control 
-                        @error('fechaSiembra') is-invalid @enderror" 
-                />
-                @error('fechaSiembra')
-                    <span class="invalid-feedback d-block" role="alert">
-                        <strong>{{$message}}</strong>
-                    </span>
-                @enderror
-            </div>{{-- Fin Fecha --}}
+            @include('srhigo.campos.fecha')
+            @include('srhigo.campos.huertaSeccion')
 
             {{-- Equipo a calibrar --}}
-            <div class="col-6">
+            <div class="col-12 col-md-6 col-lg-4">
                 <label for="equipo">Equipo</label>
                 <input type="text" 
                     name="equipo" 
@@ -41,6 +26,7 @@
                 @enderror
             </div>{{-- Fin Equipo a calibrar--}}
             
+            {{-- Producto Aplicado --}}
             <div class="col-12 h2 text-center">Producto aplicado con el equipo: </div>
             <div class="col-12 mb-5 text-center">
                 <div class="form-check form-check-inline">
@@ -72,10 +58,11 @@
                     </span>
                 @enderror
             </div>
+            {{-- Fin producto Aplicado --}}
 
             {{-- Repetición --}}
             <div class="form-group col-sm-12 col-md-6 col-lg-3 mb-5">
-                <label for="repeticion">Número de repeticiones</label>
+                <label for="repeticion">Repeticiones completas</label>
                 <input type="number" 
                     name="repeticion" 
                     id="repeticion"
@@ -89,6 +76,23 @@
                     </span>
                 @enderror
             </div>{{-- Fin Repetición --}}
+
+            {{-- Tamaño del contenedor --}}
+            <div class="form-group col-sm-12 col-md-6 col-lg-3 mb-5">
+                <label for="recipiente">Tamaño del recipiente o contenedor</label>
+                <input type="number" 
+                    name="recipiente" 
+                    id="recipiente"
+                    value="{{ old('recipiente') }}"
+                    class="form-control 
+                        @error('recipiente') is-invalid @enderror" 
+                />
+                @error('recipiente')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
+            </div>{{-- Fin Tamaño del contenedor --}}
 
             <div class="form-group col-12 col-sm-6 col-md-3 mb-5">
                 <label for="volumenPesoInicial">Volumen o Peso Inicial (Kilogramos o Litros)</label>
@@ -114,11 +118,11 @@
                 @enderror
             </div>
 
-            <div class="form-group col-12 col-sm-6 col-md-3 mb-5">
+            {{-- <div class="form-group col-12 col-sm-6 col-md-3 mb-5">
                 <span>Gasto del Equipo (A-B) = C</span>
                 <br>
                 <span class="h1">0.0</span>
-            </div>
+            </div> --}}
 
             <div class="w-100"></div>
 
@@ -152,17 +156,17 @@
                 @enderror
             </div>{{-- Fin  Ancho Cubierto--}}
 
-            <div class="form-group col-12 col-sm-6 col-md-3 mb-5">
+            {{-- <div class="form-group col-12 col-sm-6 col-md-3 mb-5">
                 <span>Área cubierta (m<sup>2</sup>) DxE = F</span>
                 <br>
                 <span class="h1">0.0</span>
-            </div>
+            </div> --}}
 
-            <div class="form-group col-12 col-sm-6 col-md-3 mb-5">
+            {{-- <div class="form-group col-12 col-sm-6 col-md-3 mb-5">
                 <span>Gasto por Manzana (7000 x C) / F</span>
                 <br>
                 <span class="h1">0.0</span>
-            </div>
+            </div> --}}
 
             @include('srhigo.campos.responsable')
 
