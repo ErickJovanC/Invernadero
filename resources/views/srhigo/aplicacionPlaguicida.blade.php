@@ -148,7 +148,7 @@
 
             {{-- Dosis Aplicada  --}}
             <div class="form-group col-12 col-sm-6 col-md-4 mb-5">
-                <label for="dosisAplicada">Dosis Aplicada</label>
+                <label for="dosisAplicada">Dosis Aplicada (Litros)</label>
                 <input type="text" 
                 name="dosisAplicada" 
                 id="dosisAplicada"

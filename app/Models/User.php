@@ -112,4 +112,8 @@ class User extends Authenticatable
     public function calibracionEquipo(){
         return $this->hasMany(CalibracionEquipo::class);
     }
+
+    public function clientes(){
+        return $this->hasMany(Cliente::class);
+    }
 }

@@ -32,8 +32,14 @@
                 Registrar Empleado
             </a>
         </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 p-2">
+            <a href="{{ route('cliente.create') }}"
+                class="btn btn-success btn-menu">
+                Clientes (Destinatarios)
+            </a>
+        </div>
 
-        <h1 class="col-12 mt-5">Preparación y Siembra</h1>
+        <h1 class="col-12 mt-5">Preparación, Siembra y Cosecha</h1>
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 p-2">
             <a href="{{ route('calidadPlanta.create') }}"
                 class="btn btn-primary btn-menu">
@@ -49,7 +55,13 @@
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 p-2">
             <a href="{{ route('registroSiembra.create') }}"
                 class="btn btn-primary btn-menu">
-                Registro de siembra
+                Registro de Siembra
+            </a>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 p-2">
+            <a href="{{ route('cosecha.create') }}"
+                class="btn btn-primary btn-menu">
+                Registro de Cosecha
             </a>
         </div>
 
@@ -82,7 +94,7 @@
             </a>
         </div>
 
-        <h1 class="col-12 mt5">Plagas y Enfermedades</h1>
+        <h1 class="col-12 mt-5">Plagas y Enfermedades</h1>
 
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 p-2">
             <a href="{{ route('controlPreventivo.create') }}"

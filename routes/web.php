@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\CosechaController;
 use App\Http\Controllers\SeccionController;
 use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\HistorialController;
@@ -56,6 +58,8 @@ Route::resource('plagas', ControlPreventivoPlagaController::class);
 Route::resource('identificacionPlagas', IdentificacionPlagasController::class);
 Route::resource('aplicacionPlaguicida', AplicacionPlaguicidaController::class);
 Route::resource('capacitacionPersonal', CapacitacionPersonalController::class);
+Route::resource('cosecha', CosechaController::class);
+Route::resource('cliente', ClienteController::class);
 
 Route::view('main', '/main/index')->name('main')->middleware('auth');
 
