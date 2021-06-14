@@ -50,10 +50,8 @@ class CalibracionEquipoController extends Controller
     {
         $data = request()->validate([
             'fecha' => 'required',
-            'huertaSeccion' => 'required',
             'equipo' => 'required',
             'productoAplicado' => 'required',
-            'repeticion' => 'required',
             'recipiente' => 'required',
             'volumenPesoInicial' => 'required',
             'volumenPesoFinal' => 'required',
@@ -62,24 +60,15 @@ class CalibracionEquipoController extends Controller
             'responsable' => 'required',
         ]);
 
-        // Obtenención de la huerta y la sección
-        $seccion = (int)$data['huertaSeccion'];
-        $huertas = Seccion::where("id", $seccion)->get();
-        foreach ($huertas as $huerta){
-            $huerta_id = $huerta->propiedad_id;
-        }
-
-        $gastoEquipo = $data['repeticion'] * $data['recipiente'] + ($data['volumenPesoInicial'] - $data['volumenPesoFinal']);
+        $gastoEquipo = $data['recipiente'] + ($data['volumenPesoInicial'] - $data['volumenPesoFinal']);
         $area = $data['longitudRecorrida'] * $data['anchoCubierto'];
         $gastoManzana = 7000 * $gastoEquipo / $area;
 
         Auth::user()->calibracionEquipo()->create([
             'fecha' => $data['fecha'],
-            'huerta_id' => $huerta_id,
-            'seccion_id' => $seccion,
             'equipo' => $data['equipo'],
             'producto' => $data['productoAplicado'],
-            'repeticiones' => $data['repeticion'],
+            'comentario' => $request['comentario'],
             'recipiente' => $data['recipiente'],
             'pesoInicial' => $data['volumenPesoInicial'],
             'pesoFinal' => $data['volumenPesoFinal'],

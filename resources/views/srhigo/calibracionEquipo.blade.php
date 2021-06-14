@@ -8,7 +8,6 @@
         <div class="row">
 
             @include('srhigo.campos.fecha')
-            @include('srhigo.campos.huertaSeccion')
 
             {{-- Equipo a calibrar --}}
             <div class="col-12 col-md-6 col-lg-4">
@@ -59,23 +58,6 @@
                 @enderror
             </div>
             {{-- Fin producto Aplicado --}}
-
-            {{-- Repetición --}}
-            <div class="form-group col-sm-12 col-md-6 col-lg-3 mb-5">
-                <label for="repeticion">Repeticiones completas</label>
-                <input type="number" 
-                    name="repeticion" 
-                    id="repeticion"
-                    value="{{ old('repeticion') }}"
-                    class="form-control 
-                        @error('repeticion') is-invalid @enderror" 
-                />
-                @error('repeticion')
-                    <span class="invalid-feedback d-block" role="alert">
-                        <strong>{{$message}}</strong>
-                    </span>
-                @enderror
-            </div>{{-- Fin Repetición --}}
 
             {{-- Tamaño del contenedor --}}
             <div class="form-group col-sm-12 col-md-6 col-lg-3 mb-5">
@@ -167,6 +149,23 @@
                 <br>
                 <span class="h1">0.0</span>
             </div> --}}
+
+            {{-- Comentario --}}
+            <div class="form-group col-sm-12 col-md-6 col-lg-3 mb-5">
+                <label for="comentario">Comentario</label>
+                <input type="text" 
+                    name="comentario" 
+                    id="comentario"
+                    value="{{ old('comentario') }}"
+                    class="form-control 
+                        @error('comentario') is-invalid @enderror" 
+                />
+                @error('comentario')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
+            </div>{{-- Fin Comentario --}}
 
             @include('srhigo.campos.responsable')
 

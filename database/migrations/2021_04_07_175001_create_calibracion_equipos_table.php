@@ -17,11 +17,8 @@ class CreateCalibracionEquiposTable extends Migration
             $table->id();
 
             $table->date('fecha');
-            $table->foreignId('huerta_id')->references('id')->on('registro_propiedads');
-            $table->foreignId('seccion_id')->references('id')->on('seccions');
             $table->string('equipo');
             $table->string('producto');
-            $table->smallInteger('repeticiones');
             $table->smallInteger('recipiente');
             $table->smallInteger('pesoInicial');
             $table->smallInteger('pesoFinal');
@@ -30,6 +27,7 @@ class CreateCalibracionEquiposTable extends Migration
             $table->smallInteger('ancho');
             $table->smallInteger('area');
             $table->smallInteger('gastoManzana');
+            $table->string('comentario')->nullable();
             $table->foreignId('empleado_id')->references('id')->on('empleados');
             $table->foreignId('user_id')->references('id')->on('users');
 

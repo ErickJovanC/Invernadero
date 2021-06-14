@@ -11,11 +11,8 @@ class CalibracionEquipo extends Model
 
     protected $fillable = [
         'fecha',
-        'huerta_id',
-        'seccion_id',
         'equipo',
         'producto',
-        'repeticiones',
         'recipiente',
         'pesoInicial',
         'pesoFinal',
@@ -24,7 +21,20 @@ class CalibracionEquipo extends Model
         'ancho',
         'area',
         'gastoManzana',
+        'comentario',
         'empleado_id',
         'user_id',
     ];
+
+    public function seccion(){
+        return $this->belongsTo(Seccion::class);
+    }
+
+    public function huerta(){
+        return $this->belongsTo(RegistroPropiedad::class);
+    }
+
+    public function Empleado(){
+        return $this->belongsTo(Empleado::class);
+    }
 }
