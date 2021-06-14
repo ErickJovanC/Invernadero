@@ -27,6 +27,7 @@ class HistorialController extends Controller
         $identificacionPlagas = Auth::user()->identificacionPlagas;
         $aplicacionPlaguicida = Auth::user()->aplicacionPlaguicida;
         $capacitacionPersonal = Auth::user()->capacitacion;
+        $calibracionEquipo = Auth::user()->calibracionEquipo;
         
         return view('srhigo.historialActividades')->
             with([
@@ -41,6 +42,7 @@ class HistorialController extends Controller
                 'identificacionPlagas' => $identificacionPlagas,
                 'aplicacionPlaguicida' => $aplicacionPlaguicida,
                 'capacitacionPersonal' => $capacitacionPersonal,
+                'calibracionEquipo' => $calibracionEquipo,
             ]);
     }
 

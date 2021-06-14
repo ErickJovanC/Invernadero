@@ -10012,3 +10012,7 @@ html {
 body, .form-control, .btn, .navbar-brand, .dropdown-item {
   font-size: 1.9rem;
 }
+
+.btn-menu {
+  min-height: 5em;
+}
