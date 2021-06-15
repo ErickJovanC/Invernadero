@@ -55,6 +55,7 @@ class AplicacionFertilizanteOrganicoController extends Controller
             'responsable' => 'required',
         ]);
 
+        // Obtener la huerta y la sección
         $seccion = (int)$data['huertaSeccion'];
         $huertas = Seccion::where("id", $seccion)->get();
         foreach ($huertas as $huerta){

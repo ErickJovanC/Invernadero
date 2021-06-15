@@ -116,4 +116,8 @@ class User extends Authenticatable
     public function clientes(){
         return $this->hasMany(Cliente::class);
     }
+
+    public function cosechas(){
+        return $this->hasMany(Cosecha::class);
+    }
 }

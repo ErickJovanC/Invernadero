@@ -33,7 +33,7 @@ class EmpleadosSeeder extends Seeder
         ]);
 
         DB::table('Empleados')->insert([
-            'nombreEmpleado' => 'Clarck',
+            'nombreEmpleado' => 'Clark',
             'apellidoEmpleado' => 'Ken',
             'sobrenombreEmpleado' => 'Superman',
             'user_id' => '1',
