@@ -2,8 +2,9 @@
 @section('content')
 <a href="{{ route('main') }}" class="btn btn-success">Menú</a>
 <div class="row">
-    <h1 class="titulo mb-5 col-12 text-center">Historial de Actividades</h1>
+    <h1 class="titulos mb-5 col-12 text-center">Historial de Actividades</h1>
 
+    <div class="titulos col-12 mt-5">Preparación, Siembra y Cosecha</div>
     {{-- Recepción de Plantas --}}
     <h2 class="h1">Recepción de Plantas</h2>
     <table class="table table-striped mb-5">
@@ -105,87 +106,6 @@
         </tbody>
     </table>
     {{-- Fin Recepción de Plantas --}}
-
-    {{-- Control Preventivo de Plagas Previo a plantar --}}
-    <h2 class="h1 mt-5">Control Preventivo de Plagas Previo a plantar</h2>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th scope="col">Fecha</th>
-                <th scope="col">Lote</th>
-                <th scope="col">Cantidad de Plantas</th>
-                {{-- <th scope="col">Actividad</th> --}}
-                <th scope="col">Acción Preventiva</th>
-                <th scope="col">Ver Detalle</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($controlPreventivoPlanta as $control)
-            <tr>
-                <td>{{ $control->fechaAccion }}</td>
-                <td>{{ $control->lote->lote }}</td>
-                <td>{{ $control->cantidadPlantas }}</td>
-                <td>{{ $control->accionPreventiva }}</td>
-                </td>
-                <td><a href="#" data-toggle="modal" data-target="#control{{ $control->id }}">Ver detalle</a></td>
-            </tr>
-            
-            <!-- Modal -->
-            <div class="modal fade" id="control{{ $control->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Detalles</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    </div>
-                    <div class="modal-body">
-                        <div>
-                            Fecha:
-                            <b>{{ $control->fechaAccion }}</b>
-                        </div>
-                        <div>
-                            Lote:
-                            <b>{{ $control->lote->lote }}</b>
-                        </div>
-                        <div>
-                            Plagas a prevenir: 
-                            <b>{{ $control->plagasPrevenir }}</b>
-                        </div>
-                        <div>
-                            Acción Preventiva:
-                            <b>{{ $control->accionPreventiva }}</b>
-                        </div>
-                        <div>
-                            Cantidad de plantas tratadas:
-                            <b>{{ $control->cantidadPlantas }}</b>
-                        </div>
-                        <div>
-                            Costo:
-                            <b>{{ $control->costo }}</b>
-                        </div>
-                        <div>
-                            Responsable:
-                            <b>
-                                {{
-                                    $control->empleado->nombreEmpleado .' '.
-                                    $control->empleado->apellidoEmpleado .' ('.
-                                    $control->empleado->sobrenombreEmpleado .')'
-                                }}
-                            </b>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
-                    </div>
-                </div>
-                </div>
-            </div>
-            @endforeach
-        </tbody>
-    </table>
-    {{-- Fin Control Preventivo de Plagas Previo a plantar --}}
 
     {{-- Preparación del suelo --}}
     <h2 class="h1 mt-5">Preparación de suelo</h2>
@@ -373,6 +293,7 @@
     </table>
     {{-- Fin Registro de Siembra --}}
 
+    <div class="titulos col-12 mt-5">Fertilización y Riego</div>
     {{-- Aplicación de Fertilizante --}}
     <h2 class="h1 mt-5">Aplicación de fertilizantes</h2>
     <table class="table table-striped">
@@ -453,90 +374,6 @@
         </tbody>
     </table>
     {{-- Fin Aplicación de Fertilizante --}}
-
-    {{-- Calibración de Equipo --}}
-    <h2 class="h1 mt-5">Calibración de Equipo</h2>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th scope="col">Fecha</th>
-                <th scope="col">Equipo Calibrado</th>
-                <th scope="col">Gasto Equipo</th>
-                <th scope="col">Gasto Manzana</th>
-                <th scope="col">Ver Detalle</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($calibracionEquipo as $calibracion)
-            <tr>
-                <td>{{ $calibracion->fecha }}</td>
-                <td>{{ $calibracion->equipo }}</td>
-                <td>{{ $calibracion->gastoEquipo }}</td>
-                <td>{{ $calibracion->gastoManzana }}
-                </td>
-                <td><a href="#" data-toggle="modal" data-target="#calibracion{{ $calibracion->id }}">Ver detalle</a></td>
-            </tr>
-            
-            <!-- Modal -->
-            <div class="modal fade" id="calibracion{{ $calibracion->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Detalles</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    </div>
-                    <div class="modal-body">
-                        <div>
-                            Fecha de apicación:
-                            <b>{{ $calibracion->fecha }}</b>
-                        </div>
-                        <div>
-                            Equipo Calibrado:
-                            <b>{{ $calibracion->equipo }}</b>
-                        </div>
-                        <div>
-                            Produucto Apicado:
-                            <b>{{ $calibracion->producto }}</b>
-                        </div>
-                        <div>
-                            Tamaño del recipiente:
-                            <b>{{ $calibracion->recipiente }}</b>
-                        </div>
-                        <div>Gasto del equipo:
-                            <b>${{ $calibracion->gastoEquipo }}</b>
-                        </div>
-                        <div>Área Cubierta:
-                            <b>{{ $calibracion->area }}</b>
-                        </div>
-                        <div>Gasto Manzana:
-                            <b>${{ $calibracion->gastoManzana }}</b>
-                        </div>
-                        <div>Comentario:
-                            <b>{{ $calibracion->comentario }}</b>
-                        </div>
-                        <div>
-                            Responsable:
-                            <b>
-                                {{
-                                    $calibracion->Empleado->nombreEmpleado .' '.
-                                    $calibracion->Empleado->apellidoEmpleado .' ('.
-                                    $calibracion->Empleado->sobrenombreEmpleado .')'
-                                }}
-                            </b>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
-                    </div>
-                </div>
-                </div>
-            </div>
-            @endforeach
-        </tbody>
-    </table>
-    {{-- Fin Calibración de Equipo --}}
 
     {{-- Aplicación de Fertilizante Organico --}}
     <h2 class="h1 mt-5">Aplicación de fertilizante Organico</h2>
@@ -712,31 +549,33 @@
     </table>
     {{-- Fin Registro de Riego --}}
 
-    {{-- Limpieza de Canales --}}
-    <h2 class="h1 mt-5">Limpieza de Canales</h2>
+    <div class="titulos col-12 mt-5">Plagas y Enfermedades</div>
+    {{-- Control Preventivo de Plagas Previo a plantar --}}
+    <h2 class="h1 mt-5">Control Preventivo de Plagas Previo a plantar</h2>
     <table class="table table-striped">
         <thead>
             <tr>
                 <th scope="col">Fecha</th>
-                <th scope="col">Huerta</th>
-                <th scope="col">Canal</th>
-                <th scope="col">Longitud</th>
+                <th scope="col">Lote</th>
+                <th scope="col">Cantidad de Plantas</th>
+                {{-- <th scope="col">Actividad</th> --}}
+                <th scope="col">Acción Preventiva</th>
                 <th scope="col">Ver Detalle</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($limpiezaCanales as $canal)
+            @foreach ($controlPreventivoPlanta as $control)
             <tr>
-                <td>{{ $canal->fecha }}</td>
-                <td>{{ $canal->huerta->nombreHuerta }}</td>
-                <td>{{ $canal->nombreCanal }}
-                <td>{{ $canal->longitud }}</td>
+                <td>{{ $control->fechaAccion }}</td>
+                <td>{{ $control->lote->lote }}</td>
+                <td>{{ $control->cantidadPlantas }}</td>
+                <td>{{ $control->accionPreventiva }}</td>
                 </td>
-                <td><a href="#" data-toggle="modal" data-target="#canal{{ $canal->id }}">Ver detalle</a></td>
+                <td><a href="#" data-toggle="modal" data-target="#control{{ $control->id }}">Ver detalle</a></td>
             </tr>
             
             <!-- Modal -->
-            <div class="modal fade" id="canal{{ $canal->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="control{{ $control->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -748,39 +587,35 @@
                     <div class="modal-body">
                         <div>
                             Fecha:
-                            <b>{{ $canal->fecha }}</b>
+                            <b>{{ $control->fechaAccion }}</b>
                         </div>
                         <div>
-                            Huerta:
-                            <b>{{ $canal->huerta->nombreHuerta }}</b>
+                            Lote:
+                            <b>{{ $control->lote->lote }}</b>
                         </div>
                         <div>
-                            Canal: 
-                            <b>{{ $canal->nombreCanal }}</b>
+                            Plagas a prevenir: 
+                            <b>{{ $control->plagasPrevenir }}</b>
                         </div>
                         <div>
-                            Longitud:
-                            <b>{{ $canal->longitud }}</b>
+                            Acción Preventiva:
+                            <b>{{ $control->accionPreventiva }}</b>
                         </div>
                         <div>
-                            Revestimiento:
-                            <b>{{ $canal->revestimiento }}</b>
+                            Cantidad de plantas tratadas:
+                            <b>{{ $control->cantidadPlantas }}</b>
                         </div>
                         <div>
-                            Acciones Realizadas:
-                            <b>{{ $canal->accionesRealizadas }}</b>
-                        </div>
-                        <div>
-                            Observaciones:
-                            <b>{{ $canal->observaciones }}</b>
+                            Costo:
+                            <b>{{ $control->costo }}</b>
                         </div>
                         <div>
                             Responsable:
                             <b>
                                 {{
-                                    $canal->Empleado->nombreEmpleado .' '.
-                                    $canal->Empleado->apellidoEmpleado .' ('.
-                                    $canal->Empleado->sobrenombreEmpleado .')'
+                                    $control->empleado->nombreEmpleado .' '.
+                                    $control->empleado->apellidoEmpleado .' ('.
+                                    $control->empleado->sobrenombreEmpleado .')'
                                 }}
                             </b>
                         </div>
@@ -794,7 +629,84 @@
             @endforeach
         </tbody>
     </table>
-    {{-- Fin Limpieza de Canales --}}
+    {{-- Fin Control Preventivo de Plagas Previo a plantar --}}
+
+    {{-- Control Preventivo de Plagas en Plantas y Arboles --}}
+    <h2 class="h1 mt-5">Control Preventivo de Plagas en Plantas y Arboles</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Fecha</th>
+                <th scope="col">Huerta y Sección</th>
+                <th scope="col">Plagas a prevenir</th>
+                <th scope="col">Acción Preventiva</th>
+                <th scope="col">Ver Detalle</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($controlPreventivoArbol as $arbol)
+            <tr>
+                <td>{{ $arbol->fecha }}</td>
+                <td>{{ $arbol->huerta->nombreHuerta ." - ". 
+                    $arbol->seccion->nombreSeccion }}</td>
+                <td>{{ $arbol->plagas }}</td>
+                <td>{{ $arbol->acciones }}</td>
+                </td>
+                <td><a href="#" data-toggle="modal" data-target="#arbol{{ $arbol->id }}">Ver detalle</a></td>
+            </tr>
+            
+            <!-- Modal -->
+            <div class="modal fade" id="arbol{{ $arbol->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Detalles</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            Fecha:
+                            <b>{{ $arbol->fechaAccion }}</b>
+                        </div>
+                        <div>
+                            Huerta:
+                            <b>{{ $arbol->huerta->nombreHuerta }}</b>
+                        </div>
+                        <div>
+                            Sección: 
+                            <b>{{ $arbol->seccion->nombreSeccion }}</b>
+                        </div>
+                        <div>
+                            Plagas a Prevenir:
+                            <b>{{ $arbol->plagas }}</b>
+                        </div>
+                        <div>
+                            Acciones Realizadas:
+                            <b>{{ $arbol->acciones }}</b>
+                        </div>
+                        <div>
+                            Responsable:
+                            <b>
+                                {{
+                                    $arbol->empleado->nombreEmpleado .' '.
+                                    $arbol->empleado->apellidoEmpleado .' ('.
+                                    $arbol->empleado->sobrenombreEmpleado .')'
+                                }}
+                            </b>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+            @endforeach
+        </tbody>
+    </table>
+    {{-- Fin Control Preventivo de Plagas en Plantas y Arboles --}}
 
     {{-- Identificación de Plagas --}}
     <h2 class="h1 mt-5">Identificación de Plagas</h2>
@@ -978,6 +890,175 @@
         </tbody>
     </table>
     {{-- Fin Aplicación de Plaguicida --}}
+
+    <div class="titulos col-12 mt-5">Mantenimiento y Capacitación</div>
+    {{-- Calibración de Equipo --}}
+    <h2 class="h1 mt-5">Calibración de Equipo</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Fecha</th>
+                <th scope="col">Equipo Calibrado</th>
+                <th scope="col">Gasto Equipo</th>
+                <th scope="col">Gasto Manzana</th>
+                <th scope="col">Ver Detalle</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($calibracionEquipo as $calibracion)
+            <tr>
+                <td>{{ $calibracion->fecha }}</td>
+                <td>{{ $calibracion->equipo }}</td>
+                <td>{{ $calibracion->gastoEquipo }}</td>
+                <td>{{ $calibracion->gastoManzana }}
+                </td>
+                <td><a href="#" data-toggle="modal" data-target="#calibracion{{ $calibracion->id }}">Ver detalle</a></td>
+            </tr>
+            
+            <!-- Modal -->
+            <div class="modal fade" id="calibracion{{ $calibracion->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Detalles</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            Fecha de apicación:
+                            <b>{{ $calibracion->fecha }}</b>
+                        </div>
+                        <div>
+                            Equipo Calibrado:
+                            <b>{{ $calibracion->equipo }}</b>
+                        </div>
+                        <div>
+                            Produucto Apicado:
+                            <b>{{ $calibracion->producto }}</b>
+                        </div>
+                        <div>
+                            Tamaño del recipiente:
+                            <b>{{ $calibracion->recipiente }}</b>
+                        </div>
+                        <div>Gasto del equipo:
+                            <b>${{ $calibracion->gastoEquipo }}</b>
+                        </div>
+                        <div>Área Cubierta:
+                            <b>{{ $calibracion->area }}</b>
+                        </div>
+                        <div>Gasto Manzana:
+                            <b>${{ $calibracion->gastoManzana }}</b>
+                        </div>
+                        <div>Comentario:
+                            <b>{{ $calibracion->comentario }}</b>
+                        </div>
+                        <div>
+                            Responsable:
+                            <b>
+                                {{
+                                    $calibracion->Empleado->nombreEmpleado .' '.
+                                    $calibracion->Empleado->apellidoEmpleado .' ('.
+                                    $calibracion->Empleado->sobrenombreEmpleado .')'
+                                }}
+                            </b>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+            @endforeach
+        </tbody>
+    </table>
+    {{-- Fin Calibración de Equipo --}}
+
+    {{-- Limpieza de Canales --}}
+    <h2 class="h1 mt-5">Limpieza de Canales</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Fecha</th>
+                <th scope="col">Huerta</th>
+                <th scope="col">Canal</th>
+                <th scope="col">Longitud</th>
+                <th scope="col">Ver Detalle</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($limpiezaCanales as $canal)
+            <tr>
+                <td>{{ $canal->fecha }}</td>
+                <td>{{ $canal->huerta->nombreHuerta }}</td>
+                <td>{{ $canal->nombreCanal }}
+                <td>{{ $canal->longitud }}</td>
+                </td>
+                <td><a href="#" data-toggle="modal" data-target="#canal{{ $canal->id }}">Ver detalle</a></td>
+            </tr>
+            
+            <!-- Modal -->
+            <div class="modal fade" id="canal{{ $canal->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Detalles</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            Fecha:
+                            <b>{{ $canal->fecha }}</b>
+                        </div>
+                        <div>
+                            Huerta:
+                            <b>{{ $canal->huerta->nombreHuerta }}</b>
+                        </div>
+                        <div>
+                            Canal: 
+                            <b>{{ $canal->nombreCanal }}</b>
+                        </div>
+                        <div>
+                            Longitud:
+                            <b>{{ $canal->longitud }}</b>
+                        </div>
+                        <div>
+                            Revestimiento:
+                            <b>{{ $canal->revestimiento }}</b>
+                        </div>
+                        <div>
+                            Acciones Realizadas:
+                            <b>{{ $canal->accionesRealizadas }}</b>
+                        </div>
+                        <div>
+                            Observaciones:
+                            <b>{{ $canal->observaciones }}</b>
+                        </div>
+                        <div>
+                            Responsable:
+                            <b>
+                                {{
+                                    $canal->Empleado->nombreEmpleado .' '.
+                                    $canal->Empleado->apellidoEmpleado .' ('.
+                                    $canal->Empleado->sobrenombreEmpleado .')'
+                                }}
+                            </b>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+            @endforeach
+        </tbody>
+    </table>
+    {{-- Fin Limpieza de Canales --}}
 
     {{-- Capacitaciones de Personal --}}
     <h2 class="h1 mt-5">Capacitaciones de Personal</h2>
