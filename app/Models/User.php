@@ -73,6 +73,10 @@ class User extends Authenticatable
         return $this->hasMany(RegistroSiembra::class);
     }
 
+    public function registroCosecha(){
+        return $this->hasMany(Cosecha::class);
+    }
+
     public function registroFertilizante(){
         return $this->hasMany(Fertilizante::class);
     }

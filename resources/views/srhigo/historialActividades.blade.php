@@ -293,6 +293,102 @@
     </table>
     {{-- Fin Registro de Siembra --}}
 
+    {{-- Registro de Cosecha --}}
+    <h2 class="h1 mt-5">Registro de Cosecha</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Fecha</th>
+                <th scope="col">Huerta y Sección</th>
+                <th scope="col">Kilos</th>
+                <th scope="col">Destinatario</th>
+                <th scope="col">Ver Detalle</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($registroCosecha as $cosecha)
+            <tr>
+                <td>{{ $cosecha->fecha }}</td>
+                <td>{{ $cosecha->huerta->nombreHuerta ." - ". 
+                        $cosecha->seccion->nombreSeccion }}</td>
+                <td>{{ $cosecha->kilos }}</td>
+                <td>{{ $cosecha->cliente->nombre .' '. $cosecha->cliente->apellido .' ('. $cosecha->cliente->empresa .')' }}</td>
+                <td><a href="#" data-toggle="modal" data-target="#cosecha{{ $cosecha->id }}">Ver detalle</a></td>
+            </tr>
+            
+            <!-- Modal -->
+            <div class="modal fade" id="cosecha{{ $cosecha->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Detalles</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            Fecha de cosecha:
+                            <b>{{ $cosecha->fecha }}</b>
+                        </div>
+                        <div>
+                            Huerta:
+                            <b>{{ $cosecha->huerta->nombreHuerta }}</b>
+                        </div>
+                        <div>
+                            Sección: 
+                            <b>{{ $cosecha->seccion->nombreSeccion }}</b>
+                        </div>
+                        <div>
+                            Kilos:
+                            <b>{{ $cosecha->kilos}}</b>
+                        </div>
+                        <div>
+                            Merma:
+                            <b>{{ $cosecha->merma }}</b>
+                        </div>
+                        <div>
+                            Hora Inicio:
+                            <b>{{ $cosecha->horaInicio }}</b>
+                        </div>
+                        <div>
+                            Hora Fin:
+                            <b>{{ $cosecha->horaFin }}</b>
+                        </div>
+                        <div>
+                            Taras:
+                            <b>{{ $cosecha->taras }}</b>
+                        </div>
+                        <div>
+                            Material de las taras:
+                            <b>{{ $cosecha->materialCajas }}</b>
+                        </div>
+                        <div>
+                            Cliente (Destinatario):
+                            <b>{{ $cosecha->cliente->nombre .' '. $cosecha->cliente->apellido .' ('. $cosecha->cliente->empresa .')' }}</b>
+                        </div>
+                        <div>
+                            Responsable:
+                            <b>
+                                {{
+                                    $cosecha->Empleado->nombreEmpleado .' '.
+                                    $cosecha->Empleado->apellidoEmpleado .' ('.
+                                    $cosecha->Empleado->sobrenombreEmpleado .')'
+                                }}
+                            </b>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+            @endforeach
+        </tbody>
+    </table>
+    {{-- Fin Registro de Cosecha --}}
+
     <div class="titulos col-12 mt-5">Fertilización y Riego</div>
     {{-- Aplicación de Fertilizante --}}
     <h2 class="h1 mt-5">Aplicación de fertilizantes</h2>

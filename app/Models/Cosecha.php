@@ -23,4 +23,20 @@ class Cosecha extends Model
         'empleado_id',
         'user_id',
     ];
+
+    public function seccion(){
+        return $this->belongsTo(Seccion::class);
+    }
+
+    public function huerta(){
+        return $this->belongsTo(RegistroPropiedad::class);
+    }
+
+    public function cliente(){
+        return $this->belongsTo(Cliente::class);
+    }
+    
+    public function empleado(){
+        return $this->belongsTo(Empleado::class);
+    }
 }
