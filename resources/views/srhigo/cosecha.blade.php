@@ -69,7 +69,7 @@
             {{-- Fin Merma --}}
 
             {{-- Hora de Inicio --}}
-            <div class="form-group col-12 col-sm-6 col-md-4 col-lg-3 mb-5">
+            <div class="form-group col-12 col-sm-6 col-md-4 col-lg-2 mb-5">
                 <label for="horaInicio">Hora de Inicio</label>
                 <input type="time" 
                 name="horaInicio" 
@@ -85,7 +85,7 @@
             {{-- Fin Hora de Inicio --}}
 
             {{-- Hora Final --}}
-            <div class="form-group col-12 col-sm-6 col-md-4 col-lg-3 mb-5">
+            <div class="form-group col-12 col-sm-6 col-md-4 col-lg-2 mb-5">
                 <label for="horaFin">Hora Final</label>
                 <input type="time" 
                 name="horaFin" 
@@ -99,6 +99,38 @@
                 @enderror
             </div>
             {{-- Fin Hora Final --}}
+
+            {{-- Temperatura de la Fruta --}}
+            <div class="form-group col-12 col-sm-6 col-md-4 col-lg-3 mb-5">
+                <label for="tempFruta">Temperatura de la Fruta (°C)</label>
+                <input type="number" 
+                name="tempFruta" 
+                id="tempFruta"
+                value="{{ old('tempFruta')}}"
+                class="form-control @error('tempFruta') is-invalid @enderror">
+                @error('tempFruta')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
+            </div>
+            {{-- Fin Temperatura de la Fruta --}}
+
+            {{-- Temperatura del Suelo --}}
+            <div class="form-group col-12 col-sm-6 col-md-4 col-lg-3 mb-5">
+                <label for="tempSuelo">Temperatura del Suelo (°C)</label>
+                <input type="number" 
+                name="tempSuelo" 
+                id="tempSuelo"
+                value="{{ old('tempSuelo')}}"
+                class="form-control @error('tempSuelo') is-invalid @enderror">
+                @error('tempSuelo')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
+            </div>
+            {{-- Fin Temperatura del Suelo --}}
 
             {{-- Taras --}}
             <div class="form-group col-12 col-sm-6 col-md-4 col-lg-3 mb-5">

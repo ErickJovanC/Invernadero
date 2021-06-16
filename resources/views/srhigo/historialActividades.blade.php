@@ -356,8 +356,16 @@
                             <b>{{ $cosecha->horaFin }}</b>
                         </div>
                         <div>
+                            Temperatura de la Fruta:
+                            <b>{{ $cosecha->tempFruta }}</b>
+                        </div>
+                        <div>
+                            Temperatura del Suelo:
+                            <b>{{ $cosecha->tempSuelo }}°C</b>
+                        </div>
+                        <div>
                             Taras:
-                            <b>{{ $cosecha->taras }}</b>
+                            <b>{{ $cosecha->taras }}°C</b>
                         </div>
                         <div>
                             Material de las taras:

@@ -23,6 +23,8 @@ class CreateCosechasTable extends Migration
             $table->smallInteger('merma');
             $table->time('horaInicio')->nullable();
             $table->time('horaFin')->nullable();
+            $table->smallInteger('tempFruta')->nullable();
+            $table->smallInteger('tempSuelo')->nullable();
             $table->smallInteger('taras');
             $table->string('materialCajas', 8)->nullable();
             $table->foreignId('cliente_id')->references('id')->on('clientes');

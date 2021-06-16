@@ -72,6 +72,8 @@ class CosechaController extends Controller
             'merma' => $request['merma'],
             'horaInicio' => $request['horaInicio'],
             'horaFin' => $request['horaFin'],
+            'tempFruta' => $request['tempFruta'],
+            'tempSuelo' => $request['tempSuelo'],
             'taras' => $data['taras'],
             'materialCajas' => $data['material'],
             'cliente_id' => $data['cliente'],

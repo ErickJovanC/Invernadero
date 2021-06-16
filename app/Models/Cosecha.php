@@ -17,6 +17,8 @@ class Cosecha extends Model
         'merma',
         'horaInicio',
         'horaFin',
+        'tempFruta',
+        'tempSuelo',
         'taras',
         'materialCajas',
         'cliente_id',
