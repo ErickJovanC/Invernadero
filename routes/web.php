@@ -32,7 +32,7 @@ use App\Http\Controllers\AplicacionFertilizanteOrganicoController;
 */
 
 Route::get('/', function () {
-    return view('auth.login');
+    return redirect(route('main'));
 });
 
 Auth::routes();
@@ -41,26 +41,24 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('registroPersonal', RegistroPersonalController::class);
 Route::resource('registroPropiedad', RegistroPropiedadController::class);
-Route::resource('seccion', SeccionController::class);
-Route::resource('empleado', EmpleadoController::class);
-Route::resource('preparacionSuelo', PreparacionSueloController::class);
-Route::resource('historial', HistorialController::class);
-Route::resource('calidadPlanta', CalidadPlantaController::class);
-Route::resource('controlPreventivo', ControlPreventivoController::class);
-Route::resource('registroSiembra', RegistroSiembraController::class);
-Route::resource('fertilizante', FertilizanteController::class);
-Route::resource('aplicacionFertilizante', AplicacionFertilizanteController::class);
-Route::resource('calibracionEquipo', CalibracionEquipoController::class);
-Route::resource('aplicacionFertilizanteOrganico', AplicacionFertilizanteOrganicoController::class);
-Route::resource('registroRiego', RegistroRiegoController::class);
-Route::resource('limpiezaCanales', LimpiezaCanalesController::class);
-Route::resource('plagas', ControlPreventivoPlagaController::class);
-Route::resource('identificacionPlagas', IdentificacionPlagasController::class);
-Route::resource('aplicacionPlaguicida', AplicacionPlaguicidaController::class);
-Route::resource('capacitacionPersonal', CapacitacionPersonalController::class);
-Route::resource('cosecha', CosechaController::class);
-Route::resource('cliente', ClienteController::class);
+Route::resource('seccion', SeccionController::class)->middleware('auth');
+Route::resource('empleado', EmpleadoController::class)->middleware('auth');
+Route::resource('preparacionSuelo', PreparacionSueloController::class)->middleware('auth');
+Route::resource('historial', HistorialController::class)->middleware('auth');
+Route::resource('calidadPlanta', CalidadPlantaController::class)->middleware('auth');
+Route::resource('controlPreventivo', ControlPreventivoController::class)->middleware('auth');
+Route::resource('registroSiembra', RegistroSiembraController::class)->middleware('auth');
+Route::resource('fertilizante', FertilizanteController::class)->middleware('auth');
+Route::resource('aplicacionFertilizante', AplicacionFertilizanteController::class)->middleware('auth');
+Route::resource('calibracionEquipo', CalibracionEquipoController::class)->middleware('auth');
+Route::resource('aplicacionFertilizanteOrganico', AplicacionFertilizanteOrganicoController::class)->middleware('auth');
+Route::resource('registroRiego', RegistroRiegoController::class)->middleware('auth');
+Route::resource('limpiezaCanales', LimpiezaCanalesController::class)->middleware('auth');
+Route::resource('plagas', ControlPreventivoPlagaController::class)->middleware('auth');
+Route::resource('identificacionPlagas', IdentificacionPlagasController::class)->middleware('auth');
+Route::resource('aplicacionPlaguicida', AplicacionPlaguicidaController::class)->middleware('auth');
+Route::resource('capacitacionPersonal', CapacitacionPersonalController::class)->middleware('auth');
+Route::resource('cosecha', CosechaController::class)->middleware('auth');
+Route::resource('cliente', ClienteController::class)->middleware('auth');
 
 Route::view('main', '/main/index')->name('main')->middleware('auth');
-
-// Route::view('/historial/', 'srhigo/historialActividades')->name('historial');

@@ -66,7 +66,7 @@ class RegistroPersonalController extends Controller
             'foto' => $data['foto'],
         ]);
 
-        return redirect('/main');
+        return redirect(route('registroPropiedad.create'));
     }
 
     /**
