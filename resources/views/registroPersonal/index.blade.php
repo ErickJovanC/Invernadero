@@ -74,6 +74,7 @@
                 @enderror
             </div>
 
+            {{-- Fotografía --}}
             <div class="form-group col-sm-12 col-md-6 mb-5">
                 <label for="fotografía">Foto (Recomendado)</label>
                 <input type="file" name="foto" id="foto" class="form-control">
@@ -83,7 +84,9 @@
                     </span>
                 @enderror
             </div>
-            <div class="w-100"></div>
+            {{-- Fin Fotografía --}}
+
+            {{-- <div class="w-100"></div> --}}
         </div>
         <div class="row justify-content-end">
             <div class="form-group">

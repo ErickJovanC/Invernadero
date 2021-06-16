@@ -50,9 +50,14 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'nombre' => ['required', 'string', 'max:255'],
+            'apellidoP' => ['required', 'string', 'max:255'],
+            'apellidoM' => ['required', 'string', 'max:255'],
+            'telefono' => ['required', 'string', 'min:10', 'max:10', 'unique:users'],
+            'direccion' => ['required', 'string', 'max:255'],
+            'foto' => ['mimes:jpeg, png, jpg'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -65,9 +70,20 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $foto = "default.jpg";
+        // Subida de la foto
+        if(isset($data['foto'])){
+            $foto = $data['foto']->store('perfil', 'public');
+        }
+        
+        // dd($data);
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
+            'nombre' => $data['nombre'],
+            'apellidoP' => $data['apellidoP'],
+            'apellidoM' => $data['apellidoM'],
+            'telefono' => $data['telefono'],
+            'direccion' => $data['direccion'],
+            'foto' => $foto,
             'password' => Hash::make($data['password']),
         ]);
     }
