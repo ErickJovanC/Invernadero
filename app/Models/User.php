@@ -22,6 +22,7 @@ class User extends Authenticatable
         'apellidoM',
         'telefono',
         'direccion',
+        'email',
         'foto',
         'password',
     ];

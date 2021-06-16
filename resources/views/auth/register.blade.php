@@ -61,7 +61,21 @@
 
                                 @error('telefono')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>El número debe tener 10 digitos</strong>
+                                        <strong>El número no tiene 10 digitos ó ya esta registrado con otro usuario</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('email') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"  autocomplete="email" required autofocus>
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>El número no tiene 10 digitos ó ya esta registrado con otro usuario</strong>
                                     </span>
                                 @enderror
                             </div>
@@ -86,12 +100,12 @@
                             <label for="fotografía" class="col-md-4 col-form-label text-md-right">Foto (Recomendado)</label>
                             <div class="col-md-6">
                                 <input type="file" name="foto" id="foto" class="form-control @error('direccion') is-invalid @enderror">
-                            </div>
-                            @error('foto')
+                                @error('foto')
                                 <span class="invalid-feedback d-block" role="alert">
-                                <strong>{{$message}}</strong>
-                            </span>
-                            @enderror
+                                    <strong>{{$message}}</strong>
+                                </span>
+                                @enderror
+                            </div>
                         </div>
                         {{-- Fin Fotografía --}}
 
