@@ -80,12 +80,14 @@ class RegistroSiembraController extends Controller
             'empleado_id' => $data['responsable'],
         ]);
 
+        // Consultar Registro
         $lotes = CalidadPlanta::where("id", $lote)->get();
         foreach ($lotes as $plantasLotes){
             $plantasLote = $plantasLotes->cantidadPlantas;
         }
         $plantasRestantes = $plantasLote - $plantasSembradas;
 
+        // Actualizar registro
         CalidadPlanta::where("id", $lote)->update([
             'cantidadPlantas' => $plantasRestantes,
         ]);

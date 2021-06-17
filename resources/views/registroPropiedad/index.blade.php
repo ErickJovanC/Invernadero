@@ -1,12 +1,14 @@
 @extends('layouts.app')
 @section('content')
-<a href="{{ route('main') }}" class="btn btn-success">Menú</a>
+<div class="row">
+    <a href="{{ route('main') }}" class="btn btn-success">Menú Principal</a>
+</div>
 <div class="row mt-4">
-    <h1 class="titulo mb-5 col-12 text-center">Registro de Huerta</h1>
+    <h1 class="titulo mb-5 col-12 text-center">Registro de Huertas</h1>
     <form action="{{ route('registroPropiedad.store') }}" method="post" class="col-12">
     @csrf
-        <div class="row mb-4">
-            <div class="form-group col-sm-12 col-md-6 mb-5">
+        <div class="row mb-4 align-items-end">
+            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
                 <label for="nombreHuerta">Nombre de la Huerta</label>
                 <input type="text" 
                     name="nombreHuerta" 
@@ -21,7 +23,7 @@
                 @enderror
             </div>
 
-            <div class="form-group col-sm-12 col-md-6 mb-5">
+            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
                 <label for="codigoRegistro">Código de registro (Senasica)</label>
                 <input type="text" 
                     name="codigoRegistro" 
@@ -30,13 +32,13 @@
                 >
             </div>
 
-            <div class="form-group col-sm-12 col-md-6 mb-5">
+            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
                 <label for="estado">Estado</label>
                 <select name="estado"
                     id="estado" 
                     class="form-control @error('estado') is-invalid @enderror"
                 >
-                    <option value="" hidden>Seleccione el estado</option>
+                    {{-- <option value="" hidden>Seleccione el estado</option> --}}
                     @foreach($estados as $estado)
                         <option value="{{ $estado->id }}">{{ $estado->estado }}</option>
                     @endforeach
@@ -48,7 +50,7 @@
                 @enderror
             </div>
 
-            <div class="form-group col-sm-12 col-md-6 mb-5">
+            <div class="form-group col-sm-12 col-md-6 col-lg-3 mb-5">
                 <label for="municipio">Municipio</label>
                 <select name="municipio" id="municipio" 
                     class="form-control @error('municipio') is-invalid @enderror"
@@ -65,7 +67,7 @@
                 @enderror
             </div>
 
-            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
+            <div class="form-group col-sm-12 col-md-6 col-lg-3 mb-5">
                 <label for="colonia">Colonia</label>
                 <input type="text" name="colonia" id="colonia" 
                     class="form-control @error('colonia') is-invalid @enderror"
@@ -78,7 +80,7 @@
                 @enderror
             </div>
 
-            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
+            <div class="form-group col-sm-12 col-md-6 col-lg-3 mb-5">
                 <label for="calle">Calle y Número</label>
                 <input type="text" name="calle" id="calle" 
                     class="form-control @error('calle') is-invalid @enderror"
@@ -91,7 +93,7 @@
                 @enderror
             </div>
 
-            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
+            <div class="form-group col-sm-12 col-md-6 col-lg-3 mb-5">
                 <label for="comunidad">Comunidad, Predio y/o Campo</label>
                 <input type="text" name="comunidad" id="comunidad" 
                     class="form-control @error('comunidad') is-invalid @enderror"
@@ -104,11 +106,15 @@
                 @enderror
             </div>
 
-            <div class="form-group col-12">
+            {{-- <div class="form-group col-12">
                 <label for="ubicacion">Ubicación</label>
                 <input type="text" name="ubicacion" class="form-control">
-            </div>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d967288.4768919495!2d-99.6242015024996!3d18.73250458004401!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85cddfae25f6fe47%3A0x975f8225a169dd0f!2sMorelos!5e0!3m2!1ses-419!2smx!4v1621463833508!5m2!1ses-419!2smx" height="400" style="border:0;" allowfullscreen="" loading="lazy" class="col-12"></iframe>
+            </div> --}}
+
+            {{-- Mapa Google --}}
+            {{-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d967288.4768919495!2d-99.6242015024996!3d18.73250458004401!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85cddfae25f6fe47%3A0x975f8225a169dd0f!2sMorelos!5e0!3m2!1ses-419!2smx!4v1621463833508!5m2!1ses-419!2smx" height="400" style="border:0;" allowfullscreen="" loading="lazy" class="col-12"></iframe> --}}
+            {{-- Fin Mapa Google --}}
+
         </div>
         <div class="row justify-content-end">
             <div class="form-group">
@@ -119,7 +125,7 @@
 </div>
 
 {{-- Tabla de Huertas --}}
-<div class="row justify-content-center">
+<div class="row justify-content-center my-3">
     <div class="col-12 justify-content-center">
         <table class="table table-striped">
             <thead>
@@ -162,8 +168,6 @@
                         {{-- Fin modal --}}
                     </td>
                 </tr>
-
-                
                 @endforeach
             </tbody>
         </table>
@@ -171,5 +175,7 @@
 </div>
 {{-- fin Tabla de Huertas --}}
 
-<a href="{{ route('main') }}" class="btn btn-success">Menú</a>
+<div class="row">
+    <a href="{{ route('main') }}" class="btn btn-success">Menú Principal</a>
+</div>
 @endsection

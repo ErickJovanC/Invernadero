@@ -61,4 +61,8 @@ Route::resource('capacitacionPersonal', CapacitacionPersonalController::class)->
 Route::resource('cosecha', CosechaController::class)->middleware('auth');
 Route::resource('cliente', ClienteController::class)->middleware('auth');
 
+Route::get('/srhigo/sinActivar', function() {
+    return view('srhigo.sinActivar');
+});
+
 Route::view('main', '/main/index')->name('main')->middleware('auth');

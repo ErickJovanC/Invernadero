@@ -57,6 +57,7 @@ class EmpleadoController extends Controller
         return view('srhigo.empleados')->
         with([
                 'empleados' => $empleados,
+                'mensaje' => '¡El empleado se registro correctamente!'
             ]);
     }
 

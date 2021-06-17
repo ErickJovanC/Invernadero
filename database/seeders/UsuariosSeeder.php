@@ -16,16 +16,13 @@ class UsuariosSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'name' => 'Erick Jovan',
+            'nombre' => 'Erick Jovan',
+            'apellidoP' => 'De La Cruz',
+            'apellidoM' => 'Cruz',
+            'telefono' => '7352351512',
+            'direccion' => 'Calvario 13, Barrio Santigo, Tetela del Volcán',
             'email' => 'erickjovan106@gmail.com',
-            'password' => Hash::make('palmz22A'),
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
-        ]);
-
-        DB::table('users')->insert([
-            'name' => 'Jazmin',
-            'email' => 'jazmin@mail.com',
+            'foto' => 'erick.jpg',
             'password' => Hash::make('palmz22A'),
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),

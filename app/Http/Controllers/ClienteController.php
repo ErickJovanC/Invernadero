@@ -25,7 +25,11 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        return view('srhigo.cliente');
+        $clientes = Auth::user()->clientes;
+        return view('srhigo.cliente')->
+        with([
+                'clientes' => $clientes,
+            ]);
     }
 
     /**

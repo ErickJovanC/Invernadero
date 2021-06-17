@@ -1,35 +1,32 @@
 @extends('layouts.app')
 @section('content')
     <div class="row">
-        <div class="col-12">
-            @isset($mesanje){
-                {{ $mensaje }}
-            }
-            @endisset
-        </div>
+        @isset($mensaje)
+            <div class="alert alert-info col-12 text-center">{{ $mensaje }}</div>
+        @endisset
         <h1 class="col-12">Registros Varios</h1>
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 p-2">
+        {{-- <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 p-2">
             <a href="{{ route('registroPersonal.index') }}"
                 class="btn btn-success btn-menu">
                 Registro Personal
             </a>
-        </div>
+        </div> --}}
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 p-2">
             <a href="{{ route('registroPropiedad.create') }}"
                 class="btn btn-success btn-menu">
-                Registrar Huerta
+                Huertas Registradas
             </a>
         </div>
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 p-2">
             <a href="{{ route('seccion.create') }}"
                 class="btn btn-success btn-menu">
-                Registrar Sección
+                Secciones Registradas
             </a>
         </div>
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 p-2">
             <a href="{{ route('empleado.create') }}"
                 class="btn btn-success btn-menu">
-                Registrar Empleado
+                Empleados Registrados
             </a>
         </div>
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 p-2">

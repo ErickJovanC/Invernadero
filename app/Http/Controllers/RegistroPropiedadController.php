@@ -73,15 +73,24 @@ class RegistroPropiedadController extends Controller
             'ubicacion' => $request['ubicacion'],
         ]);
 
-        $estados = Estados::all(['id', 'estado']);
-        $municipios = Municipios::all(['id', 'municipio']);
         $huertas = Auth::user()->huertas;
-        return view('registroPropiedad.index')->
-            with([
-                'estados' => $estados,
-                'municipios' => $municipios,
-                'huertas' => $huertas,
+        $secciones = Auth::user()->secciones;
+        return view('srhigo.seccion')->
+        with([
+            'huertas' => $huertas,
+            'secciones' => $secciones,
+            'mensaje' => '¡La huerta a sido registrada correctamente! Ahora registre las secciones de su huerta'
             ]);
+
+        // $estados = Estados::all(['id', 'estado']);
+        // $municipios = Municipios::all(['id', 'municipio']);
+        // $huertas = Auth::user()->huertas;
+        // return view('registroPropiedad.index')->
+        //     with([
+        //         'estados' => $estados,
+        //         'municipios' => $municipios,
+        //         'huertas' => $huertas,
+        //     ]);
     }
 
     /**

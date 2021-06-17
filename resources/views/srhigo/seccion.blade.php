@@ -1,11 +1,14 @@
 @extends('layouts.app')
 @section('content')
-<a href="{{ route('main') }}" class="btn btn-success">Menú</a>
+{{-- <a href="{{ route('main') }}" class="btn btn-success">Menú</a> --}}
 <div class="row">
     <h1 class="titulo mb-5 col-12 text-center">Registro de Secciones</h1>
+    @isset($mensaje)
+        <div class="alert alert-info col-12 text-center">{{ $mensaje }}</div>
+    @endisset
     <form action="{{ route('seccion.store') }}" method="post" class="col-12">
     @csrf
-        <div class="row align-items-end">
+        <div class="row">
             {{-- Propiedad --}}
             <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
                 <label for="propiedad">Huerta</label>
@@ -46,13 +49,12 @@
             <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
                 <label for="cantidadPlantas">
                     ¿Cuantas plantas tiene en esta sección?
-                    <br>
-                    (Si aun no ha plantado coloque 0)
                 </label>
                 <input type="number" 
-                    name="cantidadPlantas" id="cantidadPlantas" 
+                    name="cantidadPlantas" 
+                    id="cantidadPlantas" 
                     min="0"
-                    value="{{ old('cantidadPlantas') }}"
+                    value="{{ old('cantidadPlantas') ? old('cantidadPlantas') : 0}}"
                     class="form-control @error('cantidadPlantas') is-invalid @enderror" 
                 />
                 @error('cantidadPlantas')
@@ -120,5 +122,9 @@
         </table>
     </div>
 </div>
-<a href="{{ route('main') }}" class="btn btn-success">Menú</a>
+<div class="row">
+    <a href="{{ route('main') }}" class="btn btn-success ">Menú Principal</a>
+    <a href="{{ route('registroPropiedad.create') }}" class="btn btn-success ml-3">Registrar Huerta</a>
+    <a href="{{ route('empleado.create') }}" class="btn btn-success ml-3">Registrar Empleados</a>
+</div>
 @endsection

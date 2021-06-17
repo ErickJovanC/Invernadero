@@ -78,5 +78,58 @@
         </div>
     </form>
 </div>
+
+{{-- Tabla de clientes --}}
+<div class="row justify-content-center">
+    <div class="col-12 justify-content-center">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col"># Reg.</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">Empresa</th>
+                    <th scope="col">Dirección</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($clientes as $cliente)
+                <tr>
+                    <th scope="row">{{ $cliente->id }}</th>
+                    <td>{{ $cliente->nombre }}</td>
+                    <td>{{ $cliente->apellido }}</td>
+                    <td>{{ $cliente->empresa }}</td>
+                    <td><button class="btn btn-danger" data-toggle="modal" data-target="#cliente{{ $cliente->id }}">Eliminar</button>
+                        {{-- Modal --}}
+                        <div class="modal fade" id="cliente{{ $cliente->id }}" tabindex="-1" role="dialog" aria-labelledby="Titulo" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="Titulo">¿Borrar Registro?</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                <div class="modal-body">
+                                    {{ $cliente->nombrecliente ." ". $cliente->apellidocliente ." (". $cliente->sobrenombreEmpleado .")" }}
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                    <button type="button" class="btn btn-danger">Eliminar Registro</button>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- Fin modal --}}
+                    </td>
+                </tr>
+
+                
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+</div>
+{{-- fin Tabla de clientes --}}
 <a href="{{ route('main') }}" class="btn btn-success">Menú</a>
 @endsection

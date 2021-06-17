@@ -1,8 +1,13 @@
 @extends('layouts.app')
 @section('content')
-<a href="{{ route('main') }}" class="btn btn-success">Menú</a>
 <div class="row">
-    <h1 class="titulo mb-5 col-12 text-center">Registro de Secciones</h1>
+    <a href="{{ route('main') }}" class="btn btn-success ">Menú Principal</a>
+</div>
+<div class="row">
+    <h1 class="titulo mb-5 col-12 text-center">Registro de Empleados</h1>
+    @isset($mensaje)
+        <div class="alert alert-info col-12 text-center">{{ $mensaje }}</div>
+    @endisset
     <form action="{{ route('empleado.store') }}" method="post" class="col-12">
     @csrf
         <div class="row">
@@ -111,6 +116,7 @@
 </div>
 {{-- fin Tabla de empleados --}}
 
-
-<a href="{{ route('main') }}" class="btn btn-success">Menú</a>
+<div class="row">
+    <a href="{{ route('main') }}" class="btn btn-success ">Menú Principal</a>
+</div>
 @endsection

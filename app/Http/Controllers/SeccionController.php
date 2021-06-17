@@ -52,7 +52,7 @@ class SeccionController extends Controller
         $data = request()->validate([
             'propiedad' => 'required',
             'nombreSeccion' => 'required',
-            'cantidadPlantas' => 'required'
+            'cantidadPlantas' => 'integer'
         ]);
 
         Auth::user()->secciones()->create([
@@ -67,6 +67,7 @@ class SeccionController extends Controller
         with([
             'huertas' => $huertas,
             'secciones' => $secciones,
+            'mensaje' => '¡La sección se registro correctamente!'
             ]);
     }
 
