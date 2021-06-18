@@ -8,7 +8,9 @@
 
     {{-- Muestra el mensaje de confirmación --}}
     @if(Session::has('mensaje'))
-        <div class="alert alert-info col-12 text-center">{{ Session::get('mensaje') }}</div>
+        <div class="alert alert-info col-12 text-center">
+            {!! Session::get('mensaje') !!}
+        </div>
     @endif
 
     {{-- Formulario principal --}}
@@ -35,8 +37,14 @@
                 <input type="text" 
                     name="codigoRegistro" 
                     id="codigoRegistro" 
-                    class="form-control"
+                    class="form-control @error('codigoRegistro') is-invalid @enderror"
+                    value="{{ old('codigoRegistro') }}"
                 >
+                @error('codigoRegistro')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
             </div>
 
             <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
@@ -47,7 +55,9 @@
                 >
                     {{-- <option value="" hidden>Seleccione el estado</option> --}}
                     @foreach($estados as $estado)
-                        <option value="{{ $estado->id }}">{{ $estado->estado }}</option>
+                        <option value="{{ $estado->id }}"
+                            {{ old('estado') == $estado->id ? 'selected' : '' }}
+                            >{{ $estado->estado }}</option>
                     @endforeach
                 </select>
                 @error('estado')
@@ -127,7 +137,7 @@
         </div>
         <div class="row justify-content-end">
             <div class="form-group">
-                <input type="submit" value="Registrar Propiedad" class="btn btn-primary px-5">
+                <input type="submit" value="Registrar Huerta" class="btn btn-primary px-5">
             </div>
         </div>
     </form>
@@ -153,7 +163,10 @@
                     <td>{{ $huerta->nombreHuerta }}</td>
                     <td>{{ $huerta->estado->estado }}</td>
                     <td>{{ $huerta->municipio->municipio }}</td>
-                    <td><button class="btn btn-warning" data-toggle="modal" data-target="#huerta{{ $huerta->id }}">Editar</button>
+                    {{-- <td><a href="{{ url() }}"></a></td> --}}
+                    <td><a href="{{ route('registroPropiedad.edit', $huerta) }}"><button class="btn btn-warning">Editar</button></a>
+                    {{-- <td><a href="{{ url('registroPropiedad/'. $huerta->id .'/edit') }}"><button class="btn btn-warning">Editar</button></a> --}}
+                    {{-- <td><button class="btn btn-warning" data-toggle="modal" data-target="#huerta{{ $huerta->id }}">Editar</button> --}}
                         {{-- Modal --}}
                         <div class="modal fade" id="huerta{{ $huerta->id }}" tabindex="-1" role="dialog" aria-labelledby="Titulo" aria-hidden="true">
                             <div class="modal-dialog modal-lg" role="document">

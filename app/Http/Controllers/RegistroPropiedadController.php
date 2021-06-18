@@ -75,22 +75,12 @@ class RegistroPropiedadController extends Controller
 
         $huertas = Auth::user()->huertas;
         $secciones = Auth::user()->secciones;
-        return view('srhigo.seccion')->
+        return redirect('seccion/create')->
         with([
             'huertas' => $huertas,
             'secciones' => $secciones,
-            'mensaje' => '¡La huerta a sido registrada correctamente! Ahora registre las secciones de su huerta'
+            'mensaje' => '¡La huerta a sido registrada correctamente! <br>Ahora registre las secciones de su huerta'
             ]);
-
-        // $estados = Estados::all(['id', 'estado']);
-        // $municipios = Municipios::all(['id', 'municipio']);
-        // $huertas = Auth::user()->huertas;
-        // return view('registroPropiedad.index')->
-        //     with([
-        //         'estados' => $estados,
-        //         'municipios' => $municipios,
-        //         'huertas' => $huertas,
-        //     ]);
     }
 
     /**
@@ -112,7 +102,11 @@ class RegistroPropiedadController extends Controller
      */
     public function edit(RegistroPropiedad $registroPropiedad)
     {
-        //
+        $huerta = $registroPropiedad;
+        // dd($huerta);
+        $estados = Estados::all(['id', 'estado']);
+        $municipios = Municipios::all(['id', 'municipio']);
+        return view('registroPropiedad.edit', compact('estados', 'municipios', 'huerta'));
     }
 
     /**
