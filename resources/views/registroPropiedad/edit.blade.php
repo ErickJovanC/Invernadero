@@ -19,7 +19,7 @@
                     name="nombreHuerta" 
                     id="nombreHuerta"
                     class="form-control @error('nombreHuerta') is-invalid @enderror"
-                    value="{{ $huerta->nombreHuerta }}"
+                    value="{{ old('nombreHuerta') ? old('nombreHuerta') : $huerta->nombreHuerta }}"
                 >
                 @error('nombreHuerta')
                     <span class="invalid-feedback d-block" role="alert">
@@ -33,8 +33,8 @@
                 <input type="text" 
                     name="codigoRegistro" 
                     id="codigoRegistro" 
-                    class="form-control @error('nombreHuerta') is-invalid @enderror"
-                    value="{{ $huerta->codigoRegistro }}"
+                    class="form-control @error('codigoRegistro') is-invalid @enderror"
+                    value="{{ old('codigoRegistro') ? old('codigoRegistro') : $huerta->codigoRegistro }}"
                 >
                 @error('codigoRegistro')
                     <span class="invalid-feedback d-block" role="alert">
@@ -87,7 +87,7 @@
                 <label for="colonia">Colonia</label>
                 <input type="text" name="colonia" id="colonia" 
                     class="form-control @error('colonia') is-invalid @enderror"
-                    value="{{ $huerta->colonia }}"
+                    value="{{ old('colonia') ? old('colonia') :  $huerta->colonia }}"
                 >
                 @error('colonia')
                     <span class="invalid-feedback d-block" role="alert">
