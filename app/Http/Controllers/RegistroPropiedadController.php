@@ -124,7 +124,37 @@ class RegistroPropiedadController extends Controller
      */
     public function update(Request $request, RegistroPropiedad $registroPropiedad)
     {
-        //
+        // dd($request->all());
+        // return $registroPropiedad;
+        $data = request()->validate([
+            'nombreHuerta' => 'required | min:3',
+            'estado' => 'required',
+            'municipio' => 'required',
+        ]);
+
+        // Actualización
+        $registroPropiedad->update([
+            'nombreHuerta' => $data['nombreHuerta'],
+            'codigoRegistro' => $request['codigoRegistro'],
+            'estado_id' => $data['estado'],
+            'municipio_id' => $data['municipio'],
+            'colonia' => $request['colonia'],
+            'calle' => $request['calle'],
+            'comunidad' => $request['comunidad'],
+            'ubicacion' => $request['ubicacion'],
+        ]);
+
+        // Redirección
+        $estados = Estados::all(['id', 'estado']);
+        $municipios = Municipios::all(['id', 'municipio']);
+        $huertas = Auth::user()->huertas;
+        return redirect('registroPropiedad/create')->
+            with([
+                'estados' => $estados,
+                'municipios' => $municipios,
+                'huertas' => $huertas,
+                'mensaje' => '¡La huerta a sido actualizada correctamente!'
+                ]);
     }
 
     /**

@@ -3,8 +3,15 @@
 <div class="row">
     <a href="{{ route('main') }}" class="btn btn-success">Menú Principal</a>
 </div>
-<div class="row mt-4">
+<div class="row my-4">
     <h1 class="titulo mb-5 col-12 text-center">Registro de Huertas</h1>
+
+    {{-- Muestra el mensaje de confirmación --}}
+    @if(Session::has('mensaje'))
+        <div class="alert alert-info col-12 text-center">{{ Session::get('mensaje') }}</div>
+    @endif
+
+    {{-- Formulario principal --}}
     <form action="{{ route('registroPropiedad.store') }}" method="post" class="col-12">
     @csrf
         <div class="row mb-4 align-items-end">
@@ -57,7 +64,9 @@
                 >
                     <option value="" hidden>Seleccione el municipio</option>
                     @foreach($municipios as $municipio)
-                        <option value="{{ $municipio->id }}">{{ $municipio->municipio }}</option>
+                        <option value="{{ $municipio->id }}" 
+                            {{ old('municipio') == $municipio->id ? 'selected' : '' }}
+                            >{{ $municipio->municipio }}</option>
                     @endforeach
                 </select>
                 @error('municipio')
@@ -144,24 +153,143 @@
                     <td>{{ $huerta->nombreHuerta }}</td>
                     <td>{{ $huerta->estado->estado }}</td>
                     <td>{{ $huerta->municipio->municipio }}</td>
-                    <td><button class="btn btn-danger" data-toggle="modal" data-target="#huerta{{ $huerta->id }}">Eliminar</button>
+                    <td><button class="btn btn-warning" data-toggle="modal" data-target="#huerta{{ $huerta->id }}">Editar</button>
                         {{-- Modal --}}
                         <div class="modal fade" id="huerta{{ $huerta->id }}" tabindex="-1" role="dialog" aria-labelledby="Titulo" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
+                            <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="Titulo">¿Borrar Registro?</h5>
+                                        <h5 class="modal-title h1" id="Titulo">Editar Registro</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                <div class="modal-body">
-                                    {{ $huerta->nombreHuerta }}
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                    <button type="button" class="btn btn-danger">Eliminar Registro</button>
-                                </div>
+                                    <div class="modal-body">
+                                        <form action="{{ url('/registroPropiedad/'.$huerta->id) }}" method="post">
+                                            @csrf
+                                            @method('patch')
+                                            <div class="row mb-4 align-items-end">
+                                                <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
+                                                    <label for="nombreHuerta">Nombre de la Huerta</label>
+                                                    <input type="text" 
+                                                        name="nombreHuerta" 
+                                                        id="nombreHuerta"
+                                                        class="form-control @error('nombreHuerta') is-invalid @enderror"
+                                                        value="{{ $huerta->nombreHuerta }}"
+                                                    >
+                                                    @error('nombreHuerta')
+                                                        <span class="invalid-feedback d-block" role="alert">
+                                                            <strong>{{$message}}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+
+                                                <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
+                                                    <label for="codigoRegistro">Código de registro (Senasica)</label>
+                                                    <input type="text" 
+                                                        name="codigoRegistro" 
+                                                        id="codigoRegistro" 
+                                                        class="form-control"
+                                                        value="{{ $huerta->codigoRegistro }}"
+                                                    >
+                                                </div>
+
+                                                <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
+                                                    <label for="estado">Estado</label>
+                                                    <select name="estado"
+                                                        id="estado" 
+                                                        class="form-control @error('estado') is-invalid @enderror"
+                                                    >
+                                                        {{-- <option value="" hidden>Seleccione el estado</option> --}}
+                                                        @foreach($estados as $estado)
+                                                            <option 
+                                                                value="{{ $estado->id }}"
+                                                                {{ $huerta->estado_id == $estado->id ? 'selected' : '' }}
+                                                            >{{ $estado->estado }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    @error('estado')
+                                                        <span class="invalid-feedback d-block" role="alert">
+                                                            <strong>{{$message}}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+
+                                                <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
+                                                    <label for="municipio">Municipio</label>
+                                                    <select name="municipio" id="municipio" 
+                                                        class="form-control @error('municipio') is-invalid @enderror"
+                                                    >
+                                                        <option value="" hidden>Seleccione el municipio</option>
+                                                        @foreach($municipios as $municipio)
+                                                            <option value="{{ $municipio->id }}"
+                                                                {{ $huerta->municipio_id == $municipio->id ? 'selected' : '' }}
+                                                                >{{ $municipio->municipio }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    @error('municipio')
+                                                        <span class="invalid-feedback d-block" role="alert">
+                                                            <strong>{{$message}}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+
+                                                <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
+                                                    <label for="colonia">Colonia</label>
+                                                    <input type="text" name="colonia" id="colonia" 
+                                                        class="form-control @error('colonia') is-invalid @enderror"
+                                                        value="{{ $huerta->colonia }}"
+                                                    >
+                                                    @error('colonia')
+                                                        <span class="invalid-feedback d-block" role="alert">
+                                                            <strong>{{$message}}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+
+                                                <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
+                                                    <label for="calle">Calle y Número</label>
+                                                    <input type="text" name="calle" id="calle" 
+                                                        class="form-control @error('calle') is-invalid @enderror"
+                                                        value="{{ $huerta->calle }}"
+                                                    >
+                                                    @error('calle')
+                                                        <span class="invalid-feedback d-block" role="alert">
+                                                            <strong>{{$message}}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+
+                                                <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
+                                                    <label for="comunidad">Comunidad, Predio y/o Campo</label>
+                                                    <input type="text" name="comunidad" id="comunidad" 
+                                                        class="form-control @error('comunidad') is-invalid @enderror"
+                                                        value="{{ $huerta->comunidad }}"
+                                                    >
+                                                    @error('comunidad')
+                                                        <span class="invalid-feedback d-block" role="alert">
+                                                            <strong>{{$message}}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                <input type="submit" value="Editar Registro" class="btn btn-warning px-5">
+                                                {{-- <button type="button" class="btn btn-danger">Editar Registro</button> --}}
+                                            </div>
+
+                                            <div class="row justify-content-end">
+                                                <div class="form-group">
+                                                    
+                                                </div>
+                                            </div>
+
+                                        </form>
+
+                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
