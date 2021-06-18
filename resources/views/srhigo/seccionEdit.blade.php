@@ -12,8 +12,9 @@
     @endif
 
     {{-- Formulario principal --}}
-    <form action="{{ route('seccion.store') }}" method="post" class="col-12">
+    <form action="{{ route('seccion.update', $seccion) }}" method="post" class="col-12">
     @csrf
+    @method('patch')
         <div class="row">
             {{-- Propiedad --}}
             <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
@@ -25,7 +26,7 @@
                     @foreach ($huertas as $huerta)
                         <option 
                             value="{{ $huerta->id }}" 
-                            {{ old('propiedad') == $huerta->id ? 'selected' : '' }}
+                            {{ $seccion->propiedad_id == $huerta->id ? 'selected' : '' }}
                         >
                             {{ $huerta->nombreHuerta }}
                         </option>
@@ -43,7 +44,7 @@
                 <input type="text" 
                     name="nombreSeccion" id="nombreSeccion" 
                     class="form-control @error('nombreSeccion') is-invalid @enderror" 
-                    value="{{ old('nombreSeccion') }}"
+                    value="{{ old('nombreSeccion') ? old('nombreSeccion') : $seccion->nombreSeccion }}"
                 />
                 @error('nombreSeccion')
                         <span class="invalid-feedback d-block" role="alert">
@@ -60,7 +61,7 @@
                     name="cantidadPlantas" 
                     id="cantidadPlantas" 
                     min="0"
-                    value="{{ old('cantidadPlantas') ? old('cantidadPlantas') : 0}}"
+                    value="{{ old('cantidadPlantas') ? old('cantidadPlantas') : $seccion->cantidadPlantas}}"
                     class="form-control @error('cantidadPlantas') is-invalid @enderror" 
                 />
                 @error('cantidadPlantas')
@@ -71,43 +72,15 @@
             </div>
         </div>
 
-        {{-- Botón del formulario --}}
         <div class="row justify-content-end">
             <div class="form-group">
-                <input type="submit" value="Registrar Sección" class="btn btn-primary px-5">
+                <a href="{{ route('seccion.create') }}"
+                    class="btn btn-secondary mr-3">
+                    Cancelar edición
+                </a>
+                <input type="submit" value="Editar Sección" class="btn btn-warning px-5">
             </div>
-        </div> {{-- Fin Botón del formulario --}}
+        </div>
     </form>
-</div>
-
-<div class="row">
-    <div class="col">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">Huerta</th>
-                    <th scope="col">Nombre Sección</th>
-                    <th scope="col">Plantas</th>
-                    <th scope="col">Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($secciones as $seccion)
-                <tr>
-                    <th scope="row">{{ $seccion->propiedad->nombreHuerta }}</th>
-                    <td>{{ $seccion->nombreSeccion }}</td>
-                    <td>{{ $seccion->cantidadPlantas }}</td>
-                    <td><a href="{{ route('seccion.edit', $seccion) }}" class="btn btn-warning">Editar</a>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
-</div>
-<div class="row">
-    <a href="{{ route('main') }}" class="btn btn-success ">Menú Principal</a>
-    <a href="{{ route('registroPropiedad.create') }}" class="btn btn-success ml-3">Registrar Huerta</a>
-    <a href="{{ route('empleado.create') }}" class="btn btn-success ml-3">Registrar Empleados</a>
 </div>
 @endsection

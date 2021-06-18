@@ -84,7 +84,9 @@ class SeccionController extends Controller
      */
     public function edit(Seccion $seccion)
     {
-        //
+        // dd('Edicion')
+        $huertas = Auth::user()->huertas;
+        return view('srhigo.seccionEdit', compact( 'huertas', 'seccion'));
     }
 
     /**
@@ -96,7 +98,27 @@ class SeccionController extends Controller
      */
     public function update(Request $request, Seccion $seccion)
     {
-        //
+        // dd('update');
+        $data = request()->validate([
+            'propiedad' => 'required',
+            'nombreSeccion' => 'required | string',
+            'cantidadPlantas' => 'integer'
+        ]);
+
+        $seccion->update([
+            'propiedad_id' => $data['propiedad'],
+            'nombreSeccion' => $data['nombreSeccion'],
+            'cantidadPlantas' => $data['cantidadPlantas'],
+        ]);
+
+        $huertas = Auth::user()->huertas;
+        $secciones = Auth::user()->secciones;
+        return redirect('seccion/create')->
+        with([
+            'huertas' => $huertas,
+            'secciones' => $secciones,
+            'mensaje' => '¡La sección se actualizo correctamente!'
+            ]);
     }
 
     /**
