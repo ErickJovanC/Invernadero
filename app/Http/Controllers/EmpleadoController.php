@@ -80,7 +80,7 @@ class EmpleadoController extends Controller
      */
     public function edit(Empleado $empleado)
     {
-        //
+        return view('srhigo.empleadosEdit', compact('empleado'));
     }
 
     /**
@@ -92,7 +92,25 @@ class EmpleadoController extends Controller
      */
     public function update(Request $request, Empleado $empleado)
     {
-        //
+        //Validación 
+        $data = request()->validate([
+            'nombreEmpleado' => 'required | min:3',
+            'apellidoEmpleado' => 'required | min:3',
+        ]);
+
+        //Envio a la BD
+        $empleado->update([
+            'nombreEmpleado' => $data['nombreEmpleado'],
+            'apellidoEmpleado' => $data['apellidoEmpleado'],
+            'sobrenombreEmpleado' => $request['sobrenombreEmpleado'],
+        ]);
+        
+        $empleados = Auth::user()->empleados;
+        return view('srhigo.empleados')->
+        with([
+                'empleados' => $empleados,
+                'mensaje' => '¡El empleado se actualizo correctamente!'
+            ]);
     }
 
     /**

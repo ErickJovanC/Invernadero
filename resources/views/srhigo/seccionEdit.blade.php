@@ -72,6 +72,7 @@
             </div>
         </div>
 
+        {{-- Botones --}}
         <div class="row justify-content-end">
             <div class="form-group">
                 <a href="{{ route('seccion.create') }}"

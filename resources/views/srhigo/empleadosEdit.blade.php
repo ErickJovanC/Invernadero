@@ -1,22 +1,20 @@
 @extends('layouts.app')
 @section('content')
 <div class="row">
-    <a href="{{ route('main') }}" class="btn btn-success ">Menú Principal</a>
-</div>
-<div class="row">
     <h1 class="titulo mb-5 col-12 text-center">Registro de Empleados</h1>
     @isset($mensaje)
         <div class="alert alert-info col-12 text-center">{{ $mensaje }}</div>
     @endisset
-    <form action="{{ route('empleado.store') }}" method="post" class="col-12">
+    <form action="{{ route('empleado.update', $empleado) }}" method="post" class="col-12">
     @csrf
+    @method('patch')
         <div class="row">
             <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
                 <label for="nombreEmpleado">Nombre</label>
                 <input type="text" 
                     name="nombreEmpleado" id="nombreEmpleado" 
                     class="form-control @error('nombreEmpleado') is-invalid @enderror" 
-                    value="{{ old('nombreEmpleado') }}"
+                    value="{{ old('nombreEmpleado') ? old('nombreEmpleado') : $empleado->nombreEmpleado }}"
                 />
                 @error('nombreEmpleado')
                         <span class="invalid-feedback d-block" role="alert">
@@ -30,7 +28,7 @@
                 <input type="text" 
                     name="apellidoEmpleado" id="apellidoEmpleado" 
                     class="form-control @error('apellidoEmpleado') is-invalid @enderror" 
-                    value="{{ old('apellidoEmpleado') }}"
+                    value="{{ old('apellidoEmpleado') ? old('apellidoEmpleado') : $empleado->apellidoEmpleado }}"
                 />
                 @error('apellidoEmpleado')
                         <span class="invalid-feedback d-block" role="alert">
@@ -44,7 +42,7 @@
                 <input type="text" 
                     name="sobrenombreEmpleado" id="sobrenombreEmpleado" 
                     class="form-control @error('sobrenombreEmpleado') is-invalid @enderror" 
-                    value="{{ old('sobrenombreEmpleado') }}"
+                    value="{{ old('sobrenombreEmpleado') ? old('sobrenombreEmpleado') : $empleado->sobrenombreEmpleado }}"
                 />
                 @error('sobrenombreEmpleado')
                         <span class="invalid-feedback d-block" role="alert">
@@ -54,46 +52,17 @@
             </div>
         </div>
 
-        {{-- Botón del formulario --}}
+        {{-- Botones --}}
         <div class="row justify-content-end">
             <div class="form-group">
-                <input type="submit" value="Registrar Empleado" class="btn btn-primary px-5">
+                <a href="{{ route('empleado.create') }}"
+                    class="btn btn-secondary mr-3">
+                    Cancelar Edición
+                </a>
+                <input type="submit" value="Editar Empleado" class="btn btn-warning px-5">
             </div>
-        </div> {{-- Fin Botón del formulario --}}
+        </div>
     </form>
 </div>
 
-{{-- Tabla de empleados --}}
-<div class="row justify-content-center">
-    <div class="col-12 justify-content-center">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col"># Reg.</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Apellido</th>
-                    <th scope="col">Apodo</th>
-                    <th scope="col">Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($empleados as $empleado)
-                <tr>
-                    <th scope="row">{{ $empleado->id }}</th>
-                    <td>{{ $empleado->nombreEmpleado }}</td>
-                    <td>{{ $empleado->apellidoEmpleado }}</td>
-                    <td>{{ $empleado->sobrenombreEmpleado }}</td>
-                    <td><a href="{{ route('empleado.edit', $empleado) }}" class="btn btn-warning">Editar</a>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
-</div>
-{{-- fin Tabla de empleados --}}
-
-<div class="row">
-    <a href="{{ route('main') }}" class="btn btn-success ">Menú Principal</a>
-</div>
 @endsection
