@@ -4,7 +4,24 @@
 <div class="row">
     <h1 class="titulos mb-5 col-12 text-center">Historial de Actividades</h1>
 
-    <div class="titulos col-12 mt-5">Preparación, Siembra y Cosecha</div>
+    <div class="col-12 my-3">
+        <ul>
+            <li>
+                <a href="#siembra">Preparación, Siembra y Cosecha</a>
+            </li>
+            <li>
+                <a href="#fertilizacion">Fertilización y Riego</a>
+            </li>
+            <li>
+                <a href="#plagas">Plagas y Enfermedades</a>
+            </li>
+            <li>
+                <a href="#mantenimiento">Mantenimiento y Capacitación</a>
+            </li>
+        </ul>
+    </div>
+
+    <div id="siembra" class="titulos col-12 mt-5">Preparación, Siembra y Cosecha</div>
     {{-- Recepción de Plantas --}}
     <h2 class="h1">Recepción de Plantas</h2>
     <table class="table table-striped mb-5">
@@ -13,7 +30,6 @@
                 <th scope="col">Fecha</th>
                 <th scope="col">Cantidad</th>
                 <th scope="col">Variedad</th>
-                {{-- <th scope="col">Actividad</th> --}}
                 <th scope="col">Lote Asignado</th>
                 <th scope="col">Ver Detalle</th>
             </tr>
@@ -397,7 +413,7 @@
     </table>
     {{-- Fin Registro de Cosecha --}}
 
-    <div class="titulos col-12 mt-5">Fertilización y Riego</div>
+    <div id="fertilizacion" class="titulos col-12 mt-5">Fertilización y Riego</div>
     {{-- Aplicación de Fertilizante --}}
     <h2 class="h1 mt-5">Aplicación de fertilizantes</h2>
     <table class="table table-striped">
@@ -653,7 +669,7 @@
     </table>
     {{-- Fin Registro de Riego --}}
 
-    <div class="titulos col-12 mt-5">Plagas y Enfermedades</div>
+    <div id="plagas" class="titulos col-12 mt-5">Plagas y Enfermedades</div>
     {{-- Control Preventivo de Plagas Previo a plantar --}}
     <h2 class="h1 mt-5">Control Preventivo de Plagas Previo a plantar</h2>
     <table class="table table-striped">
@@ -995,7 +1011,7 @@
     </table>
     {{-- Fin Aplicación de Plaguicida --}}
 
-    <div class="titulos col-12 mt-5">Mantenimiento y Capacitación</div>
+    <div id="mantenimiento" class="titulos col-12 mt-5">Mantenimiento y Capacitación</div>
     {{-- Calibración de Equipo --}}
     <h2 class="h1 mt-5">Calibración de Equipo</h2>
     <table class="table table-striped">

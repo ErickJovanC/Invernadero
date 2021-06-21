@@ -53,7 +53,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-4 col-form-label text-md-right">
-                                <a href="https://youtu.be/RI53KZ-foi4" class="btn btn-danger">Ver video de ayuda</a>
+                                <a href="https://youtu.be/RI53KZ-foi4" target="_blank" class="btn btn-danger">Ver video de ayuda</a>
                             </div>
                             <div class="col-md-8">
                                 <button type="submit" class="btn btn-primary">
