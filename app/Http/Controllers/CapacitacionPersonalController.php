@@ -71,7 +71,7 @@ class CapacitacionPersonalController extends Controller
             'empleados' => implode(', ', $data['trabajadores']),
         ]);
 
-        return redirect(route('main'));
+        return redirect('main')->with('mensaje', '¡La Capacitación del Personal se ha Registrado Correctamente!');
     }
 
     /**

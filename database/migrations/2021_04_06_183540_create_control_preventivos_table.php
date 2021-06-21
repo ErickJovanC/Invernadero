@@ -20,7 +20,7 @@ class CreateControlPreventivosTable extends Migration
                 references('id')-> 
                 on('calidad_plantas')-> 
                 comment('Lote de plantas recibidas');
-            $table->string('plagasPrevenir', 100);
+            $table->string('plagasPrevenir');
             $table->date('fechaAccion');
             $table->integer('cantidadPlantas')->unsigned();
             $table->string('accionPreventiva', 300);

@@ -9,22 +9,6 @@
             @include('srhigo.campos.fecha')
             @include('srhigo.campos.huertaSeccion')
 
-            {{-- Variedad --}}
-            {{-- <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
-                <label for="variedad">Variedad</label>
-                <input type="text" 
-                    name="variedad" id="variedad" 
-                    class="form-control @error('variedad') is-invalid @enderror" 
-                    value="{{ old('variedad') }}"
-                />
-                @error('variedad')
-                        <span class="invalid-feedback d-block" role="alert">
-                            <strong>{{$message}}</strong>
-                        </span>
-                @enderror
-            </div>  --}}
-            {{-- Fin Variedad --}}
-
             {{-- Periodo de Monitoreo --}}
             <div class="col-12 col-md-6 mb-5 form-group">
                 <div class="h2 text-center  ">Periodo de Monitoreo</div>
@@ -155,7 +139,7 @@
             {{-- Fotografía --}}
             <div class="form-group col-sm-12 col-md-6 mb-5">
                 <label for="foto">Foto</label>
-                <input type="file" name="foto" class="form-control">
+                <input type="file" name="foto" class="form-control" value="{{ old('foto') }}">
                 @error('foto')
                     <span class="invalid-feedback d-block" role="alert">
                         <strong>{{$message}}</strong>

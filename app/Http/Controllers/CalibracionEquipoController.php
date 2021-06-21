@@ -80,7 +80,7 @@ class CalibracionEquipoController extends Controller
             'empleado_id' => $data['responsable'],
         ]);
 
-        return redirect(route('main'));
+        return redirect('main')->with('mensaje', '¡La Calibración de equipo se ha registrado correctamente!');
     }
 
     /**

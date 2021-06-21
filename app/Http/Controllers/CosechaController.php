@@ -80,7 +80,7 @@ class CosechaController extends Controller
             'empleado_id' => $data['responsable'],
         ]);
 
-        return redirect(route('main'));
+        return redirect('main')->with('mensaje', '¡La cosecha se ha registrado correctamente!');
 
     }
 

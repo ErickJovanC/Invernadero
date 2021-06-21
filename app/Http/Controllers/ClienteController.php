@@ -53,7 +53,9 @@ class ClienteController extends Controller
             'direccion' => $data['direccion'],
         ]);
 
-        return redirect(route('main'));
+        return redirect('cliente/create')->with([
+            'mensaje' => '¡El cliente se ha registrado correctamente!'
+        ]);
     }
 
     /**
@@ -75,7 +77,7 @@ class ClienteController extends Controller
      */
     public function edit(Cliente $cliente)
     {
-        //
+        return view('srhigo.clienteEdit', compact('cliente'));
     }
 
     /**
@@ -87,7 +89,24 @@ class ClienteController extends Controller
      */
     public function update(Request $request, Cliente $cliente)
     {
-        //
+        $data = $request->validate([
+            'nombre' => 'required',
+            'direccion' => 'required',
+        ]);
+
+        $cliente->update([
+            'nombre' => $data['nombre'],
+            'apellido' => $request['apellido'],
+            'empresa' => $request['empresa'],
+            'direccion' => $data['direccion'],
+        ]);
+
+        $clientes = Auth::user()->clientes;
+        return redirect('cliente/create')->
+        with([
+                'clientes' => $clientes,
+                'mensaje' => '¡El cliente se a actualizado correctamente!'
+            ]);
     }
 
     /**

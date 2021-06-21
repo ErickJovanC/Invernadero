@@ -59,7 +59,7 @@ class FertilizanteController extends Controller
             'micronutrientes' => $data['micronutrientes'],
         ]);
 
-        return redirect(route('main'));
+        return redirect('main')->with('mensaje', '¡El Fertilizante se ha registrado correctamente!');
     }
 
     /**

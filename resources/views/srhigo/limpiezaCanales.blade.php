@@ -143,7 +143,10 @@
 
             <div class="form-group col-sm-12 mb-5">
                 <label for="observaciones">Observaciones</label>
-                <textarea name="observaciones" id="observaciones" value="{{ old('observaciones') }}" rows="4" class="form-control @error('observaciones') is-invalid @enderror"></textarea>
+                <textarea name="observaciones" id="observaciones" 
+                    rows="4" 
+                    class="form-control @error('observaciones') is-invalid @enderror"
+                >{{ old('observaciones') }}</textarea>
                 @error('observaciones')
                     <span class="invalid-feedback d-block" role="alert">
                         <strong>{{$message}}</strong>

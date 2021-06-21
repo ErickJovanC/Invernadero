@@ -19,7 +19,7 @@
                         name="horas"
                         id="horas"
                         min="0"
-                        value="{3{ old('horas')}}"
+                        value="{{ old('horas')}}"
                         class="form-control @error('horas') is-invalid @enderror">
                         @error('horas')
                             <span class="invalid-feedback d-block" role="alert">

@@ -75,7 +75,7 @@ class ControlPreventivoPlagaController extends Controller
             'empleado_id' => $data['responsable'],
         ]);
 
-        return redirect(route('main'));
+        return redirect('main')->with('mensaje', '¡La Acción Preventiva de Plantas y Arboles se ha registrado correctamente!');
     }
 
     /**

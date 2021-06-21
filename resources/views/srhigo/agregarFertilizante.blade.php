@@ -24,7 +24,11 @@
 
             <div class="form-group col-12 col-md-6 mb-5">
                 <label for="micronutrientes">Micronutrientes</label>
-                <input type="text" name="micronutrientes" id="micronutrientes" class="form-control @error('micronutrientes') is-invalid @enderror">
+                <input type="text" 
+                    name="micronutrientes" 
+                    id="micronutrientes" 
+                    value="{{ old('micronutrientes') }}"
+                    class="form-control @error('micronutrientes') is-invalid @enderror">
                 @error('micronutrientes')
                     <span class="invalid-feedback d-block" role="alert">
                         <strong>{{$message}}</strong>
@@ -38,9 +42,10 @@
             <div class="form-group col-2 mb-5">
                 <label for="N">N</label>
                 <input type="text" 
-                name="N"
-                id="N" 
-                class="form-control @error('N') is-invalid @enderror">
+                    name="N"
+                    id="N" 
+                    value="{{ old('N') }}"
+                    class="form-control @error('N') is-invalid @enderror">
                 @error('N')
                     <span class="invalid-feedback d-block" role="alert">
                         <strong>{{$message}}</strong>
@@ -49,7 +54,9 @@
             </div>
             <div class="form-group col-2 mb-5">
                 <label for="P2O5">P<sub>2</sub>O<sub>5</sub></label>
-                <input type="text" name="P2O5" class="form-control @error('P2O5') is-invalid @enderror">
+                <input type="text" name="P2O5" 
+                    value="{{ old('P2O5') }}"
+                    class="form-control @error('P2O5') is-invalid @enderror">
                 @error('P2O5')
                     <span class="invalid-feedback d-block" role="alert">
                         <strong>{{$message}}</strong>
@@ -58,7 +65,9 @@
             </div>
             <div class="form-group col-2 mb-5">
                 <label for="K2O">K<sub>2</sub>O</label>
-                <input type="text" name="K2O" class="form-control @error('K2O') is-invalid @enderror">
+                <input type="text" name="K2O" 
+                    value="{{ old('K2O') }}"
+                    class="form-control @error('K2O') is-invalid @enderror">
                 @error('K2O')
                     <span class="invalid-feedback d-block" role="alert">
                         <strong>{{$message}}</strong>
@@ -67,7 +76,9 @@
             </div>
             <div class="form-group col-2 mb-5">
                 <label for="Ca">Ca</label>
-                <input type="text" name="Ca" class="form-control @error('Ca') is-invalid @enderror">
+                <input type="text" name="Ca" 
+                    value="{{ old('Ca') }}"
+                    class="form-control @error('Ca') is-invalid @enderror">
                 @error('Ca')
                     <span class="invalid-feedback d-block" role="alert">
                         <strong>{{$message}}</strong>
@@ -76,7 +87,9 @@
             </div>
             <div class="form-group col-2 mb-5">
                 <label for="Mg">Mg</label>
-                <input type="text" name="Mg" class="form-control @error('Mg') is-invalid @enderror">
+                <input type="text" name="Mg" 
+                    value="{{ old('Mg') }}"
+                    class="form-control @error('Mg') is-invalid @enderror">
                 @error('Mg')
                     <span class="invalid-feedback d-block" role="alert">
                         <strong>{{$message}}</strong>
@@ -85,7 +98,9 @@
             </div>
             <div class="form-group col-2 mb-5">
                 <label for="S">S</label>
-                <input type="text" name="S" class="form-control @error('S') is-invalid @enderror">
+                <input type="text" name="S" 
+                    value="{{ old('S') }}"
+                    class="form-control @error('S') is-invalid @enderror">
                 @error('S')
                     <span class="invalid-feedback d-block" role="alert">
                         <strong>{{$message}}</strong>

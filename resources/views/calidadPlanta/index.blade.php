@@ -5,7 +5,7 @@
     <form action="{{ route('calidadPlanta.store') }}" method="post">
         @csrf
         <div class="row">
-            <h1 class="titulo mb-5 col-12 text-center">Calidad de la Planta</h1>
+            <h1 class="titulo mb-5 col-12 text-center">Recepción de Planta</h1>
 
             <div class="form-group col-sm-12 col-md-6 mb-5">
                 <label for="fechaCorte">Fecha de corte de la planta (esqueje)</label>
@@ -126,7 +126,7 @@
         </div>
         <div class="row mb-5 justify-content-end">
             <div class="form-group">
-                <input type="submit" value="Registrar Calidad de la Planta" class="btn btn-primary px-5">
+                <input type="submit" value="Registrar Recepción de Planta" class="btn btn-primary px-5">
             </div>
         </div>
     </form>

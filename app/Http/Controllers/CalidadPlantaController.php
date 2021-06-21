@@ -71,7 +71,7 @@ class CalidadPlantaController extends Controller
         ]);
         
         $mensaje = "Lote de Plantas registrado";
-        return redirect(route('main'));
+        return redirect('main')->with('mensaje', '¡Se ha registrado la recepción de planta de forma correca!');
     }
 
     /**

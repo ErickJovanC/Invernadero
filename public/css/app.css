@@ -10014,7 +10014,9 @@ body, .form-control, .btn, .navbar-brand, .dropdown-item {
 }
 
 .btn-menu {
-  min-height: 5.2em;
+  border-style:solid;
+  border-color: white;
+  border-width: 3px;
 }
 
 .titulos {

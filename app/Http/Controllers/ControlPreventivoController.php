@@ -72,7 +72,7 @@ class ControlPreventivoController extends Controller
         ]);
 
         // return redirect(route('controlPreventivo.create'));
-        return redirect(route('home'));
+        return redirect('main')->with('mensaje', '¡La Acción Preventiva de Plantas se ha registrado correctamente!');
     }
 
     /**

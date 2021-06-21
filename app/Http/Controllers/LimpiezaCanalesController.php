@@ -66,7 +66,7 @@ class LimpiezaCanalesController extends Controller
             'empleado_id' => $request['responsable'],
         ]);
 
-        return redirect(route('main'));
+        return redirect('main')->with('mensaje', '¡La Limpieza de Canales se ha registrado correctamente!');
     }
 
     /**

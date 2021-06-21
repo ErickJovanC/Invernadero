@@ -8,8 +8,10 @@ body, .form-control, .btn, .navbar-brand, .dropdown-item{
     // background-color: #170440; /* Borrar al final*/
 }
 
-.btn-menu{
-    min-height: 5.2em;
+.btn-menu {
+    border-style:solid;
+    border-color: white;
+    border-width: 3px;
 }
 
 .titulos {

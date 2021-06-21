@@ -63,7 +63,7 @@ class SeccionController extends Controller
 
         $huertas = Auth::user()->huertas;
         $secciones = Auth::user()->secciones;
-        return view('srhigo.seccion')->
+        return redirect('seccion/create')->
         with([
             'huertas' => $huertas,
             'secciones' => $secciones,

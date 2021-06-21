@@ -82,7 +82,7 @@ class PreparacionSueloController extends Controller
             'empleado_id' => $data['empleado'],
         ]);
 
-        return redirect(route('main'));
+        return redirect('main')->with('mensaje', '¡La preparación de suelo se ha registrado correctamente!');
     }
 
     /**

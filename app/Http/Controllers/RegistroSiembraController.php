@@ -92,7 +92,7 @@ class RegistroSiembraController extends Controller
             'cantidadPlantas' => $plantasRestantes,
         ]);
         
-        return redirect(route('main'));
+        return redirect('main')->with('mensaje', '¡El registro de siembra se ha agregado correctamente!');
 
 
         // return Route::put('calidadPlanta');
