@@ -86,6 +86,10 @@ class User extends Authenticatable
         return $this->hasMany(Fertilizante::class);
     }
 
+    public function plaguicida(){
+        return $this->hasMany(Plaguicida::class);
+    }
+
     public function aplicacionFertilizante(){
         return $this->hasMany(AplicacionFertilizante::class);
     }

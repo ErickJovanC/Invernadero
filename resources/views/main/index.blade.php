@@ -59,7 +59,7 @@
 
         <a href="{{ route('aplicacionFertilizante.create') }}"
             class="btn btn-warning btn-menu col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-2">
-            Aplicación de Fertilizante
+            Aplicación de Fertilizante Quimico
         </a>
 
         <a href="{{ route('aplicacionFertilizanteOrganico.create') }}"
@@ -73,29 +73,35 @@
         </a>
 
         <h1 class="col-12 mt-5">Plagas y Enfermedades</h1>
+
         <a href="{{ route('controlPreventivo.create') }}"
-            class="btn btn-danger btn-menu col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-2">
+            class="btn btn-danger btn-menu col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 p-2">
             Control preventivo de plagas en la planta (Previo a plantar)
         </a>
 
         <a href="{{ route('plagas.create') }}"
-            class="btn btn-danger btn-menu col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-2">
+            class="btn btn-danger btn-menu col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 p-2">
             Control Preventivo de Plagas en plantas y arboles
         </a>
 
         <a href="{{ route('identificacionPlagas.create') }}"
-            class="btn btn-danger btn-menu col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-2">
+            class="btn btn-danger btn-menu col-12 col-sm-6 col-md-4 col-lg-2 col-xl-2 p-2">
             Identificacion de Plagas
         </a>
 
+        <a href="{{ route('plaguicida.create') }}"
+            class="btn btn-danger btn-menu col-12 col-sm-6 col-md-4 col-lg-2 col-xl-2 p-2">
+            Agregar Plaguicida
+        </a>
+
         <a href="{{ route('aplicacionPlaguicida.create') }}"
-            class="btn btn-danger btn-menu col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-2">
+            class="btn btn-danger btn-menu col-12 col-sm-6 col-md-4 col-lg-2 col-xl-2 p-2">
             Aplicación de Plaguicida
         </a>
 
         <h1 class="col-12 mt-5">Mantenimiento y Capacitación</h1>
         <a href="{{ route('calibracionEquipo.create') }}"
-            class="btn btn-secondary btn-menu col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-2">
+            class="btn btn-secondary btn-menu col-12 col-sm-6 col-md-4 col-lg-6 col-xl-6 p-2">
             Calibración de Equipo de Aplicación
         </a>
 
@@ -111,7 +117,7 @@
 
         <h1 class="col-12 mt-5">Reportes</h1>
         <a href="{{ route('historial.index') }}"
-            class="btn btn-info btn-menu col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-2">
+            class="btn btn-info btn-menu col-12  p-2">
             Historial de Actividades
         </a>
 

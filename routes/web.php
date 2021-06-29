@@ -7,6 +7,7 @@ use App\Http\Controllers\CosechaController;
 use App\Http\Controllers\SeccionController;
 use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\HistorialController;
+use App\Http\Controllers\PlaguicidaController;
 use App\Http\Controllers\FertilizanteController;
 use App\Http\Controllers\CalidadPlantaController;
 use App\Http\Controllers\RegistroRiegoController;
@@ -56,6 +57,7 @@ Route::resource('registroRiego', RegistroRiegoController::class)->middleware('au
 Route::resource('limpiezaCanales', LimpiezaCanalesController::class)->middleware('auth');
 Route::resource('plagas', ControlPreventivoPlagaController::class)->middleware('auth');
 Route::resource('identificacionPlagas', IdentificacionPlagasController::class)->middleware('auth');
+Route::resource('plaguicida', PlaguicidaController::class)->middleware('auth');
 Route::resource('aplicacionPlaguicida', AplicacionPlaguicidaController::class)->middleware('auth');
 Route::resource('capacitacionPersonal', CapacitacionPersonalController::class)->middleware('auth');
 Route::resource('cosecha', CosechaController::class)->middleware('auth');
