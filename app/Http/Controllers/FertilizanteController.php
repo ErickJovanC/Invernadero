@@ -38,14 +38,15 @@ class FertilizanteController extends Controller
     public function store(Request $request)
     {
         $data = request()->validate([
-            'nombreFertilizante' => 'required',
+            'nombreFertilizante' => 'required | unique:fertilizantes',
             'N' => 'required',
             'P2O5' => 'required',
             'K2O' => 'required',
             'Ca' => 'required',
             'Mg' => 'required',
             'S' => 'required',
-            'micronutrientes' => 'required',
+            'microelementos' => 'required',
+            'macroelementos' => 'required',
         ]);
 
         Auth::user()->registroFertilizante()->create([
@@ -56,7 +57,8 @@ class FertilizanteController extends Controller
             'Ca' => $data['Ca'],
             'Mg' => $data['Mg'],
             'S' => $data['S'],
-            'micronutrientes' => $data['micronutrientes'],
+            'microelementos' => $data['microelementos'],
+            'macroelementos' => $data['macroelementos'],
         ]);
 
         return redirect('main')->with('mensaje', '¡El Fertilizante se ha registrado correctamente!');

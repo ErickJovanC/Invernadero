@@ -17,7 +17,8 @@ class Fertilizante extends Model
         'Ca',
         'Mg',
         'S',
-        'micronutrientes',
+        'microelementos',
+        'macroelementos',
         'user_id',
     ];
 }

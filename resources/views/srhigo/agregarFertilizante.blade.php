@@ -7,7 +7,7 @@
     @csrf
         <div class="row">
             {{-- Nombre fertilizante --}}
-            <div class="form-group col-sm-12 col-md-6 mb-5">
+            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
                 <label for="nombreFertilizante">Nombre Fertilizante</label>
                 <input type="text" 
                     name="nombreFertilizante" 
@@ -22,19 +22,37 @@
                 @enderror
             </div> {{-- Fin nombre fertilizante --}}
 
-            <div class="form-group col-12 col-md-6 mb-5">
-                <label for="micronutrientes">Micronutrientes</label>
+            {{-- Microelementos --}}
+            <div class="form-group col-12 col-md-6 col-lg-4 mb-5">
+                <label for="microelementos">Microelementos</label>
                 <input type="text" 
-                    name="micronutrientes" 
-                    id="micronutrientes" 
-                    value="{{ old('micronutrientes') }}"
-                    class="form-control @error('micronutrientes') is-invalid @enderror">
-                @error('micronutrientes')
+                    name="microelementos" 
+                    id="microelementos" 
+                    value="{{ old('microelementos') }}"
+                    class="form-control @error('microelementos') is-invalid @enderror">
+                @error('microelementos')
                     <span class="invalid-feedback d-block" role="alert">
                         <strong>{{$message}}</strong>
                     </span>
                 @enderror
             </div>
+            {{-- Fin Microelementos --}}
+
+            {{-- Macroelementos --}}
+            <div class="form-group col-12 col-md-6 col-lg-4 mb-5">
+                <label for="macroelementos">macroelementos</label>
+                <input type="text" 
+                    name="macroelementos" 
+                    id="macroelementos" 
+                    value="{{ old('macroelementos') }}"
+                    class="form-control @error('macroelementos') is-invalid @enderror">
+                @error('macroelementos')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
+            </div>
+            {{-- Fin Macroelementos --}}
 
             <div class="col-12 h1 mt-5 text-center">
                 Contenido Nutrintes del Fertilizante

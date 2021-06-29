@@ -23,7 +23,8 @@ class CreateFertilizantesTable extends Migration
             $table->integer('Ca');
             $table->integer('Mg');
             $table->integer('S');
-            $table->string('micronutrientes', 30);
+            $table->string('microelementos', 30);
+            $table->string('macroelementos', 30);
             $table->foreignId('user_id')->
                 references('id')-> 
                 on('users')-> 
