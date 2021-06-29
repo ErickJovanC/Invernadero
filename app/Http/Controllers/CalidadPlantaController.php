@@ -51,7 +51,7 @@ class CalidadPlantaController extends Controller
             'origenPlanta' => 'required',
             'cantidadPlantas' => 'required',
             'variedadPlanta' => 'required',
-            'lote' => 'required',
+            'lote' => 'required | unique:calidad_plantas',
             'responsable' => 'required',
         ]);
             // dd($request);

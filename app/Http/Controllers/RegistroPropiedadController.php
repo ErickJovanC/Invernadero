@@ -54,9 +54,8 @@ class RegistroPropiedadController extends Controller
     public function store(Request $request)
     {
         // Validación de datos
-       
         $data = request()->validate([
-            'nombreHuerta' => 'required | min:3',
+            'nombreHuerta' => 'required | min:3 | unique:registro_propiedads',
             'estado' => 'required',
             'municipio' => 'required',
         ]);
@@ -121,7 +120,7 @@ class RegistroPropiedadController extends Controller
         // dd($request->all());
         // return $registroPropiedad;
         $data = request()->validate([
-            'nombreHuerta' => 'required | min:3',
+            'nombreHuerta' => 'required | min:3 | unique:registro_propiedads',
             'estado' => 'required',
             'municipio' => 'required',
         ]);
