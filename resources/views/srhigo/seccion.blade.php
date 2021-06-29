@@ -80,6 +80,7 @@
     </form>
 </div>
 
+{{-- Tabla de registros --}}
 <div class="row">
     <div class="col">
         <table class="table table-striped">
@@ -110,4 +111,5 @@
     <a href="{{ route('registroPropiedad.create') }}" class="btn btn-success ml-3">Registrar Huerta</a>
     <a href="{{ route('empleado.create') }}" class="btn btn-success ml-3">Registrar Empleados</a>
 </div>
+{{-- Fin tabla de contenido --}}
 @endsection

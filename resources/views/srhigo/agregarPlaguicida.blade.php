@@ -127,4 +127,37 @@
         </div>
     </form>
 </div>
+
+{{-- Tabla de registros --}}
+<div class="row">
+    <div class="col">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Ingredinete Activo</th>
+                    <th scope="col">Nombre Comercial</th>
+                    <th scope="col">Tipo de Plaguicida</th>
+                    <th scope="col">Color de la Banda</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($plaguicidas as $plaguicida)
+                <tr>
+                    <th scope="row">{{ $plaguicida->ingredienteActivo }}</th>
+                    <td>{{ $plaguicida->nombreComercial }}</td>
+                    <td>{{ $plaguicida->tipo }}</td>
+                    <td>{{ $plaguicida->colorBanda }}</td>
+                    {{-- <td><a href="{{ route('plaguicida.edit', $plaguicida) }}" class="btn btn-warning">Editar</a> --}}
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <a href="{{ route('main') }}" class="btn btn-success ">Menú Principal</a>
+    <a href="{{ route('aplicacionPlaguicida.create') }}" class="btn btn-danger ml-3">Registrar Aplicación de Plaguicida</a>
+</div>
+{{-- Fin tabla de contenido --}}
 @endsection

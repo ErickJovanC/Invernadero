@@ -6,14 +6,45 @@
     <form action="{{ route('aplicacionPlaguicida.store') }}" method="post" class="col-12">
     @csrf
         <div class="row align-items-end">
+
+            {{-- Plaguicida Aplicado --}}
+            <div class="form-group col-sm-12 col-md-6 col-lg-4 col-xl-3 mb-5">
+                <label for="plaguicida">Plaguicida Aplicado</label>
+                <select name="plaguicida" id="plaguicida" class="form-control @error('plaguicida') is-invalid @enderror">
+                    <option value="" hidden>Plaguicida Aplicado</option>
+                    @foreach ($plaguicidas as $plaguicida)
+                        <option 
+                            value="{{ $plaguicida->id }}" 
+                            {{ old('plaguicida') == $plaguicida->id ? 'selected' : '' }}
+                        >
+                            {{ $plaguicida->ingredienteActivo ." - ".
+                                $plaguicida->nombreComercial ." : ".
+                                $plaguicida->colorBanda }}
+                        </option>
+                    @endforeach
+                </select>
+                @error('plaguicida')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
+            </div> {{-- Fin Plaguicida Aplicado --}}
+
+            {{-- Botón Agregar Plaguicida --}}
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 mb-5">
+                <a href="{{ route('plaguicida.create') }}" class="btn btn-danger w-100">Registrar Nuevo Plaguicida</a>
+            </div> {{-- Fin Botón Agregar Plaguicida --}}
+
+            <div class="w-100"></div>
+
             @include('srhigo.campos.fecha')
             @include('srhigo.campos.huertaSeccion')
 
             {{-- Tiempo de Aplicación  --}}
-            <div class="form-group col-12 col-sm-6 col-md-4 mb-5 text-center">
+            <div class="form-group col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-5 text-center">
                 <span>Tiempo de aplicación</span>
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-6 pr-0">
                         <label for="horas">Horas</label>
                         <input type="number"
                         name="horas"
@@ -27,7 +58,7 @@
                             </span>
                         @enderror
                     </div>
-                    <div class="col-6">
+                    <div class="col-6 pl-0">
                         <label for="minutos">Minutos</label>
                         <input type="number"
                         name="minutos"
@@ -44,110 +75,8 @@
                 </div>
             </div>{{-- Fin  Tiempo de Aplicación --}}
 
-            {{-- Tipo de Plaguicida --}}
-            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
-                <label for="tipoPlaguicida">Tipo de Plaguicida</label>
-                <select name="tipoPlaguicida" id="tipoPlaguicida" class="form-control @error('tipoPlaguicida') is-invalid @enderror">
-                    <option value="" hidden>Tipo de Plaguicida</option>
-                    <option 
-                        value="Herbicida"
-                        {{ old('tipoPlaguicida') == 'Herbicida' ? 'selected' : '' }}
-                    />
-                        Herbicida
-                    </option>
-                    <option 
-                        value="Fungicida"
-                        {{ old('tipoPlaguicida') == 'Fungicida' ? 'selected' : '' }}
-                    />
-                        Fungicida
-                    </option>
-                    <option 
-                        value="Pesticida"
-                        {{ old('tipoPlaguicida') == 'Pesticida' ? 'selected' : '' }}
-                    />
-                        Pesticida
-                    </option>
-                </select>
-                @error('tipoPlaguicida')
-                    <span class="invalid-feedback d-block" role="alert">
-                        <strong>{{$message}}</strong>
-                    </span>
-                @enderror
-            </div>{{-- Fin Tipo de Plaguicida --}}
-
-
-            <div class="col-12 h2 text-center">Plaguicida Aplicado</div>
-
-            {{-- Nombre Comercial del Plaguicida  --}}
-            <div class="form-group col-12 col-sm-6 col-md-4 mb-5">
-                <label for="nombreComercial">Nombre Comercial</label>
-                <input type="text" 
-                name="nombreComercial" 
-                id="nombreComercial"
-                value="{{ old('nombreComercial')}}"
-                class="form-control @error('nombreComercial') is-invalid @enderror">
-                @error('nombreComercial')
-                    <span class="invalid-feedback d-block" role="alert">
-                        <strong>{{$message}}</strong>
-                    </span>
-                @enderror
-            </div>{{-- Fin  Nombre Comercial del Plaguicida --}}
-
-            {{-- Ingrediente Activo  --}}
-            <div class="form-group col-12 col-sm-6 col-md-4 mb-5">
-                <label for="ingredienteActivo">Ingrediente Activo</label>
-                <input type="text" 
-                name="ingredienteActivo" 
-                id="ingredienteActivo"
-                value="{{ old('ingredienteActivo')}}"
-                class="form-control @error('ingredienteActivo') is-invalid @enderror">
-                @error('ingredienteActivo')
-                    <span class="invalid-feedback d-block" role="alert">
-                        <strong>{{$message}}</strong>
-                    </span>
-                @enderror
-            </div>{{-- Fin  Ingrediente Activo --}}
-
-            {{-- Color de la Banda --}}
-            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
-                <label for="colorBanda">Color de la Banda</label>
-                <select name="colorBanda" id="colorBanda" class="form-control @error('colorBanda') is-invalid @enderror">
-                    <option value="" hidden>Color de la banda</option>
-                    <option 
-                        value="Verde"
-                        {{ old('colorBanda') == 'Verde' ? 'selected' : '' }}
-                    />
-                        Verde
-                    </option>
-                    <option 
-                        value="Azul"
-                        {{ old('colorBanda') == 'Azul' ? 'selected' : '' }}
-                    />
-                        Azul
-                    </option>
-                    <option 
-                        value="Amarillo"
-                        {{ old('colorBanda') == 'Amarillo' ? 'selected' : '' }}
-                    />
-                        Amarillo
-                    </option>
-                    <option 
-                        value="Rojo"
-                        {{ old('colorBanda') == 'Rojo' ? 'selected' : '' }}
-                    />
-                        Rojo
-                    </option>
-                </select>
-                @error('colorBanda')
-                    <span class="invalid-feedback d-block" role="alert">
-                        <strong>{{$message}}</strong>
-                    </span>
-                @enderror
-            </div>{{-- Fin Color de la Banda --}}
-
-
             {{-- Dosis Aplicada  --}}
-            <div class="form-group col-12 col-sm-6 col-md-4 mb-5">
+            <div class="form-group col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-5">
                 <label for="dosisAplicada">Dosis Aplicada (Litros)</label>
                 <input type="text" 
                 name="dosisAplicada" 

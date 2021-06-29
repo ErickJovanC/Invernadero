@@ -10,15 +10,12 @@ class aplicacionPlaguicida extends Model
     use HasFactory;
 
     protected $fillable = [
+        'plaguicida_id',
         'fecha',
         'huerta_id',
         'seccion_id',
         'horas',
         'minutos',
-        'tipoPlaguicida',
-        'nombreComercial',
-        'ingredienteActivo',
-        'colorBanda',
         'dosisAplicada',
         'empleado_id',
         'user_id',

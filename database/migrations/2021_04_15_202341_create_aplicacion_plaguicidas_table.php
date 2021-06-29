@@ -15,16 +15,12 @@ class CreateAplicacionPlaguicidasTable extends Migration
     {
         Schema::create('aplicacion_plaguicidas', function (Blueprint $table) {
             $table->id();
-
+            $table->foreignId('plaguicida_id')->references('id')->on('plaguicidas');
             $table->foreignId('huerta_id')->references('id')->on('registro_propiedads');
             $table->foreignId('seccion_id')->references('id')->on('seccions');
             $table->date('fecha');
             $table->smallInteger('horas');
             $table->smallInteger('minutos');
-            $table->string('tipoPlaguicida');
-            $table->string('nombreComercial');
-            $table->string('ingredienteActivo');
-            $table->string('colorBanda');
             $table->string('dosisAplicada');
             $table->foreignId('empleado_id')->references('id')->on('empleados');
             $table->foreignId('user_id')->references('id')->on('users');

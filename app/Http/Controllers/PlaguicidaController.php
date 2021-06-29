@@ -25,7 +25,8 @@ class PlaguicidaController extends Controller
      */
     public function create()
     {
-        return view('srhigo.agregarPlaguicida');
+        $plaguicidas = Auth::user()->plaguicida;
+        return view('srhigo.agregarPlaguicida', compact('plaguicidas'));
     }
 
     /**
@@ -38,7 +39,7 @@ class PlaguicidaController extends Controller
     {
         $data = $request->validate([
             'ingredienteActivo' => 'required',
-            'nombreComercial' => 'required',
+            'nombreComercial' => 'required | unique:plaguicidas',
             'tipo' => 'required',
             'colorBanda' => 'required',
         ]);

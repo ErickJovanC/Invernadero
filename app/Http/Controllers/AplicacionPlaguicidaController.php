@@ -29,14 +29,14 @@ class AplicacionPlaguicidaController extends Controller
         $fechaActual = date('Y-m-d');
         $secciones = Auth::user()->secciones;
         $empleados = Auth::user()->empleados;
-        // $plagas = Plaga::all();
-        // dd($secciones->all());
+        $plaguicidas = Auth::user()->plaguicida;
+
         return view('srhigo.aplicacionPlaguicida')->
             with([
                 'secciones' => $secciones, 
                 'fechaActual' => $fechaActual,
                 'empleados' => $empleados,
-                // 'plagas' => $plagas,
+                'plaguicidas' => $plaguicidas,
             ]);
     }
 
@@ -49,14 +49,11 @@ class AplicacionPlaguicidaController extends Controller
     public function store(Request $request)
     {
         $data = request()->validate([
+            'plaguicida' => 'required',
             'fecha' => 'required',
             'huertaSeccion' => 'required',
             'horas' => 'required',
             'minutos' => 'required',
-            'tipoPlaguicida' => 'required',
-            'nombreComercial' => 'required',
-            'ingredienteActivo' => 'required',
-            'colorBanda' => 'required',
             'dosisAplicada' => 'required',
             'responsable' => 'required',
         ]);
@@ -68,15 +65,12 @@ class AplicacionPlaguicidaController extends Controller
         }
 
         Auth::user()->aplicacionPlaguicida()->create([
+            'plaguicida_id' => $data['plaguicida'],
             'fecha' => $data['fecha'],
             'huerta_id' => $huerta_id,
             'seccion_id' => $seccion,
             'horas' => $data['horas'],
             'minutos' => $data['minutos'],
-            'tipoPlaguicida' => $data['tipoPlaguicida'],
-            'nombreComercial' => $data['nombreComercial'],
-            'ingredienteActivo' => $data['ingredienteActivo'],
-            'colorBanda' => $data['colorBanda'],
             'dosisAplicada' => $data['dosisAplicada'],
             'empleado_id' => $data['responsable'],
         ]);
