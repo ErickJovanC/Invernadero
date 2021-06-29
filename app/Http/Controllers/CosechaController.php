@@ -52,7 +52,7 @@ class CosechaController extends Controller
             'huertaSeccion' => 'required',
             'kilos' => 'required',
             'taras' => 'required',
-            'material' => 'required',
+            'capacidadTara' => 'required',
             'cliente' => 'required',
             'responsable' => 'required',
         ]);
@@ -75,7 +75,7 @@ class CosechaController extends Controller
             'tempFruta' => $request['tempFruta'],
             'tempSuelo' => $request['tempSuelo'],
             'taras' => $data['taras'],
-            'materialCajas' => $data['material'],
+            'capacidadTara' => $data['capacidadTara'],
             'cliente_id' => $data['cliente'],
             'empleado_id' => $data['responsable'],
         ]);

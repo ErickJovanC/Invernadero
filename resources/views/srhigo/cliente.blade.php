@@ -62,8 +62,18 @@
             </div>
             {{-- Fin Empresa --}}
 
-            {{-- dirección --}}
+            {{-- Destino --}}
             <div class="form-group col-12 col-sm-6 col-md-4 col-lg-3 mb-5">
+                <label for="empresa">Empresa</label>
+                <select name="destino" id="destino" class="form-control @error('destino') is-invalid @enderror">
+                    <option value="Nacional" {{ old('responsable') == 'Nacional' ? 'selected' : '' }}>Nacional</option>
+                    <option value="Internacional" {{ old('responsable') == 'Internacional' ? 'selected' : '' }}>Internacional</option>
+                </select>
+            </div>
+            {{-- Fin Destino --}}
+
+            {{-- dirección --}}
+            {{-- <div class="form-group col-12 col-sm-6 col-md-4 col-lg-3 mb-5">
                 <label for="direccion">dirección</label>
                 <input type="text" 
                     name="direccion" 
@@ -75,7 +85,7 @@
                         <strong>{{$message}}</strong>
                     </span>
                 @enderror
-            </div>
+            </div> --}}
             {{-- Fin dirección --}}
         </div>
 
@@ -97,7 +107,8 @@
                     <th scope="col">Nombre</th>
                     <th scope="col">Apellido</th>
                     <th scope="col">Empresa</th>
-                    <th scope="col">Dirección</th>
+                    <th scope="col">Destino</th>
+                    <th scope="col">Edición</th>
                 </tr>
             </thead>
             <tbody>
@@ -107,6 +118,7 @@
                     <td>{{ $cliente->nombre }}</td>
                     <td>{{ $cliente->apellido }}</td>
                     <td>{{ $cliente->empresa }}</td>
+                    <td>{{ $cliente->destino }}</td>
                     <td>
                         <a href="{{ route('cliente.edit', $cliente) }}" class="btn btn-warning">Editar Cliente</a>
                     </td>
@@ -119,5 +131,8 @@
     </div>
 </div>
 {{-- fin Tabla de clientes --}}
-<a href="{{ route('main') }}" class="btn btn-success">Menú</a>
+<div class="row col-12">
+    <a href="{{ route('main') }}" class="btn btn-success">Menú</a>
+    <a href="{{ route('cosecha.create') }}" class="btn btn-primary ml-3">Registrar Cosecha</a>
+</div>
 @endsection

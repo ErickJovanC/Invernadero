@@ -80,16 +80,28 @@ class RegistroSiembraController extends Controller
             'empleado_id' => $data['responsable'],
         ]);
 
-        // Consultar Registro
+        // Consultar Cantidad de Plantas en Lote
         $lotes = CalidadPlanta::where("id", $lote)->get();
-        foreach ($lotes as $plantasLotes){
-            $plantasLote = $plantasLotes->cantidadPlantas;
+        foreach ($lotes as $loteItem){
+            $plantasRestantes = $loteItem->cantidadPlantas;
         }
-        $plantasRestantes = $plantasLote - $plantasSembradas;
+        $plantasRestantes = $plantasRestantes - $plantasSembradas;
 
-        // Actualizar registro
+        // Actualizar cantidad de plantas de Lotes
         CalidadPlanta::where("id", $lote)->update([
             'cantidadPlantas' => $plantasRestantes,
+        ]);
+
+        // Consultar Cantidad de Plantas en Sección
+        $secciones = Seccion::where("id", $seccion)->get();
+        foreach ($secciones as $seccionItem){
+            $plantasTotales = $seccionItem->cantidadPlantas;
+        }
+        $plantasTotales = $plantasTotales + $plantasSembradas;
+
+        // Actualizar cantidad de plantas en Sección
+        Seccion::where("id", $seccion)->update([
+            'cantidadPlantas' => $plantasTotales,
         ]);
         
         return redirect('main')->with('mensaje', '¡El registro de siembra se ha agregado correctamente!');

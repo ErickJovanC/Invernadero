@@ -20,7 +20,7 @@ class Cosecha extends Model
         'tempFruta',
         'tempSuelo',
         'taras',
-        'materialCajas',
+        'capacidadTara',
         'cliente_id',
         'empleado_id',
         'user_id',

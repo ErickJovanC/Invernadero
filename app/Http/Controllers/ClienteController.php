@@ -43,14 +43,14 @@ class ClienteController extends Controller
         // dd('Clientes');
         $data = $request->validate([
             'nombre' => 'required',
-            'direccion' => 'required',
+            'destino' => 'required',
         ]);
 
         Auth::user()->clientes()->create([
             'nombre' => $data['nombre'],
             'apellido' => $request['apellido'],
             'empresa' => $request['empresa'],
-            'direccion' => $data['direccion'],
+            'destino' => $data['destino'],
         ]);
 
         return redirect('cliente/create')->with([
@@ -91,14 +91,14 @@ class ClienteController extends Controller
     {
         $data = $request->validate([
             'nombre' => 'required',
-            'direccion' => 'required',
+            'destino' => 'required',
         ]);
 
         $cliente->update([
             'nombre' => $data['nombre'],
             'apellido' => $request['apellido'],
             'empresa' => $request['empresa'],
-            'direccion' => $data['direccion'],
+            'destino' => $data['destino'],
         ]);
 
         $clientes = Auth::user()->clientes;

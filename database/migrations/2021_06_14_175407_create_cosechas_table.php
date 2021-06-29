@@ -20,13 +20,13 @@ class CreateCosechasTable extends Migration
             $table->foreignId('huerta_id')->references('id')->on('registro_propiedads');
             $table->foreignId('seccion_id')->references('id')->on('seccions');
             $table->smallInteger('kilos');
-            $table->smallInteger('merma');
+            $table->smallInteger('merma')->nullable();
             $table->time('horaInicio')->nullable();
             $table->time('horaFin')->nullable();
             $table->smallInteger('tempFruta')->nullable();
             $table->smallInteger('tempSuelo')->nullable();
             $table->smallInteger('taras');
-            $table->string('materialCajas', 8)->nullable();
+            $table->string('capacidadTara', 4)->nullable();
             $table->foreignId('cliente_id')->references('id')->on('clientes');
             $table->foreignId('empleado_id')->references('id')->on('empleados');
             $table->foreignId('user_id')->references('id')->on('users');

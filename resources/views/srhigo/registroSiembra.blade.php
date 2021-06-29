@@ -105,7 +105,7 @@
             <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
                 <label for="riego">Tipo de riego</label>
                 <select name="riego" id="riego" class="form-control @error('riego') is-invalid @enderror">
-                    <option value="" hidden>Seleccione el tipo de rigo</option>
+                    <option value="" hidden>Seleccione el tipo de riego</option>
                     <option value="riegoPesado" 
                         {{ old('lote') == 'riegoPesado' ? 'selected' : '' }}>
                         Riego Pesado (Inundación)

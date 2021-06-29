@@ -23,7 +23,11 @@
 
     <div id="siembra" class="titulos col-12 mt-5">Preparación, Siembra y Cosecha</div>
     {{-- Recepción de Plantas --}}
-    <h2 class="h1">Recepción de Plantas</h2>
+    <h2 class="h1 col-6">Recepción de Plantas</h2>
+    <div>
+        <a href="{{ 'calidadPlantas.create' }}" class="btn btn-primary ml-3">Registrar Recepción de Plantas</a>
+        <a href="{{ 'main' }}" class="btn btn-success ml-3">Menú Principal</a>
+    </div>
     <table class="table table-striped mb-5">
         <thead>
             <tr>
@@ -384,8 +388,8 @@
                             <b>{{ $cosecha->taras }}°C</b>
                         </div>
                         <div>
-                            Material de las taras:
-                            <b>{{ $cosecha->materialCajas }}</b>
+                            Capacidad de las taras:
+                            <b>{{ $cosecha->capacidadTara }}</b>
                         </div>
                         <div>
                             Cliente (Destinatario):

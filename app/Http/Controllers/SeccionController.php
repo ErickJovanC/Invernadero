@@ -101,7 +101,7 @@ class SeccionController extends Controller
         // dd('update');
         $data = request()->validate([
             'propiedad' => 'required',
-            'nombreSeccion' => 'required | string',
+            'nombreSeccion' => 'required',
             'cantidadPlantas' => 'integer'
         ]);
 

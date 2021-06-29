@@ -54,21 +54,15 @@
             </div>
             {{-- Fin Empresa --}}
 
-            {{-- dirección --}}
+            {{-- Destino --}}
             <div class="form-group col-12 col-sm-6 col-md-4 col-lg-3 mb-5">
-                <label for="direccion">dirección</label>
-                <input type="text" 
-                    name="direccion" 
-                    id="direccion"
-                    value="{{ old('direccion') ? old('direccion') : $cliente->direccion }}"
-                    class="form-control @error('direccion') is-invalid @enderror">
-                @error('direccion')
-                    <span class="invalid-feedback d-block" role="alert">
-                        <strong>{{$message}}</strong>
-                    </span>
-                @enderror
+                <label for="empresa">Destino</label>
+                <select name="destino" id="destino" class="form-control @error('destino') is-invalid @enderror">
+                    <option value="Nacional" {{ $cliente->destino == 'Nacional' ? 'selected' : '' }}>Nacional</option>
+                    <option value="Internacional" {{ $cliente->destino == 'Internacional' ? 'selected' : '' }}>Internacional</option>
+                </select>
             </div>
-            {{-- Fin dirección --}}
+            {{-- Fin Destino --}}
         </div>
 
         {{-- Botones --}}

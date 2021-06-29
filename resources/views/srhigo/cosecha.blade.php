@@ -7,10 +7,10 @@
     @csrf
         <div class="row align-items-end">
             {{-- Cliente (Destinatario) --}}
-            <div class="form-group col-12 col-sm-6 col-md-4 mb-5">
+            <div class="form-group col-12 col-sm-12 col-md-6 mb-5">
                 <label for="cliente">Cliente (Destinatario)</label>
                 <select name="cliente" id="cliente" class="form-control @error('cliente') is-invalid @enderror">
-                    <option value="">¿Cual es el destino?</option>
+                    <option value="" hidden>Cliente destinatario</option>
                     @foreach ($clientes as $cliente)
                         <option 
                             value="{{ $cliente->id }}"
@@ -28,8 +28,8 @@
             {{-- Fin Cliente (Destinatario) --}}
 
             {{-- Botón Agregar Cliente --}}
-            <div class="col-sm-12 col-md-6 col-lg-4">
-                <a href="{{ route('cliente.create') }}" class="btn btn-info w-100">Agregar Otro Cliente</a>
+            <div class="col-sm-12 col-md-6 col-lg-4 mb-5">
+                <a href="{{ route('cliente.create') }}" class="btn btn-info px-5">Registrar Otro Cliente</a>
             </div> {{-- Fin Botón Agregar Cliente --}}
 
             <div class="w-100"></div>
@@ -148,22 +148,22 @@
             </div>
             {{-- Fin Taras --}}
 
-            {{-- Material de las taras --}}
+            {{-- Capacidad de las taras --}}
             <div class="form-group col-12 col-sm-6 col-md-4 col-lg-3 mb-5">
-                <label for="material">Material de las Taras</label>
-                <select name="material" id="material" class="form-control">
-                    <option value="">¿De que material son las material?</option>
-                    <option value="Carton" {{ old('material') == 'Carton' ? 'selected' : '' }}>Cartón</option>
-                    <option value="Madera" {{ old('material') == 'Madera' ? 'selected' : '' }}>Madera</option>
-                    <option value="Plastico" {{ old('material') == 'Plastico' ? 'selected' : '' }}>Plastico</option>
+                <label for="capacidadTara">Capacidad de las taras</label>
+                <select name="capacidadTara" id="capacidadTara" class="form-control @error('taras') is-invalid @enderror">
+                    <option value="" hidden>Capacidad de las taras</option>
+                    <option value="5kg" {{ old('capacidadTara') == '5kg' ? 'selected' : '' }}>5 kg</option>
+                    <option value="8kg" {{ old('capacidadTara') == '8kg' ? 'selected' : '' }}>8 kg</option>
+                    <option value="18kg" {{ old('capacidadTara') == '18kg' ? 'selected' : '' }}>18 kg</option>
                 </select>
-                @error('material')
+                @error('capacidadTara')
                     <span class="invalid-feedback d-block" role="alert">
                         <strong>{{$message}}</strong>
                     </span>
                 @enderror
             </div>
-            {{-- Fin Material de las taras --}}
+            {{-- Fin Capacidad de las taras --}}
 
             @include('srhigo.campos.responsable')
 

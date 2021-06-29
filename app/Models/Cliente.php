@@ -13,7 +13,7 @@ class Cliente extends Model
         'nombre',
         'apellido',
         'empresa',
-        'direccion',
+        'destino',
         'user_id',
     ];
 }

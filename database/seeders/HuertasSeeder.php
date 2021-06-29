@@ -25,7 +25,7 @@ class HuertasSeeder extends Seeder
             'nombreHuerta' => 'El Higero',
             'estado_id' => 1,
             'municipio_id' => 3,
-            'user_id' => 2,
+            'user_id' => 1,
         ]);
     }
 }
