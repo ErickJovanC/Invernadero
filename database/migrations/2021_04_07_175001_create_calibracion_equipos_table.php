@@ -17,9 +17,8 @@ class CreateCalibracionEquiposTable extends Migration
             $table->id();
 
             $table->date('fecha');
-            $table->string('equipo');
+            $table->string('equipo', 11);
             $table->string('producto');
-            $table->smallInteger('recipiente');
             $table->smallInteger('pesoInicial');
             $table->smallInteger('pesoFinal');
             $table->smallInteger('gastoEquipo');

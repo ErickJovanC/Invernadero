@@ -13,7 +13,6 @@ class CalibracionEquipo extends Model
         'fecha',
         'equipo',
         'producto',
-        'recipiente',
         'pesoInicial',
         'pesoFinal',
         'gastoEquipo',

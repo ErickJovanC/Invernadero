@@ -52,7 +52,6 @@ class CalibracionEquipoController extends Controller
             'fecha' => 'required',
             'equipo' => 'required',
             'productoAplicado' => 'required',
-            'recipiente' => 'required',
             'volumenPesoInicial' => 'required',
             'volumenPesoFinal' => 'required',
             'longitudRecorrida' => 'required',
@@ -60,7 +59,8 @@ class CalibracionEquipoController extends Controller
             'responsable' => 'required',
         ]);
 
-        $gastoEquipo = $data['recipiente'] + ($data['volumenPesoInicial'] - $data['volumenPesoFinal']);
+        $capacidad = $data['equipo'] == 'Manual 15l' ? 15 : 25; 
+        $gastoEquipo = $capacidad + ($data['volumenPesoInicial'] - $data['volumenPesoFinal']);
         $area = $data['longitudRecorrida'] * $data['anchoCubierto'];
         $gastoManzana = 7000 * $gastoEquipo / $area;
 
@@ -69,7 +69,6 @@ class CalibracionEquipoController extends Controller
             'equipo' => $data['equipo'],
             'producto' => $data['productoAplicado'],
             'comentario' => $request['comentario'],
-            'recipiente' => $data['recipiente'],
             'pesoInicial' => $data['volumenPesoInicial'],
             'pesoFinal' => $data['volumenPesoFinal'],
             'gastoEquipo' => $gastoEquipo,

@@ -1064,7 +1064,7 @@
                         </div>
                         <div>
                             Tamaño del recipiente:
-                            <b>{{ $calibracion->recipiente }}</b>
+                            <b>{{ $calibracion->equipo == 'Manual 15l' ? '15 litros' : '25 litros' }}</b>
                         </div>
                         <div>Gasto del equipo:
                             <b>${{ $calibracion->gastoEquipo }}</b>

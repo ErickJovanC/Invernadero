@@ -5,76 +5,34 @@
     <h1 class="titulo mb-5 col-12 text-center">Calibración de Equipo de Aplicación</h1>
     <form action="{{ route('calibracionEquipo.store') }}" method="post" class="col-12 mb-5">
         @csrf
-        <div class="row">
+        <div class="row align-items-end">
 
             @include('srhigo.campos.fecha')
 
-            {{-- Equipo a calibrar --}}
-            <div class="col-12 col-md-6 col-lg-4">
+            {{-- Equipo --}}
+            <div class="form-group col-sm-12 col-md-6 col-lg-3 mb-5">
                 <label for="equipo">Equipo</label>
-                <input type="text" 
-                    name="equipo" 
-                    id="equipo" 
-                    value="{{ old('equipo') }}"
-                    class="form-control @error('equipo') is-invalid @enderror"
-                />
+                <select name="equipo" id="equipo" class="form-control @error('equipo') is-invalid @enderror">
+                    <option value="" hidden>Equipo</option>
+                    <option 
+                        value="Manual 15l"
+                        {{ old('equipo') == 'Manual 15l' ? 'selected' : '' }}
+                    />
+                        Manual 15l
+                    </option>
+                    <option 
+                        value="Motor 25l"
+                        {{ old('equipo') == 'Motor 25l' ? 'selected' : '' }}
+                    />
+                        Motor 25l
+                    </option>
+                </select>
                 @error('equipo')
                     <span class="invalid-feedback d-block" role="alert">
                         <strong>{{$message}}</strong>
                     </span>
                 @enderror
-            </div>{{-- Fin Equipo a calibrar--}}
-            
-            {{-- Producto Aplicado --}}
-            <div class="col-12 h2 text-center">Producto aplicado con el equipo: </div>
-            <div class="col-12 mb-5 text-center">
-                <div class="form-check form-check-inline">
-                    <input 
-                        type="radio" 
-                        name="productoAplicado" 
-                        id="Fertilizante" 
-                        value="Fertilizante"
-                        {{ old('productoAplicado') == 'Fertilizante' ? 'checked' :  '' }}
-                        class="form-check-input @error('productoAplicado') is-invalid @enderror" 
-                    />
-                    <label class="form-check-label" for="Fertilizante">Fertilizante</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input @error('productoAplicado') is-invalid @enderror" type="radio" name="productoAplicado" id="Insecticida" value="Insecticida" {{ old('productoAplicado') == 'Insecticida' ? 'checked' :  '' }}>
-                    <label class="form-check-label" for="Insecticida">Insecticida</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input @error('productoAplicado') is-invalid @enderror" type="radio" name="productoAplicado" id="Fungicida" value="Fungicida" {{ old('productoAplicado') == 'Fungicida' ? 'checked' :  '' }}>
-                    <label class="form-check-label" for="Fungicida">Fungicida</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input @error('productoAplicado') is-invalid @enderror" type="radio" name="productoAplicado" id="Herbicida" value="Herbicida" {{ old('productoAplicado') == 'Herbicida' ? 'checked' :  '' }}>
-                    <label class="form-check-label" for="Herbicida">Herbicida</label>
-                </div>
-                @error('productoAplicado')
-                    <span class="invalid-feedback d-block" role="alert">
-                        <strong>{{$message}}</strong>
-                    </span>
-                @enderror
-            </div>
-            {{-- Fin producto Aplicado --}}
-
-            {{-- Tamaño del contenedor --}}
-            <div class="form-group col-sm-12 col-md-6 col-lg-3 mb-5">
-                <label for="recipiente">Tamaño del recipiente o contenedor</label>
-                <input type="number" 
-                    name="recipiente" 
-                    id="recipiente"
-                    value="{{ old('recipiente') }}"
-                    class="form-control 
-                        @error('recipiente') is-invalid @enderror" 
-                />
-                @error('recipiente')
-                    <span class="invalid-feedback d-block" role="alert">
-                        <strong>{{$message}}</strong>
-                    </span>
-                @enderror
-            </div>{{-- Fin Tamaño del contenedor --}}
+            </div>{{-- Fin Equipo --}}
 
             <div class="form-group col-12 col-sm-6 col-md-3 mb-5">
                 <label for="volumenPesoInicial">Volumen o Peso Inicial (Kilogramos o Litros)</label>
@@ -99,17 +57,48 @@
                     </span>
                 @enderror
             </div>
+            
+            <div class="w-100"></div>
 
-            {{-- <div class="form-group col-12 col-sm-6 col-md-3 mb-5">
-                <span>Gasto del Equipo (A-B) = C</span>
-                <br>
-                <span class="h1">0.0</span>
-            </div> --}}
+            {{-- Producto Aplicado --}}
+            <div class="col-12 h2 text-center mt-3 mb-5">Producto aplicado con el equipo:
+                <div class="col-12 m-3 text-center">
+                    <div class="form-check form-check-inline">
+                        <input 
+                            type="radio" 
+                            name="productoAplicado" 
+                            id="Fertilizante" 
+                            value="Fertilizante"
+                            {{ old('productoAplicado') == 'Fertilizante' ? 'checked' :  '' }}
+                            class="form-check-input @error('productoAplicado') is-invalid @enderror" 
+                        />
+                        <label class="form-check-label" for="Fertilizante">Fertilizante</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input @error('productoAplicado') is-invalid @enderror" type="radio" name="productoAplicado" id="Insecticida" value="Insecticida" {{ old('productoAplicado') == 'Insecticida' ? 'checked' :  '' }}>
+                        <label class="form-check-label" for="Insecticida">Insecticida</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input @error('productoAplicado') is-invalid @enderror" type="radio" name="productoAplicado" id="Fungicida" value="Fungicida" {{ old('productoAplicado') == 'Fungicida' ? 'checked' :  '' }}>
+                        <label class="form-check-label" for="Fungicida">Fungicida</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input @error('productoAplicado') is-invalid @enderror" type="radio" name="productoAplicado" id="Herbicida" value="Herbicida" {{ old('productoAplicado') == 'Herbicida' ? 'checked' :  '' }}>
+                        <label class="form-check-label" for="Herbicida">Herbicida</label>
+                    </div>
+                    @error('productoAplicado')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{$message}}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </div>
+            {{-- Fin producto Aplicado --}}
 
             <div class="w-100"></div>
 
             {{-- Longitud recorrida --}}
-            <div class="form-group col-12 col-sm-6 col-md-3 mb-5">
+            <div class="form-group col-12 col-sm-6 col-md-3 col-lg-2 mb-5">
                 <label for="longitudRecorrida">Longitud Recorrida (metros)</label>
                 <input type="number" 
                 name="longitudRecorrida" 
@@ -124,7 +113,7 @@
             </div>{{-- Fin  Longitud recorrida--}}
 
             {{-- Ancho Cubierto --}}
-            <div class="form-group col-12 col-sm-6 col-md-3 mb-5">
+            <div class="form-group col-12 col-sm-6 col-md-3 col-lg-2 mb-5">
                 <label for="anchoCubierto">Ancho Cubierto (metros)</label>
                 <input type="number" 
                 name="anchoCubierto" 
@@ -151,7 +140,7 @@
             </div> --}}
 
             {{-- Comentario --}}
-            <div class="form-group col-sm-12 col-md-6 col-lg-3 mb-5">
+            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
                 <label for="comentario">Comentario</label>
                 <input type="text" 
                     name="comentario" 
