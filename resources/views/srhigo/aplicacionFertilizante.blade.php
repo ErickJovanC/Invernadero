@@ -5,32 +5,10 @@
     <h1 class="h1 mb-5 col-12 text-center">Aplicación de Fertilizante</h1>
     <form action="{{ route('aplicacionFertilizante.store') }}" method="post" class="col-12">
         @csrf
-        <div class="row justify-content-center">
-
-            {{-- Fecha --}}
-            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
-                <label for="fechaAplicacion">Fecha de Aplicación</label>
-                <input type="date" 
-                    name="fechaAplicacion" 
-                    id="fechaAplicacion"
-                    max="{{ $fechaActual }}"
-                    value="{{ old('fechaAplicacion') }}"
-                    class="form-control 
-                        @error('fechaAplicacion') is-invalid @enderror" 
-                />
-                @error('fechaAplicacion')
-                    <span class="invalid-feedback d-block" role="alert">
-                        <strong>{{$message}}</strong>
-                    </span>
-                @enderror
-            </div>{{-- Fin Fecha --}}
-
-            @include('srhigo.campos.huertaSeccion')
-
-            <div class="w-100"></div>
+        <div class="row align-items-end">
 
             {{-- Fertilizantes --}}
-            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
+            <div class="form-group col-sm-12 col-md-6 col-lg-4 col-xl-3 mb-5">
                 <label for="nombreFertilizante">Fertilizante Aplicado</label>
                 <select name="nombreFertilizante" id="nombreFertilizante" class="form-control @error('nombreFertilizante') is-invalid @enderror">
                     <option value="" hidden>Seleccione el fertilizante</option>
@@ -51,15 +29,35 @@
             </div> {{-- Fin Fertilizantes --}}
 
             {{-- Botón Agregar Fertilizante --}}
-            <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 mb-5">
                 <a href="{{ route('fertilizante.create') }}" class="btn btn-info w-100">Agregar Otro Fertilizante</a>
             </div> {{-- Fin Botón Agregar Fertilizante --}}
 
-            <div class="w-100"></div>
+            @include('srhigo.campos.fecha')
+            {{-- Fecha --}}
+            {{-- <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
+                <label for="fechaAplicacion">Fecha de Aplicación</label>
+                <input type="date" 
+                    name="fechaAplicacion" 
+                    id="fechaAplicacion"
+                    max="{{ $fechaActual }}"
+                    value="{{ old('fechaAplicacion') }}"
+                    class="form-control 
+                        @error('fechaAplicacion') is-invalid @enderror" 
+                />
+                @error('fechaAplicacion')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
+            </div> --}}
+            {{-- Fin Fecha --}}
 
-            <div class="form-group col-6 col-md-4 col-lg-3 mb-5">
+            @include('srhigo.campos.huertaSeccion')
+
+            <div class="form-group col-12 col-sm-6 col-md-3 col-lg-2 mb-5">
                 <label for="kilosHectarea">Kilos por hectarea</label>
-                <input type="text" name="kilosHectarea" id="kilosHectarea" class="form-control @error('kilosHectarea') is-invalid @enderror">
+                <input type="number" name="kilosHectarea" id="kilosHectarea" class="form-control @error('kilosHectarea') is-invalid @enderror">
                 @error('kilosHectarea')
                     <span class="invalid-feedback d-block" role="alert">
                         <strong>{{$message}}</strong>

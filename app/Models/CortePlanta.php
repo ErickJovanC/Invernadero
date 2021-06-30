@@ -15,6 +15,7 @@ class CortePlanta extends Model
         'seccion_id',
         'cantidad',
         'motivo',
+        'empleado_id',
         'user_id',
     ];
 }

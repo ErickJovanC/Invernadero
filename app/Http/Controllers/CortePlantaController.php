@@ -45,6 +45,7 @@ class CortePlantaController extends Controller
             'fecha' => 'required',
             'huertaSeccion' => 'required',
             'cantidad' => 'required | integer',
+            'responsable' => 'required',
         ]);
 
         $seccion = (int)$data['huertaSeccion'];
@@ -59,6 +60,7 @@ class CortePlantaController extends Controller
             'seccion_id' => $seccion,
             'cantidad' => $data['cantidad'],
             'motivo' => $request['motivo'],
+            'empleado_id' => $data['responsable'],
         ]);
 
         // Consultar Cantidad de Plantas en Lote

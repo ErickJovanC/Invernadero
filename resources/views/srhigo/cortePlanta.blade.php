@@ -9,9 +9,9 @@
             @include('srhigo.campos.fecha')
             @include('srhigo.campos.huertaSeccion')
 
-            {{-- Cantidad de plantas cortadas --}}
-            <div class="form-group col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 mb-5">
-                <label for="cantidad">Cantidad de Plantas Cortadas</label>
+            {{-- Plantas cortadas --}}
+            <div class="form-group col-12 col-sm-12 col-md-6 col-lg-3 col-xl-1 mb-5">
+                <label for="cantidad">Plantas Cortadas</label>
                 <input type="number" min="1" name="cantidad" id="cantidad" 
                     value="{{ old('cantidad') }}" 
                     class="form-control @error('cantidad') is-invalid @enderror">
@@ -21,7 +21,9 @@
                     </span>
                 @enderror
             </div>
-            {{-- Fin Cantidad de plantas cortadas --}}
+            {{-- Fin Plantas cortadas --}}
+
+            @include('srhigo.campos.responsable')
 
             {{-- Motivo del corte --}}
             <div class="form-group col-12 mb-5">
