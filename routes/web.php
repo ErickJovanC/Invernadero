@@ -8,6 +8,7 @@ use App\Http\Controllers\SeccionController;
 use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\HistorialController;
 use App\Http\Controllers\PlaguicidaController;
+use App\Http\Controllers\CortePlantaController;
 use App\Http\Controllers\FertilizanteController;
 use App\Http\Controllers\CalidadPlantaController;
 use App\Http\Controllers\RegistroRiegoController;
@@ -62,6 +63,7 @@ Route::resource('aplicacionPlaguicida', AplicacionPlaguicidaController::class)->
 Route::resource('capacitacionPersonal', CapacitacionPersonalController::class)->middleware('auth');
 Route::resource('cosecha', CosechaController::class)->middleware('auth');
 Route::resource('cliente', ClienteController::class)->middleware('auth');
+Route::resource('cortePlanta', CortePlantaController::class)->middleware('auth');
 
 Route::get('/srhigo/sinActivar', function() {
     return view('srhigo.sinActivar');

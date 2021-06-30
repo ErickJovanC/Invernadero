@@ -133,4 +133,8 @@ class User extends Authenticatable
     public function cosechas(){
         return $this->hasMany(Cosecha::class);
     }
+
+    public function cortePlanta(){
+        return $this->hasMany(CortePlanta::class);
+    }
 }

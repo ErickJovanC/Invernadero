@@ -100,14 +100,20 @@
         </a>
 
         <h1 class="col-12 mt-5">Mantenimiento y Capacitación</h1>
+
         <a href="{{ route('calibracionEquipo.create') }}"
-            class="btn btn-secondary btn-menu col-12 col-sm-6 col-md-4 col-lg-6 col-xl-6 p-2">
+            class="btn btn-secondary btn-menu col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-2">
             Calibración de Equipo de Aplicación
         </a>
 
         <a href="{{ route('limpiezaCanales.create') }}"
             class="btn btn-secondary btn-menu col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-2">
             Limpieza de canales
+        </a>
+
+        <a href="{{ route('cortePlanta.create') }}"
+            class="btn btn-secondary btn-menu col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-2">
+            Corte de Plantas y Arboles
         </a>
 
         <a href="{{ route('capacitacionPersonal.create') }}"
