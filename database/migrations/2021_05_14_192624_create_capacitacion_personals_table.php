@@ -22,6 +22,7 @@ class CreateCapacitacionPersonalsTable extends Migration
             $table->string('capacitador');
             $table->string('empresa');
             $table->string('tiempo');
+            $table->smallInteger('costo')->unsigned();
             $table->string('empleados');
             $table->foreignId('user_id')->references('id')->on('users');
 

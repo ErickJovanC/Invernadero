@@ -42,7 +42,7 @@
             </div> {{-- Fin nombre del Capacitador --}}
 
             {{-- Empresa Capacitadora --}}
-            <div class="form-group col-sm-12 col-md-6 mb-5">
+            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
                 <label for="empresaCapacitadora">Empresa Capacitadora</label>
                 <input type="text" 
                     name="empresaCapacitadora" 
@@ -58,7 +58,7 @@
             </div> {{-- Fin Empresa Capacitadora --}}
 
             {{-- Tiempo de Capacitación --}}
-            <div class="form-group col-sm-12 col-md-6 mb-5">
+            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
                 <label for="tiempoCapacitacion">Tiempo de Capacitación (Horas:Minutos)</label>
                 <input type="text"
                     min="0"
@@ -73,6 +73,23 @@
                     </span>
                 @enderror
             </div> {{-- Fin Tiempo de Capacitación --}}
+
+            {{-- Costo de la capacitación --}}
+            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
+                <label for="costo">Costo de la capacitación (Horas:Minutos)</label>
+                <input type="number"
+                    min="0"
+                    name="costo" 
+                    id="costo" 
+                    value="{{ old('costo') }}"
+                    class="form-control @error('costo') is-invalid @enderror"
+                />
+                @error('costo')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
+            </div> {{-- Fin Costo de la capacitación --}}
             
             <div class="col-12 mb-5">
                 <div class="@error('trabajadores') is-invalid @enderror h1">Trabajadores que fueron capacitados</div>

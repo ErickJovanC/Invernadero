@@ -16,6 +16,7 @@ class CapacitacionPersonal extends Model
         'capacitador',
         'empresa',
         'tiempo',
+        'costo',
         'empleados',
         'user_id',
     ];

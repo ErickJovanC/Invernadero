@@ -68,6 +68,7 @@ class CapacitacionPersonalController extends Controller
             'capacitador' => $data['nombreCapacitador'],
             'empresa' => $request['empresaCapacitadora'],
             'tiempo' => $data['tiempoCapacitacion'],
+            'costo' => $request['costo'],
             'empleados' => implode(', ', $data['trabajadores']),
         ]);
 
