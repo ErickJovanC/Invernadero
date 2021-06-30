@@ -1197,18 +1197,18 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($limpiezaCanales as $canal)
+            @foreach ($cortePlantas as $cortePlanta)
             <tr>
-                <td>{{ $canal->fecha }}</td>
-                <td>{{ $canal->huerta->nombreHuerta }}</td>
-                <td>{{ $canal->nombreCanal }}
-                <td>{{ $canal->longitud }}</td>
+                <td>{{ $cortePlanta->fecha }}</td>
+                <td>{{ $cortePlanta->huerta->nombreHuerta ." - ". $cortePlanta->seccion->nombreSeccion }}</td>
+                <td>{{ $cortePlanta->cantidad }}
+                <td>{{ $cortePlanta->motivo }}</td>
                 </td>
-                <td><a href="#" data-toggle="modal" data-target="#canal{{ $canal->id }}">Ver detalle</a></td>
+                <td><a href="#" data-toggle="modal" data-target="#cortePlanta{{ $cortePlanta->id }}">Ver detalle</a></td>
             </tr>
             
             <!-- Modal -->
-            <div class="modal fade" id="canal{{ $canal->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="cortePlanta{{ $cortePlanta->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -1220,39 +1220,31 @@
                     <div class="modal-body">
                         <div>
                             Fecha:
-                            <b>{{ $canal->fecha }}</b>
+                            <b>{{ $cortePlanta->fecha }}</b>
                         </div>
                         <div>
                             Huerta:
-                            <b>{{ $canal->huerta->nombreHuerta }}</b>
+                            <b>{{ $cortePlanta->huerta->nombreHuerta }}</b>
                         </div>
                         <div>
-                            Canal: 
-                            <b>{{ $canal->nombreCanal }}</b>
+                            Sección:
+                            <b>{{ $cortePlanta->seccion->nombreSeccion }}</b>
                         </div>
                         <div>
-                            Longitud:
-                            <b>{{ $canal->longitud }}</b>
+                            Plantas Removidas: 
+                            <b>{{ $cortePlanta->cantidad }}</b>
                         </div>
                         <div>
-                            Revestimiento:
-                            <b>{{ $canal->revestimiento }}</b>
-                        </div>
-                        <div>
-                            Acciones Realizadas:
-                            <b>{{ $canal->accionesRealizadas }}</b>
-                        </div>
-                        <div>
-                            Observaciones:
-                            <b>{{ $canal->observaciones }}</b>
+                            Motivo del corte:
+                            <b>{{ $cortePlanta->motivo }}</b>
                         </div>
                         <div>
                             Responsable:
                             <b>
                                 {{
-                                    $canal->Empleado->nombreEmpleado .' '.
-                                    $canal->Empleado->apellidoEmpleado .' ('.
-                                    $canal->Empleado->sobrenombreEmpleado .')'
+                                    $cortePlanta->Empleado->nombreEmpleado .' '.
+                                    $cortePlanta->Empleado->apellidoEmpleado .' ('.
+                                    $cortePlanta->Empleado->sobrenombreEmpleado .')'
                                 }}
                             </b>
                         </div>
