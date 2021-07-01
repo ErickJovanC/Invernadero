@@ -121,6 +121,13 @@
             Capacitación del Personal
         </a>
 
+        <h1 class="col-12 mt-5">Administración y Finanzas</h1>
+
+        <a href="{{ route('gasto.create') }}"
+            class="btn btn-info btn-menu col-12  p-2">
+            Regitro de Gastos
+        </a>
+
         <h1 class="col-12 mt-5">Reportes</h1>
         <a href="{{ route('historial.index') }}"
             class="btn btn-info btn-menu col-12  p-2">

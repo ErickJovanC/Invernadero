@@ -137,4 +137,8 @@ class User extends Authenticatable
     public function cortePlanta(){
         return $this->hasMany(CortePlanta::class);
     }
+
+    public function registroGastos(){
+        return $this->hasMany(Gasto::class);
+    }
 }

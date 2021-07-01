@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GastoController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\CosechaController;
 use App\Http\Controllers\SeccionController;
@@ -64,6 +65,7 @@ Route::resource('capacitacionPersonal', CapacitacionPersonalController::class)->
 Route::resource('cosecha', CosechaController::class)->middleware('auth');
 Route::resource('cliente', ClienteController::class)->middleware('auth');
 Route::resource('cortePlanta', CortePlantaController::class)->middleware('auth');
+Route::resource('gasto', GastoController::class)->middleware('auth');
 
 Route::get('/srhigo/sinActivar', function() {
     return view('srhigo.sinActivar');
