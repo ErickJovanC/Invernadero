@@ -45,6 +45,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function role(){
+        return $this->belongsTo(Role::class, 'nivel');
+    }
+
+    public function esAdmin(){
+        if($this->role->nombreRole == 'Administrador'){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
     
     public function datosPersonales(){
         return $this->hasOne(RegistroPersonal::class); // Usado para el registro de los datos personales
@@ -139,6 +152,6 @@ class User extends Authenticatable
     }
 
     public function registroGastos(){
-        return $this->hasMany(Gasto::class);
+        return $this->hasMany(Gasto::class); 
     }
 }

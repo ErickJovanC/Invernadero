@@ -18,7 +18,7 @@ class CreateEmpleadosTable extends Migration
 
             $table->string('nombreEmpleado', 20);
             $table->string('apellidoEmpleado', 20);
-            $table->string('sobrenombreEmpleado', 30);
+            $table->string('sobrenombreEmpleado', 30)->nullable();
             $table->foreignId('user_id')->
                 references('id')->
                 on('users');

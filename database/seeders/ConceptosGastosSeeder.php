@@ -49,5 +49,9 @@ class ConceptosGastosSeeder extends Seeder
         DB::table('concepto_gastos')->insert([
             'concepto' => 'Seguro Social',
         ]);
+
+        DB::table('concepto_gastos')->insert([
+            'concepto' => 'Otro',
+        ]);
     }
 }

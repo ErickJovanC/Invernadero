@@ -145,8 +145,8 @@
                 <td>{{ $preparacion->fechaInicio }}</td>
                 <td>{{ $preparacion->seccion->propiedad->nombreHuerta ." - ". 
                         $preparacion->seccion->nombreSeccion }}</td>
-                <td>{{ $preparacion->costoOperacion }}</td>
                 <td>{{ $preparacion->labor }}
+                <td>{{ $preparacion->costoOperacion }}</td>
                 </td>
                 <td><a href="#" data-toggle="modal" data-target="#preparacion{{ $preparacion->id }}">Ver detalle</a></td>
             </tr>
