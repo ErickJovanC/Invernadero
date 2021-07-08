@@ -24,7 +24,7 @@
                             (Sin foto)
                         @endif
                     </td>
-                    <td>{{ $user->nombre .' '. $user->apellidoP }}</td>
+                    <td>{{ $user->nombre .' '. $user->apellidoP .' '. $user->apellidoM }}</td>
                     <td>{{ $user->telefono }}</td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->direccion}}</td>
