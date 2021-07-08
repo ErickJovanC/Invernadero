@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
         $this->call(EmpleadosSeeder::class);
         $this->call(HuertasSeeder::class);
         $this->call(SeccionesSeeder::class);
+        $this->call(RolesSeeder::class);
         // \App\Models\User::factory(10)->create();
     }
 }
