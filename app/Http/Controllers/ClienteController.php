@@ -42,14 +42,14 @@ class ClienteController extends Controller
     {
         // dd('Clientes');
         $data = $request->validate([
-            'nombre' => 'required',
+            'empresa' => 'required',
             'destino' => 'required',
         ]);
 
         Auth::user()->clientes()->create([
-            'nombre' => $data['nombre'],
-            'apellido' => $request['apellido'],
-            'empresa' => $request['empresa'],
+            // 'nombre' => $data['nombre'],
+            // 'apellido' => $request['apellido'],
+            'empresa' => $data['empresa'],
             'destino' => $data['destino'],
         ]);
 
@@ -90,13 +90,13 @@ class ClienteController extends Controller
     public function update(Request $request, Cliente $cliente)
     {
         $data = $request->validate([
-            'nombre' => 'required',
+            'empresa' => 'required',
             'destino' => 'required',
         ]);
 
         $cliente->update([
-            'nombre' => $data['nombre'],
-            'apellido' => $request['apellido'],
+            // 'nombre' => $data['nombre'],
+            // 'apellido' => $request['apellido'],
             'empresa' => $request['empresa'],
             'destino' => $data['destino'],
         ]);

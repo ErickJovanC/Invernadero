@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('content')
 <a href="{{ route('main') }}" class="btn btn-success">Menú</a>
-<div class="row">
-    <h1 class="titulo mb-5 col-12 text-center">Clientes (Destinatarios)</h1>
+<div class="row pb-5">
+    <h1 class="titulos mb-5 col-12 text-center">Destinatarios</h1>
 
     {{-- Muestra el mensaje de confirmación --}}
     @if(Session::has('mensaje'))
@@ -11,11 +11,11 @@
         </div>
     @endif
     
-    <form action="{{ route('cliente.store') }}" method="post" class="col-12">
+    <form action="{{ route('cliente.store') }}" method="post" class="col-6">
     @csrf
         <div class="row align-items-end">
             {{-- Nombre --}}
-            <div class="form-group col-12 col-sm-6 col-md-4 col-lg-3 mb-5">
+            {{-- <div class="form-group col-12 col-sm-6 col-md-4 col-lg-3 mb-5">
                 <label for="nombre">Nombre</label>
                 <input type="text" 
                     name="nombre" 
@@ -27,11 +27,11 @@
                         <strong>{{$message}}</strong>
                     </span>
                 @enderror
-            </div>
+            </div> --}}
             {{-- Fin Nombre --}}
 
             {{-- Apellido --}}
-            <div class="form-group col-12 col-sm-6 col-md-4 col-lg-3 mb-5">
+            {{-- <div class="form-group col-12 col-sm-6 col-md-4 col-lg-3 mb-5">
                 <label for="apellido">Apellido</label>
                 <input type="text" 
                     name="apellido" 
@@ -43,12 +43,12 @@
                         <strong>{{$message}}</strong>
                     </span>
                 @enderror
-            </div>
+            </div> --}}
             {{-- Fin Apellido --}}
 
             {{-- Empresa --}}
-            <div class="form-group col-12 col-sm-6 col-md-4 col-lg-3 mb-5">
-                <label for="empresa">Empresa</label>
+            <div class="form-group col-12 col-sm-6 mb-5">
+                <label for="empresa">Empresa o Particular</label>
                 <input type="text" 
                     name="empresa" 
                     id="empresa"
@@ -63,8 +63,8 @@
             {{-- Fin Empresa --}}
 
             {{-- Destino --}}
-            <div class="form-group col-12 col-sm-6 col-md-4 col-lg-3 mb-5">
-                <label for="empresa">Empresa</label>
+            <div class="form-group col-12 col-sm-6 {{-- col-md-4 col-lg-3 --}} mb-5">
+                <label for="empresa">Destino</label>
                 <select name="destino" id="destino" class="form-control @error('destino') is-invalid @enderror">
                     <option value="Nacional" {{ old('responsable') == 'Nacional' ? 'selected' : '' }}>Nacional</option>
                     <option value="Internacional" {{ old('responsable') == 'Internacional' ? 'selected' : '' }}>Internacional</option>
@@ -89,23 +89,23 @@
             {{-- Fin dirección --}}
         </div>
 
-        <div class="row justify-content-end">
+        <div class="row justify-content-center">
             <div class="form-group">
                 <input type="submit" value="Registrar Cliente" class="btn btn-primary px-5">
             </div>
         </div>
     </form>
-</div>
+{{-- </div> --}}
 
 {{-- Tabla de clientes --}}
-<div class="row justify-content-center">
-    <div class="col-12 justify-content-center">
-        <table class="table table-striped">
+{{-- <div class="row justify-content-center"> --}}
+    <div class="col-6 justify-content-center">
+        <table class="table table-striped table-responsive-lg">
             <thead>
                 <tr>
-                    <th scope="col"># Reg.</th>
+                    {{-- <th scope="col"># Reg.</th>
                     <th scope="col">Nombre</th>
-                    <th scope="col">Apellido</th>
+                    <th scope="col">Apellido</th> --}}
                     <th scope="col">Empresa</th>
                     <th scope="col">Destino</th>
                     <th scope="col">Edición</th>
@@ -114,13 +114,13 @@
             <tbody>
                 @foreach($clientes as $cliente)
                 <tr>
-                    <th scope="row">{{ $cliente->id }}</th>
+                    {{-- <th scope="row">{{ $cliente->id }}</th>
                     <td>{{ $cliente->nombre }}</td>
-                    <td>{{ $cliente->apellido }}</td>
+                    <td>{{ $cliente->apellido }}</td> --}}
                     <td>{{ $cliente->empresa }}</td>
                     <td>{{ $cliente->destino }}</td>
                     <td>
-                        <a href="{{ route('cliente.edit', $cliente) }}" class="btn btn-warning">Editar Cliente</a>
+                        <a href="{{ route('cliente.edit', $cliente) }}" class="btn btn-warning">Editar Destinatario</a>
                     </td>
                 </tr>
 
@@ -131,7 +131,7 @@
     </div>
 </div>
 {{-- fin Tabla de clientes --}}
-<div class="row col-12">
+<div class="row col-12 mt-5">
     <a href="{{ route('main') }}" class="btn btn-success">Menú</a>
     <a href="{{ route('cosecha.create') }}" class="btn btn-primary ml-3">Registrar Cosecha</a>
 </div>

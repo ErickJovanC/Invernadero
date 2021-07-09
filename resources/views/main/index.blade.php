@@ -27,7 +27,7 @@
 
         <a href="{{ route('cliente.create') }}"
             class="btn btn-success btn-menu col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-2">
-            Clientes (Destinatarios)
+            Destinatarios Registrados
         </a>
 
         <h1 class="col-12 mt-5">Preparación, Siembra y Cosecha</h1>

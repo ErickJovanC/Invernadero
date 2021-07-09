@@ -1,13 +1,13 @@
 @extends('layouts.app')
 @section('content')
 <div class="row">
-    <h1 class="titulo mb-5 col-12 text-center">Editar Cliente (Destinatario)</h1>
+    <h1 class="titulo mb-5 col-12 text-center">Editar Destinatario</h1>
     <form action="{{ route('cliente.update', $cliente) }}" method="post" class="col-12">
     @csrf
     @method('patch')
         <div class="row align-items-end">
             {{-- Nombre --}}
-            <div class="form-group col-12 col-sm-6 col-md-4 col-lg-3 mb-5">
+            {{-- <div class="form-group col-12 col-sm-6 col-md-4 col-lg-3 mb-5">
                 <label for="nombre">Nombre</label>
                 <input type="text" 
                     name="nombre" 
@@ -19,11 +19,11 @@
                         <strong>{{$message}}</strong>
                     </span>
                 @enderror
-            </div>
+            </div> --}}
             {{-- Fin Nombre --}}
 
             {{-- Apellido --}}
-            <div class="form-group col-12 col-sm-6 col-md-4 col-lg-3 mb-5">
+            {{-- <div class="form-group col-12 col-sm-6 col-md-4 col-lg-3 mb-5">
                 <label for="apellido">Apellido</label>
                 <input type="text" 
                     name="apellido" 
@@ -35,12 +35,12 @@
                         <strong>{{$message}}</strong>
                     </span>
                 @enderror
-            </div>
+            </div> --}}
             {{-- Fin Apellido --}}
 
             {{-- Empresa --}}
             <div class="form-group col-12 col-sm-6 col-md-4 col-lg-3 mb-5">
-                <label for="empresa">Empresa</label>
+                <label for="empresa">Empresa o Particular</label>
                 <input type="text" 
                     name="empresa" 
                     id="empresa"
@@ -72,7 +72,7 @@
                     class="btn btn-secondary mr-3">
                     Cancelar edición
                 </a>
-                <input type="submit" value="Editar Cliente" class="btn btn-warning px-5">
+                <input type="submit" value="Guardar Cambios" class="btn btn-warning px-5">
             </div>
         </div>
     </form>
