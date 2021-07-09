@@ -10,15 +10,16 @@
                 <th>Telefono</th>
                 <th>Correo</th>
                 <th>Dirección</th>
-                <th>Detalles</th>
+                <th>Actividades</th>
+                <th>Finanzas</th>
             </thead>
             <tbody>
                 @foreach($usuarios as $user)
                 <tr>
                     <td>
                         @if($user->foto != null)
-                            <a href="{{ asset('storage').'/perfil/'. $user->foto }}" target="_blank">
-                                <img src="{{ asset('storage').'/perfil/'. $user->foto }}" alt="Foto" width="85">
+                            <a href="{{ asset('storage').'/'. $user->foto }}" target="_blank">
+                                <img src="{{ asset('storage').'/'. $user->foto }}" alt="Foto" width="85">
                             </a>
                         @else
                             (Sin foto)
@@ -28,7 +29,8 @@
                     <td>{{ $user->telefono }}</td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->direccion}}</td>
-                    <td><a href="{{ route('admin.verActividades', $user->id) }}">Ver actividades</a></td>
+                    <td><a href="{{ route('admin.verActividades', $user->id) }}" class="btn btn-primary">Ver actividades</a></td>
+                    <td><a href="#" class="btn btn-warning">Estado Financiero</a></td>
                 </tr>
                 @endforeach
             </tbody>

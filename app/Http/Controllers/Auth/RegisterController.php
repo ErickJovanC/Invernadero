@@ -71,7 +71,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $foto = "default.jpg";
+        $foto = "perfil/default.jpg";
         // Subida de la foto
         if(isset($data['foto'])){
             $foto = $data['foto']->store('perfil', 'public');

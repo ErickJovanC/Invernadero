@@ -7,6 +7,8 @@
         <div class="row">
             <h1 class="titulo mb-5 col-12 text-center">Control Preventivo de Plagas y Enfermades</h1>
 
+            <div class="col-12 alert alert-info text-center">Este modulo es para las acciones preventivas que se realizaran a las plantas que aún no han sido plantadas en ninguna sección</div>
+
             {{-- Lote de plantas --}}
             <div class="form-group col-sm-12 col-md-6 mb-5">
                 <label for="lotePlanta">No. de Lote de la Planta a tratar</label>

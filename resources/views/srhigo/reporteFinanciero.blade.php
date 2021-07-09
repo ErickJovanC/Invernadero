@@ -3,6 +3,7 @@
 <a href="{{ route('main') }}" class="btn btn-success">Menú</a>
 <div class="row">
     <h1 class="titulos mb-5 col-12 text-center">Reporte Financiero</h1>
+    <div class="alert alert-danger text-center col-12">Esta sección aun no esta finalizada</div>
     <div class="col-12">
         <table class="table mb-5 table-responsive-md table-sm">
             <thead class="thead-dark">
