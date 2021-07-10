@@ -59,6 +59,7 @@ class FertilizanteController extends Controller
             'S' => $data['S'],
             'microelementos' => $data['microelementos'],
             'macroelementos' => $data['macroelementos'],
+            'comentario' => $request['comentario'],
         ]);
 
         return redirect('main')->with('mensaje', '¡El Fertilizante se ha registrado correctamente!');

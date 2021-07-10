@@ -19,6 +19,7 @@ class Fertilizante extends Model
         'S',
         'microelementos',
         'macroelementos',
+        'comentario',
         'user_id',
     ];
 }

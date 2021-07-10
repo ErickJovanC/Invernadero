@@ -25,6 +25,7 @@ class CreateFertilizantesTable extends Migration
             $table->integer('S');
             $table->string('microelementos', 30);
             $table->string('macroelementos', 30);
+            $table->string('comentario')->nullable();
             $table->foreignId('user_id')->
                 references('id')-> 
                 on('users')-> 

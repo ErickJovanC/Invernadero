@@ -54,7 +54,7 @@
         <h1 class="col-12 mt-5">Fertilización y Riego</h1>
         <a href="{{ route('fertilizante.create') }}"
             class="btn btn-warning btn-menu col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-2">
-            Agregar Fertilizante
+            Alta de Fertilizantes
         </a>
 
         <a href="{{ route('aplicacionFertilizante.create') }}"

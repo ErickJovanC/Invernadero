@@ -2,7 +2,7 @@
 @section('content')
 <a href="{{ route('main') }}" class="btn btn-success">Menú</a>
 <div class="row">
-    <h1 class="titulo mb-5 col-12 text-center">Agregar Fertilizante</h1>
+    <h1 class="titulos mb-5 col-12 text-center">Agregar Nuevo Fertilizante</h1>
     <form action="{{ route('fertilizante.store') }}" method="post" class="col-12">
     @csrf
         <div class="row">
@@ -40,7 +40,7 @@
 
             {{-- Macroelementos --}}
             <div class="form-group col-12 col-md-6 col-lg-4 mb-5">
-                <label for="macroelementos">macroelementos</label>
+                <label for="macroelementos">Macroelementos</label>
                 <input type="text" 
                     name="macroelementos" 
                     id="macroelementos" 
@@ -125,11 +125,23 @@
                     </span>
                 @enderror
             </div>
+
+            <div class="form-group col-12 mb-5">
+                <label for="comentario">Comentario</label>
+                <input type="text" name="comentario" 
+                    value="{{ old('comentario') }}"
+                    class="form-control @error('comentario') is-invalid @enderror">
+                @error('comentario')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
+            </div>
             
         </div>
         <div class="row justify-content-end">
             <div class="form-group">
-                <input type="submit" value="Registrar  Fertilizante" class="btn btn-primary px-5">
+                <input type="submit" value="Registrar Fertilizante" class="btn btn-primary px-5">
             </div>
         </div>
     </form>
