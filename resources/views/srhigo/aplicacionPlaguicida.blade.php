@@ -126,6 +126,97 @@
                 @enderror
             </div>{{-- Fin  Dosis Aplicada --}}
 
+            {{-- Condición Climatica --}}
+            <div class="form-group col-sm-12 col-md-6 col-lg-4 col-xl-3 mb-5">
+                <label for="clima">Condición Climatica</label>
+                <select name="clima" id="clima" class="form-control @error('clima') is-invalid @enderror">
+                    <option value="" hidden>Seleccione</option>
+                    <option value="Soleado" 
+                        {{ old('clima') == 'Soleado' ? 'selected' : '' }}>
+                        Soleado</option>
+                    <option value="Viento" 
+                        {{ old('clima') == 'Viento' ? 'selected' : '' }}>
+                        Viento</option>
+                    <option value="Lluvia" 
+                        {{ old('clima') == 'Lluvia' ? 'selected' : '' }}>
+                        Lluvia</option>
+                    <option value="Nublado" 
+                        {{ old('clima') == 'Nublado' ? 'selected' : '' }}>
+                        Nublado</option>
+                </select>
+                @error('clima')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
+            </div>{{-- Fin Condición Climatica --}}
+
+            {{-- Equipo de Protección Utilizado --}}
+            <div class="col-6">
+                <div class="h1{{-- @error('equipoProteccion') is-invalid @enderror --}}">Equipo de Protección Utilizado</div>
+                
+                <div class="form-check">
+                    <input class="form-check-input @error('equipo') is-invalid @enderror" 
+                        type="checkbox" value="Careta" name="equipo[]" id="careta"
+                        @if( in_array('Careta', old('equipo', [])) )
+                            checked
+                        @endif
+                    />
+                    <label class="form-check-label ml-2" for="careta">
+                        Careta
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input @error('equipo') is-invalid @enderror" 
+                        type="checkbox" value="Overol Tyvek" name="equipo[]" id="overol"
+                        @if( in_array('Overol Tyvek', old('equipo', [])) )
+                            checked
+                        @endif
+                    />
+                    <label class="form-check-label ml-2" for="overol">
+                        Overol Tyvek
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input @error('equipo') is-invalid @enderror" 
+                        type="checkbox" value="Goggles" name="equipo[]" id="Goggles"
+                        @if( in_array('Goggles', old('equipo', [])) )
+                            checked
+                        @endif
+                    />
+                    <label class="form-check-label ml-2" for="Goggles">
+                        Goggles
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input @error('equipo') is-invalid @enderror" 
+                        type="checkbox" value="Respirador" name="equipo[]" id="Respirador"
+                        @if( in_array('Respirador', old('equipo', [])) )
+                            checked
+                        @endif
+                    />
+                    <label class="form-check-label ml-2" for="Respirador">
+                        Respirador
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input @error('equipo') is-invalid @enderror" 
+                        type="checkbox" value="Guantes" name="equipo[]" id="Guantes"
+                        @if( in_array('Guantes', old('equipo', [])) )
+                            checked
+                        @endif
+                    />
+                    <label class="form-check-label ml-2" for="Guantes">
+                        Guantes
+                    </label>
+                </div>
+                @error('equipo')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>Seleccione al menos una acción</strong>
+                    </span>
+                @enderror
+            </div> {{-- Fin Equipo de Protección Utilizado --}}
+
             @include('srhigo.campos.responsable')
         </div>
 
