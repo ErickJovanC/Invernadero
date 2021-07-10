@@ -32,13 +32,34 @@
 
             {{-- Botón Agregar Plaguicida --}}
             <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 mb-5">
-                <a href="{{ route('plaguicida.create') }}" class="btn btn-danger w-100">Registrar Nuevo Plaguicida</a>
+                <a href="{{ route('plaguicida.create') }}" class="btn btn-danger w-100">Alta Nuevo Plaguicida</a>
             </div> {{-- Fin Botón Agregar Plaguicida --}}
 
             <div class="w-100"></div>
 
             @include('srhigo.campos.fecha')
             @include('srhigo.campos.huertaSeccion')
+
+            {{-- Plagas --}}
+            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
+                <label for="plaga">Plaga a tratar</label>
+                <select name="plaga" id="plaga" class="form-control @error('plaga') is-invalid @enderror">
+                    <option value="" hidden>Seleccione...</option>
+                    @foreach ($plagas as $plaga)
+                        <option 
+                            value="{{ $plaga->id }}" 
+                            {{ old('plaga') == $plaga->id ? 'selected' : '' }}
+                        >
+                            {{ $plaga->nombrePlaga }}
+                        </option>
+                    @endforeach
+                </select>
+                @error('plaga')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
+            </div> {{-- Fin Plagas --}}
 
             {{-- Tiempo de Aplicación  --}}
             <div class="form-group col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-5 text-center">
@@ -84,6 +105,21 @@
                 value="{{ old('dosisAplicada')}}"
                 class="form-control @error('dosisAplicada') is-invalid @enderror">
                 @error('dosisAplicada')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
+            </div>{{-- Fin  Dosis Aplicada --}}
+
+            {{-- Dosis Aplicada  --}}
+            <div class="form-group col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-5">
+                <label for="agua">Agua Utilizada (Litros)</label>
+                <input type="text" 
+                name="agua" 
+                id="agua"
+                value="{{ old('agua')}}"
+                class="form-control @error('agua') is-invalid @enderror">
+                @error('agua')
                     <span class="invalid-feedback d-block" role="alert">
                         <strong>{{$message}}</strong>
                     </span>

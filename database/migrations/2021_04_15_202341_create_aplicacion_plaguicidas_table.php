@@ -18,6 +18,7 @@ class CreateAplicacionPlaguicidasTable extends Migration
             $table->foreignId('plaguicida_id')->references('id')->on('plaguicidas');
             $table->foreignId('huerta_id')->references('id')->on('registro_propiedads');
             $table->foreignId('seccion_id')->references('id')->on('seccions');
+            $table->foreignId('plaga_id')->references('id')->on('plagas');
             $table->date('fecha');
             $table->smallInteger('horas');
             $table->smallInteger('minutos');

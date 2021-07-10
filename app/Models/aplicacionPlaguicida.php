@@ -14,9 +14,11 @@ class aplicacionPlaguicida extends Model
         'fecha',
         'huerta_id',
         'seccion_id',
+        'plaga_id',
         'horas',
         'minutos',
         'dosisAplicada',
+        'agua',
         'empleado_id',
         'user_id',
     ];
@@ -27,6 +29,14 @@ class aplicacionPlaguicida extends Model
 
     public function huerta(){
         return $this->belongsTo(RegistroPropiedad::class);
+    }
+
+    public function plaguicida(){
+        return $this->belongsTo(Plaguicida::class);
+    }
+
+    public function plaga(){
+        return $this->belongsTo(Plaga::class);
     }
 
     public function Empleado(){

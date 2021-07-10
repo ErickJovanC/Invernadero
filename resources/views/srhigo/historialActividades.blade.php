@@ -944,8 +944,8 @@
                 <td>{{ $plaguicida->fecha }}</td>
                 <td>{{ $plaguicida->huerta->nombreHuerta 
                     ." - ". $plaguicida->seccion->nombreSeccion }}</td>
-                <td>{{ $plaguicida->tipoPlaguicida }}
-                <td>{{ $plaguicida->ingredienteActivo }}</td>
+                <td>{{ $plaguicida->plaguicida->tipo }}
+                <td>{{ $plaguicida->plaguicida->ingredienteActivo }}</td>
                 </td>
                 <td><a href="#" data-toggle="modal" data-target="#plaguicida{{ $plaguicida->id }}">Ver detalle</a></td>
             </tr>
@@ -970,24 +970,32 @@
                             <b>{{ $plaguicida->huerta->nombreHuerta ." - ". $plaguicida->seccion->nombreSeccion }}</b>
                         </div>
                         <div>
+                            Plaga a tratar
+                            <b>{{ $plaguicida->plaga->nombrePlaga }}</b>
+                        </div>
+                        <div>
                             Tipo de Plaguicida: 
-                            <b>{{ $plaguicida->tipoPlaguicida }}</b>
+                            <b>{{ $plaguicida->plaguicida->tipo }}</b>
                         </div>
                         <div>
                             Nombre Comercial:
-                            <b>{{ $plaguicida->nombreComercial }}</b>
+                            <b>{{ $plaguicida->plaguicida->nombreComercial }}</b>
                         </div>
                         <div>
                             Ingrediente Activo:
-                            <b>{{ $plaguicida->ingredienteActivo }}</b>
+                            <b>{{ $plaguicida->plaguicida->ingredienteActivo }}</b>
                         </div>
                         <div>
                             Color de la Banda:
-                            <b>{{ $plaguicida->colorBanda }}</b>
+                            <b>{{ $plaguicida->plaguicida->colorBanda }}</b>
                         </div>
                         <div>
                             Dosis Aplicada:
-                            <b>{{ $plaguicida->dosisAplicada }}</b>
+                            <b>{{ $plaguicida->dosisAplicada }} litros</b>
+                        </div>
+                        <div>
+                            Agua utilizada:
+                            <b>{{ $plaguicida->agua }} litros</b>
                         </div>
                         <div>
                             Tiempo:

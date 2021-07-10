@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Plaga;
 use App\Models\Seccion;
 use Illuminate\Http\Request;
 use App\Models\aplicacionPlaguicida;
@@ -30,6 +31,7 @@ class AplicacionPlaguicidaController extends Controller
         $secciones = Auth::user()->secciones;
         $empleados = Auth::user()->empleados;
         $plaguicidas = Auth::user()->plaguicida;
+        $plagas = Plaga::all();
 
         return view('srhigo.aplicacionPlaguicida')->
             with([
@@ -37,6 +39,7 @@ class AplicacionPlaguicidaController extends Controller
                 'fechaActual' => $fechaActual,
                 'empleados' => $empleados,
                 'plaguicidas' => $plaguicidas,
+                'plagas' => $plagas,
             ]);
     }
 
@@ -52,9 +55,11 @@ class AplicacionPlaguicidaController extends Controller
             'plaguicida' => 'required',
             'fecha' => 'required',
             'huertaSeccion' => 'required',
+            'plaga' => 'required',
             'horas' => 'required',
             'minutos' => 'required',
             'dosisAplicada' => 'required',
+            'agua' => 'required',
             'responsable' => 'required',
         ]);
 
@@ -69,9 +74,11 @@ class AplicacionPlaguicidaController extends Controller
             'fecha' => $data['fecha'],
             'huerta_id' => $huerta_id,
             'seccion_id' => $seccion,
+            'plaga_id' => $data['plaga'],
             'horas' => $data['horas'],
             'minutos' => $data['minutos'],
             'dosisAplicada' => $data['dosisAplicada'],
+            'agua' => $data['agua'],
             'empleado_id' => $data['responsable'],
         ]);
 
