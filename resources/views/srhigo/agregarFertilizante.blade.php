@@ -2,7 +2,7 @@
 @section('content')
 <a href="{{ route('main') }}" class="btn btn-success">Menú</a>
 <div class="row">
-    <h1 class="titulos mb-5 col-12 text-center">Agregar Nuevo Fertilizante</h1>
+    <h1 class="titulos mb-5 col-12 text-center">Alta Nuevo Fertilizante</h1>
     <form action="{{ route('fertilizante.store') }}" method="post" class="col-12">
     @csrf
         <div class="row">

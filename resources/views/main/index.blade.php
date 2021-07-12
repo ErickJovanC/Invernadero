@@ -81,7 +81,7 @@
 
         <a href="{{ route('plagas.create') }}"
             class="btn btn-danger btn-menu col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 p-2">
-            Control Preventivo de Plagas en plantas y arboles
+            Control Preventivo en siembra y arboles
         </a>
 
         <a href="{{ route('identificacionPlagas.create') }}"
@@ -113,7 +113,7 @@
 
         <a href="{{ route('cortePlanta.create') }}"
             class="btn btn-secondary btn-menu col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-2">
-            Corte de Plantas y Arboles
+            Control de Podas (extracción)
         </a>
 
         <a href="{{ route('capacitacionPersonal.create') }}"

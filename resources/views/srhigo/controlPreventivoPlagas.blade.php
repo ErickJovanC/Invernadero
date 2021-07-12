@@ -2,7 +2,7 @@
 @section('content')
 <a href="{{ route('main') }}" class="btn btn-success">Menú</a>
 <div class="row">
-    <h1 class="col-12 text-center mb-5">Control Preventivo de Plagas en Plantas y Arboles</h1>
+    <h1 class="col-12 text-center mb-5">Control Preventivo en siembra y arboles</h1>
     <form action="{{ route('plagas.store') }}" method="post" class="col-12">
         @csrf
         <div class="row">

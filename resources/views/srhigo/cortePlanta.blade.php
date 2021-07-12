@@ -2,7 +2,7 @@
 @section('content')
 <a href="{{ route('main') }}" class="btn btn-success">Menú</a>
 <div class="row">
-    <h1 class="h1 mb-5 col-12 text-center">Corte de Planta</h1>
+    <h1 class="h1 mb-5 col-12 text-center">Control de podas (extracción)</h1>
     <form action="{{ route('cortePlanta.store') }}" method="post" class="col-12">
         @csrf
         <div class="row align-items-end">
@@ -11,7 +11,7 @@
 
             {{-- Plantas cortadas --}}
             <div class="form-group col-12 col-sm-12 col-md-6 col-lg-3 col-xl-1 mb-5">
-                <label for="cantidad">Plantas Cortadas</label>
+                <label for="cantidad">Plantas Retiradas (extracción)</label>
                 <input type="number" min="1" name="cantidad" id="cantidad" 
                     value="{{ old('cantidad') }}" 
                     class="form-control @error('cantidad') is-invalid @enderror">
