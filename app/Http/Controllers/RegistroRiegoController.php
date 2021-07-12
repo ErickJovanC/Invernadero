@@ -56,7 +56,7 @@ class RegistroRiegoController extends Controller
             'horaInicio' => 'required',
             'horaFin' => 'required',
             'litrosHora' => 'required',
-            'consumoEnergia' => 'required',
+            // 'consumoEnergia' => 'required',
             'responsable' => 'required',
             ]);
 
@@ -81,7 +81,7 @@ class RegistroRiegoController extends Controller
                 'horaFin' => $data['horaFin'],
                 'horas' => $horas,
                 'litrosHora' => $data['litrosHora'],
-                'consumoEnergia' => $data['consumoEnergia'],
+                // 'consumoEnergia' => $data['consumoEnergia'],
                 'empleado_id' => $data['responsable'],
             ]);
 

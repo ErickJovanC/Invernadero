@@ -18,7 +18,7 @@ class RegistroRiego extends Model
         'horaFin',
         'horas',
         'litrosHora',
-        'consumoEnergia',
+        // 'consumoEnergia',
         'empleado_id',
         'user_id',
     ];

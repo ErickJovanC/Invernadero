@@ -113,7 +113,7 @@
             </div> {{-- Fin Listro de agua por hora --}}
 
             {{-- Consumo Energia --}}
-            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
+            {{-- <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
                 <label for="consumoEnergia">Consumo de energía o combustible usado $</label>
                 <input type="number" 
                     name="consumoEnergia" id="consumoEnergia"
@@ -125,7 +125,8 @@
                         <strong>{{$message}}</strong>
                     </span>
                 @enderror
-            </div> {{-- Fin Consumo Energia --}}
+            </div>  --}}
+            {{-- Fin Consumo Energia --}}
 
             @include('srhigo.campos.responsable')
 

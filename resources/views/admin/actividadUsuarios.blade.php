@@ -644,10 +644,10 @@
                             Litros por Hora:
                             <b>{{ $riego->litrosHora }}</b>
                         </div>
-                        <div>
+                        {{-- <div>
                             Consumo de Energia:
                             <b>{{ $riego->consumoEnergia }}</b>
-                        </div>
+                        </div> --}}
                         <div>
                             Responsable:
                             <b>
@@ -1120,8 +1120,8 @@
     </table>
     {{-- Fin Limpieza de Canales --}}
 
-    {{-- Corte de Plantas --}}
-    <h2 class="h1 mt-5">Corte de Plantas</h2>
+    {{-- Control de Podas --}}
+    <h2 class="h1 mt-5">Control de Podas</h2>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -1194,7 +1194,7 @@
             @endforeach
         </tbody>
     </table>
-    {{-- Fin Corte de Plantas --}}
+    {{-- Fin Control de Podas --}}
 
     {{-- Capacitaciones de Personal --}}
     <h2 class="h1 mt-5">Capacitaciones de Personal</h2>
