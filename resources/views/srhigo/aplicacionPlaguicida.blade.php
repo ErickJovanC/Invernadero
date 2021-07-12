@@ -126,9 +126,9 @@
                 @enderror
             </div>{{-- Fin  Dosis Aplicada --}}
 
-            {{-- Condición Climatica --}}
+            {{-- Condición Metereológica --}}
             <div class="form-group col-sm-12 col-md-6 col-lg-4 col-xl-3 mb-5">
-                <label for="clima">Condición Climatica</label>
+                <label for="clima">Condición Metereológica</label>
                 <select name="clima" id="clima" class="form-control @error('clima') is-invalid @enderror">
                     <option value="" hidden>Seleccione</option>
                     <option value="Soleado" 
@@ -149,7 +149,7 @@
                         <strong>{{$message}}</strong>
                     </span>
                 @enderror
-            </div>{{-- Fin Condición Climatica --}}
+            </div>{{-- Fin Condición Metereológica --}}
 
             {{-- Equipo de Protección Utilizado --}}
             <div class="col-6">
@@ -210,9 +210,20 @@
                         Guantes
                     </label>
                 </div>
+                <div class="form-check">
+                    <input class="form-check-input @error('equipo') is-invalid @enderror" 
+                        type="checkbox" value="Ninguno" name="equipo[]" id="Ninguno"
+                        @if( in_array('Ninguno', old('equipo', [])) )
+                            checked
+                        @endif
+                    />
+                    <label class="form-check-label ml-2" for="Ninguno">
+                        Ninguno
+                    </label>
+                </div>
                 @error('equipo')
                     <span class="invalid-feedback d-block" role="alert">
-                        <strong>Seleccione al menos una acción</strong>
+                        <strong>Seleccione al menos una opción</strong>
                     </span>
                 @enderror
             </div> {{-- Fin Equipo de Protección Utilizado --}}

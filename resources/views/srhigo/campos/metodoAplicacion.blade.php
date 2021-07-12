@@ -3,9 +3,10 @@
     <label for="metodoAplicacion">Metodo de Aplicación</label>
     <select name="metodoAplicacion" id="metodoAplicacion" class="form-control @error('metodoAplicacion') is-invalid @enderror">
         <option value="" hidden>Seleccione un metodo</option>
-        <option value="Por planta" {{ old('metodoAplicacion') == 'Por planta' ? 'selected' : '' }}>Por planta</option>
-        <option value="Voleo" {{ old('metodoAplicacion') == 'Voleo' ? 'selected' : '' }}>Voleo</option>
         <option value="Aspersion" {{ old('metodoAplicacion') == 'Aspersion' ? 'selected' : '' }}>Aspersión</option>
+        <option value="Por planta" {{ old('metodoAplicacion') == 'Por planta' ? 'selected' : '' }}>Por planta</option>
+        <option value="Riego" {{ old('metodoAplicacion') == 'Riego' ? 'selected' : '' }}>Riego</option>
+        <option value="Voleo" {{ old('metodoAplicacion') == 'Voleo' ? 'selected' : '' }}>Voleo</option>
     </select>
     @error('metodoAplicacion')
         <span class="invalid-feedback d-block" role="alert">

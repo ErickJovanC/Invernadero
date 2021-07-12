@@ -998,6 +998,14 @@
                             <b>{{ $plaguicida->agua }} litros</b>
                         </div>
                         <div>
+                            Condición Metereológica:
+                            <b>{{ $plaguicida->clima }}</b>
+                        </div>
+                        <div>
+                            Equipo de Protección:
+                            <b>{{ $plaguicida->equipo }}</b>
+                        </div>
+                        <div>
                             Tiempo:
                             <b>{{ $plaguicida->horas .":". $plaguicida->minutos.":00" }}</b>
                         </div>

@@ -19,6 +19,8 @@ class aplicacionPlaguicida extends Model
         'minutos',
         'dosisAplicada',
         'agua',
+        'clima',
+        'equipo',
         'empleado_id',
         'user_id',
     ];

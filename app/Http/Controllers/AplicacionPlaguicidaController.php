@@ -60,6 +60,8 @@ class AplicacionPlaguicidaController extends Controller
             'minutos' => 'required',
             'dosisAplicada' => 'required',
             'agua' => 'required',
+            'clima' => 'required',
+            'equipo' => 'required',
             'responsable' => 'required',
         ]);
 
@@ -79,6 +81,8 @@ class AplicacionPlaguicidaController extends Controller
             'minutos' => $data['minutos'],
             'dosisAplicada' => $data['dosisAplicada'],
             'agua' => $data['agua'],
+            'clima' => $data['clima'],
+            'equipo' => implode(', ', $data['equipo']),
             'empleado_id' => $data['responsable'],
         ]);
 
