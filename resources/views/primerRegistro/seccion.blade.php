@@ -1,17 +1,14 @@
-@extends('layouts.app')
+@extends('layouts.basico')
 @section('content')
-{{-- <a href="{{ route('main') }}" class="btn btn-success">Menú</a> --}}
 <div class="row">
-    <h1 class="titulo mb-5 col-12 text-center">Registro de Secciones</h1>
-    
+    <h1 class="titulos mb-5 col-12 text-center">Registre las secciones</h1>
+
     {{-- Muestra el mensaje de confirmación --}}
-    @if(Session::has('mensaje'))
+    @isset($mensaje)
         <div class="alert alert-info col-12 text-center">
-            {!! Session::get('mensaje') !!}
+            {!! $mensaje !!}
         </div>
     @endif
-
-    {{-- Formulario principal --}}
     <form action="{{ route('seccion.store') }}" method="post" class="col-12">
         @csrf
         <div class="row">
@@ -73,8 +70,12 @@
 
         {{-- Botón del formulario --}}
         <div class="row justify-content-end">
+            
             <div class="form-group">
                 <input type="submit" value="Registrar Sección" class="btn btn-primary px-5">
+            </div>
+            <div>
+                <a href="{{ route('empleado.create') }}" class="btn btn-success px-5 mx-5">Continuar con el Registro de Empleados</a>
             </div>
         </div> {{-- Fin Botón del formulario --}}
     </form>
@@ -106,10 +107,4 @@
         </table>
     </div>
 </div>
-<div class="row">
-    <a href="{{ route('main') }}" class="btn btn-success ">Menú Principal</a>
-    <a href="{{ route('registroPropiedad.create') }}" class="btn btn-success ml-3">Registrar Huerta</a>
-    <a href="{{ route('empleado.create') }}" class="btn btn-success ml-3">Registrar Empleados</a>
-</div>
-{{-- Fin tabla de contenido --}}
 @endsection

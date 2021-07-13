@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\User;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -15,6 +16,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('nivelRegistro');
         
     }
 
@@ -25,9 +27,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // Realizar la consulta del usuario aquí.
-        // O colocar un boton en la vista para el administrador, enviando un mensaje y de ahi mostrar cierto contenido
-        // Podria haber mas de un contenido de acuerdo a lo que desee mostrar
-        return view('main.index');
+        $this->middleware('nivelRegistro');
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Seccion;
 use Illuminate\Http\Request;
 use App\Models\RegistroPropiedad;
@@ -61,14 +62,31 @@ class SeccionController extends Controller
             'cantidadPlantas' => $data['cantidadPlantas'],
         ]);
 
-        $huertas = Auth::user()->huertas;
-        $secciones = Auth::user()->secciones;
-        return redirect('seccion/create')->
-        with([
-            'huertas' => $huertas,
-            'secciones' => $secciones,
-            'mensaje' => '¡La sección se registro correctamente!'
+        // Consulta el nivel de registro y redirecciona conforme el estado del usuario
+        $nivelReg = Auth::user();
+        if($nivelReg->nivelRegistro < 5){
+            $huertas = Auth::user()->huertas;
+            $secciones = Auth::user()->secciones;
+            User::where('id', $nivelReg->id)->update([
+                'nivelRegistro' => 3,
             ]);
+            $url = view('primerRegistro.seccion')->with([
+                'huertas' => $huertas,
+                'secciones' => $secciones,
+                'mensaje' => '¡La sección se registro correctamente! Puede registrar mas secciones.<br>Despues proceda a registrar a los empleados presionando el botón correspondiente',
+            ]);
+        }
+        else{
+            // $huertas = Auth::user()->huertas;
+            // $secciones = Auth::user()->secciones;
+            $url = redirect('seccion/create')->
+            with([
+                // 'huertas' => $huertas,
+                // 'secciones' => $secciones,
+                'mensaje' => '¡La sección se registro correctamente!'
+                ]);
+        }
+        return $url;
     }
 
     public function show(Seccion $seccion)

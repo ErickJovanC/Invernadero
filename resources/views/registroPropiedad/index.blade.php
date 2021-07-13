@@ -15,7 +15,7 @@
 
     {{-- Formulario principal --}}
     <form action="{{ route('registroPropiedad.store') }}" method="post" class="col-12">
-    @csrf
+        @csrf
         <div class="row mb-4 align-items-end">
             <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
                 <label for="nombreHuerta">Nombre de la Huerta</label>

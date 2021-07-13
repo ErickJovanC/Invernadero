@@ -29,6 +29,7 @@ use App\Http\Controllers\IdentificacionPlagasController;
 use App\Http\Controllers\AplicacionFertilizanteController;
 use App\Http\Controllers\ControlPreventivoPlagaController;
 use App\Http\Controllers\AplicacionFertilizanteOrganicoController;
+use App\Http\Controllers\EnrutadorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,8 @@ use App\Http\Controllers\AplicacionFertilizanteOrganicoController;
 Route::get('/', function () {
     return redirect(route('main'));
 });
+
+// Route::get('/', 'main/index')->middleware('nivelRegistro');
 
 Auth::routes();
 
@@ -71,12 +74,18 @@ Route::resource('cortePlanta', CortePlantaController::class)->middleware('auth')
 Route::resource('gasto', GastoController::class)->middleware('auth');
 // Route::resource('finanzas', FinanzasController::class)->middleware('auth');
 
-Route::get('/srhigo/sinActivar', function() {
-    return view('srhigo.sinActivar');
-});
+// Route::get('/srhigo/sinActivar', function() {
+//     return view('srhigo.sinActivar');
+// });
 
-Route::view('main', '/main/index')->name('main')->middleware('auth');
+Route::view('main', '/main/index')->name('main')->middleware('auth')->middleware('nivelRegistro');
+Route::view('phuerta', 'primerRegistro/huerta')->name('huerta.view')/* ->middleware('auth') */;
+Route::view('pseccion', 'primerRegistro/seccion')->name('seccion.view')->middleware('auth');
+Route::view('pempleados', 'primerRegistro/empleados')->name('empleados.view')->middleware('auth');
+Route::view('registroCompleto', 'primerRegistro/registroCompleto')->name('registroCompleto')->middleware('auth');
 Route::get('/finanzas', [FinanzasController::class, 'index'])->name('finanzas.index')->middleware('auth');
 
 Route::get('/admin', [AdministradorController::class, 'index'])->name('admin.index')->middleware('auth');
 Route::get('/actividades/{user}', [AdministradorController::class, 'verActividades'])->name('admin.verActividades');
+
+Route::get('/enrutador', [EnrutadorController::class, 'index'])->name('enrutador');

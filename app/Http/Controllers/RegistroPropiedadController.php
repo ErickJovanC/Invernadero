@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Estados;
 use App\Models\Municipios;
 use Illuminate\Http\Request;
+use App\Models\CalidadPlanta;
 use App\Models\RegistroPropiedad;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
 
 class RegistroPropiedadController extends Controller
@@ -72,14 +74,27 @@ class RegistroPropiedadController extends Controller
             'ubicacion' => $request['ubicacion'],
         ]);
 
-        $huertas = Auth::user()->huertas;
-        $secciones = Auth::user()->secciones;
-        return redirect('seccion/create')->
-        with([
-            'huertas' => $huertas,
-            'secciones' => $secciones,
-            'mensaje' => '¡La huerta a sido registrada correctamente! <br>Ahora registre las secciones de su huerta'
+        // Consulta el nivel de registro y redirecciona conforme el estado del usuario
+        $nivelReg = Auth::user();
+        if($nivelReg->nivelRegistro < 5){
+            $huertas = Auth::user()->huertas;
+            $secciones = Auth::user()->secciones;
+            User::where('id', $nivelReg->id)->update([
+                'nivelRegistro' => 2,
             ]);
+            $url = view('primerRegistro.seccion')->with([
+                'huertas' => $huertas,
+                'secciones' => $secciones,
+                'mensaje' => '¡La huerta a sido registrada correctamente! <br>Ahora registre las secciones de su huerta',
+            ]);
+        }
+        else{
+            $url = redirect('seccion/create')->
+                with([
+                    'mensaje' => '¡La huerta a sido registrada correctamente! <br>Ahora registre las secciones de su huerta'
+                    ]);
+        }
+        return $url;
     }
 
     /**

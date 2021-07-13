@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Empleado;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -25,11 +26,32 @@ class EmpleadoController extends Controller
      */
     public function create()
     {
-        $empleados = Auth::user()->empleados;
-        return view('srhigo.empleados')->
-        with([
-                'empleados' => $empleados,
-            ]);
+        $nivelReg = Auth::user();
+        // return $nivelReg->nivelRegistro;
+        if($nivelReg->nivelRegistro < 5 ){
+            if($nivelReg->nivelRegistro == 2){
+                $huertas = Auth::user()->huertas;
+                $secciones = Auth::user()->secciones;
+                $url = view('primerRegistro.seccion')->
+                    with([
+                        'huertas' => $huertas,
+                        'secciones' => $secciones,
+                        'mensaje' => 'Antes de Continuar debe Registrar al menos una Sección',
+                    ]);
+            }
+            else{
+                $url = redirect('/enrutador');
+            }
+        }
+        else{
+            $empleados = Auth::user()->empleados;
+            $url = view('srhigo.empleados')->
+            with([
+                    'empleados' => $empleados,
+                ]);
+        }
+        // dd($url);
+        return $url;
     }
 
     /**
@@ -53,12 +75,28 @@ class EmpleadoController extends Controller
             'sobrenombreEmpleado' => $request['sobrenombreEmpleado'],
         ]);
         
-        $empleados = Auth::user()->empleados;
-        return view('srhigo.empleados')->
-        with([
-                'empleados' => $empleados,
-                'mensaje' => '¡El empleado se registro correctamente!'
+        // Consulta el nivel de registro y redirecciona conforme el estado del usuario
+        $nivelReg = Auth::user();
+        if($nivelReg->nivelRegistro < 5){
+            User::where('id', $nivelReg->id)->update([
+                'nivelRegistro' => 4,
             ]);
+            $empleados = Auth::user()->empleados;
+            $url = view('primerRegistro.empleados')->
+            with([
+                    'empleados' => $empleados,
+                    'mensaje' => '¡El empleado se registro correctamente!'
+                ]);
+        }
+        else{
+            $empleados = Auth::user()->empleados;
+            $url = view('srhigo.empleados')->
+            with([
+                    'empleados' => $empleados,
+                    'mensaje' => '¡El empleado se registro correctamente!'
+                ]);
+        }
+        return $url;
     }
 
     /**
