@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Cosecha;
+use App\Models\Seccion;
 use App\Models\CortePlanta;
 use Illuminate\Http\Request;
 use App\Models\CalidadPlanta;
@@ -13,6 +14,7 @@ use App\Models\RegistroSiembra;
 use App\Models\PreparacionSuelo;
 use App\Models\CalibracionEquipo;
 use App\Models\ControlPreventivo;
+use App\Models\RegistroPropiedad;
 use App\Models\AplicacionPlaguicida;
 use App\Models\CapacitacionPersonal;
 use App\Models\IdentificacionPlagas;
@@ -28,8 +30,11 @@ class AdministradorController extends Controller
     }
 
     public function index(){
+        // $usuarios = User::where('nivelRegistro', '=', 5);
         $usuarios = User::all();
-        return view('admin.admin', compact('usuarios'));
+        $usuariosActivar = User::where('nivelRegistro', 4);
+        // dd($usuarios->all());
+        return view('admin.admin', compact('usuarios', 'usuariosActivar'));
     }
 
     public function verActividades($id){
@@ -58,5 +63,28 @@ class AdministradorController extends Controller
         $capacitacionPersonal = CapacitacionPersonal::where("user_id", $id)->get();
         
         return view('admin.actividadUsuarios', compact('usuario', 'calidadPlanta', 'preparacionSuelo', 'registroSiembra', 'registroCosecha', 'aplicacionFertilizante', 'fertilizanteOrganico', 'registroRiego', 'controlPreventivoPlanta', 'controlPreventivoArbol', 'identificacionPlagas', 'aplicacionPlaguicida', 'calibracionEquipo', 'limpiezaCanales', 'cortePlantas', 'capacitacionPersonal'));
+    }
+
+    public function verRegistro($id){
+        $usuario = User::where('id', $id)->first();
+        $huerta = RegistroPropiedad::where('user_id', $id)->first();
+
+        return view('admin.verRegistro', compact('usuario', 'huerta'));
+    }
+
+    public function activarUsuario($id){
+        User::where('id', $id)->update([
+            'nivelRegistro' => 5,
+        ]);
+
+        return redirect(route('admin.index'));
+    }
+
+    public function rechazarUsuario($id){
+        User::where('id', $id)->update([
+            'nivelRegistro' => 0,
+        ]);
+
+        return redirect(route('admin.index'));
     }
 }

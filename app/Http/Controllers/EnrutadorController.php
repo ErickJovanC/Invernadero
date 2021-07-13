@@ -30,7 +30,7 @@ class EnrutadorController extends Controller
             $mensaje = 'Registre al menos a un Empleado y despues presione "Finalizar Registro"';
             $ruta = view('primerRegistro/empleados', compact('empleados', 'mensaje'));
         }
-        elseif($user->nivelRegistro == 4){
+        elseif($user->nivelRegistro == 4 || $user->nivelRegistro == 0){
             $ruta = redirect(route('registroCompleto'));
         }
         else{

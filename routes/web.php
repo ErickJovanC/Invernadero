@@ -87,5 +87,8 @@ Route::get('/finanzas', [FinanzasController::class, 'index'])->name('finanzas.in
 
 Route::get('/admin', [AdministradorController::class, 'index'])->name('admin.index')->middleware('auth');
 Route::get('/actividades/{user}', [AdministradorController::class, 'verActividades'])->name('admin.verActividades');
+Route::get('/activarUsuario/{user}', [AdministradorController::class, 'activarUsuario'])->name('admin.activarUsuario');
+Route::get('/rechazarUsuario/{user}', [AdministradorController::class, 'rechazarUsuario'])->name('admin.rechazarUsuario');
+Route::get('/verRegistro/{user}', [AdministradorController::class, 'verRegistro'])->name('admin.verRegistro');
 
 Route::get('/enrutador', [EnrutadorController::class, 'index'])->name('enrutador');
