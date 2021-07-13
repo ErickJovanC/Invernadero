@@ -26,7 +26,8 @@ class CreateAplicacionFertilizantesTable extends Migration
             $table->foreignId('fertilizante_id')->
                 references('id')->
                 on('fertilizantes');
-            $table->integer('kilosHectarea');
+            $table->smallInteger('unidades')->unsigned();
+            $table->smallInteger('precio')->unsigned();
             $table->string('metodoAplicacion', 11);
             $table->foreignId('empleado_id')->
                 references('id')->

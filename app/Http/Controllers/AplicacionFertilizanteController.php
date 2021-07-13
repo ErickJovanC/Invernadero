@@ -52,10 +52,11 @@ class AplicacionFertilizanteController extends Controller
     public function store(Request $request)
     {
         $data = request()->validate([
-            'fechaAplicacion' => 'required',
+            'fecha' => 'required',
             'huertaSeccion' => 'required',
             'nombreFertilizante' => 'required',
-            'kilosHectarea' => 'required',
+            'unidades' => 'required',
+            'precio' => 'required',
             'metodoAplicacion' => 'required',
             'responsable' => 'required',
         ]);
@@ -67,11 +68,12 @@ class AplicacionFertilizanteController extends Controller
         }
 
         Auth::user()->aplicacionFertilizante()->create([
-            'fechaAplicacion' => $data['fechaAplicacion'],
+            'fechaAplicacion' => $data['fecha'],
             'huerta_id' => $huerta_id,
             'seccion_id' => $seccion,
             'fertilizante_id' => $data['nombreFertilizante'],
-            'kilosHectarea' => $data['kilosHectarea'],
+            'unidades' => $data['unidades'],
+            'precio' => $data['precio'],
             'metodoAplicacion' => $data['metodoAplicacion'],
             'empleado_id' => $data['responsable'],
         ]);

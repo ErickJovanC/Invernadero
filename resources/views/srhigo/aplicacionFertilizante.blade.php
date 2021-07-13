@@ -56,14 +56,32 @@
             @include('srhigo.campos.huertaSeccion')
 
             <div class="form-group col-12 col-sm-6 col-md-3 col-lg-2 mb-5">
-                <label for="kilosHectarea">Kilos por hectarea</label>
-                <input type="number" name="kilosHectarea" id="kilosHectarea" class="form-control @error('kilosHectarea') is-invalid @enderror">
-                @error('kilosHectarea')
+                <label for="unidades">Unidades (KG | LT)</label>
+                <input type="number" name="unidades" id="unidades" 
+                    class="form-control @error('unidades') is-invalid @enderror"
+                    value="{{ old('unidades') }}"
+                />
+                @error('unidades')
                     <span class="invalid-feedback d-block" role="alert">
                         <strong>{{$message}}</strong>
                     </span>
                 @enderror
             </div>
+
+            {{-- Precio --}}
+            <div class="form-group col-12 col-sm-6 col-md-3 col-lg-2 mb-5">
+                <label for="precio">Precio por Unidad</label>
+                <input type="number" name="precio" id="precio" 
+                    class="form-control @error('precio') is-invalid @enderror"
+                    value="{{ old('precio') }}"
+                />
+                @error('precio')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
+            </div>
+            {{-- Fin Precio --}}
 
             @include('srhigo.campos.metodoAplicacion')
 

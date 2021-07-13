@@ -19,6 +19,10 @@ class ConceptosGastosSeeder extends Seeder
         ]);
 
         DB::table('concepto_gastos')->insert([
+            'concepto' => 'Honorarios',
+        ]);
+
+        DB::table('concepto_gastos')->insert([
             'concepto' => 'Luz',
         ]);
 
@@ -35,6 +39,10 @@ class ConceptosGastosSeeder extends Seeder
         ]);
 
         DB::table('concepto_gastos')->insert([
+            'concepto' => 'Refacciones Maquinaria',
+        ]);
+
+        DB::table('concepto_gastos')->insert([
             'concepto' => 'Reparación Maquinaria',
         ]);
 
@@ -43,11 +51,11 @@ class ConceptosGastosSeeder extends Seeder
         ]);
 
         DB::table('concepto_gastos')->insert([
-            'concepto' => 'Seguro Agricola',
+            'concepto' => 'Seguro Social',
         ]);
 
         DB::table('concepto_gastos')->insert([
-            'concepto' => 'Seguro Social',
+            'concepto' => 'Sueldos y Salarios',
         ]);
 
         DB::table('concepto_gastos')->insert([
