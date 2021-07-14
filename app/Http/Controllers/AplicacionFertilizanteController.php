@@ -77,8 +77,8 @@ class AplicacionFertilizanteController extends Controller
             'metodoAplicacion' => $data['metodoAplicacion'],
             'empleado_id' => $data['responsable'],
         ]);
-
-        return redirect('main')->with('mensaje', '¡La Aplicación de Fertilizante se ha registrado correctamente!');
+        session()->put('mensaje', '¡La Aplicación de Fertilizante se ha registrado correctamente!');
+        return redirect('main');
     }
 
     /**

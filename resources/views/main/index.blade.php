@@ -5,7 +5,7 @@
         {{-- Muestra el mensaje de confirmación --}}
         @if(Session::has('mensaje'))
             <div class="alert alert-info col-12 text-center">
-                {!! Session::get('mensaje') !!}
+                {!! Session::pull('mensaje') !!}
             </div>
         @endif
 
@@ -75,7 +75,7 @@
         <h1 class="col-12 mt-5">Plagas y Enfermedades</h1>
 
         <a href="{{ route('controlPreventivo.create') }}"
-            class="btn btn-danger btn-menu col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 p-2">
+            class="btn btn-danger btn-menu col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 p-2">
             Control preventivo de plagas en la planta (Previo a plantar)
         </a>
 
@@ -121,21 +121,20 @@
             Capacitación del Personal
         </a>
 
-        <h1 class="col-12 mt-5">Administración y Finanzas</h1>
+        <h1 class="col-12 mt-5">Administración y Reportes</h1>
 
         <a href="{{ route('gasto.create') }}"
-            class="btn btn-info btn-menu col-12 col-md-6 p-2">
-            Regitro de Gastos
+            class="btn btn-info btn-menu col-12 col-md-4 col-lg-4 p-2">
+            Registro de Gastos
         </a>
 
         <a href="{{ route('finanzas.index') }}"
-            class="btn btn-info btn-menu col-12 col-md-6 p-2">
+            class="btn btn-info btn-menu col-12 col-md-4 col-lg-4 p-2">
             Reporte Financiero
         </a>
 
-        <h1 class="col-12 mt-5">Registro de Actividades</h1>
         <a href="{{ route('historial.index') }}"
-            class="btn btn-info btn-menu col-12  p-2">
+            class="btn btn-info btn-menu col-12 col-md-4 col-lg-4 p-2">
             Historial de Actividades
         </a>
 
