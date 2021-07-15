@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AplicacionFertilizante;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,72 +16,13 @@ class FinanzasController extends Controller
     public function index()
     {
         $gastos = Auth::user()->registroGastos;
-        return view('srhigo.reporteFinanciero', compact('gastos'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $id = Auth::user()->id;
+        // $fertilizantes = Auth::user()->aplicacionFertilizante;
+        $fertilizantes = AplicacionFertilizante::where('user_id', $id )->orderBy('fertilizante_id', 'ASC')->get();
+        // foreach($fertilizantes as $fertilizante){
+        //     dump($fertilizante->fertilizante_id);
+        // }
+        // dd('id: '. $id);
+        return view('srhigo.reporteFinanciero', compact('gastos', 'fertilizantes'));
     }
 }

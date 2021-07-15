@@ -16,17 +16,66 @@
                     <td scope="row">Año:</td>
                     <td><b>2021</b></td>
                 </tr>
-                <tr>
+                <tr class="text-center">
                     <th scope="col">Concepto</th>
                     <th scope="col">Unidades</th>
                     <th scope="col">Cantidad</th>
                     <th scope="col">Unidad</th>
-                    <th scope="col">Costo Unitario</th>
+                    <th scope="col">Costo Unitario (Promedio)</th>
                     <th scope="col">Costo Total</th>
                     <th scope="col">Fecha</th>
                 </tr>
             </thead>
             <tbody>
+                <tr>
+                    <th scope="row" colspan="6">Fertilización</th>
+                    <th>0.00</th>
+                </tr>
+                {{-- Sección de Fertilización  --}}
+                @php 
+                    $cont = 1;
+                    $id[0] = 0;
+                @endphp
+                @foreach ($fertilizantes as $fertilizante)
+                    @php 
+                        $id[$cont] = $fertilizante->fertilizante_id;
+                        if ($id[$cont] != $id[$cont-1] ){
+                            $nombre[$cont] = $fertilizante->fertilizante->nombreFertilizante;
+                            $unidades[$cont] = $fertilizante->unidades;
+                            $unidadesTotales[$cont] = $unidades[$cont];
+                            $precio[$cont] = $fertilizante->precio;
+                            $total[$cont] = $unidades[$cont] * $precio[$cont];
+                            $totalAcumulado[$cont] = $unidades[$cont] * $precio[$cont];
+                            $repeticion[$cont] = 1;
+                        }
+                        else{
+                            $cont--;
+                            $unidades[$cont] = $fertilizante->unidades;
+                            $unidadesTotales[$cont] += $unidades[$cont];
+                            $precio[$cont] = $fertilizante->precio;
+                            $total[$cont] = $unidades[$cont] * $precio[$cont];
+                            $totalAcumulado[$cont] += $unidades[$cont] * $precio[$cont];
+                            $repeticion[$cont]++;
+                        }
+
+                        $promedio[$cont] = round($totalAcumulado[$cont] / $unidadesTotales[$cont], 2);
+                        $cont++;
+                    @endphp
+                @endforeach
+                    
+                @for($x=1 ; $x<=$cont-1 ; $x++)
+                    <tr>
+                        <td>{{ $nombre[$x] }}</td>
+                        <td class="text-center">{{ $repeticion[$x] }}</td>
+                        <td>{{ $unidadesTotales[$x] }}</td>
+                        <td>KG/LT</td>
+                        <td>{{ $promedio[$x] }}</td>
+                        <td>{{ $totalAcumulado[$x] }}</td>
+                        <td></td>
+                    </tr>
+                @endfor
+                {{-- Fin sección Fertilización --}}
+
                 <tr>
                     <th scope="row">Preparación de Terreno</th>
                     <td></td>
