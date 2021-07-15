@@ -39,12 +39,12 @@ class FertilizanteController extends Controller
     {
         $data = request()->validate([
             'nombreFertilizante' => 'required | unique:fertilizantes',
-            'N' => 'required',
-            'P2O5' => 'required',
-            'K2O' => 'required',
-            'Ca' => 'required',
-            'Mg' => 'required',
-            'S' => 'required',
+            // 'N' => 'required',
+            // 'P2O5' => 'required',
+            // 'K2O' => 'required',
+            // 'Ca' => 'required',
+            // 'Mg' => 'required',
+            // 'S' => 'required',
             'microelementos' => 'required',
             'macroelementos' => 'required',
         ]);
@@ -59,6 +59,8 @@ class FertilizanteController extends Controller
             'S' => $data['S'],
             'microelementos' => $data['microelementos'],
             'macroelementos' => $data['macroelementos'],
+            'formula' => $request['macroelementos'],
+            'contenido' => $request['macroelementos'],
             'comentario' => $request['comentario'],
         ]);
 

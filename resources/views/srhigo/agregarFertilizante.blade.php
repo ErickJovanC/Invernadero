@@ -54,6 +54,38 @@
             </div>
             {{-- Fin Macroelementos --}}
 
+            {{-- Formula --}}
+            <div class="form-group col-12 col-md-6 col-lg-4 mb-5">
+                <label for="formula">Formula</label>
+                <input type="text" 
+                    name="formula" 
+                    id="formula" 
+                    value="{{ old('formula') }}"
+                    class="form-control @error('formula') is-invalid @enderror">
+                @error('formula')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
+            </div>
+            {{-- Fin Formula --}}
+
+            {{-- Contenido --}}
+            <div class="form-group col-12 col-md-6 col-lg-4 mb-5">
+                <label for="contenido">Contenido</label>
+                <input type="text" 
+                    name="contenido" 
+                    id="contenido" 
+                    value="{{ old('contenido') }}"
+                    class="form-control @error('contenido') is-invalid @enderror">
+                @error('contenido')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
+            </div>
+            {{-- Fin Contenido --}}
+
             <div class="col-12 h1 mt-5 text-center">
                 Contenido Nutrintes del Fertilizante
             </div>

@@ -19,6 +19,8 @@ class Fertilizante extends Model
         'S',
         'microelementos',
         'macroelementos',
+        'formula',
+        'contenido',
         'comentario',
         'user_id',
     ];

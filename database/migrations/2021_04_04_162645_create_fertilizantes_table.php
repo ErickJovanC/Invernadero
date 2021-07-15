@@ -17,14 +17,16 @@ class CreateFertilizantesTable extends Migration
             $table->id();
 
             $table->string('nombreFertilizante', 50);
-            $table->integer('N');
-            $table->integer('P2O5');
-            $table->integer('K2O');
-            $table->integer('Ca');
-            $table->integer('Mg');
-            $table->integer('S');
-            $table->string('microelementos', 30);
-            $table->string('macroelementos', 30);
+            $table->integer('N')->nullable();
+            $table->integer('P2O5')->nullable();
+            $table->integer('K2O')->nullable();
+            $table->integer('Ca')->nullable();
+            $table->integer('Mg')->nullable();
+            $table->integer('S')->nullable();
+            $table->string('microelementos', 30)->nullable();
+            $table->string('macroelementos', 30)->nullable();
+            $table->string('formula', 30)->nullable();
+            $table->string('contenido', 30)->nullable();
             $table->string('comentario')->nullable();
             $table->foreignId('user_id')->
                 references('id')-> 
