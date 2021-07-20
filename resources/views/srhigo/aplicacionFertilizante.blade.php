@@ -12,6 +12,15 @@
                 <label for="nombreFertilizante">Fertilizante Aplicado</label>
                 <select name="nombreFertilizante" id="nombreFertilizante" class="form-control @error('nombreFertilizante') is-invalid @enderror">
                     <option value="" hidden>Seleccione el fertilizante</option>
+                    @foreach ($fertilizantesP as $fertilizante)
+                        <option 
+                            value="{{ $fertilizante->id }}" 
+                            {{ old('nombreFertilizante') == $fertilizante->id ? 'selected' : '' }}
+                        >
+                            {{ $fertilizante->nombreFertilizante }}
+                        </option>
+                    @endforeach
+
                     @foreach ($fertilizantes as $fertilizante)
                         <option 
                             value="{{ $fertilizante->id }}" 
@@ -30,7 +39,7 @@
 
             {{-- Botón Agregar Fertilizante --}}
             <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 mb-5">
-                <a href="{{ route('fertilizante.create') }}" class="btn btn-info w-100">Agregar Otro Fertilizante</a>
+                <a href="{{ route('fertilizante.create') }}" class="btn btn-info w-100">Dar de Alta Otro Fertilizante</a>
             </div> {{-- Fin Botón Agregar Fertilizante --}}
 
             @include('srhigo.campos.fecha')

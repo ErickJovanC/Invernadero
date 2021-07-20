@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Seccion;
-use App\Models\Empleado;
+use App\Models\Fertilizante;
 use Illuminate\Http\Request;
 use App\Models\CalidadPlanta;
 use Illuminate\Support\Facades\Auth;
@@ -32,13 +32,16 @@ class AplicacionFertilizanteController extends Controller
         $secciones = Auth::User()->secciones;
         $lotes = CalidadPlanta::all(['id', 'lote']);
         $empleados = Auth::User()->empleados;
-        $fertilizantes = Auth::User()->registroFertilizante;
+        $fertilizantes = Fertilizante::where('user_id', 1)->get(/* 'id', 'nombreFertilizante' */);
+        // dd($fertilizantes);
+        $fertilizantesP = Auth::User()->registroFertilizante;
         return view('srhigo.aplicacionFertilizante')->
         with([
             'lotes' => $lotes, 
             'fechaActual' => $fechaActual,
             'empleados' => $empleados,
             'fertilizantes' => $fertilizantes,
+            'fertilizantesP' => $fertilizantesP,
             'secciones' => $secciones,
         ]);
     }
@@ -77,16 +80,16 @@ class AplicacionFertilizanteController extends Controller
             'metodoAplicacion' => $data['metodoAplicacion'],
             'empleado_id' => $data['responsable'],
         ]);
-        session()->put('mensaje', '¡La Aplicación de Fertilizante se ha registrado correctamente!');
+        session()->put('mensaje', '¡La aplicación de Fertilizante se ha registrado correctamente!');
         return redirect('main');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\AplicacionFertilizante  $aplicacionFertilizante
-     * @return \Illuminate\Http\Response
-     */
+    // /**
+    //  * Display the specified resource.
+    //  *
+    //  * @param  \App\Models\AplicacionFertilizante  $aplicacionFertilizante
+    //  * @return \Illuminate\Http\Response
+    //  */
     public function show(AplicacionFertilizante $aplicacionFertilizante)
     {
         //

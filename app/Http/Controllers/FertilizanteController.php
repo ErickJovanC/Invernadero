@@ -51,12 +51,12 @@ class FertilizanteController extends Controller
 
         Auth::user()->registroFertilizante()->create([
             'nombreFertilizante' => $data['nombreFertilizante'],
-            'N' => $data['N'],
-            'P2O5' => $data['P2O5'],
-            'K2O' => $data['K2O'],
-            'Ca' => $data['Ca'],
-            'Mg' => $data['Mg'],
-            'S' => $data['S'],
+            'N' => $request['N'],
+            'P2O5' => $request['P2O5'],
+            'K2O' => $request['K2O'],
+            'Ca' => $request['Ca'],
+            'Mg' => $request['Mg'],
+            'S' => $request['S'],
             'microelementos' => $data['microelementos'],
             'macroelementos' => $data['macroelementos'],
             'formula' => $request['macroelementos'],
