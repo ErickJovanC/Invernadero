@@ -17,8 +17,8 @@
                             value="{{ $plaguicida->id }}" 
                             {{ old('plaguicida') == $plaguicida->id ? 'selected' : '' }}
                         >
-                            {{ $plaguicida->ingredienteActivo ." - ".
-                                $plaguicida->nombreComercial ." : ".
+                            {{ $plaguicida->nombreComercial ." : ".
+                                $plaguicida->ingredienteActivo ." : ".
                                 $plaguicida->colorBanda }}
                         </option>
                     @endforeach

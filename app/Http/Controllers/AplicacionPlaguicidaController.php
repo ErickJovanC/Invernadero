@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Plaga;
 use App\Models\Seccion;
+use App\Models\Plaguicida;
 use Illuminate\Http\Request;
 use App\Models\aplicacionPlaguicida;
 use Illuminate\Support\Facades\Auth;
@@ -30,7 +31,7 @@ class AplicacionPlaguicidaController extends Controller
         $fechaActual = date('Y-m-d');
         $secciones = Auth::user()->secciones;
         $empleados = Auth::user()->empleados;
-        $plaguicidas = Auth::user()->plaguicida;
+        $plaguicidas = Plaguicida::where('user_id', 1)->orderBy('nombreComercial')->get();
         $plagas = Plaga::all();
 
         return view('srhigo.aplicacionPlaguicida')->

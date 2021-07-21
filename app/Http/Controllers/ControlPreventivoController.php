@@ -29,7 +29,10 @@ class ControlPreventivoController extends Controller
     public function create()
     {
         $fechaActual = date('Y-m-d');
-        $lotes = CalidadPlanta::all(['id', 'lote', 'cantidadPlantas']);
+        // $lotes = CalidadPlanta::all(['id', 'lote', 'cantidadPlantas']);
+        $id = Auth::user()->id;
+        // dd($id);
+        $lotes =  CalidadPlanta::where('user_id', $id)->get();
         $plagas = Plaga::all();
         $empleados = Auth::user()->empleados;
         return view('srhigo.controlPreventivo')->
