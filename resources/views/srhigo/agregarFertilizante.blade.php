@@ -90,7 +90,7 @@
                 Contenido Nutrintes del Fertilizante
             </div>
             <div class="form-group col-2 mb-5">
-                <label for="N">N</label>
+                <label for="N">N (Nitrogeno)</label>
                 <input type="text" 
                     name="N"
                     id="N" 
@@ -103,7 +103,7 @@
                 @enderror
             </div>
             <div class="form-group col-2 mb-5">
-                <label for="P2O5">P<sub>2</sub>O<sub>5</sub></label>
+                <label for="P2O5">P<sub>2</sub>O<sub>5</sub> (Óxido de fósforo)</label>
                 <input type="text" name="P2O5" 
                     value="{{ old('P2O5') }}"
                     class="form-control @error('P2O5') is-invalid @enderror">
@@ -114,7 +114,7 @@
                 @enderror
             </div>
             <div class="form-group col-2 mb-5">
-                <label for="K2O">K<sub>2</sub>O</label>
+                <label for="K2O">K<sub>2</sub>O (Óxido de potasio)</label>
                 <input type="text" name="K2O" 
                     value="{{ old('K2O') }}"
                     class="form-control @error('K2O') is-invalid @enderror">
@@ -125,7 +125,7 @@
                 @enderror
             </div>
             <div class="form-group col-2 mb-5">
-                <label for="Ca">Ca</label>
+                <label for="Ca">Ca (Calsio)</label>
                 <input type="text" name="Ca" 
                     value="{{ old('Ca') }}"
                     class="form-control @error('Ca') is-invalid @enderror">
@@ -136,7 +136,7 @@
                 @enderror
             </div>
             <div class="form-group col-2 mb-5">
-                <label for="Mg">Mg</label>
+                <label for="Mg">Mg (Magnesio)</label>
                 <input type="text" name="Mg" 
                     value="{{ old('Mg') }}"
                     class="form-control @error('Mg') is-invalid @enderror">
@@ -147,7 +147,7 @@
                 @enderror
             </div>
             <div class="form-group col-2 mb-5">
-                <label for="S">S</label>
+                <label for="S">S (Azufre)</label>
                 <input type="text" name="S" 
                     value="{{ old('S') }}"
                     class="form-control @error('S') is-invalid @enderror">
