@@ -106,6 +106,10 @@
                             <b>{{ $recepcion->certificado }}</b>
                         </div>
                         <div>
+                            Costo Total:
+                            <b>${{ $recepcion->costo }}</b>
+                        </div>
+                        <div>
                             Responsable:
                             <b>
                                 {{

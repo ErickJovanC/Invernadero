@@ -21,6 +21,7 @@ class calidadPlanta extends Model
         'resistenciaPlagas',
         'toleranciaPlagas',
         'certificado',
+        'costo',
         'empleado_id',
         'user_id'
     ];
