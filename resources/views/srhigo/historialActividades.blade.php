@@ -474,8 +474,12 @@
                             <b>{{ $fertilizante->fertilizante->nombreFertilizante }}</b>
                         </div>
                         <div>
-                            Kilos por hectarea:
-                            <b>{{ $fertilizante->kilosHectarea }}</b>
+                            Kilos / Litros:
+                            <b>{{ $fertilizante->unidades }}</b>
+                        </div>
+                        <div>
+                            Costo Total:
+                            <b>${{ $fertilizante->unidades*$fertilizante->precio }}</b>
                         </div>
                         <div>
                             Metodo de Aplicación:
