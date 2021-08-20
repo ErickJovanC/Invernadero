@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CalidadPlanta;
 use App\Models\Seccion;
 use Illuminate\Http\Request;
+use App\Models\CalidadPlanta;
 use App\Models\RegistroSiembra;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class RegistroSiembraController extends Controller
@@ -20,16 +21,12 @@ class RegistroSiembraController extends Controller
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $fechaActual = date('Y-m-d');
         $secciones = Auth::user()->secciones;
-        $lotes = Auth::user()->planta;
+        $id = Auth::user()->id;
+        $lotes = CalidadPlanta::where("cantidadPlantas", ">", "0")->where("user_id", $id)->get();
         $empleados = Auth::user()->empleados;
 
         return view('srhigo.registroSiembra')
@@ -41,12 +38,6 @@ class RegistroSiembraController extends Controller
             ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $data = request()->validate([
@@ -77,6 +68,7 @@ class RegistroSiembraController extends Controller
             'distanciaPlanta' => $data['distanciaPlanta'],
             'distanciaVesana' => $data['distanciaVesana'],
             'riego' => $data['riego'],
+            'costo' => $request['costo'],
             'empleado_id' => $data['responsable'],
         ]);
 
@@ -104,7 +96,8 @@ class RegistroSiembraController extends Controller
             'cantidadPlantas' => $plantasTotales,
         ]);
         
-        return redirect('main')->with('mensaje', '¡El registro de siembra se ha agregado correctamente!');
+        session()->put('mensaje', '¡El registro de siembra se ha agregado correctamente!');
+        return redirect('main');
 
 
         // return Route::put('calidadPlanta');

@@ -30,6 +30,7 @@ class CreateRegistroSiembrasTable extends Migration
             $table->float('distanciaPlanta',);
             $table->float('distanciaVesana',);
             $table->string('riego', 28);
+            $table->smallInteger('costo')->default(0);
             $table->foreignId('empleado_id')
             ->references('id')
             ->on('empleados');

@@ -30,7 +30,7 @@
             </div>{{-- Fin Lote de plantas --}}
 
             {{-- Cantidad de plantas a sembrar --}}
-            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
+            <div class="form-group col-sm-12 col-md-6 col-lg-3 mb-5">
                 <label for="cantidadPlantasSembradas">Plantas sembradas</label>
                 <input type="number" 
                     name="cantidadPlantasSembradas" 
@@ -65,8 +65,8 @@
                 @enderror
             </div>{{-- Fin Fecha --}}
 
-            <div class="col-sm-12 col-md-6 mb-5">
-                <span>Distanciamiento de siembra</span>
+            <div class="col-sm-12 col-md-6 col-lg-4 mb-5 text-center">
+                <span>Distanciamiento de Siembra</span>
                 <div class="row">
 
                     <div class="col-6">
@@ -107,11 +107,11 @@
                 <select name="riego" id="riego" class="form-control @error('riego') is-invalid @enderror">
                     <option value="" hidden>Seleccione el tipo de riego</option>
                     <option value="riegoPesado" 
-                        {{ old('lote') == 'riegoPesado' ? 'selected' : '' }}>
+                        {{ old('riego') == 'riegoPesado' ? 'selected' : '' }}>
                         Riego Pesado (Inundación)
                     </option>
-                    <option value="riegoLigero" {{ old('lote') == 'riegoLigero' ? 'selected' : '' }}>Riego Ligero</option>
-                    <option value="gravedad" {{ old('lote') == 'gravedad' ? 'selected' : '' }}>Gravedad (Manual)</option>
+                    <option value="riegoLigero" {{ old('riego') == 'riegoLigero' ? 'selected' : '' }}>Riego Ligero</option>
+                    <option value="gravedad" {{ old('riego') == 'gravedad' ? 'selected' : '' }}>Gravedad (Manual)</option>
                 </select>
                 @error('riego')
                     <span class="invalid-feedback d-block" role="alert">
@@ -120,6 +120,24 @@
                 @enderror
             </div>{{-- Fin Metodo Riego --}}
 
+            {{-- Costo --}}
+            <div class="form-group col-sm-12 col-md-6 col-lg-6 mb-5">
+                <label for="costo">Costo</label>
+                <input type="number" 
+                    name="costo" 
+                    id="costo"
+                    min="0"
+                    value="{{ old('costo') }}"
+                    class="form-control 
+                        @error('costo') is-invalid @enderror" 
+                />
+                @error('costo')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
+            </div>{{-- Fin Costo --}}
+            
             @include('srhigo.campos.responsable')
 
         </div>

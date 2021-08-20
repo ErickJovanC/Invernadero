@@ -46,6 +46,7 @@
 
             @include('srhigo.campos.huertaSeccion')
 
+            {{-- Unidades --}}
             <div class="form-group col-sm-6 col-md-4 col-lg-2 mb-5">
                 <label for="unidades">Unidades (KG | LT)</label>
                 <input type="number" name="unidades" id="unidades" 
@@ -58,7 +59,9 @@
                     </span>
                 @enderror
             </div>
+            {{-- Fin Unidades --}}
 
+            {{-- Gramos / Litros --}}
             <div class="col-sm-6 col-md-4 col-lg-3 mb-5 form-group">
                 <div class="form-check-inline">
                     <input 
@@ -84,6 +87,7 @@
                     <label class="form-check-label pl-2" for="Mililitros">Mililitros </label>
                 </div>
             </div>
+            {{-- Fin Gramos / Litros --}}
 
             {{-- Precio --}}
             <div class="form-group col-12 col-sm-6 col-md-4 col-lg-2 mb-5">

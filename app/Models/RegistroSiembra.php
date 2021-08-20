@@ -18,6 +18,7 @@ class RegistroSiembra extends Model
         'distanciaPlanta',
         'distanciaVesana',
         'riego',
+        'costo',
         'empleado_id',
         'user_id',
     ];
