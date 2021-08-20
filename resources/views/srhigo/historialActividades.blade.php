@@ -1215,7 +1215,7 @@
             <tr>
                 <th scope="col">Fecha</th>
                 <th scope="col">Huerta y Sección</th>
-                <th scope="col">Plantas Removidas</th>
+                <th scope="col">Plantas Podadas</th>
                 <th scope="col">Motivo</th>
                 <th scope="col">Ver Detalle</th>
             </tr>
@@ -1255,7 +1255,7 @@
                             <b>{{ $cortePlanta->seccion->nombreSeccion }}</b>
                         </div>
                         <div>
-                            Plantas Removidas: 
+                            Plantas Podadas: 
                             <b>{{ $cortePlanta->cantidad }}</b>
                         </div>
                         <div>

@@ -27,6 +27,7 @@ class CortePlantaController extends Controller
      */
     public function create()
     {
+
         $fechaActual = date('Y-m-d');
         $secciones = Auth::user()->secciones;
         $empleados = Auth::user()->empleados;
@@ -45,6 +46,7 @@ class CortePlantaController extends Controller
             'fecha' => 'required',
             'huertaSeccion' => 'required',
             'cantidad' => 'required | integer',
+            'motivo' => 'required',
             'responsable' => 'required',
         ]);
 
@@ -59,23 +61,27 @@ class CortePlantaController extends Controller
             'huerta_id' => $huerta,
             'seccion_id' => $seccion,
             'cantidad' => $data['cantidad'],
-            'motivo' => $request['motivo'],
+            'motivo' => $data['motivo'],
+            'comentario' => $request['comentario'],
             'empleado_id' => $data['responsable'],
         ]);
 
-        // Consultar Cantidad de Plantas en Lote
-        $plantas = Seccion::where("id", $seccion)->get();
-        foreach ($plantas as $plantasItem){
-            $plantasTotales = $plantasItem->cantidadPlantas;
+        if($data['motivo'] == 'Eliminación'){
+            // Consultar Cantidad de Plantas en Lote
+            $plantas = Seccion::where("id", $seccion)->get();
+            foreach ($plantas as $plantasItem){
+                $plantasTotales = $plantasItem->cantidadPlantas;
+            }
+            $plantasTotales = $plantasTotales - $data['cantidad'];
+
+            // Actualizar cantidad de plantas de Lotes
+            Seccion::where("id", $seccion)->update([
+                'cantidadPlantas' => $plantasTotales,
+            ]);
         }
-        $plantasTotales = $plantasTotales - $data['cantidad'];
 
-        // Actualizar cantidad de plantas de Lotes
-        Seccion::where("id", $seccion)->update([
-            'cantidadPlantas' => $plantasTotales,
-        ]);
-
-        return redirect('main')->with('mensaje', 'El Corte de Plantas se ha Registrado Correctamente');
+        session()->put('mensaje', '¡La Poda de Plantas se ha registrado correctamente!');
+        return redirect('main');
     }
 
     /**

@@ -48,7 +48,6 @@
                     <label class="form-check-label" for="crecimiento">Crecimiento </label>
                 </div>
 
-                
                 <div class="form-check">
                     <input
                         type="radio"
