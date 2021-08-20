@@ -27,6 +27,7 @@ class CreateCosechasTable extends Migration
             $table->smallInteger('tempSuelo')->nullable();
             $table->smallInteger('taras');
             $table->string('capacidadTara', 4)->nullable();
+            $table->decimal('costo', 6, 1)->default(0);
             $table->foreignId('cliente_id')->references('id')->on('clientes');
             $table->foreignId('empleado_id')->references('id')->on('empleados');
             $table->foreignId('user_id')->references('id')->on('users');

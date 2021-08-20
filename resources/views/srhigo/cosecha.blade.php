@@ -7,7 +7,7 @@
     @csrf
         <div class="row align-items-end">
             {{-- Cliente (Destinatario) --}}
-            <div class="form-group col-12 col-sm-12 col-md-6 mb-5">
+            <div class="form-group col-12 col-sm-12 col-md-6 col-lg-4 mb-5">
                 <label for="cliente">Cliente (Destinatario)</label>
                 <select name="cliente" id="cliente" class="form-control @error('cliente') is-invalid @enderror">
                     <option value="" hidden>Cliente destinatario</option>
@@ -28,8 +28,8 @@
             {{-- Fin Cliente (Destinatario) --}}
 
             {{-- Botón Agregar Cliente --}}
-            <div class="col-sm-12 col-md-6 col-lg-4 mb-5">
-                <a href="{{ route('cliente.create') }}" class="btn btn-info px-5">Registrar Otro Cliente</a>
+            <div class="col-sm-12 col-md-6 col-lg-6 mb-5">
+                <a href="{{ route('cliente.create') }}" class="btn btn-info px-5">Registrar Nuevo destinatario</a>
             </div> {{-- Fin Botón Agregar Cliente --}}
 
             <div class="w-100"></div>
@@ -37,7 +37,7 @@
             @include('srhigo.campos.huertaSeccion')
 
             {{-- Kilos --}}
-            <div class="form-group col-12 col-sm-6 col-md-4 col-lg-3 mb-5">
+            <div class="form-group col-12 col-sm-6 col-md-3 col-lg-3 mb-5">
                 <label for="kilos">Kilos</label>
                 <input type="number" 
                 name="kilos" 
@@ -53,7 +53,7 @@
             {{-- Fin Kilos --}}
 
             {{-- Merma --}}
-            <div class="form-group col-12 col-sm-6 col-md-4 col-lg-3 mb-5">
+            <div class="form-group col-12 col-sm-6 col-md-3 col-lg-2 mb-5">
                 <label for="merma">Merma</label>
                 <input type="number" 
                 name="merma" 
@@ -69,7 +69,7 @@
             {{-- Fin Merma --}}
 
             {{-- Hora de Inicio --}}
-            <div class="form-group col-12 col-sm-6 col-md-4 col-lg-2 mb-5">
+            <div class="form-group col-12 col-sm-6 col-md-3 col-lg-3 mb-5">
                 <label for="horaInicio">Hora de Inicio</label>
                 <input type="time" 
                 name="horaInicio" 
@@ -85,7 +85,7 @@
             {{-- Fin Hora de Inicio --}}
 
             {{-- Hora Final --}}
-            <div class="form-group col-12 col-sm-6 col-md-4 col-lg-2 mb-5">
+            <div class="form-group col-12 col-sm-6 col-md-3 col-lg-3 mb-5">
                 <label for="horaFin">Hora Final</label>
                 <input type="time" 
                 name="horaFin" 
@@ -101,7 +101,7 @@
             {{-- Fin Hora Final --}}
 
             {{-- Temperatura de la Fruta --}}
-            <div class="form-group col-12 col-sm-6 col-md-4 col-lg-3 mb-5">
+            <div class="form-group col-12 col-sm-6 col-md-3 col-lg-2 mb-5">
                 <label for="tempFruta">Temperatura de la Fruta (°C)</label>
                 <input type="number" 
                 name="tempFruta" 
@@ -117,7 +117,7 @@
             {{-- Fin Temperatura de la Fruta --}}
 
             {{-- Temperatura del Suelo --}}
-            <div class="form-group col-12 col-sm-6 col-md-4 col-lg-3 mb-5">
+            <div class="form-group col-12 col-sm-6 col-md-3 col-lg-2 mb-5">
                 <label for="tempSuelo">Temperatura del Suelo (°C)</label>
                 <input type="number" 
                 name="tempSuelo" 
@@ -133,7 +133,7 @@
             {{-- Fin Temperatura del Suelo --}}
 
             {{-- Taras --}}
-            <div class="form-group col-12 col-sm-6 col-md-4 col-lg-3 mb-5">
+            <div class="form-group col-12 col-sm-6 col-md-3 col-lg-2 mb-5">
                 <label for="taras">Taras</label>
                 <input type="number" 
                 name="taras" 
@@ -149,10 +149,10 @@
             {{-- Fin Taras --}}
 
             {{-- Capacidad de las taras --}}
-            <div class="form-group col-12 col-sm-6 col-md-4 col-lg-3 mb-5">
+            <div class="form-group col-12 col-sm-6 col-md-3 col-lg-2 mb-5">
                 <label for="capacidadTara">Capacidad de las taras</label>
                 <select name="capacidadTara" id="capacidadTara" class="form-control @error('taras') is-invalid @enderror">
-                    <option value="" hidden>Capacidad de las taras</option>
+                    <option value="" hidden>Seleccionar...</option>
                     <option value="5kg" {{ old('capacidadTara') == '5kg' ? 'selected' : '' }}>5 kg</option>
                     <option value="8kg" {{ old('capacidadTara') == '8kg' ? 'selected' : '' }}>8 kg</option>
                     <option value="18kg" {{ old('capacidadTara') == '18kg' ? 'selected' : '' }}>18 kg</option>
@@ -164,6 +164,26 @@
                 @enderror
             </div>
             {{-- Fin Capacidad de las taras --}}
+
+            {{-- Costo --}}
+            <div class="form-group col-sm-12 col-md-6 col-lg-2 mb-5">
+                <label for="costo">Costo</label>
+                <input type="number" 
+                    name="costo" 
+                    id="costo"
+                    min="0"
+                    step="0.5"
+                    max="99999.5"
+                    value="{{ old('costo') }}"
+                    class="form-control 
+                        @error('costo') is-invalid @enderror" 
+                />
+                @error('costo')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
+            </div>{{-- Fin Costo --}}
 
             @include('srhigo.campos.responsable')
 

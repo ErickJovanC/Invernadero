@@ -19,11 +19,6 @@ class CosechaController extends Controller
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $fechaActual = date('Y-m-d');
@@ -39,12 +34,6 @@ class CosechaController extends Controller
             ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $data = $request->validate([
@@ -65,6 +54,7 @@ class CosechaController extends Controller
         }
 
         Auth::user()->cosechas()->create([
+            'cliente_id' => $data['cliente'],
             'fecha' => $data['fecha'],
             'huerta_id' => $huerta_id,
             'seccion_id' => $seccion,
@@ -76,20 +66,15 @@ class CosechaController extends Controller
             'tempSuelo' => $request['tempSuelo'],
             'taras' => $data['taras'],
             'capacidadTara' => $data['capacidadTara'],
-            'cliente_id' => $data['cliente'],
+            'costo' => $request['costo'],
             'empleado_id' => $data['responsable'],
         ]);
 
-        return redirect('main')->with('mensaje', '¡La cosecha se ha registrado correctamente!');
+        session()->put('mensaje', '¡La cosecha se ha registrado correctamente!');
+        return redirect('main');
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Cosecha  $cosecha
-     * @return \Illuminate\Http\Response
-     */
     public function show(Cosecha $cosecha)
     {
         //

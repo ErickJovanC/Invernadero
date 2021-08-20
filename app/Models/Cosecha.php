@@ -10,6 +10,7 @@ class Cosecha extends Model
     use HasFactory;
 
     protected $fillable = [
+        'cliente_id',
         'fecha',
         'huerta_id',
         'seccion_id',
@@ -21,7 +22,7 @@ class Cosecha extends Model
         'tempSuelo',
         'taras',
         'capacidadTara',
-        'cliente_id',
+        'costo',
         'empleado_id',
         'user_id',
     ];
