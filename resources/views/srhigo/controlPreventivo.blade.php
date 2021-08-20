@@ -76,7 +76,7 @@
                 @enderror
             </div>{{-- Fin Fecha --}}
 
-            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
+            <div class="form-group col-sm-12 col-md-6 col-lg-3 mb-5">
                 <label for="cantidadPlantas">Cantidad de Plantas tratadas</label>
                 <input type="number" 
                     name="cantidadPlantas" 
@@ -93,7 +93,7 @@
                 @enderror
             </div>
 
-            <div class="form-group col-sm-3 col-md-2 mb-5">
+            <div class="form-group col-sm-3 col-md-2 col-lg-3 mb-5">
                 <label for="costo">Costo total</label>
                 <input type="number" 
                     min="0"

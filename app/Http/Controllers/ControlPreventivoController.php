@@ -21,18 +21,14 @@ class ControlPreventivoController extends Controller
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $fechaActual = date('Y-m-d');
         // $lotes = CalidadPlanta::all(['id', 'lote', 'cantidadPlantas']);
         $id = Auth::user()->id;
         // dd($id);
-        $lotes =  CalidadPlanta::where('user_id', $id)->get();
+        // $lotes =  CalidadPlanta::where('user_id', $id)->get();
+        $lotes = CalidadPlanta::where("cantidadPlantas", ">", "0")->where("user_id", $id)->get();
         $plagas = Plaga::all();
         $empleados = Auth::user()->empleados;
         return view('srhigo.controlPreventivo')->
@@ -44,12 +40,6 @@ class ControlPreventivoController extends Controller
             ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $data = request()->validate([
@@ -62,8 +52,6 @@ class ControlPreventivoController extends Controller
             'responsable' => 'required',
         ]);
 
-        // dd($request->all());
-
         auth()->user()->controlPreventivoPlanta()->create([
             'lote_id' => $data['lotePlanta'],
             'plagasPrevenir' => implode(', ', $request->plagas),
@@ -74,8 +62,8 @@ class ControlPreventivoController extends Controller
             'empleado_id' => $data['responsable'],
         ]);
 
-        // return redirect(route('controlPreventivo.create'));
-        return redirect('main')->with('mensaje', '¡La Acción Preventiva de Plantas se ha registrado correctamente!');
+        session()->put('mensaje', '¡La Acción Preventiva de lote de Plantas se ha registrado correctamente!');
+        return redirect('main');
     }
 
     /**
