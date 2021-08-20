@@ -21,6 +21,7 @@ class CreateControlPreventivoPlagasTable extends Migration
             $table->foreignId('seccion_id')->references('id')->on('seccions');
             $table->string('plagas');
             $table->string('acciones');
+            $table->decimal('costo', 6, 1);
             $table->foreignId('empleado_id')->references('id')->on('empleados');
             $table->foreignId('user_id')->references('id')->on('users');
 

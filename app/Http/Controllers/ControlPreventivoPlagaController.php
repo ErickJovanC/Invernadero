@@ -11,28 +11,17 @@ use App\Models\ControlPreventivoPlaga;
 
 class ControlPreventivoPlagaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $fechaActual = date('Y-m-d');
         $secciones = Auth::user()->secciones;
         $empleados = Auth::user()->empleados;
         $plagas = Plaga::all();
-        // dd($secciones->all());
         return view('srhigo.controlPreventivoPlagas')->
             with([
                 'secciones' => $secciones, 
@@ -42,12 +31,6 @@ class ControlPreventivoPlagaController extends Controller
             ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         // dd(request());
@@ -71,11 +54,12 @@ class ControlPreventivoPlagaController extends Controller
             'seccion_id'=> $seccion,
             'plagas' => implode(', ', $request->plagas),
             'acciones' => implode(', ', $request->accionPreventiva),
-            'acciones',
+            'costo' => $request['costo'],
             'empleado_id' => $data['responsable'],
         ]);
 
-        return redirect('main')->with('mensaje', '¡La Acción Preventiva de Plantas y Arboles se ha registrado correctamente!');
+        session()->put('mensaje', '¡La Acción Preventiva de Plantas y Arboles se ha registrado correctamente!');
+        return redirect('main');
     }
 
     /**

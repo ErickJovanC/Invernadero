@@ -15,6 +15,7 @@ class ControlPreventivoPlaga extends Model
         'seccion_id',
         'plagas',
         'acciones',
+        'costo',
         'empleado_id',
         'user_id',
     ];
