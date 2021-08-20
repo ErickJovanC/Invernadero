@@ -10,7 +10,7 @@
             @include('srhigo.campos.huertaSeccion')
 
             {{-- Metodo de Riego --}}
-            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
+            <div class="form-group col-sm-12 col-md-6 col-lg-3 mb-5">
                 <label for="metodoRiego">Tipo de riego</label>
                 <select name="metodoRiego" id="metodoRiego" class="form-control @error('metodoRiego') is-invalid @enderror">
                     <option value="" hidden>Seleccione el tipo de rigo</option>
@@ -32,7 +32,7 @@
             <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
                 <label for="fuenteAgua">Fuente de Agua</label>
                 <select name="fuenteAgua" id="fuenteAgua" class="form-control @error('fuenteAgua') is-invalid @enderror">
-                    <option value="" hidden>Seleccione el origen del agua</option>
+                    <option value="" hidden>Seleccionar...</option>
                     <option value="Rio" 
                         {{ old('fuenteAgua') == 'Rio' ? 'selected' : '' }}>
                         Rio</option>
@@ -56,7 +56,7 @@
             @include('srhigo.campos.fecha')
 
             {{-- Hora Inicio--}}
-            <div class="form-group col-sm-12 col-md-4 col-lg-3 mb-5">
+            <div class="form-group col-sm-6 col-md-4 col-lg-3 mb-5">
                 <label for="horaInicio">Hora de inicio</label>
                 <input type="time" 
                     name="horaInicio"  id="horaInicio" 
@@ -71,7 +71,7 @@
             </div>{{-- Fin Hora Inicio--}}
 
             {{-- Hora Fin--}}
-            <div class="form-group col-sm-12 col-md-4 col-lg-3 mb-5">
+            <div class="form-group col-sm-6 col-md-4 col-lg-3 mb-5">
                 <label for="horaFin">Hora de Finalización</label>
                 <input type="time" 
                     name="horaFin"  id="horaFin" 
@@ -97,7 +97,7 @@
             </div> --}}
             
             {{-- Listro de agua por hora --}}
-            <div class="form-group col-sm-6 col-md-3 mb-5">
+            <div class="form-group col-sm-6 col-md-4 col-lg-2 mb-5">
                 <label for="litrosHora">Litros por hora</label>
                 <input type="number" 
                     min="0"
@@ -112,21 +112,25 @@
                 @enderror
             </div> {{-- Fin Listro de agua por hora --}}
 
-            {{-- Consumo Energia --}}
-            {{-- <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
-                <label for="consumoEnergia">Consumo de energía o combustible usado $</label>
+            {{-- Costo --}}
+            <div class="form-group col-sm-6 col-md-6 col-lg-6 mb-5">
+                <label for="costo">Costo</label>
                 <input type="number" 
-                    name="consumoEnergia" id="consumoEnergia"
-                    value="{{ old('consumoEnergia') }}"
-                    class="form-control @error('consumoEnergia') is-invalid @enderror"
+                    name="costo" 
+                    id="costo"
+                    min="0"
+                    step="0.5"
+                    max="99999.5"
+                    value="{{ old('costo') }}"
+                    class="form-control 
+                        @error('costo') is-invalid @enderror" 
                 />
-                @error('consumoEnergia')
+                @error('costo')
                     <span class="invalid-feedback d-block" role="alert">
                         <strong>{{$message}}</strong>
                     </span>
                 @enderror
-            </div>  --}}
-            {{-- Fin Consumo Energia --}}
+            </div>{{-- Fin Costo --}}
 
             @include('srhigo.campos.responsable')
 

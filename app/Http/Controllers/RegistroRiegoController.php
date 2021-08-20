@@ -21,11 +21,6 @@ class RegistroRiegoController extends Controller
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $fechaActual = date('Y-m-d');
@@ -40,12 +35,6 @@ class RegistroRiegoController extends Controller
             ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $data = request()->validate([
@@ -56,7 +45,6 @@ class RegistroRiegoController extends Controller
             'horaInicio' => 'required',
             'horaFin' => 'required',
             'litrosHora' => 'required',
-            // 'consumoEnergia' => 'required',
             'responsable' => 'required',
             ]);
 
@@ -81,11 +69,12 @@ class RegistroRiegoController extends Controller
                 'horaFin' => $data['horaFin'],
                 'horas' => $horas,
                 'litrosHora' => $data['litrosHora'],
-                // 'consumoEnergia' => $data['consumoEnergia'],
+                'costo' => $request['costo'],
                 'empleado_id' => $data['responsable'],
             ]);
 
-            return redirect('main')->with('mensaje', '¡El Riego se ha registrado correctamente!');
+            session()->put('mensaje', '¡El Riego se ha registrado correctamente!');
+            return redirect('main');
     }
 
     /**

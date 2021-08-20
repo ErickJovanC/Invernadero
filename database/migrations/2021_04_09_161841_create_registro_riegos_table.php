@@ -24,7 +24,7 @@ class CreateRegistroRiegosTable extends Migration
             $table->time('horaFin');
             $table->time('horas');
             $table->smallInteger('litrosHora');
-            $table->smallInteger('consumoEnergia');
+            $table->decimal('costo', 6, 1);
             $table->foreignId('empleado_id')->references('id')->on('empleados');
             $table->foreignId('user_id')->references('id')->on('users');
 
