@@ -27,7 +27,7 @@ class CreateCalidadPlantasTable extends Migration
             $table->string('resistenciaPlagas')->nullable();
             $table->string('toleranciaPlagas')->nullable();
             $table->string('certificado')->nullable();
-            $table->smallInteger('costo')->nullable();
+            $table->decimal('costo', 6, 1)->nullable();
             $table->foreignId('empleado_id')
                 ->references('id')
                 ->on('empleados');

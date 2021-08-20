@@ -127,6 +127,8 @@
                     name="costo" 
                     id="costo"
                     min="0"
+                    step="0.5"
+                    max="99999.5"
                     value="{{ old('costo') }}"
                     class="form-control 
                         @error('costo') is-invalid @enderror" 

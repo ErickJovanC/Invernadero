@@ -124,7 +124,10 @@
             <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
                 <label for="costo">Costo total de las plantas</label>
                 <input type="number" name="costo" id="costo" 
-                    class="form-control @error('costo') is-invalid @enderror" 
+                min="0"
+                step="0.5"
+                max="99999.5"    
+                class="form-control @error('costo') is-invalid @enderror" 
                     value="{{ old('costo') }}"
                 />
                 @error('costo')
