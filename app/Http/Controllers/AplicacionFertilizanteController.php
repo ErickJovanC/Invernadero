@@ -59,6 +59,7 @@ class AplicacionFertilizanteController extends Controller
             'huertaSeccion' => 'required',
             'nombreFertilizante' => 'required',
             'unidades' => 'required',
+            'unidad' => 'required',
             'precio' => 'required',
             'metodoAplicacion' => 'required',
             'responsable' => 'required',

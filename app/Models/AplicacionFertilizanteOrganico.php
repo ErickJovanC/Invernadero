@@ -16,6 +16,7 @@ class AplicacionFertilizanteOrganico extends Model
         'cantidadAplicada',
         'superficie',
         'tipoFertilizante',
+        'costo',
         'empleado_id',
         'user_id',
     ];

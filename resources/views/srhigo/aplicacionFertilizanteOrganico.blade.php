@@ -11,7 +11,7 @@
             @include('srhigo.campos.huertaSeccion')
 
             {{-- Cantidad Aplicada --}}
-            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
+            <div class="form-group col-sm-12 col-md-6 col-lg-3 mb-5">
                 <label for="cantidadAplicada">Cantidad Aplicada KG</label>
                 <input type="number" 
                     name="cantidadAplicada" 
@@ -25,22 +25,6 @@
                     </span>
                 @enderror
             </div> {{-- Fin Cantidad Aplicada --}}
-
-            {{-- Superficie --}}
-            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
-                <label for="superficie">Superficie</label>
-                <input type="text" 
-                    name="superficie" 
-                    id="superficie" 
-                    value="{{ old('superficie') }}"
-                    class="form-control @error('superficie') is-invalid @enderror"
-                />
-                @error('superficie')
-                    <span class="invalid-feedback d-block" role="alert">
-                        <strong>{{$message}}</strong>
-                    </span>
-                @enderror
-            </div> {{-- Fin Superficie --}}
 
             {{-- Tipo de fertilizante --}}
             <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
@@ -73,6 +57,26 @@
                     </span>
                 @enderror
             </div>{{-- Fin tipo de fertilizante --}}
+
+            {{-- Costo --}}
+            <div class="form-group col-sm-12 col-md-6 col-lg-2 mb-5">
+                <label for="costo">Costo Total</label>
+                <input type="number" 
+                    name="costo" 
+                    id="costo"
+                    min="0"
+                    step="0.5"
+                    max="99999.5"
+                    value="{{ old('costo') }}"
+                    class="form-control 
+                        @error('costo') is-invalid @enderror" 
+                />
+                @error('costo')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
+            </div>{{-- Fin Costo --}}
 
             @include('srhigo.campos.responsable')
 

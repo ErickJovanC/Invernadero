@@ -48,7 +48,7 @@
 
             {{-- Unidades --}}
             <div class="form-group col-sm-6 col-md-4 col-lg-2 mb-5">
-                <label for="unidades">Unidades (KG | LT)</label>
+                <label for="unidades">Unidades</label>
                 <input type="number" name="unidades" id="unidades" 
                     class="form-control @error('unidades') is-invalid @enderror"
                     value="{{ old('unidades') }}"
@@ -72,7 +72,7 @@
                         {{ old('unidad') == 'Gramos' ? 'checked' :  '' }}
                         class="@error('unidad') is-invalid @enderror" 
                     />
-                    <label class="form-check-label pl-2" for="Gramos">Gramos </label>
+                    <label class="form-check-label pl-2" for="Gramos">Kilos</label>
                 </div>
 
                 <div class="form-check-inline">
@@ -84,8 +84,13 @@
                         {{ old('unidad') == 'Mililitros' ? 'checked' :  '' }}
                         class="@error('unidad') is-invalid @enderror" 
                     />
-                    <label class="form-check-label pl-2" for="Mililitros">Mililitros </label>
+                    <label class="form-check-label pl-2" for="Mililitros">Litros</label>
                 </div>
+                @error('unidad')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>Elija una de las dos opciones</strong>
+                    </span>
+                @enderror
             </div>
             {{-- Fin Gramos / Litros --}}
 
@@ -93,6 +98,9 @@
             <div class="form-group col-12 col-sm-6 col-md-4 col-lg-2 mb-5">
                 <label for="precio">Precio por Unidad</label>
                 <input type="number" name="precio" id="precio" 
+                    min="0"
+                    step="0.5"
+                    max="9999.5"
                     class="form-control @error('precio') is-invalid @enderror"
                     value="{{ old('precio') }}"
                 />

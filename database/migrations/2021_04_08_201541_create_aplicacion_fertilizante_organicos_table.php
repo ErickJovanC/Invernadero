@@ -24,7 +24,7 @@ class CreateAplicacionFertilizanteOrganicosTable extends Migration
                 references('id')->
                 on('seccions');
             $table->integer('cantidadAplicada');
-            $table->integer('superficie');
+            $table->decimal('costo', 6, 1);
             $table->string('tipoFertilizante', 18);
             $table->foreignId('empleado_id')->
                 references('id')->

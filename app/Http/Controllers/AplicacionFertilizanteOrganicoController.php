@@ -50,8 +50,8 @@ class AplicacionFertilizanteOrganicoController extends Controller
             'fecha' => 'required',
             'huertaSeccion' => 'required',
             'cantidadAplicada' => 'required',
-            'superficie' => 'required',
             'tipoFertilizante' => 'required',
+            'costo' => 'required',
             'responsable' => 'required',
         ]);
 
@@ -67,12 +67,13 @@ class AplicacionFertilizanteOrganicoController extends Controller
             'huerta_id' => $huerta_id,
             'seccion_id' => $seccion,
             'cantidadAplicada' => $data['cantidadAplicada'],
-            'superficie' => $data['superficie'],
             'tipoFertilizante' => $data['tipoFertilizante'],
+            'costo' => $data['costo'],
             'empleado_id' => $data['responsable'],
         ]);
 
-        return redirect('main')->with('mensaje', '¡La Aplicación de Fertilizante Organico se ha registrado correctamente!');
+        session()->put('mensaje', '¡La Aplicación de Fertilizante Organico se ha registrado correctamente!');
+        return redirect('main');
     }
 
     /**
