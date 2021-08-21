@@ -21,6 +21,7 @@ class aplicacionPlaguicida extends Model
         'agua',
         'clima',
         'equipo',
+        'costo',
         'empleado_id',
         'user_id',
     ];

@@ -26,6 +26,7 @@ class CreateAplicacionPlaguicidasTable extends Migration
             $table->smallInteger('agua');
             $table->string('clima');
             $table->string('equipo');
+            $table->decimal('costo', 6, 1);
             $table->foreignId('empleado_id')->references('id')->on('empleados');
             $table->foreignId('user_id')->references('id')->on('users');
 

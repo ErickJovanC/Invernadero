@@ -21,11 +21,6 @@ class AplicacionPlaguicidaController extends Controller
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $fechaActual = date('Y-m-d');
@@ -44,12 +39,6 @@ class AplicacionPlaguicidaController extends Controller
             ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $data = request()->validate([
@@ -63,6 +52,7 @@ class AplicacionPlaguicidaController extends Controller
             'agua' => 'required',
             'clima' => 'required',
             'equipo' => 'required',
+            'costo' => 'required',
             'responsable' => 'required',
         ]);
 
@@ -84,10 +74,12 @@ class AplicacionPlaguicidaController extends Controller
             'agua' => $data['agua'],
             'clima' => $data['clima'],
             'equipo' => implode(', ', $data['equipo']),
+            'costo' => $data['costo'],
             'empleado_id' => $data['responsable'],
         ]);
 
-        return redirect('main')->with('mensaje', '¡La Aplicación de Plaguicida se ha registrado correctamente!');
+        session()->put('mensaje', '¡La Aplicación de Plaguicida se ha registrado correctamente!');
+        return redirect('main');
     }
 
     /**

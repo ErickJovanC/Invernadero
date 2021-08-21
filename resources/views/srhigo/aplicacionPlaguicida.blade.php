@@ -41,7 +41,7 @@
             @include('srhigo.campos.huertaSeccion')
 
             {{-- Plagas --}}
-            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
+            <div class="form-group col-sm-12 col-md-6 col-lg-3 mb-5">
                 <label for="plaga">Plaga a tratar</label>
                 <select name="plaga" id="plaga" class="form-control @error('plaga') is-invalid @enderror">
                     <option value="" hidden>Seleccione...</option>
@@ -62,7 +62,7 @@
             </div> {{-- Fin Plagas --}}
 
             {{-- Tiempo de Aplicación  --}}
-            <div class="form-group col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-5 text-center">
+            <div class="form-group col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 mb-5 text-center">
                 <span>Tiempo de aplicación</span>
                 <div class="row">
                     <div class="col-6 pr-0">
@@ -71,7 +71,7 @@
                         name="horas"
                         id="horas"
                         min="0"
-                        value="{{ old('horas')}}"
+                        value="{{ old('horas') ? old('horas') : 0 }}"
                         class="form-control @error('horas') is-invalid @enderror">
                         @error('horas')
                             <span class="invalid-feedback d-block" role="alert">
@@ -85,7 +85,7 @@
                         name="minutos"
                         id="minutos"
                         min="0"
-                        value="{{ old('minutos')}}"
+                        value="{{ old('minutos') ? old('minutos') : 0}}"
                         class="form-control @error('minutos') is-invalid @enderror">
                         @error('minutos')
                             <span class="invalid-feedback d-block" role="alert">
@@ -97,7 +97,7 @@
             </div>{{-- Fin  Tiempo de Aplicación --}}
 
             {{-- Dosis Aplicada  --}}
-            <div class="form-group col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-5">
+            <div class="form-group col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 mb-5">
                 <label for="dosisAplicada">Dosis Aplicada (Litros)</label>
                 <input type="text" 
                 name="dosisAplicada" 
@@ -112,7 +112,7 @@
             </div>{{-- Fin  Dosis Aplicada --}}
 
             {{-- Dosis Aplicada  --}}
-            <div class="form-group col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-5">
+            <div class="form-group col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 mb-5">
                 <label for="agua">Agua Utilizada (Litros)</label>
                 <input type="text" 
                 name="agua" 
@@ -127,7 +127,7 @@
             </div>{{-- Fin  Dosis Aplicada --}}
 
             {{-- Condición Metereológica --}}
-            <div class="form-group col-sm-12 col-md-6 col-lg-4 col-xl-3 mb-5">
+            <div class="form-group col-sm-6 col-md-6 col-lg-3 col-xl-3 mb-5">
                 <label for="clima">Condición Metereológica</label>
                 <select name="clima" id="clima" class="form-control @error('clima') is-invalid @enderror">
                     <option value="" hidden>Seleccione</option>
@@ -137,9 +137,9 @@
                     <option value="Viento" 
                         {{ old('clima') == 'Viento' ? 'selected' : '' }}>
                         Viento</option>
-                    <option value="Lluvia" 
-                        {{ old('clima') == 'Lluvia' ? 'selected' : '' }}>
-                        Lluvia</option>
+                    <option value="Llovisna" 
+                        {{ old('clima') == 'Llovisna' ? 'selected' : '' }}>
+                        Llovisna</option>
                     <option value="Nublado" 
                         {{ old('clima') == 'Nublado' ? 'selected' : '' }}>
                         Nublado</option>
@@ -152,7 +152,7 @@
             </div>{{-- Fin Condición Metereológica --}}
 
             {{-- Equipo de Protección Utilizado --}}
-            <div class="col-6">
+            <div class="col-sm-6 col-lg-12">
                 <div class="h1{{-- @error('equipoProteccion') is-invalid @enderror --}}">Equipo de Protección Utilizado</div>
                 
                 <div class="form-check">
@@ -227,6 +227,26 @@
                     </span>
                 @enderror
             </div> {{-- Fin Equipo de Protección Utilizado --}}
+
+            {{-- Costo --}}
+            <div class="form-group col-sm-6 col-md-6 col-lg-6 mb-5">
+                <label for="costo">Costo</label>
+                <input type="number" 
+                    name="costo" 
+                    id="costo"
+                    min="0"
+                    step="0.5"
+                    max="99999.5"
+                    value="{{ old('costo') }}"
+                    class="form-control 
+                        @error('costo') is-invalid @enderror" 
+                />
+                @error('costo')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
+            </div>{{-- Fin Costo --}}
 
             @include('srhigo.campos.responsable')
         </div>

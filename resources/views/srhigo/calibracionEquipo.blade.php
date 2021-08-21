@@ -7,7 +7,23 @@
         @csrf
         <div class="row align-items-end">
 
-            @include('srhigo.campos.fecha')
+            {{-- Fecha --}}
+            <div class="form-group col-sm-12 col-md-6 col-lg-3 col-xl-3 mb-5">
+                <label for="fecha">Fecha</label>
+                <input type="date" 
+                    name="fecha" 
+                    id="fecha"
+                    max="{{ $fechaActual }}"
+                    value="{{ old('fecha') }}"
+                    class="form-control 
+                        @error('fecha') is-invalid @enderror" 
+                />
+                @error('fecha')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
+            </div>{{-- Fin Fecha --}}
 
             {{-- Equipo --}}
             <div class="form-group col-sm-12 col-md-6 col-lg-3 mb-5">
@@ -34,7 +50,7 @@
                 @enderror
             </div>{{-- Fin Equipo --}}
 
-            <div class="form-group col-12 col-sm-6 col-md-3 mb-5">
+            <div class="form-group col-12 col-sm-6 col-md-6 col-lg-3 mb-5">
                 <label for="volumenPesoInicial">Volumen o Peso Inicial (Kilogramos o Litros)</label>
                 <input type="number" name="volumenPesoInicial" 
                 value="{{ old('volumenPesoInicial') }}"
@@ -46,7 +62,7 @@
                 @enderror
             </div>
 
-            <div class="form-group col-12 col-sm-6 col-md-3 mb-5">
+            <div class="form-group col-12 col-sm-6 col-md-6 col-lg-3 mb-5">
                 <label for="volumenPesoFinal">Volumen o Peso Final (Kilogramos o Litros)</label>
                 <input type="number" name="volumenPesoFinal" 
                 value="{{ old('volumenPesoFinal') }}"
@@ -140,7 +156,7 @@
             </div> --}}
 
             {{-- Comentario --}}
-            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
+            <div class="form-group col-sm-12 col-md-6 col-lg-8 mb-5">
                 <label for="comentario">Comentario</label>
                 <input type="text" 
                     name="comentario" 
@@ -156,7 +172,28 @@
                 @enderror
             </div>{{-- Fin Comentario --}}
 
-            @include('srhigo.campos.responsable')
+            {{-- Responsable --}}
+            <div class="form-group col-sm-12 col-md-12 col-lg-12 mb-5">
+                <label for="responsable">Responsable</label>
+                <select name="responsable" id="responsable" class="form-control @error('responsable') is-invalid @enderror">
+                    <option value="" hidden>Seleccione el empleado</option>
+                    @foreach ($empleados as $empleado)
+                        <option 
+                            value="{{ $empleado->id }}" 
+                            {{ old('responsable') == $empleado->id ? 'selected' : '' }}
+                        >
+                            {{ $empleado->nombreEmpleado ." ".
+                                $empleado->apellidoEmpleado ." (".
+                                $empleado->sobrenombreEmpleado .")"}}
+                        </option>
+                    @endforeach
+                </select>
+                @error('responsable')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
+            </div> {{-- Fin Responsable --}}
 
         </div> {{-- Fin row --}}
         

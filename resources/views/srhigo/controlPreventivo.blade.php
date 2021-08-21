@@ -97,6 +97,8 @@
                 <label for="costo">Costo total</label>
                 <input type="number" 
                     min="0"
+                    step="0.5"
+                    max="99999.5"
                     name="costo" 
                     id="costo" 
                     @if(old('costo') != 0)
