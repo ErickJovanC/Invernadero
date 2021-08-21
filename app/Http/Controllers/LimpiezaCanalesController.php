@@ -8,21 +8,11 @@ use Illuminate\Support\Facades\Auth;
 
 class LimpiezaCanalesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $fechaActual = date('Y-m-d');
@@ -36,12 +26,6 @@ class LimpiezaCanalesController extends Controller
             ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         // dd($request->all());
@@ -63,10 +47,12 @@ class LimpiezaCanalesController extends Controller
             'revestimiento' => $request['revestimiento'],
             'accionesRealizadas' => implode(', ', $request->accion),
             'observaciones' => $request['observaciones'],
+            'costo' => $request['costo'],
             'empleado_id' => $request['responsable'],
         ]);
 
-        return redirect('main')->with('mensaje', '¡La Limpieza de Canales se ha registrado correctamente!');
+        session()->put('mensaje', '¡La Limpieza de Canales se ha registrado correctamente!');
+        return redirect('main');
     }
 
     /**

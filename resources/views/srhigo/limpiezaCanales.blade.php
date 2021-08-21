@@ -31,7 +31,7 @@
             @include('srhigo.campos.fecha')
 
             {{-- Nombre canal --}}
-            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
+            <div class="form-group col-sm-12 col-md-4 col-lg-4 mb-5">
                 <label for="nombreCanal">Nombre o número del canal a limpiar</label>
                 <input type="text" 
                     name="nombreCanal" 
@@ -47,7 +47,7 @@
             </div> {{-- Fin Nombre canal --}}
 
             {{-- Longitud Canal --}}
-            <div class="form-group col-sm-12 col-md-6  col-lg-4 mb-5">
+            <div class="form-group col-sm-12 col-md-4 col-lg-3 mb-5">
                 <label for="longitudCanal">Longitud de canal limpiado o reparado (metros)</label>
                 <input type="number" 
                     name="longitudCanal" 
@@ -63,10 +63,10 @@
             </div> {{-- Fin Longitud Canal --}}
 
             {{-- Revestimiento --}}
-            <div class="form-group col-sm-12 col-md-6  col-lg-4 mb-5">
+            <div class="form-group col-sm-12 col-md-4 col-lg-3 mb-5">
                 <label for="revestimiento">Revestimiento</label>
                 <select name="revestimiento" id="revestimiento" class="form-control @error('revestimiento') is-invalid @enderror">
-                    <option value="" hidden>Seleccione el tipo de revestimiento</option>
+                    <option value="" hidden>Seleccionar...</option>
                     <option 
                         value="Tierra"
                         {{ old('revestimiento') == 'Tierra' ? 'selected' : '' }}
@@ -93,10 +93,8 @@
                 @enderror
             </div>{{-- Fin Revestimiento --}}
 
-            <div class="w-100"></div>
-
             {{-- Acciones Realizadas --}}
-            <div class="col-12 text-center">
+            <div class="col-12 col-lg-6 text-center">
                 <div class="@error('revestimiento') is-invalid @enderror">Acciones Realizadas</div>
                 
                 <div class="form-check form-check-inline">
@@ -153,6 +151,26 @@
                     </span>
                 @enderror
             </div>
+
+            {{-- Costo --}}
+            <div class="form-group col-sm-12 col-md-6 col-lg-6 mb-5">
+                <label for="costo">Costo</label>
+                <input type="number" 
+                    name="costo" 
+                    id="costo"
+                    min="0"
+                    step="0.5"
+                    max="99999.5"
+                    value="{{ old('costo') }}"
+                    class="form-control 
+                        @error('costo') is-invalid @enderror" 
+                />
+                @error('costo')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
+            </div>{{-- Fin Costo --}}
 
             @include('srhigo.campos.responsable')
 

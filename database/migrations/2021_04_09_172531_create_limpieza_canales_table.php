@@ -23,6 +23,7 @@ class CreateLimpiezaCanalesTable extends Migration
             $table->string('revestimiento', 8);
             $table->string('accionesRealizadas', 50);
             $table->text('observaciones')->nullable();
+            $table->decimal('costo', 6, 1)->default(0)->nullable();
             $table->foreignId('empleado_id')->references('id')->on('empleados');
             $table->foreignId('user_id')->references('id')->on('users');
 

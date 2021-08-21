@@ -17,6 +17,7 @@ class LimpiezaCanales extends Model
     'revestimiento',
     'accionesRealizadas',
     'observaciones',
+    'costo',
     'empleado_id',
     'user_id',
     ];
