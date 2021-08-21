@@ -6,11 +6,47 @@
     <form action="{{ route('capacitacionPersonal.store') }}" method="post" class="col-12">
         @csrf
         <div class="row">
-            @include('srhigo.campos.huertaSeccion')
-            @include('srhigo.campos.fecha')
+            {{-- Huerta --}}
+            <div class="form-group col-sm-12 col-md-6 col-lg-6 mb-5">
+                <label for="huerta">Huerta</label>
+                <select name="huerta" id="huerta" class="form-control @error('huerta') is-invalid @enderror">
+                    <option value="" hidden>Seleccione la huerta</option>
+                    @foreach ($huertas as $huerta)
+                        <option 
+                            value="{{ $huerta->id }}"
+                            {{ old('huerta') == $huerta->id ? 'selected' : '' }}
+                        />
+                        {{ $huerta->nombreHuerta }}
+                        </option>
+                    @endforeach
+                </select>
+                @error('huerta')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
+            </div>{{-- Fin Huerta --}}
+
+            {{-- Fecha --}}
+            <div class="form-group col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-5">
+                <label for="fecha">Fecha</label>
+                <input type="date" 
+                    name="fecha" 
+                    id="fecha"
+                    max="{{ $fechaActual }}"
+                    value="{{ old('fecha') }}"
+                    class="form-control 
+                        @error('fecha') is-invalid @enderror" 
+                />
+                @error('fecha')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
+            </div>{{-- Fin Fecha --}}
 
             {{-- Nombre del Curso --}}
-            <div class="form-group col-sm-12 col-md-6 mb-5">
+            <div class="form-group col-sm-12 col-md-6 col-lg-6 mb-5">
                 <label for="nombreCurso">Nombre del Curso</label>
                 <input type="text" 
                     name="nombreCurso" 
@@ -42,7 +78,7 @@
             </div> {{-- Fin nombre del Capacitador --}}
 
             {{-- Empresa Capacitadora --}}
-            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
+            <div class="form-group col-sm-12 col-md-4 col-lg-4 mb-5">
                 <label for="empresaCapacitadora">Empresa Capacitadora</label>
                 <input type="text" 
                     name="empresaCapacitadora" 
@@ -58,7 +94,7 @@
             </div> {{-- Fin Empresa Capacitadora --}}
 
             {{-- Tiempo de Capacitación --}}
-            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
+            <div class="form-group col-sm-12 col-md-4 col-lg-4 mb-5">
                 <label for="tiempoCapacitacion">Tiempo de Capacitación (Horas:Minutos)</label>
                 <input type="text"
                     min="0"
@@ -75,10 +111,12 @@
             </div> {{-- Fin Tiempo de Capacitación --}}
 
             {{-- Costo de la capacitación --}}
-            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
-                <label for="costo">Costo de la capacitación (Horas:Minutos)</label>
+            <div class="form-group col-sm-12 col-md-4 col-lg-4 mb-5">
+                <label for="costo">Costo de la capacitación</label>
                 <input type="number"
                     min="0"
+                    step="0.5"
+                    max="99999.5"
                     name="costo" 
                     id="costo" 
                     value="{{ old('costo') }}"

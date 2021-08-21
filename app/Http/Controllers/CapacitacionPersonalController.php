@@ -9,44 +9,29 @@ use Illuminate\Support\Facades\Auth;
 
 class CapacitacionPersonalController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {   
         $fechaActual = date('Y-m-d');
-        $secciones = Auth::user()->secciones;
+        $huertas = Auth::user()->huertas;
         $trabajadores = Auth::user()->empleados;
         return view('srhigo.capacitacionPersonal')
             ->with([
                 'fechaActual' => $fechaActual,
-                'secciones' => $secciones,
+                'huertas' => $huertas,
                 'trabajadores' => $trabajadores,
             ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         $data = request()->validate([
-            'huertaSeccion' => 'required',
+            'huerta' => 'required',
             'fecha' => 'required',
             'nombreCurso' => 'required',
             'nombreCapacitador' => 'required',
@@ -55,14 +40,14 @@ class CapacitacionPersonalController extends Controller
         ]);
 
         // Obtención de la huerta y sección
-        $seccion = (int)$data['huertaSeccion'];
-        $huertas = Seccion::where("id", $seccion)->get();
-        foreach ($huertas as $huerta){
-            $huerta_id = $huerta->propiedad_id;
-        }
+        // $seccion = (int)$data['huertaSeccion'];
+        // $huertas = Seccion::where("id", $seccion)->get();
+        // foreach ($huertas as $huerta){
+        //     $huerta_id = $huerta->propiedad_id;
+        // }
 
         Auth::user()->capacitacion()->create([
-            'huerta_id' => $huerta_id,
+            'huerta_id' => $data['huerta'],
             'fecha' => $data['fecha'],
             'nombreCurso' => $data['nombreCurso'],
             'capacitador' => $data['nombreCapacitador'],
@@ -72,7 +57,8 @@ class CapacitacionPersonalController extends Controller
             'empleados' => implode(', ', $data['trabajadores']),
         ]);
 
-        return redirect('main')->with('mensaje', '¡La Capacitación del Personal se ha Registrado Correctamente!');
+        session()->put('mensaje', '¡La Capacitación del Personal se ha Registrado Correctamente!');
+        return redirect('main');
     }
 
     /**
