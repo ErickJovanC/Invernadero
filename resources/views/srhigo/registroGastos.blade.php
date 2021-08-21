@@ -14,10 +14,26 @@
     <form action="{{ route('gasto.store') }}" method="post" class="col-12">
         @csrf
         <div class="row">
-            @include('srhigo.campos.fecha')
+            {{-- Fecha --}}
+            <div class="form-group col-sm-12 col-md-4 col-lg-4 col-xl-4 mb-5">
+                <label for="fecha">Fecha</label>
+                <input type="date" 
+                    name="fecha" 
+                    id="fecha"
+                    max="{{ $fechaActual }}"
+                    value="{{ old('fecha') }}"
+                    class="form-control 
+                        @error('fecha') is-invalid @enderror" 
+                />
+                @error('fecha')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
+            </div>{{-- Fin Fecha --}}
 
             {{-- Concepto --}}
-            <div class="form-group col-sm-12 col-md-6 col-lg-4 col-xl-3 mb-5">
+            <div class="form-group col-sm-6 col-md-4 col-lg-4 col-xl-4 mb-5">
                 <label for="concepto">Concepto</label>
                 <select name="concepto" id="concepto" class="form-control @error('concepto') is-invalid @enderror">
                     <option value="" hidden>Seleccionar</option>
@@ -38,7 +54,7 @@
             </div> {{-- Fin Concepto --}}
 
             {{-- Costo --}}
-            <div class="form-group col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-5">
+            <div class="form-group col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 mb-5">
                 <label for="costo">Costo $</label>
                 <input type="text" 
                     name="costo" 
@@ -55,7 +71,7 @@
             </div> {{-- Fin Costo --}}
 
             {{-- comentario --}}
-            <div class="form-group col-12 col-sm-6 col-md-4 mb-5">
+            <div class="form-group col-12 mb-5">
                 <label for="comentario">Comentario</label>
                 <input type="text" 
                     name="comentario" 
