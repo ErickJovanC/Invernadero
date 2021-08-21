@@ -55,12 +55,6 @@ class LimpiezaCanalesController extends Controller
         return redirect('main');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\LimpiezaCanales  $limpiezaCanales
-     * @return \Illuminate\Http\Response
-     */
     public function show(LimpiezaCanales $limpiezaCanales)
     {
         //

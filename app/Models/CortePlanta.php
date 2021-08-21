@@ -16,6 +16,7 @@ class CortePlanta extends Model
         'cantidad',
         'motivo',
         'comentario',
+        'costo',
         'empleado_id',
         'user_id',
     ];

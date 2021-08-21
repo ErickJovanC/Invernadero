@@ -63,6 +63,7 @@ class CortePlantaController extends Controller
             'cantidad' => $data['cantidad'],
             'motivo' => $data['motivo'],
             'comentario' => $request['comentario'],
+            'costo' => $request['costo'],
             'empleado_id' => $data['responsable'],
         ]);
 

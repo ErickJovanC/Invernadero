@@ -80,8 +80,28 @@
             </div>
             {{-- Fin Comentario --}}
 
+            {{-- Costo --}}
+            <div class="form-group col-sm-12 col-md-6 col-lg-6 mb-5">
+                <label for="costo">Costo</label>
+                <input type="number" 
+                    name="costo" 
+                    id="costo"
+                    min="0"
+                    step="0.5"
+                    max="99999.5"
+                    value="{{ old('costo') ?  old('costo') : 0 }}"
+                    class="form-control 
+                        @error('costo') is-invalid @enderror" 
+                />
+                @error('costo')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
+            </div>{{-- Fin Costo --}}
+
             {{-- Responsable --}}
-            <div class="form-group col-sm-12 col-md-12 col-lg-12 mb-5">
+            <div class="form-group col-sm-12 col-md-6 col-lg-6 mb-5">
                 <label for="responsable">Responsable</label>
                 <select name="responsable" id="responsable" class="form-control @error('responsable') is-invalid @enderror">
                     <option value="" hidden>Seleccione el empleado</option>
