@@ -21,6 +21,7 @@ class HistorialController extends Controller
         $controlPreventivoPlanta = Auth::user()->controlPreventivoPlanta;
         $controlPreventivoArbol = Auth::user()->controlPreventivoArbol;
         $registroSiembra = Auth::user()->registroSiembra;
+        $actividadesCulturales = Auth::user()->actividadesCulturales;
         $registroCosecha = Auth::user()->registroCosecha;
         $aplicacionFertilizante = Auth::user()->aplicacionFertilizante;
         $fertilizanteOrganico = Auth::user()->fertilizanteOrganico;
@@ -39,6 +40,7 @@ class HistorialController extends Controller
                 'controlPreventivoPlanta' => $controlPreventivoPlanta,
                 'controlPreventivoArbol' => $controlPreventivoArbol,
                 'registroSiembra' => $registroSiembra,
+                'actividadesCulturales' => $actividadesCulturales,
                 'registroCosecha' => $registroCosecha,
                 'aplicacionFertilizante' => $aplicacionFertilizante,
                 'fertilizanteOrganico' => $fertilizanteOrganico,

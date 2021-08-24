@@ -317,6 +317,87 @@
     </table>
     {{-- Fin Registro de Siembra --}}
 
+    {{-- Actividades Culturales --}}
+    <h2 class="h1 mt-5">Actividades Culturales</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Fecha</th>
+                <th scope="col">Huerta y Sección</th>
+                <th scope="col">Actividad Realizada</th>
+                <th scope="col">Costo</th>
+                <th scope="col">Ver Detalle</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($actividadesCulturales as $cultura)
+            <tr>
+                <td>{{ $cultura->fecha }}</td>
+                <td>{{ $cultura->huerta->nombreHuerta ." - ". 
+                        $cultura->seccion->nombreSeccion }}</td>
+                <td>{{ $cultura->actividad }}</td>
+                <td>${{ $cultura->costo }}
+                </td>
+                <td><a href="#" data-toggle="modal" data-target="#cultura{{ $cultura->id }}">Ver detalle</a></td>
+            </tr>
+            
+            <!-- Modal -->
+            <div class="modal fade" id="cultura{{ $cultura->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Detalles</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            Fecha de cultura:
+                            <b>{{ $cultura->fecha }}</b>
+                        </div>
+                        <div>
+                            Huerta:
+                            <b>{{ $cultura->huerta->nombreHuerta }}</b>
+                        </div>
+                        <div>
+                            Sección: 
+                            <b>{{ $cultura->seccion->nombreSeccion }}</b>
+                        </div>
+                        <div>
+                            Actividad Realizada:
+                            <b>{{ $cultura->actividad }}</b>
+                        </div>
+                        <div>
+                            Costo:
+                            <b>${{ $cultura->costo }}</b>
+                        </div>
+                        <div>
+                            Comentario:
+                            <b>{{ $cultura->comentario }}</b>
+                        </div>
+                        <div>
+                            Responsable:
+                            <b>
+                                {{
+                                    $cultura->Empleado->nombreEmpleado .' '.
+                                    $cultura->Empleado->apellidoEmpleado .' ('.
+                                    $cultura->Empleado->sobrenombreEmpleado .')'
+                                }}
+                            </b>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+            @endforeach
+        </tbody>
+    </table>
+    {{-- Fin Actividades Culturales --}}
+
     {{-- Registro de Cosecha --}}
     <h2 class="h1 mt-5">Registro de Cosecha</h2>
     <table class="table table-striped">
@@ -430,7 +511,7 @@
                 <th scope="col">Fecha</th>
                 <th scope="col">Huerta y Sección</th>
                 <th scope="col">Fertilizante</th>
-                <th scope="col">Kilos por hectarea</th>
+                <th scope="col">Unidades</th>
                 <th scope="col">Ver Detalle</th>
             </tr>
         </thead>
@@ -441,7 +522,7 @@
                 <td>{{ $fertilizante->huerta->nombreHuerta ." - ". 
                         $fertilizante->seccion->nombreSeccion }}</td>
                 <td>{{ $fertilizante->fertilizante->nombreFertilizante }}</td>
-                <td>{{ $fertilizante->kilosHectarea }}
+                <td>{{ $fertilizante->unidades }}
                 </td>
                 <td><a href="#" data-toggle="modal" data-target="#fertilizante{{ $fertilizante->id }}">Ver detalle</a></td>
             </tr>
@@ -563,8 +644,8 @@
                             <b>{{ $organico->cantidadAplicada ." KG" }}</b>
                         </div>
                         <div>
-                            Superficie:
-                            <b>{{ $organico->superficie }}</b>
+                            Costo:
+                            <b>{{ $organico->costo }}</b>
                         </div>
                         <div>
                             Responsable:
