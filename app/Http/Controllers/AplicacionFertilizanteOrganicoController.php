@@ -29,7 +29,7 @@ class AplicacionFertilizanteOrganicoController extends Controller
     {
         $fechaActual = date('Y-m-d');
         $secciones = Auth::user()->secciones;
-        $empleados = Empleado::all(['id', 'nombreEmpleado', 'apellidoEmpleado', 'sobrenombreEmpleado']);
+        $empleados = Auth::user()->empleados;
         return view('srhigo.aplicacionFertilizanteOrganico')->
             with([
                 'secciones' => $secciones, 

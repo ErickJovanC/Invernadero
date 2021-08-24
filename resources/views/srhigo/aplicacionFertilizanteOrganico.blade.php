@@ -44,6 +44,9 @@
                     <option value="Porcino" 
                         {{ old('tipoFertilizante') == 'Porcino' ? 'selected' : '' }}>
                         Porcino</option>
+                    <option value="Res" 
+                        {{ old('tipoFertilizante') == 'Res' ? 'selected' : '' }}>
+                        Res</option>
                     <option value="Vegetal" 
                         {{ old('tipoFertilizante') == 'Vegetal' ? 'selected' : '' }}>
                         Vegetal</option>
