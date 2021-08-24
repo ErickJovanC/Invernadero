@@ -25,6 +25,7 @@ use App\Http\Controllers\RegistroPersonalController;
 use App\Http\Controllers\CalibracionEquipoController;
 use App\Http\Controllers\ControlPreventivoController;
 use App\Http\Controllers\RegistroPropiedadController;
+use App\Http\Controllers\ActividadesCulturaleController;
 use App\Http\Controllers\AplicacionPlaguicidaController;
 use App\Http\Controllers\CapacitacionPersonalController;
 use App\Http\Controllers\IdentificacionPlagasController;
@@ -73,6 +74,7 @@ Route::resource('cosecha', CosechaController::class)->middleware('auth');
 Route::resource('cliente', ClienteController::class)->middleware('auth');
 Route::resource('cortePlanta', CortePlantaController::class)->middleware('auth');
 Route::resource('gasto', GastoController::class)->middleware('auth');
+Route::resource('actividadesCulturales', ActividadesCulturaleController::class)->middleware('auth');
 
 Route::resource('prueba', PruebaController::class);
 

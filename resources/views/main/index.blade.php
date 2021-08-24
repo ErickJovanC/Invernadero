@@ -32,22 +32,27 @@
 
         <h1 class="col-12 mt-5">Preparación, Siembra y Cosecha</h1>
         <a href="{{ route('calidadPlanta.create') }}"
-            class="btn btn-primary btn-menu col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 p-2">
+            class="btn btn-primary btn-menu col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 p-2">
             Recepción de Plantas
         </a>
 
         <a href="{{ route('preparacionSuelo.create') }}"
-            class="btn btn-primary btn-menu col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 p-2">
+            class="btn btn-primary btn-menu col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 p-2">
             Preparación de suelo
         </a>
 
         <a href="{{ route('registroSiembra.create') }}"
-            class="btn btn-primary btn-menu col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 p-2">
+            class="btn btn-primary btn-menu col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 p-2">
             Registro de Siembra
         </a>
 
+        <a href="{{ route('actividadesCulturales.create') }}"
+            class="btn btn-primary btn-menu col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 p-2">
+            Actividades Culturales
+        </a>
+
         <a href="{{ route('cosecha.create') }}"
-            class="btn btn-primary btn-menu col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 p-2">
+            class="btn btn-primary btn-menu col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 p-2">
             Registro de Cosecha
         </a>
 
