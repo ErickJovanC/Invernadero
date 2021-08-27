@@ -23,6 +23,7 @@ class Cosecha extends Model
         'taras',
         'capacidadTara',
         'costo',
+        'precioVenta',
         'empleado_id',
         'user_id',
     ];

@@ -43,6 +43,8 @@ class CosechaController extends Controller
             'taras' => 'required',
             'capacidadTara' => 'required',
             'cliente' => 'required',
+            'costo' => 'required',
+            'precioVenta' => 'required',
             'responsable' => 'required',
         ]);
 
@@ -66,7 +68,8 @@ class CosechaController extends Controller
             'tempSuelo' => $request['tempSuelo'],
             'taras' => $data['taras'],
             'capacidadTara' => $data['capacidadTara'],
-            'costo' => $request['costo'],
+            'costo' => $data['costo'],
+            'precioVenta' => $data['precioVenta'],
             'empleado_id' => $data['responsable'],
         ]);
 

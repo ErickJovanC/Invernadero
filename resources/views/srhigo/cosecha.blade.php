@@ -167,7 +167,7 @@
 
             {{-- Costo --}}
             <div class="form-group col-sm-12 col-md-6 col-lg-2 mb-5">
-                <label for="costo">Costo</label>
+                <label for="costo">Costo de la Actividad</label>
                 <input type="number" 
                     name="costo" 
                     id="costo"
@@ -185,7 +185,47 @@
                 @enderror
             </div>{{-- Fin Costo --}}
 
-            @include('srhigo.campos.responsable')
+            {{-- Precio de Venta Total --}}
+            <div class="form-group col-sm-12 col-md-6 col-lg-2 mb-5">
+                <label for="precioVenta">Precio de Venta Total</label>
+                <input type="number" 
+                    name="precioVenta" 
+                    id="precioVenta"
+                    min="0"
+                    step="0.5"
+                    value="{{ old('precioVenta') }}"
+                    class="form-control 
+                        @error('precioVenta') is-invalid @enderror" 
+                />
+                @error('precioVenta')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
+            </div>{{-- Fin Precio de Venta Total --}}
+
+            {{-- Responsable --}}
+            <div class="form-group col-sm-12 col-md-6 col-lg-4 mb-5">
+                <label for="responsable">Responsable</label>
+                <select name="responsable" id="responsable" class="form-control @error('responsable') is-invalid @enderror">
+                    <option value="" hidden>Seleccione el empleado</option>
+                    @foreach ($empleados as $empleado)
+                        <option 
+                            value="{{ $empleado->id }}" 
+                            {{ old('responsable') == $empleado->id ? 'selected' : '' }}
+                        >
+                            {{ $empleado->nombreEmpleado ." ".
+                                $empleado->apellidoEmpleado ." (".
+                                $empleado->sobrenombreEmpleado .")"}}
+                        </option>
+                    @endforeach
+                </select>
+                @error('responsable')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
+            </div> {{-- Fin Responsable --}}
 
         </div>
 

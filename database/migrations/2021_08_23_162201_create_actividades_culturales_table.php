@@ -15,7 +15,7 @@ class CreateActividadesCulturalesTable extends Migration
             $table->date('fecha');
             $table->string('actividad', 35);
             $table->decimal('costo', 6, 1);
-            $table->string('comentario');
+            $table->string('comentario')->nullable();
             $table->foreignId('empleado_id')->references('id')->on('empleados');
             $table->foreignId('user_id')->references('id')->on('users');
             $table->timestamps();
