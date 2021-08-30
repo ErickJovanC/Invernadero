@@ -25,11 +25,23 @@ class FinanzasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index(Request $request)
+    {   
+        $fechaInicial = '2021-01-01';
+        $fechaFinal = date('Y-m-d');
+        // dd($fechaActual);
+        if(isset($request['fechaI'])){
+            $fechaInicial = $request['fechaI'];
+            // $fechaFinal = $request['fechaF'];
+        }
+        else{
+            $fechaInicial = '2021-01-01';
+            // $fechaFinal = date('Y-m-d');
+        }
+
         $gastos = Auth::user()->registroGastos;
         $id = Auth::user()->id;
-        $fertilizantes = AplicacionFertilizante::where('user_id', $id )->orderBy('fertilizante_id', 'ASC')->get();
+        $fertilizantes = AplicacionFertilizante::where('user_id', $id )->whereBetween('fechaAplicacion', [$fechaInicial, $fechaFinal])->orderBy('fertilizante_id', 'ASC')->get();
         $plaguicidas = AplicacionPlaguicida::where('user_id', $id )->orderBy('plaguicida_id', 'ASC')->get();
         $actividadesCulturales = ActividadesCulturale::where('user_id', $id )->orderBy('actividad', 'ASC')->get();
 

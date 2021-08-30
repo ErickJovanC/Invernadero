@@ -5,6 +5,50 @@
     <h1 class="titulos mb-5 col-12 text-center">Reporte Financiero</h1>
     <div class="alert alert-warning text-center col-12">Aun falta poder seleccionar el rango de fechas</div>
 
+    <form action="{{ route('finanzas.index') }}" method="get" class="col-12">
+        @csrf
+        <div class="row align-items-end">
+            {{-- Fecha Inicial --}}
+            <div class="form-group col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-5">
+                <label for="fechaI">Fecha Inicial</label>
+                <input type="date" 
+                    name="fechaI" 
+                    id="fechaI"
+                    {{-- max="{{ $fechaIActual }}" --}}
+                    value="{{ old('fechaI') }}"
+                    class="form-control 
+                        @error('fechaI') is-invalid @enderror" 
+                />
+                @error('fechaI')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
+            </div>{{-- Fin Fecha Inicial --}}
+
+            {{-- Fecha Final --}}
+            <div class="form-group col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-5">
+                <label for="fechaf">Fecha Final</label>
+                <input type="date" 
+                    name="fechaf" 
+                    id="fechaf"
+                    {{-- max="{{ $fechafActual }}" --}}
+                    value="{{ old('fechaf') }}"
+                    class="form-control 
+                        @error('fechaf') is-invalid @enderror" 
+                />
+                @error('fechaf')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
+            </div>{{-- Fin Fecha Final --}}
+
+            <div class="form-group pb-4">
+                <input type="submit" value="Concultar Reporte" class="btn btn-primary px-5">
+            </div>
+        </div>
+    </form>
 
     <div class="col-12">
         <table class="table mb-5 table-responsive-md table-sm">
