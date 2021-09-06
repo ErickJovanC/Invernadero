@@ -3,7 +3,7 @@
 <a href="{{ route('main') }}" class="btn btn-success">Menú</a>
 <div class="row">
     <h1 class="titulos mb-5 col-12 text-center">Reporte Financiero</h1>
-    <div class="alert alert-warning text-center col-12">Aun falta poder seleccionar el rango de fechas</div>
+    {{-- <div class="alert alert-warning text-center col-12">Aun falta poder seleccionar el rango de fechas</div> --}}
 
     <form action="{{ route('finanzas.index') }}" method="get" class="col-12">
         @csrf
@@ -15,7 +15,7 @@
                     name="fechaI" 
                     id="fechaI"
                     {{-- max="{{ $fechaIActual }}" --}}
-                    value="{{ old('fechaI') }}"
+                    value="{{ isset($_GET['fechaI']) ? $_GET['fechaI'] : '' }}"
                     class="form-control 
                         @error('fechaI') is-invalid @enderror" 
                 />
@@ -28,16 +28,16 @@
 
             {{-- Fecha Final --}}
             <div class="form-group col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-5">
-                <label for="fechaf">Fecha Final</label>
+                <label for="fechaF">Fecha Final</label>
                 <input type="date" 
-                    name="fechaf" 
-                    id="fechaf"
-                    {{-- max="{{ $fechafActual }}" --}}
-                    value="{{ old('fechaf') }}"
+                    name="fechaF" 
+                    id="fechaF"
+                    {{-- max="{{ $fechaFActual }}" --}}
+                    value="{{ isset($_GET['fechaF']) ? $_GET['fechaF'] : '' }}"
                     class="form-control 
-                        @error('fechaf') is-invalid @enderror" 
+                        @error('fechaF') is-invalid @enderror" 
                 />
-                @error('fechaf')
+                @error('fechaF')
                     <span class="invalid-feedback d-block" role="alert">
                         <strong>{{$message}}</strong>
                     </span>
@@ -45,7 +45,7 @@
             </div>{{-- Fin Fecha Final --}}
 
             <div class="form-group pb-4">
-                <input type="submit" value="Concultar Reporte" class="btn btn-primary px-5">
+                <input type="submit" value="Consultar Reporte" class="btn btn-primary px-5">
             </div>
         </div>
     </form>
@@ -55,12 +55,12 @@
             <thead class="thead-dark">
                 <tr class="table-active">
                     <td scope="row" class="text-right">Productor:</td>
-                    <td><b>Gustavo Hernandez Ruiz</b></td>
+                    <td colspan="5"><b>{{ $user->nombre }}</b></td>
                     {{-- <td></td> --}}
-                    <td scope="row" class="text-right">Mes:</td>
-                    <td><b>Junio</b></td>
-                    <td scope="row" class="text-right">Año:</td>
-                    <td><b>2021</b></td>
+                    {{-- <td scope="row" class="text-right">Mes:</td> --}}
+                    {{-- <td><b>Junio</b></td> --}}
+                    {{-- <td scope="row" class="text-right">Año:</td> --}}
+                    {{-- <td><b>2021</b></td> --}}
                 </tr>
                 <tr class="text-center">
                     <th scope="col">Concepto</th>
@@ -352,7 +352,14 @@
                 </tr>
                 <tr>
                     <td scope="row">Costo por Tonelada</td>
-                    @php $costoTonelada = round( $totalEgresos / $cosechas[0], 2 ); @endphp
+                    @php 
+                        if($cosechas[0] != 0){
+                        $costoTonelada = round( $totalEgresos / $cosechas[0], 2 );
+                        }
+                        else {
+                            $costoTonelada = 0;
+                        }
+                    @endphp
                     <td>{{ $costoTonelada }}</td>
                 </tr>
                 <tr>
