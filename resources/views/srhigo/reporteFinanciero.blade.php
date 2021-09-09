@@ -353,12 +353,10 @@
                 <tr>
                     <td scope="row">Costo por Tonelada</td>
                     @php 
-                        if($cosechas[0] != 0){
+                        if($cosechas[0] == 0){
+                            $cosechas[0] = 1;
+                        }
                         $costoTonelada = round( $totalEgresos / $cosechas[0], 2 );
-                        }
-                        else {
-                            $costoTonelada = 0;
-                        }
                     @endphp
                     <td>{{ $costoTonelada }}</td>
                 </tr>
@@ -377,7 +375,12 @@
                 </tr>
                 <tr>
                     <td scope="row">Benefio / Costo</td>
-                    @php $beneficio = round( 100/$totalEgresos * $utilidad, 2 ); @endphp
+                    @php 
+                        if( $totalEgresos == 0  ){
+                            $totalEgresos = 1;
+                        }
+                        $beneficio = round( 100/$totalEgresos * $utilidad, 2 ); 
+                    @endphp
                     <td>{{ $beneficio }}%</td>
                 </tr>
             </tbody>

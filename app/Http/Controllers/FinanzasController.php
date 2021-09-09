@@ -18,6 +18,7 @@ use App\Models\CapacitacionPersonal;
 use Illuminate\Support\Facades\Auth;
 use App\Models\AplicacionFertilizante;
 use App\Models\ControlPreventivoPlaga;
+use App\Models\Gasto;
 
 class FinanzasController extends Controller
 {
@@ -26,26 +27,27 @@ class FinanzasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Request $request, $id = 0)
     {
         $fechaInicial = '2021-07-01';
         $fechaFinal = date('Y-m-d');
         if (!empty($request['fechaI'])) {
             $fechaInicial = $request['fechaI'];
-        } 
+        }
 
         if (!empty($request['fechaF'])) {
             $fechaFinal = $request['fechaF'];
         }
-        $id = Auth::user()->id;
+        
+        if( $id == 0){
+            $id = Auth::user()->id;
+        }
 
-        // if (!empty($_GET['user'])) {
-        //     $id = $_GET['user'];
-        // }
+        // dd($id);
 
         $gastosDiversos = [];
 
-        $gastos = Auth::user()->registroGastos;
+        $gastos = Gasto::where('user_id', $id)->whereBetween('fecha', [$fechaInicial, $fechaFinal])->orderBy('concepto_id', 'ASC')->get();
         $fertilizantes = AplicacionFertilizante::where('user_id', $id)->whereBetween('fechaAplicacion', [$fechaInicial, $fechaFinal])->orderBy('fertilizante_id', 'ASC')->get();
         $plaguicidas = AplicacionPlaguicida::where('user_id', $id)->whereBetween('fecha', [$fechaInicial, $fechaFinal])->orderBy('plaguicida_id', 'ASC')->get();
         $actividadesCulturales = ActividadesCulturale::where('user_id', $id)->orderBy('actividad', 'ASC')->get();

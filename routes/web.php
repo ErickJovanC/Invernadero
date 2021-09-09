@@ -85,6 +85,7 @@ Route::view('pseccion', 'primerRegistro/seccion')->name('seccion.view')->middlew
 Route::view('pempleados', 'primerRegistro/empleados')->name('empleados.view')->middleware('auth');
 Route::view('registroCompleto', 'primerRegistro/registroCompleto')->name('registroCompleto')->middleware('auth');
 Route::get('/finanzas', [FinanzasController::class, 'index'])->name('finanzas.index')->middleware('auth');
+Route::get('/finanzas/{user}', [FinanzasController::class, 'index'])->name('finanzasAdmin.index')->middleware('auth');
 
 Route::get('/admin', [AdministradorController::class, 'index'])->name('admin.index')->middleware('auth');
 Route::get('/actividades/{user}', [AdministradorController::class, 'verActividades'])->name('admin.verActividades');

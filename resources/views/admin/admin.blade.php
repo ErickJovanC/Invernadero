@@ -123,7 +123,7 @@
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->direccion}}</td>
                         <td><a href="{{ route('admin.verActividades', $user->id) }}" class="btn btn-primary">Ver actividades</a></td>
-                        <td><a href="#" class="btn btn-warning">Estado Financiero</a></td>
+                        <td><a href="{{ route('finanzasAdmin.index', $user->id) }}" class="btn btn-warning">Estado Financiero</a></td>
                     </tr>
                 @endif    
                 @endforeach
