@@ -12,14 +12,6 @@
                 <label for="nombreFertilizante">Fertilizante Aplicado</label>
                 <select name="nombreFertilizante" id="nombreFertilizante" class="form-control @error('nombreFertilizante') is-invalid @enderror">
                     <option value="" hidden>Seleccione el fertilizante</option>
-                    @foreach ($fertilizantesP as $fertilizante)
-                        <option 
-                            value="{{ $fertilizante->id }}" 
-                            {{ old('nombreFertilizante') == $fertilizante->id ? 'selected' : '' }}
-                        >
-                            {{ $fertilizante->nombreFertilizante }}
-                        </option>
-                    @endforeach
 
                     @foreach ($fertilizantes as $fertilizante)
                         <option 

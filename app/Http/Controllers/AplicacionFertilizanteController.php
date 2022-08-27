@@ -34,14 +34,14 @@ class AplicacionFertilizanteController extends Controller
         $empleados = Auth::User()->empleados;
         $fertilizantes = Fertilizante::where('user_id', 1)->get(/* 'id', 'nombreFertilizante' */);
         // dd($fertilizantes);
-        $fertilizantesP = Auth::User()->registroFertilizante;
+        //$fertilizantesP = Auth::User()->registroFertilizante;
         return view('srhigo.aplicacionFertilizante')->
         with([
             'lotes' => $lotes, 
             'fechaActual' => $fechaActual,
             'empleados' => $empleados,
             'fertilizantes' => $fertilizantes,
-            'fertilizantesP' => $fertilizantesP,
+            //'fertilizantesP' => $fertilizantesP,
             'secciones' => $secciones,
         ]);
     }
