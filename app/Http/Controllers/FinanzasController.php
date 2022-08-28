@@ -35,7 +35,7 @@ class FinanzasController extends Controller
         $fechaFinal = $request['fechaF'] ?? date('Y-m-d');
 
         $fertilizers = FinancialReportRepo::getFertilizersDate($user->id, $fechaInicial, $fechaFinal);
-        $plaguicidas = AplicacionPlaguicida::where('user_id', $user->id)->whereBetween('fecha', [$fechaInicial, $fechaFinal])->orderBy('plaguicida_id', 'ASC')->get();
+        $pesticides = FinancialReportRepo::getPesticideDate($user->id, $fechaInicial, $fechaFinal);
         
         $gastosDiversos = [];
         $gastos = Gasto::where('user_id', $user->id)->whereBetween('fecha', [$fechaInicial, $fechaFinal])->orderBy('concepto_id', 'ASC')->get();
@@ -226,7 +226,7 @@ class FinanzasController extends Controller
         
 
         return view('srhigo.reporteFinanciero',
-            compact('gastos', 'fertilizers', 'plaguicidas', 'actividadesCulturales', 'gastosDiversos', 'costoPracticasA', 'cosechas', 'user')
+            compact('gastos', 'fertilizers', 'pesticides', 'actividadesCulturales', 'gastosDiversos', 'costoPracticasA', 'cosechas', 'user')
         );
     }
 }

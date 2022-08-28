@@ -2,10 +2,11 @@
 namespace App\Repositories;
 
 use App\Models\AplicacionFertilizante;
+use App\Models\AplicacionPlaguicida;
 
 class FinancialReportRepo
 {
-    /**
+    /** Return Fertilers Report
      * @param int $userId
      * @param string $dateStart
      * @param string $dateEnd
@@ -36,5 +37,38 @@ class FinancialReportRepo
         }
 
         return $fer;
+    }
+
+    /** Return Plesticides Report
+     * @param int $userId
+     * @param mixed $dateStart
+     * @param mixed $dateEnd
+     * @return array
+     */
+    public static function getPesticideDate(int $userId, $dateStart, $dateEnd)
+    {
+        $pesticideApplication = AplicacionPlaguicida::where('user_id', $userId)
+            ->whereBetween('fecha', [$dateStart, $dateEnd])
+                ->orderBy('plaguicida_id', 'ASC')->get();
+
+        $pes = [];
+        foreach ($pesticideApplication as $key => $item) {
+            $id = $item->fertilizante_id;
+
+            if (!isset($pes[$id])) {
+                $pes[$id]['name'] = $item->plaguicida->ingredienteActivo;
+                $pes[$id]['count'] = 1;
+                $pes[$id]['units'] = $item->unidades;
+                $pes[$id]['totalPrice'] = $item->precio * $item->unidades;
+                $pes[$id]['averagePrice'] = $item->precio;
+            } else {
+                $pes[$id]['count']++;
+                $pes[$id]['units'] += $item->unidades;
+                $pes[$id]['totalPrice'] += $item->precio * $item->unidades;
+                $pes[$id]['averagePrice'] = $pes[$id]['totalPrice'] / $pes[$id]['units'];
+            }
+        }
+
+        return $pes;
     }
 }
