@@ -76,10 +76,7 @@ Route::resource('cortePlanta', CortePlantaController::class)->middleware('auth')
 Route::resource('gasto', GastoController::class)->middleware('auth');
 Route::resource('actividadesCulturales', ActividadesCulturaleController::class)->middleware('auth');
 
-Route::resource('prueba', PruebaController::class);
-
-
-Route::view('main', '/main/index')->name('main')->middleware('auth')->middleware('nivelRegistro');
+Route::view('main', '/main/index')->name('main')->middleware('auth')/* ->middleware('nivelRegistro') */;
 Route::view('phuerta', 'primerRegistro/huerta')->name('huerta.view')/* ->middleware('auth') */;
 Route::view('pseccion', 'primerRegistro/seccion')->name('seccion.view')->middleware('auth');
 Route::view('pempleados', 'primerRegistro/empleados')->name('empleados.view')->middleware('auth');

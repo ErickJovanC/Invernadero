@@ -64,7 +64,7 @@
                 </tr>
                 <tr class="text-center">
                     <th scope="col">Concepto</th>
-                    <th scope="col">Unidades</th>
+                    <th scope="col">No. de Aplicaciones </th>
                     <th scope="col">Cantidad</th>
                     <th scope="col">Unidad</th>
                     <th scope="col">Costo Unitario (Promedio)</th>
@@ -78,59 +78,16 @@
                     <th></th>
                 </tr>
                 {{-- Sección de Fertilización  --}}
-                @php 
-                    $cont = 1;
-                    $id[0] = 0;
-                    $totalFertilizante = 0;
-                @endphp
                 @foreach ($fertilizantes as $fertilizante)
-                    @php 
-                        $id[$cont] = $fertilizante->fertilizante_id;
-                        if ($id[$cont] != $id[$cont-1] ){
-                            $nombre[$cont] = $fertilizante->fertilizante->nombreFertilizante;
-                            $unidades[$cont] = $fertilizante->unidades;
-                            $unidadesTotales[$cont] = $unidades[$cont];
-                            $precio[$cont] = $fertilizante->precio;
-                            $total[$cont] = $unidades[$cont] * $precio[$cont];
-                            $totalAcumulado[$cont] = $unidades[$cont] * $precio[$cont];
-                            $repeticion[$cont] = 1;
-                        }
-                        else{
-                            $cont--;
-                            $unidades[$cont] = $fertilizante->unidades;
-                            $unidadesTotales[$cont] += $unidades[$cont];
-                            $precio[$cont] = $fertilizante->precio;
-                            $total[$cont] = $unidades[$cont] * $precio[$cont];
-                            $totalAcumulado[$cont] += $unidades[$cont] * $precio[$cont];
-                            $repeticion[$cont]++;
-                        }
-
-                        $promedio[$cont] = round($totalAcumulado[$cont] / $unidadesTotales[$cont], 2);
-                        $cont++;
-                    @endphp
-                @endforeach
-                    
-                @for($x=1 ; $x<=$cont-1 ; $x++)
-                @php $totalFertilizante += $totalAcumulado[$x]; @endphp
                     <tr>
-                        <td>{{ $nombre[$x] }}</td>
-                        <td class="text-center">{{ $repeticion[$x] }}</td>
-                        <td>{{ $unidadesTotales[$x] }}</td>
-                        <td>KG/LT</td>
-                        <td>{{ $promedio[$x] }}</td>
-                        <td>{{ $totalAcumulado[$x] }}</td>
-                        {{-- <td></td> --}}
+                        <td>{{ $fertilizante['nombre'] }}</td>
+                        <td class="text-center">{{ $fertilizante['contador'] }}</td>
+                        <td class="text-center">{{ $fertilizante['unidades'] }}</td>
+                        <td class="text-center">KG/LT</td>
+                        <td class="text-center">{{ $fertilizante['precioPromedio'] }}</td>
+                        <td class="text-center">{{ $fertilizante['precioTotal'] }}</td>
                     </tr>
-                @endfor
-
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td class="text-right">Total:</td>
-                    <th>${{ $totalFertilizante }}</th>
-                </tr>
+                @endforeach
                 {{-- Fin sección Fertilización --}}
 
                 {{-- Sección de Plaguicida  --}}
@@ -300,7 +257,7 @@
                 </tr>
                 @php $totalGastos = 0; @endphp
                 @foreach ($gastos as $gasto)
-                    <tr>        
+                    <tr>
                         <td>{{ $gasto->concepto->concepto }}</td>
                         <td></td>
                         <td></td>
@@ -326,7 +283,7 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    @php $totalEgresos = $totalFertilizante+$totalPlaguicida+$totalLabores+$totalPracticasA+$totalGastos; @endphp
+                    @php $totalEgresos = /* $totalFertilizante+ */$totalPlaguicida+$totalLabores+$totalPracticasA+$totalGastos; @endphp
                     <th>${{ $totalEgresos }}</th>
                 </tr>
             </tbody>

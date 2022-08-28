@@ -16,9 +16,9 @@ use App\Models\ActividadesCulturale;
 use App\Models\AplicacionPlaguicida;
 use App\Models\CapacitacionPersonal;
 use Illuminate\Support\Facades\Auth;
-use App\Models\AplicacionFertilizante;
 use App\Models\ControlPreventivoPlaga;
 use App\Models\Gasto;
+use App\Repositories\FinancialReportRepo;
 
 class FinanzasController extends Controller
 {
@@ -27,34 +27,23 @@ class FinanzasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request, $id = 0)
+    public function index(Request $request, $id = null)
     {
-        $fechaInicial = '2021-07-01';
-        $fechaFinal = date('Y-m-d');
-        if (!empty($request['fechaI'])) {
-            $fechaInicial = $request['fechaI'];
-        }
+        $user = User::where('id', $id)->first() ?? Auth::user();
 
-        if (!empty($request['fechaF'])) {
-            $fechaFinal = $request['fechaF'];
-        }
+        $fechaInicial = $request['fechaI'] ?? '2021-07-01';
+        $fechaFinal = $request['fechaF'] ?? date('Y-m-d');
+
+        $fertilizantes = FinancialReportRepo::getFertilizantesFecha($user->id, $fechaInicial, $fechaFinal);
         
-        if( $id == 0){
-            $id = Auth::user()->id;
-        }
-
-        // dd($id);
-
         $gastosDiversos = [];
-
-        $gastos = Gasto::where('user_id', $id)->whereBetween('fecha', [$fechaInicial, $fechaFinal])->orderBy('concepto_id', 'ASC')->get();
-        $fertilizantes = AplicacionFertilizante::where('user_id', $id)->whereBetween('fechaAplicacion', [$fechaInicial, $fechaFinal])->orderBy('fertilizante_id', 'ASC')->get();
-        $plaguicidas = AplicacionPlaguicida::where('user_id', $id)->whereBetween('fecha', [$fechaInicial, $fechaFinal])->orderBy('plaguicida_id', 'ASC')->get();
-        $actividadesCulturales = ActividadesCulturale::where('user_id', $id)->orderBy('actividad', 'ASC')->get();
+        $gastos = Gasto::where('user_id', $user->id)->whereBetween('fecha', [$fechaInicial, $fechaFinal])->orderBy('concepto_id', 'ASC')->get();
+        $plaguicidas = AplicacionPlaguicida::where('user_id', $user->id)->whereBetween('fecha', [$fechaInicial, $fechaFinal])->orderBy('plaguicida_id', 'ASC')->get();
+        $actividadesCulturales = ActividadesCulturale::where('user_id', $user->id)->orderBy('actividad', 'ASC')->get();
 
         // Recepción de Planta
         $cont = 0;
-        $recepcionPlanta = CalidadPlanta::where('user_id', $id)->get('costo');
+        $recepcionPlanta = CalidadPlanta::where('user_id', $user->id)->get('costo');
         $costo = 0;
         $costoPracticasA = 0;
         foreach ($recepcionPlanta as $calidad) {
@@ -70,7 +59,7 @@ class FinanzasController extends Controller
         }
 
         // Preparación de suelo
-        $preparacion = PreparacionSuelo::where('user_id', $id)->get('costoOperacion');
+        $preparacion = PreparacionSuelo::where('user_id', $user->id)->get('costoOperacion');
         $costo = 0;
         foreach ($preparacion as $suelo) {
             $costo += $suelo->costoOperacion;
@@ -85,7 +74,7 @@ class FinanzasController extends Controller
         }
 
         // Siembra
-        $siembra = RegistroSiembra::where('user_id', $id)->get('costo');
+        $siembra = RegistroSiembra::where('user_id', $user->id)->get('costo');
         $costo = 0;
         foreach ($siembra as $suelo) {
             $costo += $suelo->costo;
@@ -100,7 +89,7 @@ class FinanzasController extends Controller
         }
 
         // Cosecha
-        $cosecha = Cosecha::where('user_id', $id)->get('costo');
+        $cosecha = Cosecha::where('user_id', $user->id)->get('costo');
         $costo = 0;
         foreach ($cosecha as $cosechaItem) {
             $costo += $cosechaItem->costo;
@@ -115,7 +104,7 @@ class FinanzasController extends Controller
         }
 
         // Riego
-        $riego = RegistroRiego::where('user_id', $id)->get('costo');
+        $riego = RegistroRiego::where('user_id', $user->id)->get('costo');
         $costo = 0;
         foreach ($riego as $riegoItem) {
             $costo += $riegoItem->costo;
@@ -130,7 +119,7 @@ class FinanzasController extends Controller
         }
 
         // controlPreventivo de lotes
-        $controlPreventivo = ControlPreventivo::where('user_id', $id)->get('costo');
+        $controlPreventivo = ControlPreventivo::where('user_id', $user->id)->get('costo');
         $costo = 0;
         foreach ($controlPreventivo as $control) {
             $costo += $control->costo;
@@ -145,7 +134,7 @@ class FinanzasController extends Controller
         }
 
         // controlPreventivo en plantas y arboles
-        $controlPreventivoPlanta = ControlPreventivoPlaga::where('user_id', $id)->get('costo');
+        $controlPreventivoPlanta = ControlPreventivoPlaga::where('user_id', $user->id)->get('costo');
         $costo = 0;
         foreach ($controlPreventivo as $controlP) {
             $costo += $controlP->costo;
@@ -160,7 +149,7 @@ class FinanzasController extends Controller
         }
 
         // Aplicación Plaguicida
-        $AplicacionPlaguicida = AplicacionPlaguicida::where('user_id', $id)->get('costo');
+        $AplicacionPlaguicida = AplicacionPlaguicida::where('user_id', $user->id)->get('costo');
         $costo = 0;
         foreach ($AplicacionPlaguicida as $plaguicida) {
             $costo += $plaguicida->costo;
@@ -175,7 +164,7 @@ class FinanzasController extends Controller
         }
 
         // Limpieza de Canales
-        $LimpiezaCanales = LimpiezaCanales::where('user_id', $id)->get('costo');
+        $LimpiezaCanales = LimpiezaCanales::where('user_id', $user->id)->get('costo');
         $costo = 0;
         foreach ($LimpiezaCanales as $canales) {
             $costo += $canales->costo;
@@ -190,7 +179,7 @@ class FinanzasController extends Controller
         }
 
         // Control de Podas
-        $CortePlanta = CortePlanta::where('user_id', $id)->get('costo');
+        $CortePlanta = CortePlanta::where('user_id', $user->id)->get('costo');
         $costo = 0;
         foreach ($CortePlanta as $corte) {
             $costo += $corte->costo;
@@ -205,7 +194,7 @@ class FinanzasController extends Controller
         }
 
         // Capacitación de personal
-        $CapacitacionPersonal = CapacitacionPersonal::where('user_id', $id)->get('costo');
+        $CapacitacionPersonal = CapacitacionPersonal::where('user_id', $user->id)->get('costo');
         $costo = 0;
         foreach ($CapacitacionPersonal as $capacitacion) {
             $costo += $capacitacion->costo;
@@ -219,7 +208,7 @@ class FinanzasController extends Controller
             $cont++;
         }
 
-        $cosechas = Cosecha::where('user_id', $id)/* ->orderBy('fertilizante_id', 'ASC') */->get();
+        $cosechas = Cosecha::where('user_id', $user->id)/* ->orderBy('fertilizante_id', 'ASC') */->get();
         $kilos = 0;
         $precio = 0;
         $precioTonelada = 0;
@@ -234,9 +223,10 @@ class FinanzasController extends Controller
         $precio = round($precio, 2);
         $cosechas = [$toneladas, $precioTonelada, $precio];
 
-        $user = User::where('id', $id)->first();
-        // dd($user);
+        
 
-        return view('srhigo.reporteFinanciero', compact('gastos', 'fertilizantes', 'plaguicidas', 'actividadesCulturales', 'gastosDiversos', 'costoPracticasA', 'cosechas', 'user'));
+        return view('srhigo.reporteFinanciero',
+            compact('gastos', 'fertilizantes', 'plaguicidas', 'actividadesCulturales', 'gastosDiversos', 'costoPracticasA', 'cosechas', 'user')
+        );
     }
 }
