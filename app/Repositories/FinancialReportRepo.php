@@ -7,31 +7,31 @@ class FinancialReportRepo
 {
     /**
      * @param int $userId
-     * @param string $fechaInicial
-     * @param string $fechaFinal
+     * @param string $dateStart
+     * @param string $dateEnd
      * @return array
      */
-    public static function getFertilizantesFecha(int $userId, $fechaInicial, $fechaFinal)
+    public static function getFertilizersDate(int $userId, $dateStart, $dateEnd)
     {
-        $fertilizantes = AplicacionFertilizante::where('user_id', $userId)
-            ->whereBetween('fechaAplicacion', [$fechaInicial, $fechaFinal])
+        $fertilizerApplication = AplicacionFertilizante::where('user_id', $userId)
+            ->whereBetween('fechaAplicacion', [$dateStart, $dateEnd])
             ->orderBy('fertilizante_id', 'ASC')->get();
 
         $fer = [];
-        foreach ($fertilizantes as $key => $item) {
+        foreach ($fertilizerApplication as $key => $item) {
             $id = $item->fertilizante_id;
 
             if (!isset($fer[$id])) {
-                $fer[$id]['nombre'] = $item->fertilizante->nombreFertilizante;
-                $fer[$id]['contador'] = 1;
-                $fer[$id]['unidades'] = $item->unidades;
-                $fer[$id]['precioTotal'] = $item->precio * $item->unidades;
-                $fer[$id]['precioPromedio'] = $item->precio;
+                $fer[$id]['name'] = $item->fertilizante->nombreFertilizante;
+                $fer[$id]['count'] = 1;
+                $fer[$id]['units'] = $item->unidades;
+                $fer[$id]['totalPrice'] = $item->precio * $item->unidades;
+                $fer[$id]['averagePrice'] = $item->precio;
             } else {
-                $fer[$id]['contador']++;
-                $fer[$id]['unidades'] += $item->unidades;
-                $fer[$id]['precioTotal'] += $item->precio * $item->unidades;
-                $fer[$id]['precioPromedio'] = $fer[$id]['precioTotal'] / $fer[$id]['unidades'];
+                $fer[$id]['count']++;
+                $fer[$id]['units'] += $item->unidades;
+                $fer[$id]['totalPrice'] += $item->precio * $item->unidades;
+                $fer[$id]['averagePrice'] = $fer[$id]['totalPrice'] / $fer[$id]['units'];
             }
         }
 

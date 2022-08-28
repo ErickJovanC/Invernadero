@@ -78,14 +78,14 @@
                     <th></th>
                 </tr>
                 {{-- Sección de Fertilización  --}}
-                @foreach ($fertilizantes as $fertilizante)
+                @foreach ($fertilizers as $fertilizer)
                     <tr>
-                        <td>{{ $fertilizante['nombre'] }}</td>
-                        <td class="text-center">{{ $fertilizante['contador'] }}</td>
-                        <td class="text-center">{{ $fertilizante['unidades'] }}</td>
+                        <td>{{ $fertilizer['name'] }}</td>
+                        <td class="text-center">{{ $fertilizer['count'] }}</td>
+                        <td class="text-center">{{ $fertilizer['units'] }}</td>
                         <td class="text-center">KG/LT</td>
-                        <td class="text-center">{{ $fertilizante['precioPromedio'] }}</td>
-                        <td class="text-center">{{ $fertilizante['precioTotal'] }}</td>
+                        <td class="text-center">{{ $fertilizer['averagePrice'] }}</td>
+                        <td class="text-center">{{ $fertilizer['totalPrice'] }}</td>
                     </tr>
                 @endforeach
                 {{-- Fin sección Fertilización --}}

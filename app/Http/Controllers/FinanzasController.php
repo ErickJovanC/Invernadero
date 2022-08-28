@@ -34,11 +34,11 @@ class FinanzasController extends Controller
         $fechaInicial = $request['fechaI'] ?? '2021-07-01';
         $fechaFinal = $request['fechaF'] ?? date('Y-m-d');
 
-        $fertilizantes = FinancialReportRepo::getFertilizantesFecha($user->id, $fechaInicial, $fechaFinal);
+        $fertilizers = FinancialReportRepo::getFertilizersDate($user->id, $fechaInicial, $fechaFinal);
+        $plaguicidas = AplicacionPlaguicida::where('user_id', $user->id)->whereBetween('fecha', [$fechaInicial, $fechaFinal])->orderBy('plaguicida_id', 'ASC')->get();
         
         $gastosDiversos = [];
         $gastos = Gasto::where('user_id', $user->id)->whereBetween('fecha', [$fechaInicial, $fechaFinal])->orderBy('concepto_id', 'ASC')->get();
-        $plaguicidas = AplicacionPlaguicida::where('user_id', $user->id)->whereBetween('fecha', [$fechaInicial, $fechaFinal])->orderBy('plaguicida_id', 'ASC')->get();
         $actividadesCulturales = ActividadesCulturale::where('user_id', $user->id)->orderBy('actividad', 'ASC')->get();
 
         // Recepción de Planta
@@ -226,7 +226,7 @@ class FinanzasController extends Controller
         
 
         return view('srhigo.reporteFinanciero',
-            compact('gastos', 'fertilizantes', 'plaguicidas', 'actividadesCulturales', 'gastosDiversos', 'costoPracticasA', 'cosechas', 'user')
+            compact('gastos', 'fertilizers', 'plaguicidas', 'actividadesCulturales', 'gastosDiversos', 'costoPracticasA', 'cosechas', 'user')
         );
     }
 }
